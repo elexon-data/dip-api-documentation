@@ -1,0 +1,2528 @@
+# OpenAPI version identifier - required for OpenAPI 3.0 domains
+# (c) Elexon 2022, 2023, 2024 2025
+#
+# MMHS - Data Integration Platform 
+# DataCatalogue
+#
+# ----- update -----------------------------------------------------------------------
+# 
+# 
+#
+# ------------------------------------------------------------------------------------
+# Change history
+# ====================================================================================
+# Ver   Date           Ref.    Description
+# ------------------------------------------------------------------------------------
+# 2.0.1 27/10/2024    CP1067   Support 2.0.1 release
+# 1.8.3 09/09/2024             Support new IR8.3 release  
+#       09/09/2024    DIN-1114 Correct example booelans to be lower case 
+#                              DI-021, DI-022, DI-030, DI-837  
+#       09/09/2024    DIN-1115 Make DI-988-Replay-Indicator non nullable 
+#       09/09/2024    DIN-1120 DT-033-Email becomes DT-036-Email
+#       18/09/2024    DIN-1124 Removal of Obfuscation for IF-035 [IMS-SendMTD] in DI-800  
+# 1.8.2 12/08/2024             Support new IR8.2 release  
+#       13/08/2024    DIN-1072 DI-031 moves from a boolean to a nullable T/F flag      
+#       15/08/2024    DIN-1077 Update DI-160 to include 'II' in list of enumerated values
+# 1.8.1 03/05/2024             Support new IR8.1 release  
+#       07/05/2024    DIN-845  Remove duplicate CAPAC from DI-596-Charge-Type
+#       10/05/2024    DIN-1037 Update DI-565 LDSO Billing Site ID to data type of String(30) 
+#       17/05/2024    DIN-1024 Add minLength =1 where nullable = true
+#       17/05/2024    DIN-1036 Remove multipleOf from DI-432
+#       21/05/2024    DIN-1032 Remove regex on DI-103-Configurable-Register-ID
+#       05/06/2024    DIN-1047 Add U to DI-033 domain 
+# 1.8   22/03/2024             Support new IR8 release  
+# 1.7.1 27/02/2024             Support new release  
+#       01/03/2024    DIN-915  Updates to DI-364 & DI-375   
+#       04/03/2024    DIN-941  Update to DI-122 to align with 5.x
+# 1.7   13/11/2023    DIN-769  Added new DI-613, DI-612, DI-303 -missed updates
+#       02/01/2024    DIN-792  Add new regex to DI-123 SSC
+#                     DIN-805  DI-123 SSC example  
+#                     DIN-858  Some enumerations need to include obfuscated values
+#                     DIN-866  Update DI-059-Meter-Type enum, MAIN_ not MAIN to align with ISD
+#       19/01/2024    DIN-846  DI-300-Consumption-Component-Class-ID updated to INT
+#                     DIN-864  DI-048 & DI-849-CSS-Registration-ID updates
+#       22/01/2024    DIN-845  Include Values FIXED, CAPAC, XSCAP, REACT, RED, AMBER, 
+#                             GREEN, YELLO, BLACK, SUPER, ZERO in DI-596
+#       29/01/2024    DIN-829 DI-838 and DI-017 - require an N -No Consent enum
+# 1.6   19/10/2023            Support new release
+#                     DIN-729 DI-838 need to add null to the enumerated list
+#                     DIN-680 DI-322 and DI-323 updated to SVA catalogue equivalent
+#                     DIN-748 DI-488/DI-487 max/min updated  
+# 1.5.1 09/10/2023            Support new release
+#                     DIN 720 DI-122 Profile Class to min length of 1, max length of 2 
+#                     DIN 719 DI-103 Configurable Register Id to min length of 1, max length of 2 
+# 1.5 - 04/09/2023    DIN 637 maxLength/minLength issue 
+#                     DIN-639 DI-138-Customer-Direct-Contract-Data-Service-DIP-ID
+#                             & DI-140-Customer-Direct-Contract-Metering-Service-DIP-ID updated 
+#                             to be nullable
+#                     DIN-666 alignment with DES138
+#                     DIN-654 DI-131 & DI-130
+#                     DIN-644 DI-122 Profile Class update
+# 1.4 - 27/07/2023    DIN-512, 514, 516, 519, 532, 547
+#                             New datalogue items to support CR 19 = REP900 CR27 = REP901
+# 1.1 - 14/04/2023 -          Align with changes required for mandatory/null issue; 
+#                             duplicating data types 
+#                             into null/non null versions
+# 1.0 - 17/02/2023 -          Align with DAG signoff
+# 0.4 - January 23 -          Minor updates to domains, comment out EZ names, add DI-201 to DI-217
+# 0.3 - October 22 -          Fixed spelling mistake of derived
+# 0.2 - September 22          Updates following first MHHS Programme review - multiple updates
+# 0.1 - August 22             Sent for first MHHS Programme Review
+# ==================================================================================
+
+openapi: 3.0.0
+
+#######################
+# Optional info section
+#######################
+info:
+  title: MHHS Data Catalogue
+  description: Common components for MHHS Message/Event objects
+  version: 2.0.1
+
+components:
+
+  ####################
+  # Common data models
+  ####################
+  schemas:
+
+# Data type
+    DI-000-Interface-ID:
+        # Reference identifing which interface a message is perporting to use.
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-000-InterfaceID'
+
+    DI-001-Address-Line-1:
+      # A component of a metering point site address.
+      # Recommended to be Free Text, but not un-common for the entire address to be entered into the first value.
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+        
+    DI-002-Address-Line-2:
+        # Recommended to be Sub-building Name / Number
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+    DI-003-Address-Line-3:
+        # Recommended to be Building Name / Number
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+    DI-004-Address-Line-4:
+        # Recommended to be Dependent Thoroughfare
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+    DI-005-Address-Line-5:
+        # Recommended to be Thoroughfare
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+    DI-006-Address-Line-6:
+        # Recommended to be Double Dependent Locality
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+    DI-007-Address-Line-7:
+        # Recommended to be Dependent Locality
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+    DI-008-Address-Line-8:
+        # Recommended to be Locality / Post Town
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+    DI-009-Address-Line-9:
+        # Recommended to be County
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+    DI-010-Metering-Point-Postcode:
+        # The full postcode of the metering point site.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-007N-UKPostCode'
+  
+    DI-013-Change-of-Segment-Indicator-Effective-From-Date:
+        # The date-time on which the change of segment process was initiated by the supplier with the registration system
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+        
+    DI-015-Connection-Type-Indicator:
+        description : A code to indicate the type of connection.
+        type : string
+        minLength : 1
+        maxLength : 1
+        example : W
+        enum:
+            - W # Whole Current
+            - L # LV with CT
+            - H # HV with CT
+            - E # EHV with CT
+            - U # Unmetered
+            
+    DI-016-Connection-Type-Indicator-Effective-From-Date:
+        # The date and time from which the Connection Type is in effect.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+    
+    DI-017-Consent-Granularity:
+        description : Describes the granularity of energy settlement data that a customer has deemed to have consented to.
+        type : string
+        example : H
+        enum:
+            - H # HH Consent Granted
+            - D # Daily Reads Only
+            - M # Monthly Reads Only
+            - N # No Consent # DIN-829
+            - x # obfuscated value #DIN-858
+            #- null # DIN-729 need to add null  
+            
+    DI-018-Consent-Granularity-Effective-From-Date:
+        # The date from which the consent granularity was in effect.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+        # DIN-689 update to not nullable 
+        
+    DI-019-Contract-Reference-Metering-Service:
+        description : The unique reference of the contractual agreement between a supplier and the data service. 
+        type : string
+        nullable: true
+        minLength : 1  # DIN-1024
+        maxLength : 50  
+        example : MTR-123-123
+        
+    DI-020-Contract-Reference-Data-Service:
+        description : The unique reference of the contractual agreement between a supplier and the metering service. 
+        type : string
+        nullable: true
+        minLength : 1  # DIN-1024
+        maxLength : 50  
+        example : SDS-123-123
+        
+    DI-021-Customer-Direct-Contract-Metering-Service:
+        description : An indicator to show if a direct customer contract exists between the customer at the metering service provider.
+        type : boolean
+        example : true
+        
+
+        
+    DI-022-Customer-Direct-Contract-Data-Service:
+        description : An indicator to show if a direct customer contract exists between the customer at the data service provider.
+        type : boolean
+        example : true
+        
+        
+    DI-023-Data-Service-Effective-From-Date:
+        # The date and time from when a data service will be responsible for a metering point. Initially assumed to be midnight UTC.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+        # updated DIN-689
+        
+    DI-024-Data-Service-ID:
+        # The market-wide reference for the data service, responsible for processing the consumption data for a metering point. 
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006-DIPParticipantID'
+        
+    
+    DI-025-DCC-Service-Flag:
+        description : A flag indicating the status of services being provided by the DCC for the metering point.
+        type : string
+        maxLength : 1
+        example : A
+        enum:
+            - A # Active
+            - I # Installed 
+            - N # Non-Active
+
+    DI-026-DCC-Effective-From-Date:
+        # The inclusive calendar date from which the DCC service flag applies.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+    
+    DI-027-Disconnection-Effective-From-Date:
+        # The date on which the connection point is physically removed from the metering system.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+    
+    #DI028 added via DIN-788
+    DI-028-Reconnection-Effective-From-Date:
+        # The date on which the connection point is physically reconnected to from the metering system.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'    
+    
+    DI-029-Distributor-ID:
+        description : The market-wide unique reference for the distributor who is responsible for the distribution network that a metering point is connected to.
+        type : string
+        maxLength : 4
+        example : SWAL
+    
+    DI-030-Domestic-Premise-Indicator:
+        description : A flag that indicates if the MPAN of the registration appointment is used to identify a domestic premises.
+        type : boolean
+        example : true
+
+#DIN-1072
+    DI-031-Load-Shape-Domestic-Premise-Indicator:
+        description : The Domestic Premises Indicator associated with the Load Shape  
+        type : string
+        maxLength : 1
+        minLength : 1
+        nullable: true
+        enum:
+            - T # True
+            - F # False
+        example : T
+
+    
+    DI-032-Domestic-Premise-Indicator-Effective-From-Date:
+        # The date from which the metering point Domestic Premise Indicator is in effect.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+   
+    DI-033-Energisation-Status:
+        description : Indicates if the metering point is considered energised (i.e. connected to the distribution system) and therefore active for settlement purposes.
+        type : string
+        minLength : 1
+        maxLength : 1
+        example : D
+        enum:
+            - D # De-Energised
+            - E # Energised
+            - U # Undefined # DIN-1047
+   
+    DI-034-Energisation-Status-Effective-From-Date:
+        # The settlement date and time from which an energisation status is in effect for a metering system.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+
+    DI-035-Energy-Direction:
+        description : Indicates the direction of energy at a metering point. Values can be I = import / E = export 
+        type : string
+        minLength : 1
+        maxLength : 1
+        example : I
+        enum:
+            - I # Import
+            - E # Export
+
+    DI-036-GSP-Group-Effective-From-Date:
+        # The date and time from which the GSP Group ID is in effect for the metering system. 
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+        
+    DI-037-GSP-Group-ID:
+        description : Identifies the distinct grid supply point group (physical region of the country) where the metering point is located.
+        type : string
+        minLength : 2
+        maxLength : 2
+        example : _K
+        enum:
+          - _A
+          - _B
+          - _C
+          - _D
+          - _E
+          - _F
+          - _G
+          - _H
+          - _J
+          - _K 
+          - _L 
+          - _M
+          - _N
+          - _P
+
+    DI-038-Linked-ImportExport-MPAN:
+        # When this metering point is part of an import/export pair, this identifies the related import or export metering point. Where more than one import MPAN exists, this shall be populated with the Primary Import MPAN. 
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-002-MPAN'
+   
+    DI-039-Load-Shape-GSP-Group-ID:
+        description : The GSP Group ID assoicated with the Load Shape 
+        type : string
+        nullable: true
+        minLength : 2
+        maxLength : 2
+        example : _K
+        enum:
+        - _A
+        - _B
+        - _C
+        - _D
+        - _E
+        - _F
+        - _G
+        - _H
+        - _J
+        - _K 
+        - _L 
+        - _M
+        - _N
+        - _P
+        - null  # - DIN-476 - change for nullable enum
+          
+#    DI-040-Line-Loss-Factor-Class-Effective-From-Date:
+        # The data and time that a line loss factor took effect for a distribution network.
+#       $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+   
+    DI-040-Annual-Load-Shape-Total:
+        # The data and time that a line loss factor took effect for a distribution network.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-016-Decimal-9-3'
+
+   
+    DI-041-Load-Shape-7-Day-Rolling-Off-Peak-Total:
+        # description : The sum of the average Load Shape Off-Peak Total for the past 7 settlement dates.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-016N-Decimal-9-3'
+
+   
+    DI-042-Load-Shape-7-Day-Rolling-Peak-Total:
+        # description : The sum of the average Load Shape Peak Total for the past 7 settlement dates.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-016N-Decimal-9-3'
+   
+    DI-043-Load-Shape-7-Day-Rolling-Total:
+        # description : The sum of the average Load Shape Total for the past 7 settlement dates.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-016-Decimal-9-3'
+        
+    DI-044-Load-Shape-Day-Off-Peak-Total:
+        # description : The sum of Period Values for settlement periods (1 to 14) or (2 to 15).
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-016N-Decimal-9-3'    
+
+    DI-045-Load-Shape-Day-Peak-Total:
+        # description : The sum of Period Values for settlement periods (15 to 48) or (1 and 16 to 48).
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-016N-Decimal-9-3'        
+        
+    DI-046-Load-Shape-Day-Total:
+        # description : The sum of all Period Values for the Settlement Date.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-016-Decimal-9-3'
+        
+    DI-047-Load-Shape-Total-Date:
+        # The calendar date in UTC format, for the LSS record.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+   
+    DI-048-Manufacturers-Make-And-Type: # DIN-864
+        description : The Meter Manufacturer Make and Type
+        type : string
+        nullable: true
+        minLength : 1 # DIN-1024
+        maxLength : 60
+        example : 'SIEMENS ZMD120AR44.0200.C4'
+   
+    DI-049-Market-Participant-Role-Code:
+        description : Get description from DTC (was market service type)
+        type : string
+        maxLength : 1
+        example : X
+   
+    DI-050-Market-Segment-Indicator:
+        description : An enumeration of Smart/Advanced/Unmetered. 
+        type : string
+        minLength : 1 # DIN-1024
+        maxLength : 1
+        example : S
+        enum:
+            - U # Unmetered 
+            - S  # Smart including Traditional
+            - A # Advanced
+   
+    DI-051-Market-Segment-Indicator-Effective-From-Date:
+        # The date from which the metering point Market Segment is in effect.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+   
+    DI-052-Measurement-Quantity-ID:
+        description : Identifies the type of the quantity that is measured by the Settlement Period Value.
+        type : string
+        minLength : 2
+        maxLength : 2
+        example : AI
+        enum:
+            - AI # Active Import
+            - AE # Active Export
+            - RI # Reactice Import
+            - RE # Reactive Export
+   
+    DI-053-Meter-ID-Removed:
+        #description : Meter ID of Removed Meter
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-029-MeterID'
+   
+   
+    DI-054-Meter-Asset-Provider-Effective-From-Date:
+        # The date and time from which the meter asset provider is in effect for a metering system.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+   
+    DI-055-Meter-Asset-Provider-ID:
+        description : The market-wide reference for the provider of the meter equipment.
+        type : string
+        minLength : 4
+        maxLength : 4
+        example : 'MAP1'
+        
+    DI-056-Meter-ID:
+        #description : Serial number of the physical meter.
+       $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-029-MeterID'
+     
+    DI-057-Meter-Installation-Date:
+        # The date and time of installation for a meter at a metering point.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+        
+    DI-058-Meter-Removal-Date:
+        # The date and time when a meter was removed from a metering point.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003N-DateTime'
+        
+    DI-059-Meter-Type:
+        description : The type of meter, in relation to its capabilities. E.g. AMR.S1, S2, S2ADE 
+        type : string
+        maxLength : 5
+        example : 'S2CDE'
+     
+        enum:
+      #      - val   # Description
+             - CHECK # Check
+             - H     # Half Hourly
+             - K     # Key
+             - LAG_  # Lag
+             - LEAD_ # Lead
+             - MAIN_  # Main # DIN-866
+             - N     # Non-Half Hourly
+             - NCAMR # Non-remotely Configurable Automated Meter Reading
+             - NSS   # A meter that meets the definition of an ADM but is not compliant with any version of SMETS
+             - RCAMR # Remotely Configurable Automated Meter Reading without remote enable/disable capability
+             - RCAMY # Remotely Configurable Automated Meter Reading with remote enable/disable capability
+             - S     # Smartcard Prepayment
+             - S1    # A meter that is compliant with the Smart Metering Equipment Technical Specifications 1 (SMETS1)
+             - S2A   # A single element meter that is compliant with SMETS2
+             - S2AD  # A single element meter with one or more ALCS that is compliant with SMETS2
+             - S2ADE # Single element meter with one or more ALCS and Boost Function that is compliant with SMETS2
+             - S2B   # twin element meter that is compliant with SMETS2
+             - S2BD  # A twin element meter with one or more ALCS that is compliant with SMETS2
+             - S2BDE # A twin element meter with one or more ALCS and Boost Function that is compliant with SMETS2
+             - S2C   # A polyphase meter that is compliant with SMETS2
+             - S2CD  # A polyphase meter with one or more ALCS that is compliant with SMETS2
+             - S2CDE # A polyphase meter with one or more ALCS and Boost Function that is compliant with SMETS2
+             - SPECL # Special
+             - T     # Token
+             - 2ADF  # Single Element with ALCS and Auxiliary Proportional Controller (APC) that is compliant with SMETS2
+             - 2ADEF # Single Element with ALCS, Boost Function and APC that is compliant with SMETS2
+             - 2AEF  # Single Element with Boost Function and APC that is compliant with SMETS2
+             - 2AF   # Single Element with APC that is compliant with SMETS2
+             - 2BF   # Twin Element with APC that is compliant with SMETS2
+             - 2BDF  # Twin Element with ALCS and APC that is compliant with SMETS2
+             - 2BDEF # Twin Element with ALCS, Boost Function and APC that is compliant with SMETS2
+             - 2BEF  # Twin Element with Boost Function and APC that is compliant with SMETS2
+             - 2CDEF # Polyphase with ALCS, Boost Function and APC that is compliant with SMETS2
+             - 2CF   # Polyphase with APC that is compliant with SMETS2
+             - 2CDF  # Polyphase with ALCS and APC that is compliant with SMETS2
+             - 2CEF  # Polyphase with Boost Function and APC that is compliant with SMETS2
+
+    DI-060-Modified-Meter-ID:
+        #description : Updated/ Corrected Serial number of the physical meter - for use with IF-05 [MeterUpdate] and [MeterHistoryUpdate] Events.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-029N-MeterID'
+        
+    DI-061-Metering-Service-Effective-From-Date:
+        # The date and time from when a metering service will be responsible for a metering point. Initially assumed to be midnight UTC.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+        
+#    DI-062-Metering-Service-ID:
+#        description : The market-wide unique reference for the current metering servicer of a metering point.
+#        type : string
+#        maxLength : 4
+#        example : MIDE
+        
+    DI-063-MPAN-Core:
+        # Uniquely identifies a metering point.  Can be for energy import or export but not both.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-002-MPAN'
+   
+#    DI-064-MSMTD-Settlement-Effective-From-Date:
+#        # The date and time that is applicable to settlement configuration of the meter at a metering point.  
+#        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+   
+#    DI-065-Next-Data-Service-Effective-From-Date:
+#        # The Data Service Effective From of the Next Data Service ID.
+#        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+   
+#    DI-066-Next-Data-Service-ID:
+#        # The market-wide unique reference for the next data servicer of a metering point.
+#        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006-DIPParticipantID'
+   
+#    DI-067-Next-Metering-Service-Effective-From-Date:
+#        # The Metering Service Effective From of the Next Metering Service ID.
+#        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+   
+#    DI-068-Next-Metering-Service-ID:
+#        # The market-wide unique reference for the next metering servicer of a metering point.
+#        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006-DIPParticipantID'
+   
+#    DI-069-Period-Unit-of-Measure:
+#        description : Based on J0103 but the valid set of in MDD has multiple entries - most of which are not used - should the list in MDD be trimmed,# or do we use another definition - kWh, kVArh lag, kVArh Lead?
+#        type : string
+#        maxLength : 10
+   
+#    DI-070-Period-Value:
+#        description : The average meter reading of all the relevant metering systems within a set of load shape criteria, for one settlement period.  
+#        type : integer
+#        maxLength : 10
+   
+#    DI-071-Previous-Data-Service-Effective-From-Date:
+        # The Data Service Effective From of the Previous Data Service ID.
+#        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+   
+#    DI-072-Previous-Data-Service-ID:
+#        # The market-wide unique reference for the previous data servicer of a metering point.
+#        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006-DIPParticipantID'
+   
+
+#    DI-074-Previous-Metering-Service-ID:
+#        # The market-wide unique reference for the previous metering servicer of a metering point.
+#        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006-DIPParticipantID'
+
+    DI-073-Principal-MPAN:
+        # 
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-002-MPAN'
+
+    DI-074-Subsidiary-MPAN:
+        # 
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-002-MPAN'
+   
+    DI-075-Primary-MPAN:
+        # The primary in a related MPAN relationship.  The primary is associated with the base load settlement configuration (contains no value, if not part of related MPAN pair).
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-002N-MPAN'
+   
+    DI-076-Estimation-Reason-Code:
+        description : Used inconjunction with Settlement Period Quality Indicator to explain why data has been estimated
+        type : string 
+        nullable: true
+        minLength : 1 # DIN-1024
+        maxLength : 2
+        example : '1' 
+        enum:
+          - '1' # OptOut
+          - '2' # Missing 
+          - '3' # Invalid 
+          - '4' # CommsFault
+          - '5' # LTV
+          - '6' # Disabled
+          - '7' # De-Energised 
+          - '8' # Disconnected 
+          - '9' # Consumption Amendment
+          - '10' # NonSmart
+          - null # - DIN-476 - change for nullable enum
+   
+    DI-077-CSS-RMP-DeActivation-Date:
+        # Date/Time at which an MPAN is made Inactive at CSS 
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+   
+    DI-078-Related-MPAN-Indicator:
+        description : A flag that indicates if the MPAN of a registration appointment is in a related MPAN relationship.
+        type : boolean
+   
+    DI-079-Secondary-MPAN:
+        # Secondary in a related MPAN relationship.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-002N-MPAN'
+    
+    DI-080-Consumption-Component-Indicator:
+        description : The consumption component indictor
+        type : string
+        maxLength : 1
+        enum:
+          - C
+          - L
+    
+   
+    DI-081-Settlement-Period-Duration:
+        description : The settlement period duration in minutes.
+        type : integer
+        minimum : 30
+        maximum : 30
+        multipleOf: 15
+        example : 30
+   
+    DI-082-Settlement-Period-Effective-To-DateTime:
+        # The UTC end date and time of the settlement period for a consumption value (currently ends on the 00 or 30 minute).
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+   
+    DI-083-Settlement-Period-Quality-Indicator:
+        description : Describes if the Settlement Period Value is an actual or an estimate.
+        type : string
+        minLength : 1
+        maxLength : 5
+        example : ZE1
+        enum:
+            - A  # actual
+            - E  # Estimate
+            - E0 # Single Missing SP
+            - E1 # ADA Available
+            - E2 # DA Available
+            - E3 # NDM Advance
+            - E4 # Register Read History
+            - E5 # Previous DA
+            - E6 # PMA Only
+            - E7 # No recent Data
+            - E8 # Agreed or OR Read
+            - E9 # AAC or SNAC
+            - ZE # Zero Advance
+            - ZE1 # No SP or Advance
+            - ZE2 # LTV
+            - ZE3 # Meter Disabled
+            - A1 # ADS Only
+            - A2 # ADS Only
+            - A3 # ADS Only
+            - AAE1 # ADS Only
+            - AAE2 # ADS Only
+            - AAE3 # ADS Only
+            - EAE1 # ADS Only
+            - EAE2 # ADS Only
+            - EAE3 # ADS 
+            - EA1 # ADS Method 1
+            - EA2 # ADS Method 2
+            - EA3 # ADS Method 3
+            - EA4 # ADS Method 4
+            - EA5 # ADS Method 5
+            - EA6 # ADS Method 6
+            - EA7 # ADS Method 7
+            - EA8 # ADS Method 8
+            - EA9 # ADS Method 9
+            - EA10 # ADS Method 10
+            - EA11 # ADS Method 11
+            - EA12 # ADS Method 12
+            - EA13 # ADS Method 13
+            
+            
+#    DI-084-Settlement-Period-Value:
+#        # The metering system value for the Settlement Period Duration
+#        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-016-Decimal-9-3'
+        
+    DI-085-ESME-GUID:
+        description : The Smart Device ID for a smart meter.  This is also known as the DCC GUID and is further defined within the DCC interface specifications.
+        type : string
+        nullable: true
+        minLength : 1 # DIN-1024
+        maxLength : 23
+        example : 0C-A2-F4-00-00-76-21-BC
+        
+    DI-086-Supplier-Effective-From-Date:
+        # The date and time from which a supplier came into effect, with regard to their relationship with the metering point.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+    DI-087-Supplier-DIP-ID:
+        # The market-wide unique reference for a supplier that is responsible for the settlement liabilities.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006-DIPParticipantID'
+    DI-088-Cumulative-Register-Reading:
+        # The value of the Cumulative  meter register at a specified date and time.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-016-Decimal-9-3'
+    DI-089-Cumulative-Register-Reading-DateTime:
+        # The date and time in UTC at which a half hourly meter is read. This should be considered to be midnight where an exact time is unavailible
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+    DI-090-Meter-Location:
+        description : The actual location of the metering system within the site
+        type : string
+        maxLength : 1
+        example : A
+        enum:
+            - A # Attic
+            - B # Bedroom
+            - C # Cellar/Basement
+            - D # Other not specified
+            - E # Indoors
+            - F # Not known
+            - G # Garage/Greenhouse
+            - H # Hall
+            - I # Cupboard
+            - J # Intake
+            - K # Kitchen
+            - L # Landing
+            - M # Sub Station
+            - N # TC Chamber
+            - O # Outbuilding Barn
+            - P # Pole
+            - R # Ladder required
+            - S # Understairs
+            - T # Toilet
+            - U # Upstairs
+            - V # Vestry
+            - W # Under Window
+            - X # Outside Box
+            - Y # O/S Box with restricted access
+            - Z # Communal Cupboard
+            
+    DI-091-Number-Of-Displayed-Register-Digits:
+        description : Number of digits/dials to the left of the decimal point, of the Cumulative Register.
+        type : integer
+        nullable: true
+        minimum:  0  
+        maximum : 9  
+        example : 5
+        # DIN652
+
+    
+        
+    DI-092-Nature-of-Maintenance-Energisation-Status:
+        description : Free text field for maintenance information 
+        type : string
+        nullable: true
+        minLength : 1 # DIN-1024
+        maxLength : 200
+        example : Free format Maintenance Notes
+        
+    DI-093-Additional-Information-SiteVisit:
+        description : Free text field for site information 
+        type : string
+        nullable: true
+        minLength : 1 # DIN-1024
+        maxLength : 2000
+        example : Free format Additional Information Notes
+
+    DI-094-Reading-Method:
+        description : Indicates how the meter reading was obtained
+        type : string
+        maxLength : 1
+        example : A
+        enum:
+            - A # Actual Data recovered from meter 
+            - C # Customer
+            - E # Estiamted by SDS
+            - S # Estimated by Supplier
+            
+   # DI-095-Notifing-Party:
+   #      # The Market Participant ID for the party issuing/reporting an event
+   #     $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006-DIPParticipantID'
+        
+    DI-096-Site-Visit-Check-Code:
+        description : A code identifying either nature of checks made/to be made on metering equipment during a site visit or identifying reason for failure to obtain readings.
+        type : string
+        nullable: true
+        minLength : 2 # DIN-1024
+        maxLength : 2
+        example : '18'
+        enum:
+        - '01' # Site occupied
+        - '02' # Site not occupied
+        - '03' # Meter system energised
+        - '04' # Meter system de-energised
+        - '05' # Equipment/meter damage
+        - '06' # Suspected tampering
+        - '07' # Timeswitch stopped
+        - '08' # Phase/fuse failure
+        - '09' # Consumption detected on de-energised meter
+        - '10' # Change of meter
+        - '11' # Zero reading on MD register
+        - '13' # MD register on full scale
+        - '14' # More than 1 MD register reset
+        - '15' # Meter stopped
+        - '16' # Seals damaged
+        - '17' # Seals missing
+        - '18' # Unsafe premises
+        - '19' # Call not made on routine visit
+        - '20' # No access
+        - '21' # Refused access
+        - '22' # Meter blocked
+        - '23' # Wiring dangerous or incomplete
+        - '24' # Token Meter Reset
+        - '25' # Token Meter Not Reset
+        - '26' # Agent failed to keep appointment
+        - '27' # Meter reading modified manually by NHHDC in accordance with BSCPs -site visit not required.
+        - '28' # Unable to gain access due to Insufficient address details
+        - '29' # Customer unable to provide access
+        - '30' # Unable to gain access to HV environment
+        - '31' # Interrogation port unavailable (HH only)
+        - '32' # Wrong meter/outstation password (HH only)
+        - '33' # Handheld failure (HH only)
+        - '34' # Suspected demolished
+        - '35' # Demolished
+        - '36' # Change of occupier
+        - '37' # Unmanned
+        - '38' # Unable to gain access due to key/code being unavailable
+        - '39' # Unable to locate meter at property
+        - '40' # Suspected Energised
+        - '41' # Suspected De-energised
+        - '42' # Site capable of exporting energy
+        - '43' # Supply remotely disabled
+        - '44' # Supply remotely re-armed
+        - '50' # Category A Network Defect Reported
+        - '51' # Category B Network Defect Reported
+        - '52' # Additional equipment required
+        - '53' # Unable to establish WAN
+        - '54' # Unable to establish HAN
+        - '55' # Insufficient space for new meter installation
+        - '56' # Unable to access due to parking restrictions
+        - '57' # Unable to complete installation due to adverse weather conditions
+        - '58' # Unable to complete installation due to height/position of meter
+        - '88' # Request rejected
+        - '89' # Fault resolution completion report
+        - null # - DIN-476 - change for nullable enum
+        
+    DI-097-Failure-Energise-De-Energise-Reason-Code:
+        description : The reason why the Energisation or De-Energisation has not been carried out.
+        type : string
+        minLength : 2 # DIN-1024
+        maxLength : 2
+        example : '09'
+        enum:
+            - '01' # No access to meter position
+            - '02' # Distributor required
+            - '03' # Suspected tampering
+            - '05' # De-energisation refused new tenant
+            - '07' # De-energisation refused future use identified
+            - '08' # De-energised no reading available
+            - '09' # Installation not ready for Energisation/Faulty Customer Service
+            - '10' # Request to change energisation status of an LV site with no need for DNO approval or access issue
+            - '11' # The job was cancelled by the Supplier
+            - '12' # Requested change of status date is too close to the receipt of the Data Flow
+            - '13' # No contact details provided
+            - '14' # New D0134 received cancelled previous appointment
+            - '15' # No change to the current energisation status
+            - '16' # Incorrect DNO contacted
+            - '17' # Unable to energise due to outstanding legal issues
+            - '18' # Unable to deenergise as not all paperwork received
+            - '19' # Not the current Supplier
+
+    DI-098-Supplier-Notification-Expiry-Date:
+        # Date on which a Supplier Notification expires, and would require renewal in necessary
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003N-DateTime'
+        
+    DI-099-Configurable-Register-Reading-Date:
+        # description : Configurable Register Reading Date/Time
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+        
+    DI-100-Supplier-Notification-Effective-From-Date:
+        # The Date from which a Supper Notification [to DS] becomes Effective From 
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+        
+    DI-101-Settlement-Day-Date:
+        # UTC Date for which the Settlement Data data applies
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+        
+    DI-102-Load-Shape-Period-Value:
+        # Consumption Value (kWh) for the UTC Period Duration within a Load Shape.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-016-Decimal-9-3'
+        
+    DI-103-Configurable-Register-ID:
+          # DIN-719 update
+          # DIN-1032 -remove regex
+        description : Register ID relating to a specific configurable (billing) register on a Smart Meter
+        type : string
+        minLength : 1
+        maxLength : 2
+#        pattern: ^\d{1,2}$
+        example : '01'
+        
+    DI-104-Configurable-Register-Reading:
+        # Reading associated to a specific Register ID on a Smart Meter
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-016-Decimal-9-3'
+        
+#    DI-105-Configurable-Register-Number-Digits:
+#        # Number of digits/dials to the left of the decimal point, of the Configurable Registers.
+#        description: Number of digits/dials to the left of the decimal point, of the Configurable Registers.
+#        type: string
+#        maxLength: 1
+#        minLength: 1
+#        enum:
+#          - '5'
+#          - '6'
+#          - '7'         
+
+    DI-108-Distributor-DIP-ID:
+        # Distributor DIP ID - added 17/11/22
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006-DIPParticipantID'   
+
+#    DI-109-Distributor-DIP-EZ-Name:
+        # Distributor DIP EZ Name - added 17/11/22
+#        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-010-DIPParticipantEZName'
+
+# removed 13/04/2022
+#   DI-110-Green-Deal-Exists:
+#        description : Green Deal Agreement exists against the MPAN
+#        type : boolean
+#        example: true 
+        
+    DI-111-Green-Deal-Effective-From-Date:
+        # The date from which a Green Deal agreement is considered to be in place.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003N-DateTime'
+
+    DI-112-Green-Deal-Effective-To-Date:
+        # The date from which a Green Deal agreement is considered to be in place.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003N-DateTime'
+
+    DI-120-Additional-Information:
+        description : A free format character string for providing additional details.
+        type : string
+        example: This is an example for additional info
+# DIN 689 remove        nullable: true
+# DIN 745 add nullable back
+        nullable: true
+        minLength : 1 # DIN-1024
+        maxLength : 2000
+        
+    DI-121-Supplier-Effective-To-Date:
+        # The last inclusive settlement date after which a Supplier's registration to a metering system ceases to be valid.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+        
+    DI-122-Profile-Class:
+      # DIN-720 update
+      # DIN-941 update
+        description : A legacy classification, retained soley for a subset of Traditional Meters, to assist with the allocation of gross consumption to individual Settlement Periods.
+        type : string    # MHHS-DIN-367 - updated to string from integer
+        nullable: true
+        minLength : 1
+        maxLength : 2
+        pattern: ^\d{1,2}$
+        example : '02'
+        
+    DI-123-SSC:
+        description : A legacy classification, retained soley for a subset of Traditional Meters, to assist with the allocation of gross consumption to individual Settlement Periods.
+        type : string
+        nullable: true
+        minLength : 4
+        maxLength : 4
+        #DIN-792
+        pattern: ^\d{4,4}$
+        example : '0123'
+        
+    DI-124-Profile-Class-Effective-From-Date:
+        # The Date from which the current Profile Class became Effective
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003N-DateTime'
+
+    DI-125-SSC-Effective-From-Date:
+        # The Date From which the current SSC became Effective
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003N-DateTime'
+
+    DI-126-Traditional-Fall-Back-Read-Frequency:
+        description : Supplier requested Traditional / Fall Back Meter Reading Frequency
+        type : string
+        nullable: true
+        minLength : 1 # DIN-1024
+        maxLength : 1
+        example : Q
+        enum:
+          - W # Weekly 
+          - F # Forntightly
+          - M # Monthly
+          - Q # Quarterly
+          - S  # Six Monthly
+          - A # Annually
+          - x # Obfuscated value #DIN-858
+          - null # - DIN-476 - change for nullable enum
+
+    DI-127-Metered-Indicator:
+        description : An indicator to show whether the Consumption Component is for a metered supply or unmetered supply.
+        type : boolean 
+        # False = Unmetered, 
+        # True = Metered 
+
+        
+        
+    DI-128-DUOS-Tariff-ID:
+        description : Reference to identify the DUoS Tariff assigned to an MPAN
+        type : string
+        minLength:  1
+        maxLength : 3
+        example : 999
+        
+    DI-129-DUOS-Tariff-ID-Effective-From-Date:
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+
+    DI-130-RMP-Status:
+        description : The MPAN RMP Status as held in the Registration Service
+        type : string
+        maxLength : 1
+        enum:
+          - O # Operational 
+          - C # Created
+          - T # Terminated
+      
+    DI-131-MP-Status:
+        description : The MPAN MP or Trading Status as held in the Registration Service
+        type : string
+        maxLength : 1
+        enum: 
+          - N # New
+          - R # Registered 
+          - T # Traded
+          - X # Disconnected
+
+
+    DI-134-SMSO:
+        description : The Id of the operator a Supplier has procured data and communication services from in respect of a Metering System (applies only to certain types of SMETS1 Metering).
+        type : string
+        nullable: true
+        minLength : 1 # DIN-1024
+        maxLength : 4
+        example : TRIL
+
+    DI-135-SMSO-Effective-From-Date:
+        # The first inclusive calendar date that a Smart Metering System Operator ID is the provider of communications services to a Metering System (applies only to certain types of SMETS1 Metering).
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+        
+    DI-136-IHD-Effective-From-Date:
+        # The first inclusive calendar date that a supplier provided a notable IHD status.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+        
+    DI-137-IHD-Install-Status:
+        description : Information from the Supplier regarding the In Home Display at a metering point.
+        type : string
+        minLength : 1 # DIN-1024
+        maxLength : 1
+        nullable: true
+        example : D
+        enum:
+          - I # Installed
+          - D # Declined
+          - E # Existing 
+          - F # Failed
+          - null # - DIN-476 - change for nullable enum
+            
+    DI-138-Customer-Direct-Contract-Data-Service-DIP-ID:
+        # The DIP ID of the Data Service that has recorded the existance of a Customer Direct Contract for that MPAN.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006N-DIPParticipantID'
+        
+#    DI-139-Customer-Direct-Contract-Data-Service-DIP-EZ-Name:
+        #description : The DIP EZ Name of the Data Service that has recorded the existance of a Customer Direct Contract for that MPAN
+#        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-010-DIPParticipantEZName'
+        
+    DI-140-Customer-Direct-Contract-Metering-Service-DIP-ID:
+        # The DIP ID of the Metering Service that has recorded the existance of a Customer Direct Contract for that MPAN.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006N-DIPParticipantID'
+        
+#    DI-141-Customer-Direct-Contract-Metering-Service-DIP-EZ-Name:
+#        description : The DIP EZ Name of the Metering Service that has recorded the existance of a Customer Direct Contract for that MPAN.
+#        type : string
+#        maxLength : 50
+
+#    DI-142-Termination-Reason:
+#       description : A code indicating reason for termination of contract.
+#        type : string
+#        maxLength : 2
+
+    DI-143-Proposed-Appointment-Response-Code:
+        description : A code which defines the reason(s) why an agent appointment has been rejected.
+        type : string 
+        nullable: true
+        minLength : 1 # DIN-1024
+        maxLength : 200
+        example : REJ999 - This a rejection message
+        
+    DI-145-Customer-Direct-Contract-Metering-Service-Effective-To-Date:
+        # The Date on which an existing Data Service Customer Direct Contract is due to expire
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+
+    DI-146-Customer-Direct-Contract-Data-Service-Effective-To-Date:
+        # The Date on which an existing Metering Service Customer Direct Contract is due to expire
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+        
+    DI-147-Period-Consumption-Value:
+        # Consumption Value (kWh) for the UTC Period Duration.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-016-Decimal-9-3'
+        
+    DI-148-Annual-Consumption:
+        # description : Assumed Annual Consumption (kWh)
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-016-Decimal-9-3'        
+        
+    DI-149-Annual-Consumption-Effective-From-Date:
+        # Date on which Assumed Annual Consumption was Calculated/is Effective From
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+        
+    DI-150-Annual-Consumption-Quality-Indicator:
+        description : Assumed Annual Consumption Quality Indicator
+        type : string
+        minLength : 1
+        maxLength : 1
+        example : A
+        enum:
+          - 'A' # Actual
+          - '1' # > 75% Actual data
+          - '2' # < 75% Actual data
+          - '3' # 100% estimated data
+          - '4' # >50% no data
+          - '5' # <50% no data
+          - 'D' # Defaulted
+
+    DI-151-Linked-MPAN-Energy-Direction:
+        description : The Energy Direction (Import or Export) of a Linked MPAN
+        type : string
+        nullable: False
+        minLength : 1
+        maxLength : 1
+        example : I
+        enum:
+            - 'I' # Import
+            - 'E' # Export
+   
+    DI-152-Supplier-Nominated-Annual-Consumption:
+        # description : Supplier Nominated Annual Consumption Value, to be used as required by Data Service in preference to the ECS calculated Annual Consumption
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-016-Decimal-9-3'
+
+        
+    DI-153-Defaulted-SP-Consumption:
+        # Value of Defaulted Consumption for SP
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-016-Decimal-9-3'
+
+    DI-154-Default-Load-Shape-Flag:
+        description : Flag incicating nature / quality of LS used for determining Defaulted Consumption for SP
+        type : string
+        maxLength : 1
+        example : A
+        enum:
+            - A # Actual
+            - D # Standard Default Data
+            - E # Back Stop Data
+            - B # No Data available
+            
+    DI-155-Settlement-Impacted-Data-Service-DIP-ID:
+        # DIP ID of the Data Service appointed for Defaulted SP
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006-DIPParticipantID'
+
+#    DI-156-Settlement-Impacted-Data-Service-DIP-EZ-Name:
+#        # DIP EZ Name of the Data Service appointed for Defaulted SP
+#        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-010-DIPParticipantEZName'
+
+    DI-157-Settlement-Impacted-Supplier-DIP-ID:
+        # Settlement Impacted Supplier DIP ID
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006-DIPParticipantID'
+        
+#    DI-158-Settlement-Impacted-Supplier-DIP-EZ-Name:
+#        # DIP EZ Name Supplier Responsible for Defualted SP
+#        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-010-DIPParticipantEZName'
+        
+    DI-159-Settlement-Run-Execution-Date:
+        # Date/Time at which Settlement Run was Executed
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+        
+    DI-160-Settlement-Code:
+        description : A code which, together with the Settlement Date, identifies a Settlement published in the Settlement Timetable. It identifies the type of Settlement.
+        type : string 
+        maxLength : 2
+        example : RF
+        enum:
+            - SF # Initial Settlement
+            - R1 # First Reconciliation
+            - R2 # Second Reconciliation
+            - R3 # Third Reconciliation
+            - RF # Final Reconciliation 
+            - DR # Dispute 
+            - DF # Final Dispute
+            - II # Interim Initial
+            
+    DI-161-Run-Number:
+        description : The identifier, unique within an Agent system, which identifies a run of that system.
+        type : number
+        maximum:  9999999
+        example : 1234567
+        
+    DI-162-Consumption-Amendment-Supplier-Reference:
+        description : Supplier's own internal reference for the Consumption Amendment
+        type : string 
+        nullable: true        
+        minLength : 1 # DIN-1024
+        maxLength : 50  # DIN-356 - updated max length from 10 to 50
+        example : SUP-REF-99
+        
+    DI-163-Consumption-Amendment-Period-Start-Date:
+        # Consumption Amendment Period Start Date
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+
+    DI-164-Consumption-Amendment-Period-End-Date:
+        # Consumption Amendment Period End Date
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+
+    DI-165-Gross-Revised-Consumption:
+        # Total revised consumption for the Amendment Period
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-016-Decimal-9-3'
+
+    DI-166-Supplier-Consumption-Amendment-Reason-Code:
+        description : Consumption Amendment Reason Code
+        type : string 
+        nullable: true
+        minLength : 1      # DIN-1024
+        maxLength : 1
+        example : A
+        enum:
+          - A # Agreed Read
+          - E # Estimation Issue
+          - M # Metering Issue
+          - R # Reading Issue
+          - S # Stolen or Lost Meter
+          - T # Tampering or Theft
+          - X # Other
+          - null # - DIN-476 - change for nullable enum
+
+    DI-167-RMPStatus-Effective-From-Date:
+        # RMP Status Eff From Date
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+
+    DI-168-MPStatus-Effective-From-Date:
+        # MP Status Eff From Date
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+
+
+      
+        
+    DI-190-Comms-Hub-Serial-Number:
+        description: Comms Hub Serial Number
+        type: string
+        maxLength: 50
+
+    DI-191-Comms-Hub-GUID:
+        description: Comms HUB GUID
+        type: string
+        minLength: 23 # MHHS-DIN-365 - added
+        maxLength: 23
+      
+    DI-192-GPF-Gas-GUID:
+        description: Comms Hub Associated Gas GUID     
+        nullable: true
+        type: string
+        minLength: 23 # MHHS-DIN-365 - added
+        maxLength: 23
+        
+    DI-193-Comms-Hub-Installation-Date:
+        # description: Comms Hub Installation Date
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003N-DateTime'
+        
+    DI-194-Comms-Hub-FW-Version:
+        description: Comms Hub Firmware Version (if available)
+        type: string
+        nullable: true
+        minLength : 1      # DIN-1024
+        maxLength: 50
+        
+    DI-195-Comms-Hub-Activity:
+        description: Comms Hub Activity Type
+        type: string 
+        nullable: False
+        maxLength: 1
+        enum:
+          - '1' # Installation
+          - '2' # Removal
+          - '3' # Exchanged
+          - '4' # Found
+          - '5' # For Information
+ 
+ # CR#23 18/10/23 New DI-196 MDR Reference Date Created 
+    DI-196-MDR-Reference-DateTime:
+        # description: MDR Request Reference Date
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+ 
+    
+    DI-200-Incoming-Supplier-MPID:
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-027-MPID'
+        
+    DI-201-Outgoing-Supplier-MPID:
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-027-MPID'
+
+    DI-202-De-Appointed-Metering-Service-MPID:
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-027-MPID'
+
+    DI-203-De-Appointed-Data-Service-MPID:
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-027-MPID'
+
+    DI-204-Incoming-Metering-Service-MPID:
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-027-MPID'
+
+    DI-205-Incoming-Data-Service-MPID:
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-027-MPID'
+
+    DI-206-Service-Provider-Appointment-Requesting-Supplier-MPID:
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-027-MPID'
+
+    DI-207-Current-Metering-Service-MPID:
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-027N-MPID'
+
+    DI-208-Current-Data-Service-MPID:
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-027N-MPID'
+    
+    DI-209-Assigned-MDR-MPID:
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-027-MPID'
+
+    DI-210-Partner-Metering-Service-MPID:
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-027-MPID'
+
+    DI-211-Partner-Data-Service-MPID:
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-027-MPID'
+
+    DI-212-ImportExport-MPAN-Supplier-MPID:
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-027N-MPID'
+    
+    DI-213-Proposed-Metering-Service-MPID:
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-027-MPID'
+
+    DI-214-Proposed-Data-Service-MPID:
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-027-MPID'
+
+    DI-215-Supplier-Nominated-MDR-MPID:
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-027N-MPID'
+
+    DI-216-SDS-Nominated-MDR-MPID:
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-027-MPID'
+
+    DI-217-Incumbent-Metering-Service-MPID:
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-027-MPID'
+
+# Add DI-218 & DI-219 to release 2.0.1 to support CP1607
+
+    DI-218-Current-Supplier-DIP-ID:
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006-DIPParticipantID'
+
+    DI-219-Current-Supplier-MPID:
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-027-MPID'
+
+
+# ECS Components
+
+    DI-300-Consumption-Component-Class-ID: # DIN-846
+        description : The reference number for a consumption component class.
+        type : integer
+        minimum : 100
+        maximum : 999
+        example: 123
+        
+    DI-301-LLF-ID:
+        description : A factor that can be applied, in order to account for energy losses on the distribution network. (DI-039)
+        type : string
+        maxLength : 3
+        minLength: 3
+        example: '901'
+        
+    DI-302-BM-Unit-ID:
+        description : The unique reference for a BM Unit.
+        type : string
+        maxLength : 11
+        example: '2_KMEB000'
+        
+    DI-303-CCC-ID:
+        description : The reference number for a consumption component class.
+        type : integer
+        minimum : 1
+        maximum : 999
+
+
+    DI-305-Settlement-Date:
+    #    description : The date on which energy is deemed to be used and must be later settled through BSC initial settlement/reconciliation. Also known as the Trading Day (DI-101)
+         $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-021-Date'
+
+    DI-307-Settlement-Period-ID:
+        description : The reference number for a Settlement Period, unique within Settlement Date. Period Ids are assigned sequentially to each period in the local time day. Period 1 identifies the half hour period which endst 00:30 local time.
+        type : integer
+        minimum : 1
+        maximum : 50
+        
+    DI-322-Group-Correction-Factor-Import:
+      #  description : The calculated GSPGCF for Active  Import CCC Ids
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-026-Group-Correction-Factor'
+
+    DI-323-Group-Correction-Factor-Export:
+        # description : The calculated GSPGCF for Active  Export CCC Ids
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-026-Group-Correction-Factor'
+
+    DI-324-Corrected-Component-Losses:
+        # description : The Consumption corrected using the Group Correction factors for the BM Unit for Losses CCC ids.
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-022N-Decimal-9-6'
+
+    DI-325-GSP-Group-Correction-Scaling-Weight:
+        #description : A weight which can be applied to the GSP Group Correction Factor to define to what degree the GSP Group Weight will be applied to a particular consumption component class
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-031-Positive-Decimal-2-2'
+      
+
+    DI-327-Supplier-Deemed-Take:
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-022-Decimal-9-6' 
+        
+    DI-329-Storage-Corrected-Components:
+       # description: The aggregated Demand for MPANs on the SVA Storage Facilities Register
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-022-Decimal-9-6'
+
+    DI-332-Demand-Disconnection-Event-ID:
+        type: string
+        maxLength: 30
+        
+    DI-334-DDE-Start-Datetime:
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+        
+    DI-335-DDE-End-Datetime:
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+        
+    DI-336-Supplier-Advanced-Demand-Disconnection-Volume:
+       # description: The estimate of energy for Advanced Metering Systems during a Demand Disconnection event, before GSP Group Correction, summed for a Supplier by BM Unit for a Consumption Component Class within a GSP Group and Settlement Period. 
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-022-Decimal-9-6'        
+
+    DI-337-Supplier-Advanced-Demand-Disconnection-Volume-Losses:
+        # The estimate of the energy for Advanced Metering Systems during a Demand Disconnection Event, before GSP Group Correction, lost due to line and transformer loss incurred transferring energy between a Grid Supply Point and a metering system, summed for a BMU for a Consumption Component Class within a GSP Group and Settlement Period.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-022-Decimal-9-6' 
+
+    DI-338-BM-Unit-Demand-Disconnection-Volume:
+        # The estimate of energy for Smart and Non-smart Metering Systems during a Demand Disconnection event, before GSP Group Correction, summed for a Supplier by BM Unit and Consumption Component Class within a GSP Group and Settlement Period. 
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-022-Decimal-9-6' 
+
+        
+    DI-339-BM-Unit-Allocated-Demand-Disconnection-Volume-Losses:
+        # description : The estimate of the energy for Smart and Non-smart Metering Systems during a Demand Disconnection Event, before GSP Group Correction, lost due to line and transformer loss incurred transferring energy between a Grid Supply Point and a metering system, summed for a Supplier by BM Unit for a Consumption Component Class within a GSP Group and Settlement Period.
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-022N-Decimal-9-6'
+        
+    DI-341-BM-Unit-Allocated-Demand-Disconnection-Volume:
+        # description : The corrected BM Unit Allocated Demand Disconnection Volume for the BM Unit within a GSP Group.
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-022N-Decimal-9-6'
+
+    DI-345-DUoS-Tariff-ID:
+        description : Reference to identify the DUoS Tarriff assigned to an MPAN
+        type : string
+        maxLength : 3
+        
+    DI-347-Total-Uncorrected-Volume:
+        # description : The Total energy, before GSP Group Correction, summed for a Supplier, within a GSP Group, split by Tariff Stringateristics,  and Settlement Period.
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-022-Decimal-9-6'
+
+
+    DI-351-GSP-Group-Name:
+        description : Name to expand Data Item GSP Group Id.
+        type : string
+        maxLength : 30
+        
+    DI-356-Supplier-Name:
+        description : Name to expand Data Item 'Supplier Id'.
+        type : string
+        maxLength : 40
+
+    DI-357-Default-BM-Unit-Flag:
+        description : Denotes whether or not the BM Unit is the default for a Supplier in a GSP Group.
+        type : boolean
+
+    DI-359-Uncorrected-BM-Unit-Period-Level-Consumption:
+        # description : The energy, before GSP Group Correction, summed for a Supplier by BM Unit and Consumption Component Class within a GSP Group and Settlement Period. 
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-023N-Positive-Decimal-9-6'
+        
+    DI-360-Uncorrected-BM-Unit-Period-Level-Consumption-Losses:
+        # description : The estimate of the energy, before GSP Group Correction, lost due to line and transformer loss incurred transferring energy between a Grid Supply Point and a metering system, summed for a Supplier by BM Unit and Consumption Component Class within a GSP Group and Settlement Period.
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-023N-Positive-Decimal-9-6'
+
+    DI-361-Consumption-Component-Indicator:
+        description : A Bi-state Data Item which shows whether a Consumption Component Class can be categorised by Line Losses or Consumption or Generation
+        type : string
+        maxLength : 1
+        
+    DI-362-Corrected-Component-Consumption:
+        # description : The Consumption corrected using the Group Correction factors for the BM Unit and CCC id.
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-023N-Positive-Decimal-9-6'
+
+    DI-363-Daily-BM-Unit-Period-Level-Consumption:
+        # description : The BM Unit Allocated Demand Volume  summed across all Settlement periods
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-022-Decimal-9-6'
+
+    DI-364-Daily-BM-Unit-Period-Level-Consumption-Losses:
+        # description : The BM Unit's Period Level Consumption Losses summed across Settlement Periods
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-022N-Decimal-9-6'
+
+    DI-365-Daily-Corrected-Component:
+        # description : The Corrected Component summed across all Settlement Periods.
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-022-Decimal-9-6'
+
+    DI-366-Daily-Corrected-Component-Losses:
+        # description : The Corrected Component summed across all Settlement Periods for Losses CCC IDs
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-022-Decimal-9-6'
+        
+    DI-367-Daily-Uncorrected-Period-BM-Unit-Total-Allocated-Volume:
+        # description : The sum of Uncorrected Period BM Unit Total Allocated Volume for a Settlement Day.
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-022-Decimal-9-6'
+
+    DI-368-Daily-Period-BM-Unit-Total-Allocated-Volume:
+        # description : The sum of Period BM Unit Total Allocated Volume for a Settlement Day.
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-022-Decimal-9-6'
+
+    DI-369-Daily-BM-Unit-Allocated-Demand-Disconnection-Volume:
+        # description : The corrected BM Unit Allocated Demand Disconnection Volume for the BM Unit within a GSP Group summed across DDE Impacted Settlement Periods.
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-022-Decimal-9-6'
+
+    DI-370-Daily-BM-Unit-Allocated-Demand-Disconnection-Volume-Losses:
+        # description : The corrected BM Unit Allocated Demand Disconnection Volume Losses for the BM Unit within a GSP Group summed across DDE Impacted Settlement Periods.
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-022-Decimal-9-6'
+
+        
+    DI-373-Daily-Supplier-Deemed-Take:
+        # description : The Supplier Deemed Take summed across Settlement periods
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-022-Decimal-9-6'
+
+    DI-374-MSID-Count:
+        description : The count ofmetering systems by Consumption Component Class and Supplier in a GSP Group
+        type : integer
+        maximum : 999999999
+        
+    DI-375-Daily-Uncorrected-BM-Unit-Period-Level-Consumption:
+        # description : The uncorrected BM Unit Allocated Demand Volume  summed across all Settlement periods
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-022N-Decimal-9-6'
+
+    DI-376-Daily-Advanced-Demand-Disconnection-Volume:
+        # description : The Advanced Demand Disconnection Volume summed across Settlement Periods
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-022-Decimal-9-6'
+
+    DI-377-Daily-Advanced-Demand-Disconnection-Volume-Losses:
+        # description : The Advanced Demand Disconnection Volume Losses summed across Settlement Periods
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-022-Decimal-9-6'
+
+    DI-378-Daily-BMU-Demand-Disconnection-Volume:
+        # description : The BMU Demand Disconnection Volume  summed across Settlement Periods
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-022-Decimal-9-6'
+
+    DI-379-Daily-BMU-Demand-Disconnection-Volume-Losses:
+        # description : The BMU Demand Disconnection Volume Losses summed across Settlement Periods
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-022-Decimal-9-6'
+
+    DI-380-Details-Of-Default-Data-Used:
+        description : Detail of all default data used for Data Services
+        type : string
+        maxLength : 200
+ 
+    DI-411-Supplier-Demand-Disconnection-Volume:
+        # description : The estimate of energy for Smart and Non-smart Metering Systems during a Demand Disconnection event, before GSP Group Correction, summed for a Supplier and Consumption Component Class within a GSP Group and Settlement Period. 
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-022-Decimal-9-6'       
+
+    DI-412-Supplier-Demand-Disconnection-Volume-Losses:
+        # The estimate of the energy for Smart and Non-smart Metering Systems during a Demand Disconnection Event, before GSP Group Correction, lost due to line and transformer loss incurred transferring energy between a Grid Supply Point and a metering system, summed for a Supplier and Consumption Component Class within a GSP Group and Settlement Period. 
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-022-Decimal-9-6'       
+        
+    DI-432-Period-Metering-System-Metered-Data:
+        description : The metered data for a Metering System.
+        type : string  
+        maxLength : 13
+#        multipleOf : 0.001  #DIN-1036
+        
+    DI-450-Defaulted-Load-Shape-Period-Value:
+        description : Defaulted Consumption Value (kWh) for the UTC Period Duration.
+        type : number
+        multipleOf : 0.001
+
+    DI-483-Embedded-LDSO-ID:
+        description : The unique reference for an LDSO
+        type : string
+        maxLength : 4
+
+    DI-484-Settlement-Period-Duration:
+        description : The settlement period duration in minutes.
+        type : integer
+        maximum : 30
+        multipleOf : 15
+
+    DI-485-DUoS-Tariff-Energy-Direction:
+        description : A flag that indicates if the DUoS Tariff is for import or export.
+        type : string
+        maxLength : 1
+        enum:
+            - E
+            - I
+
+    DI-486-DUoS-Tariff-Domestic-Premise-Indicator:
+        description : A flag that indicates if the DUoS Tariff is for domestic premises.
+        type : boolean
+
+    DI-487-Total-Number-Energised-MPANs:
+        description : The Total number of Energised MPANs by Settlement Period.
+        type : integer    #DIN-410, #DIN-748
+        minimum: 0
+        maximum: 9999999999
+
+    DI-488-Total-Number-De-Energised-MPANs:
+        description : The Total number of De-Energised MPANs  by Settlement Period.
+        type : integer  
+        minimum: 0 #DIN-748
+        maximum: 9999999999
+
+    DI-489-Daily-Total-Volume-Based-On-Actual-Data:
+      #  description : The Daily total volume of MPANs with 'A' flagged Settlement Period Consumption
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-022-Decimal-9-6'
+
+    DI-490-Daily-Total-Volume-Based-On-Estimated-Data:
+      #  description : The Daily total Consumption Volume of MPANs not with 'A' flagged Settlement Period Consumption 
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-022-Decimal-9-6'
+
+    DI-491-Embedded-Total-Uncorrected-Volume:
+        #description : The Total embedded energy, before GSP Group Correction, summed for a Supplier, within a GSP Group, split by Tariff Charateristics,  and Settlement Period.
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-022-Decimal-9-6'
+        
+    DI-492-Daily-BM-Unit-MSID-Count:
+        description : The count of HH MPANs for a BM Unit for a Settlement Day.
+        type : integer
+        maximum: 9999999999
+        minimum: 0
+        
+    DI-493-LLF-Status:
+        description : An identifier to show where the LLF and its set of Line Loss Factors is pending or approved
+        type : string
+        maxLength : 1
+        
+    DI-494-Details-of-Default-LLF-Data-Used:
+        description : Detail of all default LLF data used for Data Services
+        type : string
+        maxLength : 200
+
+    DI-495-Supplier-MPID:
+        description : Supplier MPID  - as defined in ISD
+        type : string
+        maxLength : 4
+        example: EMEB
+        
+    DI-496-Settlement-Period:
+        description : The reference number for a Settlement Period, unique within Settlement Date. Period Ids are assigned sequentially to each period in the local time day. Period 1 identifies the half hour period which ends at 00:30 local time.
+        type : integer
+        minimum : 1
+        maximum : 50
+
+# DI 500's - Migration Related
+
+    DI-500-MHHS-Regime-End-Date:
+        # Date on Sites inclusion in MHHS Regime Ends as part of Reverse Migration  
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+
+    DI-501-Reverse-Migration-Incoming-MOP-MPID:
+        # description : Supplier MPID  - as defined in ISD
+        # DIN 689 - update to the correct data type
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-027-MPID'
+
+    DI-502-Reverse-Migration-Incoming-MOP-Effective-From-Date:
+        # Date on which new DC becomes active as part of reverse migration 
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+
+    DI-503-Reverse-Migration-Incoming-DC-MPID:
+        # description : Supplier MPID  - as defined in ISD
+        # DIN 689 - update to the correct data type
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-027-MPID'
+
+    DI-504-Reverse-Migration-Incoming-DC-Effective-From-Date:
+        # Date on which new DC becomes active as part of reverse migration
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+
+
+
+    DI-510-Offpeak-Declaration-Date:
+        # Date on which new DC becomes active as part of reverse migration
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+
+    DI-511-Offpeak-Declaration-Proportion :
+        description : Supplier defined OffPeak usage proportion 
+        type : number
+        minimum: 0
+        maximum: 100
+
+# CR19/CR21 LDSO E-Billing DCUSA Changes
+#
+#
+
+    DI-520-Distributor-Registered-Name:
+        description : The legal registered name of the Distributor issuing the invoice..
+        type : string 
+        maxLength : 70
+        nullable : False
+        example : Outage Distribution Ltd
+           
+    DI-521-Distributor-Company-Registration-Number:
+        description : The legal registered number of the Distributor issuing the invoice..
+        type : string 
+        maxLength: 12
+        nullable : False
+        example : 923456789012
+           
+    DI-522-Distributor-Registered-Address-Line-1:
+        # description : Distributor Registered Address Line1 
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+     
+    DI-523-Distributor-Registered-Address-Line-2:
+        #description : Distributor Registered Address Line2
+      
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+ 
+    DI-524-Distributor-Registered-Address-Line-3:
+       # description : Distributor Registered Address Line 3
+
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+ 
+    DI-525-Distributor-Registered-Address-Line-4:
+       # description : Distributor Registered Address Line 4
+
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+ 
+    DI-526-Distributor-Registered-Address-Line-5:
+       # description : Distributor Registered Address Line 5
+
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+ 
+    DI-527-Distributor-Registered-Address-Line-6:
+       #  description : Distributor Registered Address Line 6
+
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+ 
+    DI-528-Distributor-Registered-Address-Line-7:
+      #  description : Distributor Registered Address Line 7
+
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+ 
+    DI-529-Distributor-Registered-Address-Line-8:
+       # description : Distributor Registered Address Line 8
+           
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+ 
+    DI-530-Distributor-Registered-Address-Line-9:
+      #  description : Distributor Registered Address Line 9
+       
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+ 
+    DI-531-Distributor-Registered-Address-Postcode:
+       # description : Distributor Registered Address Postcode
+        
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-007-UKPostCode'
+        
+    DI-532-Distributor-Billing-Contact-Name:
+      #  description : Distributor Billing Contact Name.
+        type : string 
+        maxLength: 100
+        nullable : False
+        example : Mrs HV Cable
+          
+    DI-533-Distributor-Billing-Email:
+       #  description : Distributor Billing Email
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-036-Email'
+
+    DI-534-Distributor-Billing-Telephone-Number:
+      #  description : Distributor Billing Telephone Number.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-034-Telephone-Number'
+
+ 
+    DI-535-Distributor-Billing-Address-Line-1:
+      #  description : Distributor Billing Address Line 1
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+        
+    DI-536-Distributor-Billing-Address-Line-2:
+      #  description : Distributor Billing Address Line 2
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+ 
+    DI-537-Distributor-Billing-Address-Line-3:
+       # description : Distributor Billing Address Line 3
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+ 
+    DI-538-Distributor-Billing-Address-Line-4:
+       #  description : Distributor Billing Address Line 4
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+ 
+    DI-539-Distributor-Billing-Address-Line-5:
+       # description : Distributor Billing Address Line 5.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+ 
+    DI-540-Distributor-Billing-Address-Line-6:
+       #  description : Distributor Billing Address Line 6.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+ 
+    DI-541-Distributor-Billing-Address-Line-7:
+       # description : Distributor Billing Address Line 7.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+ 
+    DI-542-Distributor-Billing-Address-Line-8:
+      #  description : Distributor Billing Address Line 8.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+ 
+    DI-543-Distributor-Billing-Address-Line-9:
+      #  description : Distributor Billing Address Line 9.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+ 
+    DI-544-Distributor-Billing-Postcode:
+       # description : Distributor Billing Postcode.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-007-UKPostCode'
+ 
+    DI-545-Distributor-Bank-Sort-Code:
+       #  description : Distributor Bank Sort Code.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-035-Sort-Code'
+
+ 
+    DI-546-Distributor-Bank-Account-Number:
+      #  description : Distributor Bank Account Number.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-035-Bank-Account-Number'
+
+ 
+    DI-547-Distributor-VAT-Registration-Number:
+      #  description : Distributor VAT Registration Number.
+        type: string
+        maxLength: 14
+        example : VAT45678901234
+           
+ 
+    DI-548-LDSO-Billing-Supplier-Trading-Name:
+      #  description : LDSO Billing Supplier Trading Name.
+        type: string 
+        maxLength: 70
+        example : Short Circuit Supply Plc
+           
+ 
+    DI-549-LDSO-Billing-Supplier-VAT-Registration-Number:
+      #  description : LDSO Billing Supplier VAT Registration Number.
+        type: string 
+        minLength : 1      # DIN-1024
+        maxLength: 14
+        nullable : True
+        example : VAT45678901234
+           
+ 
+    DI-550-LDSO-Billing-Supplier-VAT-additional-text:
+      #  description : LDSO Billing Supplier VAT additional text.
+        type: string 
+        minLength : 1      # DIN-1024
+        maxLength: 70
+        nullable : true
+        example  : Freetext - registered in Malta
+           
+ 
+    DI-551-LDSO-Billing-Supplier-Bill-To-Contact-Name:
+      #  description : LDSO Billing Supplier Bill-To Contact Name.
+        type: string 
+        maxLength: 100
+        example: Mr LV Cable
+           
+ 
+    DI-552-LDSO-Billing-Supplier-Bill-To-Address-Line-1:
+      #  description : LDSO Billing Supplier Bill-To Address Line 1.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+ 
+    DI-553-LDSO-Billing-Supplier-Bill-To-Address-Line-2:
+       # description : LDSO Billing Supplier Bill-To Address Line 2.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+ 
+    DI-554-LDSO-Billing-Supplier-Bill-To-Address-Line-3:
+      #  description : LDSO Billing Supplier Bill-To Address Line 3.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+ 
+    DI-555-LDSO-Billing-Supplier-Bill-To-Address-Line-4:
+      #  description : LDSO Billing Supplier Bill-To Address Line 4.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+ 
+    DI-556-LDSO-Billing-Supplier-Bill-To-Address-Line-5:
+      #  description : LDSO Billing Supplier Bill-To Address Line 5.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+ 
+    DI-557-LDSO-Billing-Supplier-Bill-To-Address-Line-6:
+      #  description : LDSO Billing Supplier Bill-To Address Line 6.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+        
+    DI-558-LDSO-Billing-Supplier-Bill-To-Address-Line-7:
+      #  description : LDSO Billing Supplier Bill-To Address Line 7.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+ 
+    DI-559-LDSO-Billing-Supplier-Bill-To-Address-Line-8:
+      #  description : LDSO Billing Supplier Bill-To Address Line 8.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+ 
+    DI-560-LDSO-Billing-Supplier-Bill-To-Address-Line-9:
+       # description : LDSO Billing Supplier Bill-To Address Line 9.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+ 
+    DI-561-LDSO-Billing-Supplier-Bill-To-Postcode:
+      #  description : LDSO Billing Supplier Bill-To Postcode.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-007-UKPostCode'
+ 
+    DI-563-LDSO-Billing-Account-Reference:
+        description : LDSO Billing Account Reference.
+        type : string 
+        maxLength: 20
+        example : 'BILL-REF-01234567890'
+
+    DI-565-LDSO-Billing-Site-ID:
+        description : Uniquely identifies a metering point.  Can be for energy import or export but not both..
+        type: string 
+        maxLength: 30
+        example : 'SITE-ID-01234567890'
+
+
+    DI-566-List-Of-MPANS-On-Site:
+        description : List of MPANS on site.
+        type : string  
+        minLength : 1      # DIN-1024
+        maxLength: 1400
+        nullable : true
+        example : MPAN1 MPAN2 MPAN3 MPAN4
+
+    DI-567-Misaligned-Multi-MPAN-Site:
+        description : Identifies if this is a site where billing has become split across supliers.
+        type : boolean
+        example : true
+
+    DI-568-LDSO-Billing-Site-Capacity-:
+        description : LDSO Billing Site Capacity.
+        type : number
+        minimum: 0
+        maximum: 9999999999999
+        nullable : false
+        example : 1234567890123
+
+    DI-569-LDSO-Billing-Site-Address-Line-1:
+       # description : LDSO Billing Site Address Line1 
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+ 
+    DI-570-LDSO-Billing-Site-Address-Line-2:
+       # description : LDSO Billing Site Address Line 2
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+ 
+    DI-571-LDSO-Billing-Site-Address-Line-3:
+      #  description : LDSO Billing Site Address Line 3.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+ 
+    DI-572-LDSO-Billing-Site-Address-Line-4:
+      #  description : LDSO Billing Site Address Line 4.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+ 
+    DI-573-LDSO-Billing-Site-Address-Line-5:
+      #  description : LDSO Billing Site Address Line 5.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+ 
+    DI-574-LDSO-Billing-Site-Address-Line-6:
+       # description : LDSO Billing Site Address Line 6.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+ 
+    DI-575-LDSO-Billing-Site-Address-Line-7:
+       # description : LDSO Billing Site Address Line 7.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+ 
+    DI-576-LDSO-Billing-Site-Address-Line-8:
+      #  description : LDSO Billing Site Address Line 8.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+ 
+    DI-577-LDSO-Billing-Site-Address-Line-9:
+      #  description : LDSO Billing Site Address Line 9.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-001N-AddressLine'
+ 
+    DI-578-LDSO-Billing-Site-Post-Code:
+       # description : LDSO Billing Site Post Code.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-007-UKPostCode'
+ 
+    DI-580-LDSO-Billing-Invoice-Type:
+        description : LDSO Billing Invoice Type.
+        type : string 
+        maxLength: 40
+        example : 'Aggregated DUoS'
+        enum:
+            - 'Site Specifc DUoS' 
+          #  - 'Aggregated DUoS' # Removed 
+          #  - 'Transactional'   # Removed    
+ 
+    DI-581-Tax-Point-Date:
+      #  description : Tax Point Date.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-021-Date'
+ 
+    DI-582-Invoice-Date:
+      #  description : Invoice Date.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-021-Date'
+ 
+    DI-583-Invoice-Due-Date:
+      #  description : Invoice Due Date.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-021-Date'
+ 
+    DI-584-LDSO-Biling-Invoice-Number:
+        description: LDSO Biling Invoice Number.
+        type: string 
+        maxLength: 17
+        example: 'INV12345678901234'
+
+    DI-585-Site-Specific-DUoS-Invoice-Type:
+        description: Site-Specific DUoS Invoice Type.
+        type: string 
+        maxLength: 3
+        example : Reb
+        enum:
+            - New # New
+            - Can # Cancellation 
+            - Reb # Rebill
+
+    DI-586-LDSO-Billing-Cancelled-Invoice-Number:
+        description: LDSO Billing Cancelled Invoice Number.
+        type: string  
+        minLength : 1      # DIN-1024
+        maxLength: 17
+        nullable: true
+        example: 'INV12345678901234'
+
+    DI-587-Cancelled-Invoice-Date:
+      #  description : Cancelled Invoice Date.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-021N-Date'
+ 
+    DI-588-Charge-Period-Start-Date:
+       # description : Charge Period Start Date.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-021-Date'
+ 
+    DI-589-Charge-Period-End-Date:
+      #  description : Charge Period End Date.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-021-Date'
+ 
+    DI-590-Maximum-Demand-In-The-Invoice-Period:
+      #  description : Maximum Demand in the Invoice Period.
+        type: number 
+        maximum: 999999
+        nullable: true
+        example : 123456
+
+    DI-591-Maximum-Demand-In-The-Invoice-Period-Date-Time:
+       # description : Maximum Demand in the Invoice Period Date & Time.
+       $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003N-DateTime'
+ 
+    DI-592-Total-Invoice-Amount-Ex-VAT:
+       # description : Total Invoice Amount ex VAT.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-025-Decimal-15-2'
+ 
+    DI-593-Total-invoice-VAT:
+      #  description : Total invoice VAT.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-025-Decimal-15-2'
+ 
+    DI-594-Total-Invoice-Amount-Inc-VAT:
+       # description : Total Invoice Amount inc VAT.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-025-Decimal-15-2'
+ 
+    DI-596-Charge-Type:
+        description: Charge Type
+        type: string 
+        maxLength: 5
+        example : Fixed
+        enum:
+ #           - CAPAC # DIN-845 #DIN-989
+            # - XCSAP #  removed - assume XSCAP is correct
+            - FIXED 
+            - CAPAC 
+            - XSCAP
+            - REACT
+            - RED
+            - AMBER 
+            - GREEN 
+            - YELLO
+            - BLACK
+            - SUPER
+            - ZERO
+
+    DI-597-Number-Of-Days-Billed:
+        description : Number of Days Billed
+        type : number 
+        example : 31
+        maximum: 31
+        minimum: 0
+        
+    DI-598-Quantity:
+        #description : Quantity
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-030-Decimal-13-3'
+
+    DI-599-Price:
+      #  description : Price
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-033-Decimal-15-5'
+
+    DI-600-Total-Charge-For-Charge-Type-Ex-VAT:
+      #  description : Total Charge for Charge Type ex VAT.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-025-Decimal-15-2'
+
+    DI-601-VAT-Rate-Code:
+      # description : VAT Rate Code.
+        type : string 
+        maxLength: 1
+        example : Z
+        enum:
+            - E # Exempt
+            - S # Standard
+            - Z # Zero
+            - N # Not applicable     
+ 
+    DI-602-VAT-Rate:
+      #  description : VAT Rate.
+       $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-031-Positive-Decimal-2-2'
+
+    DI-603-Daily-Tariff-Number-Of-MSIDs:
+       # description : The Total number of MSIDs before GSP Group Correction, summed for a Supplier, within a GSP Group, split by Tariff Characteristics..
+        type: number
+        maximum: 9999999999
+        example: 1234
+           
+    DI-604-Daily-Tariff-MSID-Charge:
+      #  description : The total MSID charge summed for the Settlement Date by DUoS Tariff ID in GBP.
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-032-Decimal-14-2'
+      
+    DI-605-Charge-Band:
+      #  description : The distribution time band being charged..
+        type : string 
+        maxLength: 10
+        example : amber
+        enum:
+            - red
+            - amber
+            - green
+            - black
+            - yellow
+        
+           
+    DI-606-Daily-Uncorrected-Volume-For-Charge-Band:
+      #  description : The Total energy, before GSP Group Correction, summed for a Supplier, within a GSP Group, split by Tariff Characteristics, for the Charge Period
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-022-Decimal-9-6'
+
+    DI-607-Total-Volume-Charge-For-Charge-Band:
+      # description : The total volume charge summed for the Settlement Date by DUoS Tariff ID in GBP.
+      $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-032-Decimal-14-2'
+
+    DI-608-Daily-Total-MSID-Count:
+        description : Daily Total MSID Count.
+        type : number
+        minimum: 0
+        maximum: 9999999999
+        example : 1234567890
+           
+    DI-609-Daily-Total-MSID-Charge:
+      #  description : Daily Total MSID Charge.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-032-Decimal-14-2'
+
+    DI-610-Daily-Total-Unit-Volume:
+        #  description : Daily Total Unit Volume.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-024-Positive-Decimal-10-6'
+
+
+    DI-611-Daily-Total-Unit-Charge:
+      #  description : Daily Total Unit Charge.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-032-Decimal-14-2'
+
+    DI-612-LDSO-Billing-DUoS-Tariff-ID:
+        description: Reference to identify the DUoS Tariff assigned to the billing site 
+        type : string
+        minLength:  1
+        maxLength : 3
+        example : 999
+    
+    DI-613-LDSO-DIPID:
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006-DIPParticipantID'
+
+
+
+# END OF LDSO E-Billing Data Items
+
+# DI 800's
+
+    DI-800-Appointment-Scenario:
+        description : Code used to identify the scenario around a Service Provider Appointment.
+        type : string 
+        maxLength : 3
+        example : COS
+        enum:
+            - COS # Change of Supplier
+            - CSP # Change of SP
+            - USP # Update existing SP App
+            - SEG # Change of ConnType or MkSeg
+            - MCA # Migration Change of Agent
+            - MCS # Migration Cange of Supplier
+            - ALG # Auto Alignment 
+#            - xxx # Obfuscated value #DIN-858 # DIN-1124
+            
+
+    DI-801-ImportExport-MPAN-Supplier-DIP-ID:
+        # DIP ID of Supplier responsible for Associated Import/Export MPAN
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006N-DIPParticipantID'
+        
+        
+
+
+    DI-803-Incoming-Supplier-DIP-ID:
+        # Code used to identify the incoming Supplier
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006-DIPParticipantID'
+
+    DI-805-Outgoing-Supplier-DIP-ID:
+        # Code used to identify the outgoing Supplier
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006-DIPParticipantID'
+
+    DI-807-Incumbent-Metering-Service-DIP-ID:
+        # This is the Metering Service with responsibility for an MPAN at the point a Proposed Appointment Request is 'Accepted' by a Proposed Metering Service. This party is responsbile for providing the Proposed MS with MTDs for Traditional and Advanced Meters.
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006-DIPParticipantID'
+      
+    DI-809-Current-Metering-Service-DIP-ID:
+        # DIP ID of the Metering Service  Appointed at the point message was created by the Registration Service, i.e. the Currently Appointed Metering Service 
+          $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006N-DIPParticipantID'
+
+#    DI-810-Current-Metering-Service-EZ-Name:
+#        # DIP EZ Name of the Metering Service Appointed at the point message was created by the Registration Service i.e the Currently Appointed Metering ServiceF
+#        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-010-DIPParticipantEZName'
+
+    DI-811-Current-Data-Service-DIP-ID:
+        # DIP ID of the Data Service  Appointed at the point message was created by the Registration Service, i.e. the Currently Appointed Data Service 
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006N-DIPParticipantID'
+
+
+    DI-813-De-Appointed-Metering-Service-DIP-ID:
+        # DIP ID of the Metering Service subject to De-Appointment
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006-DIPParticipantID'
+
+
+    DI-815-Metering-Service-Effective-To-Date:
+        # Date on which a Merting Service's period of appointment comes to an end 
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+    DI-816-De-Appointed-Data-Service-DIP-ID:
+        # DIP ID of the Data Service subject to De-Appointment
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006-DIPParticipantID'
+
+    DI-818-Data-Service-Effective-To-Date:
+        # Date on which a Data Service's period of appointment comes to an end 
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+
+    DI-819-De-Appointment-Reason-Code:
+        description : A code indicating reason for termination of Service Provider Appointment
+        type : string
+        maxLength : 10
+        enum: 
+          - CSUPP # Change of Supplier
+          - CSERV # Change of Service Provider
+          - DEREG # RMP Terminated by CSS
+          - CSEGM # Change of Segment
+          - CCONN # Change of Connection Type
+          - IMPEXP # Linked MPAN
+          - RELATED # Related MPAN
+
+        
+    DI-820-Sending-Data-Service-DIP-ID:
+        # DIP ID of the Data Service making a Consumption or Consumption Amendment submission
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006-DIPParticipantID'
+        
+#    DI-821-Sending-Data-Service-EZ-Name:
+#        # DIP EZ ID of the Data Service making a Consumption or Consumption Amendment submission
+#        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-010-DIPParticipantEZName'
+    DI-822-Incoming-Metering-Service-DIP-ID:
+        # DIP ID for the next/incoming Metering Service
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006-DIPParticipantID'
+        
+#    DI-823-Incoming-Metering-Service-DIP-EZ-Name:
+#        # DIP EZ Name for the next/incoming Metering Serivce
+#        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-010-DIPParticipantEZName'
+    DI-824-Incoming-Metering-Service-Effective-From-Date:
+        # The Date from which next/incomomg Metering Service appointment is/was effective
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+        
+    DI-825-Incoming-Data-Service-DIP-ID:
+        # DIP ID for the next/incoming Data Service
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006-DIPParticipantID'
+#    DI-826-Incoming-Data-Service-DIP-EZ-Name:
+#        # DIP EZ Name for the next/incoming Data Serivce
+#        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-010-DIPParticipantEZName'
+    DI-827-Incoming-Data-Service-Effective-From-Date:
+        # The Date from which next/incomomg Data Service appointment is/was effective
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+    DI-828-Proposed-Metering-Service-DIP-ID:
+        # DIP ID of Metering Service supplier proposes should be appointed to an MPAN
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006-DIPParticipantID'
+
+    DI-830-Proposed-Metering-Service-DIP-Effective-From-Date:
+        # Date at which Supplier would like proposed Metering Service appointment to take effect
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+        
+    DI-831-Proposed-Data-Service-DIP-ID:
+        # DIP ID of Data Service supplier proposes should be appointed to an MPAN
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006-DIPParticipantID'
+
+    DI-833-Proposed-Data-Service-DIP-Effective-From-Date:
+        # Date at which Supplier would like proposed Data Service appointment to take effect
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+    DI-834-Supplier-Nominated-MDR-DIP-ID:
+        # DIP ID of the MDR the Supplier has requested to be assigned to an MPAN, this request may be refused by the SDS
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006N-DIPParticipantID'
+        
+    DI-836-Supplier-Nominated-MDR-Effective-From-Date:
+        # Date From which Supplier would like Nominated MDR to take effect
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003N-DateTime'
+        
+    DI-837-Supplier-Proposed-Domestic-Indicator:
+        description : Supplier Proposed Domestic Indicator
+        type : boolean 
+        example : false
+
+  # DIN-874
+    DI-838-Supplier-Proposed-Consent-Granularity:
+        description : Supplier Proposed Domestic Indicator
+        type : string 
+        maxLength : 1
+        example : H
+        enum:
+            - H # HH Consent Granted
+            - D # Daily Reads Only
+            - M # Monthly Reads Only
+            - N # No Consent
+            - x # Obfuscated value #DIN-858
+
+    DI-839-SDS-Nominated-MDR-DIP-ID:
+        # DIP ID of the MDR the SDS has requested to be assigned to an MPAN
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006-DIPParticipantID'
+
+#    DI-840-SDS-Nominated-MDR-EZ-Name:
+#        # EZ Name of the MDR the SDS has requested to be assigned to an MPAN, 
+#        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-010-DIPParticipantEZName'
+
+    DI-841-SDS-Nominated-MDR-Requested-Effective-From-Date:
+        # Date From which MDR the SDS has requested to be assigned to an MPAN
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+
+    DI-842-Assigned-MDR-DIP-ID:
+        # The MDR DIP actually assigned to an MPAN and notified to CSS/DCC
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006-DIPParticipantID'
+        
+#    DI-843-Assigned-MDR-EZ-Name:
+#        # The MDR EZ Name actually assigned to an MPAN and notified to CSS/DCC
+#        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-010-DIPParticipantEZName'
+
+    DI-844-Assigned-MDR-Effective-From-Date:
+        # The Date from which an MDR is effective for an MPAN and notified to CSS/DCC
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+
+    DI-845-Issuing-Data-Service-DIP-ID:
+        # Data Service Issuing Read / Message
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006-DIPParticipantID'
+
+#    DI-846-Issuing-Data-Service-EZ-Name:
+#        # Data Service Issuing Read / Message
+#        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-010-DIPParticipantEZName'
+    
+    DI-847-Service-Provider-Appointment-Requesting-Supplier-DIP-ID:      
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006-DIPParticipantID'
+
+#    DI-848-Service-Provider-Appointment-Requesting-Supplier-EZ-Name:      
+#        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-010-DIPParticipantEZName'
+
+        
+    DI-849-CSS-Registration-ID: # DIN-864
+        description: CSS Registration ID
+        type: string
+        maxLength: 36
+
+    DI-850-MDR-Effective-To-Date:
+        # Date on which a Data Service's period of appointment comes to an end 
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/1.2.3#/components/schemas/DT-003-DateTime'
+        
+   
+    DI-960-Publication-Description:
+        description : Description of Publication
+        type : string
+        maxLength : 200
+        example : ISD
+
+    DI-961-Publication-Version-ID:
+        description : Publication Version ID / Number
+        type : string
+        maxLength : 10
+        example : 1.1.1
+        
+    DI-962-Publication-Date:
+        # Date/Time Publication was issued
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+        
+    DI-963-Distribution-Variant-ID:
+        description : Unique Identifier for Distubution Varient 
+        type : string
+        maxLength : 10
+        example : 001
+        
+    DI-964-Distribution-Variant-Name:
+        description : Distribution Variant Name 
+        type : string
+        maxLength : 50
+        example : ISD - Supplier Selection
+        
+    DI-965-Distribution-Variant-Description:
+        description : Distribution Variant Description 
+        type : string
+        nullable: true
+        minLength: 1 # DIN-1024
+        maxLength : 200
+        example : ISD tables that Suppliers want only
+        
+    DI-966-Distribution-Variant-Version-ID:
+        description : Version Number of the Distibution Varient 
+        type : string
+        maxLength : 10
+        example : 1.1.1
+        
+    DI-967-Distribution-Variant-Publication-Date:
+        # Publication Date of the Distribution Variant
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+        
+    DI-968-Distribution-Variant-Format:
+        description : File Type of the Distibution Varient (e.g. JSON/CSV/PDF File)
+        type : string
+        nullable: true
+        minLength : 1      # DIN-1024
+        maxLength : 10
+        example : JSON
+
+    DI-969-Distribution-Delivery-Format:
+        description : File Type of the Downloadable Asset (e.g. ZIP File)
+        type : string
+        nullable: true
+        minLength : 1      # DIN-1024
+        maxLength : 10
+        example : ZIP
+
+    DI-970-Distribution-Delivery-URI:
+        description : URI to allow direct download of the Distribution Varient
+        type : string
+        minLength : 1
+        maxLength : 225
+        example : http:\\filestore.io\folder\filename.ZIP
+
+    DI-977-SubText:
+        # description : Free text used for testing 
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-020N-SubText'
+
+    DI-978-Service-Ticket-URL:
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-018N-URL'
+    
+     
+    DI-979-Response-Code:
+        description : Outcome Code associated with a Business Process Action Request                                     
+        type : string
+        minLength : 1
+        maxLength : 1
+        example : A
+        enum:
+            - A # Accepted
+            - R # Rejected
+            - L # Lapsed
+            - W # Warning
+            - x # obfuscated value #DIN-858 
+            
+    DI-980-Status-Error-Messages:
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-005N-StatusErrorMessage'
+  
+        
+    DI-981-Secondary-Recipient-IDs:
+        # DIP Lookup of DIP ID's of Message Recipients
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006N-DIPParticipantID'
+        
+    DI-982-Primary-Recipient-IDs:
+        # Sender Defined list of DIP ID's of Message Recipients
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006N-DIPParticipantID'
+
+
+    
+#    DI-983-DIP-Participant-EZ-Name:
+#        # Easy to Read Organisation Name 
+#        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-010-DIPParticipantEZName'
+
+    DI-984-Sender-Role-ID:
+        # DIP Role ID of the sender
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-009-DIPParticipantRole'
+        
+    DI-985-Sender-Correlation-ID:
+        # Correlation ID, returned by Sender 
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-011N-CorrelationID'
+        
+    DI-986-Publication-ID:
+        description : DIP Publication ID
+        type : string
+        minLength : 7
+        maxLength : 8
+        example : PUB-001
+        
+    DI-987-DIP-Correlation-ID:
+        # Correlation ID, generated by the DIP to allow separate messages in a wider process to be linked together  
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-011N-CorrelationID'
+        
+
+    DI-988-Replay-Indicator:
+        description : Set by the DIP to denote that a txn is being replayed
+        nullable: false 
+        type : boolean
+
+    DI-989-DIP-TimeStamp:
+        # Timestamp created by the DIP on Receipt Acceptance of a Message
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+
+    DI-990-DIP-Transaction-ID:
+        # Unique Reference provided by the DIP on Receipt Acceptance of Message
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-014-DIPTransactionID'
+
+    DI-991-Environment-Tag:
+        # Environment Indicator to denote what Environment Message is Valid In
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-013-EnvironmentTag'
+        
+    DI-992-Schema-Version:
+        description : The Schema Version against which the message has been constructed
+        type : string 
+        maxLength : 10
+
+    DI-992N-Schema-Version:
+        description : The Schema Version against which the message has been constructed
+        type : string 
+        nullable: true
+        maxLength : 10
+
+        
+    DI-993-Always-Receipient-ID:
+        # DIP generated address based on Interface Id
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006N-DIPParticipantID'
+        
+
+    DI-995-Sender-Unique-Reference:
+        # Unique Reference for an individual Messaged generated by the Sender
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-995-SenderUniqueReference'
+
+    DI-996-DIP-Connection-Provider-DIPID:
+        # Unique ID of Third Party Agent issuing messages on behalf of another DIP Participant
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006N-DIPParticipantID'
+        
+    DI-997-Participant-Sender-DIPID:
+        # Unique DIP Particiant which identifies a sending organisation
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-006-DIPParticipantID'
+    DI-998-Sender-Timestamp:
+        # Timestamp created by the Send at the point it creates a DIP Message 
+        $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/2.0.1#/components/schemas/DT-003-DateTime'
+## end

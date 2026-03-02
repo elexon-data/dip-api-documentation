@@ -1,0 +1,235 @@
+# OpenAPI version identifier - required for OpenAPI 3.0 domains
+# (c) Elexon 2024
+#
+# MMHS - Data Integration Platform 
+# Response Codes
+#
+# ----- update -----------------------------------------------------------------------
+# January 2024 Added New module
+# 
+#
+# ------------------------------------------------------------------------------------
+# Change history
+# ====================================================================================
+# Ver   Date           Ref.    Description
+# ------------------------------------------------------------------------------------
+# 1.7   16/01/2024    DIN-836 Added new module 
+# ====================================================================================
+openapi: 3.0.0
+
+#######################
+# Optional info section
+#######################
+info:
+  title: MHHS Response Codes
+  description: MHHS Response Codes
+  version: '1.7'
+
+components:
+
+
+  ####################
+  # Common data models
+  ####################
+  schemas:
+    DI-999-Response-Codes:
+        description : MHHS Response Codes
+        type : string
+        minLength : 5
+        maxLength : 7
+        example : MSG0000
+        enum:  
+            -  MSG0000  #  Success
+            -  MSG1000  #  Message Processing Failed
+            -  MSG1001  #  Schema Failure
+            -  MSG1002  #  Interface ID Invalid
+            -  MSG1006  #  Sender Unique Reference Duplicated
+            -  MSG1007  #  Sender Timestamp Invalid
+            -  MSG1009  #  Sender DIP ID Invalid
+            -  MSG1010  #  Sender Role Invalid
+            -  MSG1011  #  Connection Provider ID Invalid
+            -  MSG1012  #  Sender Correlation ID Invalid
+            -  MSG1030  #  Msg Addressing / Routing Error
+            -  MSG1031  #  Primary Recipient(s) DIP Participant ID Invalid
+            -  MSG1032  #  Primary Recipient(s) DIP Role ID Invalid
+            -  MSG1033  #  Secondary Recipient(s) DIP Participant ID Invalid
+            -  MSG1034  #  Secondary Recipient(s) DIP Role ID Invalid
+            -  MSG1035  #  Always Recipient(s) DIP Participant ID Invalid
+            -  MSG1036  #  Always Recipient(s) DIP Role ID Invalid
+            -  MSG1037  #  Cannot Resolve Secondary Recipient(s) for Missing MPAN
+            -  MSG1038  #  Cannot Resolve Secondary Recipient(s) for MPAN/Party/Event Combination
+            -  RCP0000  #  Message Success
+            -  RCP1000  #  Message Processing Failed
+            -  RCP1001  #  Schema Failure
+            -  RCP1002  #  Interface ID Invalid
+            -  RCP1003  #  Event Code Invalid, Unexpected or Missing
+            -  RCP1004  #  Environment Code Invalid, Unexpected or Missing
+            -  RCP1005  #  Schema Version Invalid or Not Compatable
+            -  RCP1006  #  Sender Unique Refernce Missing or Duplicated
+            -  RCP1007  #  Sender Sent Date/Time Invalid or Missing
+            -  RCP1008  #  Sender Sent Date/Time is in the Future
+            -  RCP1009  #  Sender DIP ID Invalid, Unexpected or Missing
+            -  RCP1010  #  Sender Role Invalid, Unexpected or Missing
+            -  RCP1021  #  Msg Mandatory Data Item Missing
+            -  RCP1022  #  Msg Contains Invalid Value for Value Restricted Field
+            -  RCP1023  #  Msg Contains Invalid Valid Value Combination(s)
+            -  RCP1041  #  Recipient ID Invalid, Unexpected or Missing
+            -  RCP1042  #  Publication ID Invalid, Unexpected or Missing
+            -  RCP1043  #  DIP Txn ID Invalid, Unexpected or Missing
+            -  RCP1044  #  DIP Txn Timestamp Invalid or Missing
+            -  RCP1045  #  DIP Txn Timestamp is in the Future
+            -  RCP1046  #  DIP Correlation ID Invalid, Unexpected or Missing
+            -  RCP1047  #  Replay Indicator Invalid or Unexpected
+            -  RCP1051  #  R0 Response Code Invalid
+            -  RCP1052  #  R0 Response Code Inconsistant with Error Condition(s)
+            -  RCP1061  #  MPAN Invalid or Unknown
+            -  RCP1062  #  PUB Unexpected given MPAN Process Status/Condition
+            -  RCP1063  #  Message Data Content Differs from that Issued or Expected
+            -  RCP1064  #  MDR provided not valid
+            -  RCP9999  #  Message Signature Invalid
+            -  REG0000  #  MPAN Invalid or does not exist 
+            -  REG0001  #  Data Block 'Removed Meter' cannot be used with Event [MeterInstall] 
+            -  REG0002  #  Data Block 'Installed/Updated Meter' cannot be used with [MeterRemoved]
+            -  REG0003  #  Event/Operation cannot be undertaken when Connection Type is Unmetered 
+            -  REG0004  #  Event/Operation cannot be undertaken when Mk. Segment is Unmetered 
+            -  REG0005  #  CSS Registration Request ID is invalid or does not exist 
+            -  REG0006  #  CSS Registration Request ID is associated to another Supplier
+            -  REG0007  #  Cannot manage MPAN Relationship during a Switch 
+            -  REG0008  #  Amendment Requested cannot be undertaken by Previous Metering Service 
+            -  REG0009  #  Null Value cannot be set as Value held is already Null 
+            -  REG1001  #  MP/RMP Status must be Created/Operational to update MTDs 
+            -  REG1002  #  No Valid Appointment held by Metering Service on Relevant Date 
+            -  REG1003  #  Post Appointment Update Period has Expired 
+            -  REG1004  #  Meter ID does not match existing Installed Meter(s)              
+            -  REG1005  #  Meter Removal Date cannot be prior to Install Date                
+            -  REG1006  #  Meter with same Meter ID already Installed                
+            -  REG1007  #  Meter Install Date must be prior to Disconnection Date                
+            -  REG1008  #  Meter Install Date cannot be prior to Removal Date for Exchange              
+            -  REG1009  #  MAP ID is Invalid            
+            -  REG1010  #  MAP Effective Date cannot be prior to Meter Install Date              
+            -  REG1011  #  Meter Install Date cannot be Prior to MPAN Creation Date              
+            -  REG1012  #  Only Appointed MS can use Update Events              
+            -  REG1013  #  Modified Meter ID already exists as an Installed Meter ID for MPAN            
+            -  REG1014  #  EffectiveFrom Sequence Error              
+            -  REG1015  #  Meter ID does not exist so cannot be updated              
+            -  REG1016  #  Install & Remove Meter ID's should match for Event [MeterHistoryUpdate]        
+            -  REG1017  #  Meter ID and Meter Install/Removed Date cannot be updated in the same transaction
+            -  REG1018  #  Cannot use [MeterHistoryUpdate] to amend installed meter              
+            -  REG1019  #  Event should be within Requesting Parties period of Responsibility            
+            -  REG1020  #  Event cannot take place in the future            
+            -  REG1021  #  Requesting Supplier is not the Current Supplier              
+            -  REG1022  #  Proposed Data Item Value is invalid              
+            -  REG1023  #  SMSO ID is Invalid                
+            -  REG1024  #  Effective Date Cannot be Retrospective                
+            -  REG1025  #  Scenario USP can only be used with currently appointed Service Provider        
+            -  REG1026  #  Scenario CSP cannot propose the currenly appointed Service Provider            
+            -  REG1027  #  Metering Service is not currently Appointed and does not hold a Prospective SEG Appointment    
+            -  REG1028  #  Meter Install Date Cannot be Null            
+            -  REG1029  #  Modified Meter Id Must be Null                
+            -  REG1030  #  Metering Service not valid for Unmetered site in LDSO            
+            -  REG1031  #  Service Provider incompatible with MPAN Market Segment                
+            -  REG1032  #  Service Provider EffectiveFrom Date is not Contiguous / or is Invalid          
+            -  REG1033  #  Appointment Scenario ID not valid                
+            -  REG1034  #  Prospective Appointment cannot be in the past            
+            -  REG1035  #  Proposed Consent Value is incompatible with MPAN Market Segment              
+            -  REG1036  #  MDR EffectiveFrom Date must be within Suppliers Ownership            
+            -  REG1037  #  SEG Appointment Lapsed as did not become effective within post-SSD window      
+            -  REG1038  #  Appointments barred on Linked Export MPAN            
+            -  REG1039  #  Appointments barred on Related Secondary MPAN            
+            -  REG1040  #  SSD Effective From Date must be later than existing              
+            -  REG1041  #  Profile Class Effective From Date must be latter than existing                
+            -  REG1042  #  SSC Cannot be set to Null when installed Meter Type is Group Trad            
+            -  REG1043  #  PC Cannot be set to Null when installed Meter Type in Group Trad              
+            -  REG1044  #  SSC must be a valid value in ISD              
+            -  REG1045  #  PC must be a valid value in ISD              
+            -  REG1046  #  ESME Id Missing or Invalid                
+            -  REG1047  #  Displayed Digits must be Provided            
+            -  REG1048  #  Meter Location Code Invalid              
+            -  REG1049  #  Value provided for data item is not consistent with ISD              
+            -  REG1050  #  Supplier must have Ownership of either Import/Export MPAN to maintain Relationships
+            -  REG1051  #  Unmetered MPANs cannot be part of an MPAN Relationship                
+            -  REG1052  #  MPAN(s) already part of an Import/Export Relationship                
+            -  REG1053  #  Proposed Principle MPAN in Import/Export Relationship must be Import          
+            -  REG1054  #  Proposed Subsidiary MPAN(s) in Import/Export Relationship must be Export      
+            -  REG1055  #  Propsoed Principle MPAN is not currently part of an Import/Export Relationship
+            -  REG1056  #  Proposed Subsidiary MPAN(s) is a member of a separate Import/Export Relationship
+            -  REG1057  #  Proposed Subsididary MPAN(s) is already in a Relationship with the Proposed Principle
+            -  REG1058  #  Proposed Subsidiary MPAN is not currently part of an Import/Export Relationship
+            -  REG1059  #  MPAN(s) cannot be duplicated within same message              
+            -  REG1060  #  Supplier must have ownership of All MPANs to maintain Relationships            
+            -  REG1061  #  Proposed MPAN(s) are already part of a Related MPAN Relationship              
+            -  REG1062  #  Proposed Principle MPAN is not the Primary MPAN in an existing Relationship    
+            -  REG1063  #  Proposed Subsidiary MPAN is already in an MPAN Relationship with Primary MPAN  
+            -  REG1064  #  Proposed Secondary MPAN is already part of a different MPAN Relationship      
+            -  REG1065  #  Propsoed Subsidiary MPAN(s) not in a Related Relationship with Principle MPAN Referenced
+            -  REG1066  #  Linked Import cannot be a Secondary Related MPAN              
+            -  REG1067  #  Only Import MPANs can become Related              
+            -  REG1068  #  Proposed Subsidary MPAN(s) cannot be in a Linked Import/Export Relationship    
+            -  REG1071  #  DC Effective Date cannot be Retrospective            
+            -  REG1072  #  CDC End Date Extends Beyond Maximum Allowed              
+            -  REG1073  #  CDC Already Exists for the Period Requested              
+            -  REG1074  #  Cannot Remove as no CDC Data Exists for Participant              
+            -  REG1075  #  Only current Service Providers can set Customer Direct Contracts              
+            -  REG1076  #  Sender ID must equal CDC DIP ID              
+            -  REG1080  #  MDR Update only available to Currently Appointed Data Service            
+            -  REG1081  #  MDR ID [DI-893] is not a valid MDR            
+            -  REG1082  #  MDR Effective From Date cannot be more than five days in the future            
+            -  REG1083  #  MDR Effective From Date does not align with SSD/Existing MDR Eff. From Date    
+            -  REG1084  #  Supplier Referenced is not Current Supplier              
+            -  REG1088  #  Effective From Date Must be Provided              
+            -  REG1089  #  Subsequent Appointment Received              
+            -  REG1090  #  Proposed Metering Service MPID [DI-213] does not match DIP ID            
+            -  REG1091  #  Proposed Data Service MPID [DI-214] does not match DIP ID            
+            -  REG1092  #  Supplier Nominated MDR MPID [DI-215] does not match DIP ID                
+            -  REG1093  #  SDS Nominated MDR MPID [DI-216] does not match DIP ID            
+            -  REG1094  #  Invalid Response Code provided                
+            -  REG1095  #  Proposed Service Provider cannot be currently Appointed Service Provider for SEG appointment
+            -  REG1096  #  IHD effective from date cannot be before meter installation date              
+            -  REG1097  #  Number of digits not compatible with Meter Type              
+            -  REG1098  #  Proposed MDR cannot be currently appointed MDR                
+            -  REG1099  #  SP Effective from date cannot be more than 28 days in the future              
+            -  REG9001  #  CDC Marker Cannot be applied to Reverse Migration Account            
+            -  REG9002  #  Supplier Data Items Cannot be Maintained for Reverse Migration Account        
+            -  REG9003  #  MHHS MTD Updates cannot be used until Migration has completed            
+            -  REG9004  #  Third Party Switch in Progress                
+            -  REG9005  #  MCA Appointment Scenario Can Only be Used by Current Supplier                
+            -  REG9006  #  MCS Appointment Scenario Cannot be Used by Current Supplier              
+            -  REG9007  #  MCS/MCA Scenarios cannot be used for an Already Migrated MPAN            
+            -  REG9008  #  MCS/MCA Scenarios cannot be used by a Non-Qualified Supplier              
+            -  REG9009  #  MHHS Scenario Codes cannot be used for UnMigrated MPAN                
+            -  REG9010  #  Cannot Manage MPAN Relationships while Migration is in Progress
+            -  REG9011  #  MHHS Registration Standing Data Invalid
+            -  ECS1002  #  MQID Invalid for Event Type 
+            -  ECS1003  #  SP End Date/Time [DI-082] has already past "MDS Run Date (RF)" [ISD.RunDate]
+            -  ECS1004  #  Settlement Period Duration Invalid            
+            -  ECS1005  #  SP End Date / Time invalid for Settlement Period Duration            
+            -  ECS1006  #  SP End Date/Time duplicated with SP in same message          
+            -  ECS1007  #  SP End Date/Time overlaps with SP in same message        
+            -  ECS1008  #  SP End Date/Time contains non-Actual Consumption for ECS De-Energised MPAN    
+            -  ECS1009  #  Consumption cannot be recorded due to ECS MPAN Status        
+            -  ECS1010  #  Consumption Value cannot be negative          
+            -  ECS1011  #  Consumption Value must be Zero if Estimation Code is Type 'ZE'            
+            -  ECS1012  #  Consumption Value for SP is greater than ECS Maximum Permitted            
+            -  ECS1013  #  SP End Date/Time is prior to Connection Type EffectiveFrom Date          
+            -  ECS1014  #  UTC Settlement Date/Time is not 00:00:00          
+            -  ECS1015  #  Estimation Reason Code Cannot be Null            
+            -  ECS1016  #  Consumption Amendment Reason Codes Cannot be Null    
+            -  SP000  #  Proposed Appointment ACCEPTED 
+            -  SP001  #  No Contract(s) exist for Supplier 
+            -  SP002  #  Contract Ref not valid for Supplier 
+            -  SP003  #  Contract Ref not valid for Connection Type or Market Segment 
+            -  SP004  #  Connection Type Not Supported 
+            -  SP005  #  Segment Not Supported 
+            -  SP006  #  Meter Type(s) Not Supported 
+            -  SP007  #  Out of Operational Area 
+            -  SP008  #  Address Information Insufficient or Invalid SP008 - Address Information Insufficient or Invalid 
+            -  SP009  #  Meter is not DCC Enrolled
+            -  SP010  #  Domestic Indicator Value not Supported 
+            -  SP010  #  Domestic Indicator Value not Supported (optional)
+            -  SP011  #  Insufficient Notice / Lead Time for Appointment to take effect 
+            -  SP099  #  Other
+            -  DS001  #  Supplier Nominated MDR Invalid/Unsupported 
+            -  DS003  #  Trad/ Fall Back Read Freq Invalid / Missing 
+            -  DS004  #  Change of MDR - Insufficient Notice 
+            -  DS005   #  Change of MDR - Cannot be Retrospective 
+            -  DS006   #  Change of MDR - Lead Time Too Large
