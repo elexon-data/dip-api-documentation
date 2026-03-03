@@ -102,13 +102,13 @@ components:
           false        
       properties:           
         transactionID:
-          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-1.8.3-unresolved.yaml#/components/schemas/DT-014-DIPTransactionID'
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-2.0.1-unresolved.yaml#/components/schemas/DT-014-DIPTransactionID'
         transactionTimestamp:
-          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-1.8.3-unresolved.yaml#/components/schemas/DT-003-DateTime'
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-2.0.1-unresolved.yaml#/components/schemas/DT-003-DateTime'
         publicationID: 
           $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-986-Publication-ID'
         initialCorrelationID:
-          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-1.8.3-unresolved.yaml#/components/schemas/DT-011N-CorrelationID'
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-2.0.1-unresolved.yaml#/components/schemas/DT-011N-CorrelationID'
         replayIndicator:
           $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-988-Replay-Indicator'
         serviceTicketURL:
@@ -155,12 +155,12 @@ components:
           description: Primary Recipient - array of Ids; set by Sender
           type : array
           items: 
-            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-1.8.3-unresolved.yaml#/components/schemas/DT-006N-DIPParticipantID'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-2.0.1-unresolved.yaml#/components/schemas/DT-006N-DIPParticipantID'
         secondaryRecipients:
           description: Secondary Recipient - array of Ids; set by DIP
           type : array
           items: 
-            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-1.8.3-unresolved.yaml#/components/schemas/DT-006N-DIPParticipantID'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-2.0.1-unresolved.yaml#/components/schemas/DT-006N-DIPParticipantID'
         always:
           description: Always Recipient - array of Ids; set by DIP
           type : array
@@ -168,8 +168,8 @@ components:
 #          nullable: false
           items: 
 #            anyOf:
-#              - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-1.8.3-unresolved.yaml#/components/schemas/DT-009N-DIPParticipantRole'
-              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-1.8.3-unresolved.yaml#/components/schemas/DT-006N-DIPParticipantID'
+#              - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-2.0.1-unresolved.yaml#/components/schemas/DT-009N-DIPParticipantRole'
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-2.0.1-unresolved.yaml#/components/schemas/DT-006N-DIPParticipantID'
       required:
         - primaryRecipients
         - secondaryRecipients

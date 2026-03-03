@@ -2346,7 +2346,7 @@ components:
 
     DI-850-MDR-Effective-To-Date:
         # Date on which a Data Service's period of appointment comes to an end 
-        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-1.2.3-unresolved.yaml#/components/schemas/DT-003-DateTime'
+        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-2.0.1-unresolved.yaml#/components/schemas/DT-003-DateTime'
         
    
     DI-960-Publication-Description:
