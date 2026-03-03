@@ -60,19 +60,19 @@ components:
       properties:
         R007:
             #    Settlement Run Execution  
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R007'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R007'
         R002:
             #    Settlement Run Execution  
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R002'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R002'
         R009:
             #    Supplier MPID   
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R009'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R009'
         REP002-R027:
             #   Distributor ID 
           description: array of Distributor IDS  # DIN-1017
           type: array
           items:
-              $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/REP002-R027'
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/REP002-R027'
 
 
 
@@ -86,23 +86,23 @@ components:
       properties:
         R027:
             #    Distributor ID 
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R027'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R027'
         R013:
             #    GSP Group  
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R013'   
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R013'   
         R007:
             #    Settlement Run Execution  
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R007'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R007'
         R002:
             #    Settlement Run Execution  
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R002'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R002'
             
 
         REP002A-R006:
           description: array of Embedded LDSOs
           type: array
           items:
-              $ref:  'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/REP002A-R006'
+              $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/REP002A-R006'
 
 # REP-002B LDSO report for DUOS - aggregated data - new for release 1.5 (9/2023), REP-002 has been split into REP-002 
 #                                 (supplier) and REP-002B (LDSO)
@@ -116,23 +116,23 @@ components:
         #DIN-801 added 2 blocks below  
         R027:
             #    Distributor ID 
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R027'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R027'
         R013:
             #    GSP Group  
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R013'   
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R013'   
         R007:
             #    Settlement Run Execution  
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R007'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R007'
         R002:
             #    Settlement Run Execution  
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R002'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R002'
 
         REP002B-R009:
             #    Supplier MPID   
           description: array of Suppliers # DIN-1017
           type: array
           items:            
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/REP002B-R009'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/REP002B-R009'
 
 
 # REP003 - BM Unit Allocated Demand Volumes to Suppliers
@@ -145,28 +145,28 @@ components:
       properties:
         R013:
             #    GSP Group  
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R013'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R013'
         R007:
             #    Settlement Run Execution  
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R007'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R007'
         R002:
             #    Settlement Run Info  
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R002'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R002'
         R103:
             #    Settlement Period Duration  
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R103'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R103'
  
         REP003-R015:
           description : Supplier(s)
           type: array
           items:
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/REP003-R015'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/REP003-R015'
 
         REP003-R024: 
           description: GSP Group correction factors
           type: array
           items:
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R024'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R024'
           
 # REP003A - Aggregated BM Unit Allocated Demand Volumes to Suppliers
 
@@ -178,28 +178,28 @@ components:
       properties:
         R013:
             #    GSP Group  
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R013'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R013'
         R007:
             #    Settlement Run Execution  
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R007'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R007'
         R002:
             #    Settlement Run Info  
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R002'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R002'
         R103:
             #    Settlement Period Duration  
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R103'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R103'
  
         REP003A-R015:
           description : Supplier(s)
           type: array
           items:
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/REP003A-R015'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/REP003A-R015'
 
         REP003A-R024: 
           description: GSP Group correction factors
           type: array
           items:
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R024'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R024'
           
 
 
@@ -214,16 +214,16 @@ components:
       properties:
         R013:
             #    GSP Group  
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R013'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R013'
         R007:
             #    Settlement Run Execution  
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R007'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R007'
         R002:
             #    Settlement Run Info 
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R002'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R002'
         REP004-R009:
             #    Supplier  ID
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/REP004-R009'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/REP004-R009'
 
 # REP006 - Aggregated Uncorrected volumes by CCC to Market Participants
 
@@ -235,18 +235,18 @@ components:
       properties:
         R013:
             #    GSP Group  
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R013'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R013'
         R007:
             #    Settlement Run Execution  
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R007'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R007'
         R002:
             #    Settlement Run Execution  
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R002'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R002'
         REP006-R015:
           description: Array of extended Supplier records 
           type: array
           items:
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/REP006-R015'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/REP006-R015'
 
 
 # REP007 - VAS Exception Report to Suppliers
@@ -259,15 +259,15 @@ components:
       properties:
         R007:
             #    Settlement Run Execution  
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R007'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R007'
         R002:
             #    Settlement Run Info
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R002'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R002'
         REP007-R013:
           type: array
           items:
             #    GSP Group ext  
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/REP007-R013'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/REP007-R013'
 
 
 # REP008 -  MDS Exception Report to LDSOs
@@ -280,16 +280,16 @@ components:
       properties:
           R002:
               #    Settlement Run Execution  
-              $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R002'
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R002'
           R013:
               #    GSP Group  
-              $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R013'
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R013'
           R027:
               # Distributor ID
-              $ref:  'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R027'
+              $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R027'
           R039:
               # LLF Default Data Detail
-              $ref:  'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R039'
+              $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R039'
               
 # REP009 Half Hourly metered data for Suppliers that is used by the CM Settlement Services Provider in calculating CM data, and/ or by the CFD Settlement Services provider in calculating CFD data.
 
@@ -301,10 +301,10 @@ components:
         properties:
           R002:
               #    Settlement Run Execution  
-              $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R002'
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R002'
           REP009-R015:
               # Supplier ID
-              $ref:  'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/REP009-R015'
+              $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/REP009-R015'
 
   # REP900 
   
@@ -316,16 +316,16 @@ components:
         properties:
           R900-01:
               # LDSO Billing Distributor Info   
-              $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R900-01'
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R900-01'
           R900-02:
               #   LDSO Billing Supplier Info  
-              $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R900-02'
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R900-02'
           R900-03:
               #  LDSO Billing Site Info
             description: LDSO Billing Site Info
             type : array
             items: 
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R900-03'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R900-03'
           #   DIN-859  # DIN-1037 move R900-04 block to nested in R900-03
 
   # REP901 
@@ -338,16 +338,16 @@ components:
         properties:
           R901-01:
               # DIS/GSP    
-              $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R901-01'
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R901-01'
           R901-02:
               #   Settlement Run  
-              $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R901-02'
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R901-02'
   
           R901-03:
             description: Settlement Days
             type : array
             items: 
               #   Settlement Date
-              $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/ECS-CommonBlocks/2.0.1#/components/schemas/R901-03'
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R901-03'
           
 ## END

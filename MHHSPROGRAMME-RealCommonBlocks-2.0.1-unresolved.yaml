@@ -68,21 +68,21 @@ components:
           false        
       properties:
         environmentTag:
-          $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-991-Environment-Tag'
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-991-Environment-Tag'
         subText:
-          $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-977-SubText'
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-977-SubText'
         senderUniqueReference : 
-          $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-995-Sender-Unique-Reference'
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-995-Sender-Unique-Reference'
         senderTimestamp :
-          $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-998-Sender-Timestamp'
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-998-Sender-Timestamp'
         senderDIPID :
-          $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-997-Participant-Sender-DIPID'
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-997-Participant-Sender-DIPID'
         senderRoleID : 
-          $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-984-Sender-Role-ID'
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-984-Sender-Role-ID'
         senderCorrelationID:
-          $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-985-Sender-Correlation-ID'  
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-985-Sender-Correlation-ID'  
         DIPConnectionProviderID:
-          $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-996-DIP-Connection-Provider-DIPID'
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-996-DIP-Connection-Provider-DIPID'
 
       required: 
         - environmentTag
@@ -102,18 +102,18 @@ components:
           false        
       properties:           
         transactionID:
-          $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/1.8.3#/components/schemas/DT-014-DIPTransactionID'
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-1.8.3-unresolved.yaml#/components/schemas/DT-014-DIPTransactionID'
         transactionTimestamp:
-          $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/1.8.3#/components/schemas/DT-003-DateTime'
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-1.8.3-unresolved.yaml#/components/schemas/DT-003-DateTime'
         publicationID: 
-          $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-986-Publication-ID'
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-986-Publication-ID'
         initialCorrelationID:
-          $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/1.8.3#/components/schemas/DT-011N-CorrelationID'
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-1.8.3-unresolved.yaml#/components/schemas/DT-011N-CorrelationID'
         replayIndicator:
-          $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-988-Replay-Indicator'
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-988-Replay-Indicator'
         serviceTicketURL:
 # added v0.2 
-          $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-978-Service-Ticket-URL'
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-978-Service-Ticket-URL'
 
       required:
         - transactionID
@@ -133,12 +133,12 @@ components:
           false        
       properties:
         responseCode:
-            $ref:  'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-979-Response-Code' 
+            $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-979-Response-Code' 
         responseMessages:
           description: Response message outcomes
           type: array
           items:
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-980-Status-Error-Messages'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-980-Status-Error-Messages'
 
       required:
         - responseCode
@@ -155,12 +155,12 @@ components:
           description: Primary Recipient - array of Ids; set by Sender
           type : array
           items: 
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/1.8.3#/components/schemas/DT-006N-DIPParticipantID'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-1.8.3-unresolved.yaml#/components/schemas/DT-006N-DIPParticipantID'
         secondaryRecipients:
           description: Secondary Recipient - array of Ids; set by DIP
           type : array
           items: 
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/1.8.3#/components/schemas/DT-006N-DIPParticipantID'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-1.8.3-unresolved.yaml#/components/schemas/DT-006N-DIPParticipantID'
         always:
           description: Always Recipient - array of Ids; set by DIP
           type : array
@@ -168,8 +168,8 @@ components:
 #          nullable: false
           items: 
 #            anyOf:
-#              - $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/1.8.3#/components/schemas/DT-009N-DIPParticipantRole'
-              $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataTypes/1.8.3#/components/schemas/DT-006N-DIPParticipantID'
+#              - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-1.8.3-unresolved.yaml#/components/schemas/DT-009N-DIPParticipantRole'
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-1.8.3-unresolved.yaml#/components/schemas/DT-006N-DIPParticipantID'
       required:
         - primaryRecipients
         - secondaryRecipients
@@ -183,11 +183,11 @@ components:
             false        
         properties:
           MPANCore:
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-063-MPAN-Core'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-063-MPAN-Core'
           distributorDIPID:
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-108-Distributor-DIP-ID'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-108-Distributor-DIP-ID'
           GSPGroupID:
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-037-GSP-Group-ID'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-037-GSP-Group-ID'
 
         required:
           - MPANCore
@@ -201,11 +201,11 @@ components:
             false        
         properties:
           principalMPAN:
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-073-Principal-MPAN'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-073-Principal-MPAN'
           distributorDIPID:
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-108-Distributor-DIP-ID'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-108-Distributor-DIP-ID'
           GSPGroupID:
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-037-GSP-Group-ID'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-037-GSP-Group-ID'
 
         required:
           - principalMPAN
@@ -221,11 +221,11 @@ components:
             false        
         properties:
             publicationDescription:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-960-Publication-Description'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-960-Publication-Description'
             publicationVersionID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-961-Publication-Version-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-961-Publication-Version-ID'
             publicationDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-962-Publication-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-962-Publication-Date'
         required:
             - publicationDescription
             - publicationVersionID
@@ -238,23 +238,23 @@ components:
             false        
         properties:
             distributionVariantID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-963-Distribution-Variant-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-963-Distribution-Variant-ID'
             distributionVariantName:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-964-Distribution-Variant-Name'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-964-Distribution-Variant-Name'
             distributionVariantDescription:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-965-Distribution-Variant-Description'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-965-Distribution-Variant-Description'
             distributionVariantVersionID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-966-Distribution-Variant-Version-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-966-Distribution-Variant-Version-ID'
             distributionVariantPublicationDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-967-Distribution-Variant-Publication-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-967-Distribution-Variant-Publication-Date'
             distributionVariantFormat:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-968-Distribution-Variant-Format'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-968-Distribution-Variant-Format'
             distributionDeliveryFormat:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-969-Distribution-Delivery-Format'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-969-Distribution-Delivery-Format'
             distributionDeliveryURI:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-970-Distribution-Delivery-URI'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-970-Distribution-Delivery-URI'
             additionalInformation:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-120-Additional-Information'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-120-Additional-Information'
 
         required:
             - distributionVariantID
@@ -289,7 +289,7 @@ components:
             false        
         properties:
             GSPGroupEffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-036-GSP-Group-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-036-GSP-Group-Effective-From-Date'
         required:
             - GSPGroupEffectiveFromDate
 
@@ -301,11 +301,11 @@ components:
             false        
         properties:
             incomingSupplierDIPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-803-Incoming-Supplier-DIP-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-803-Incoming-Supplier-DIP-ID'
             incomingSupplierMPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-200-Incoming-Supplier-MPID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-200-Incoming-Supplier-MPID'
             supplierEffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-086-Supplier-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-086-Supplier-Effective-From-Date'
         required:
             - incomingSupplierDIPID
             - incomingSupplierMPID
@@ -318,11 +318,11 @@ components:
             false        
         properties:
             outgoingSupplierDIPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-805-Outgoing-Supplier-DIP-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-805-Outgoing-Supplier-DIP-ID'
             outgoingSupplierMPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-201-Outgoing-Supplier-MPID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-201-Outgoing-Supplier-MPID'
             supplierEffectiveToDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-121-Supplier-Effective-To-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-121-Supplier-Effective-To-Date'
         required:   
           - outgoingSupplierDIPID
           - outgoingSupplierMPID
@@ -335,9 +335,9 @@ components:
             false        
         properties:
             domesticPremiseIndicator:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-030-Domestic-Premise-Indicator'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-030-Domestic-Premise-Indicator'
             domesticPremiseIndicatorEffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-032-Domestic-Premise-Indicator-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-032-Domestic-Premise-Indicator-Effective-From-Date'
         required:
             - domesticPremiseIndicator
             - domesticPremiseIndicatorEffectiveFromDate
@@ -349,13 +349,13 @@ components:
             false        
         properties:
             currentMeteringServiceDIPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-809-Current-Metering-Service-DIP-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-809-Current-Metering-Service-DIP-ID'
             currentMeteringServiceMPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-207-Current-Metering-Service-MPID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-207-Current-Metering-Service-MPID'
             currentDataServiceDIPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-811-Current-Data-Service-DIP-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-811-Current-Data-Service-DIP-ID'
             currentDataServiceMPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-208-Current-Data-Service-MPID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-208-Current-Data-Service-MPID'
                 
 
         required:
@@ -371,13 +371,13 @@ components:
             false        
         properties:
             customerDirectContractMeteringService:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-021-Customer-Direct-Contract-Metering-Service'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-021-Customer-Direct-Contract-Metering-Service'
             customerDirectContractMeteringServiceDIPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-140-Customer-Direct-Contract-Metering-Service-DIP-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-140-Customer-Direct-Contract-Metering-Service-DIP-ID'
             customerDirectContractDataService:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-022-Customer-Direct-Contract-Data-Service'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-022-Customer-Direct-Contract-Data-Service'
             customerDirectContractDataServiceDIPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-138-Customer-Direct-Contract-Data-Service-DIP-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-138-Customer-Direct-Contract-Data-Service-DIP-ID'
         required:
             - customerDirectContractDataService
             - customerDirectContractMeteringServiceDIPID
@@ -391,9 +391,9 @@ components:
             false        
         properties:
             responseCode:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-979-Response-Code'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-979-Response-Code'
             proposedAppointmentResponseCode:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-143-Proposed-Appointment-Response-Code'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-143-Proposed-Appointment-Response-Code'
         required: 
             - responseCode
             - proposedAppointmentResponseCode
@@ -405,15 +405,15 @@ components:
             false        
         properties:
             deAppointedMeteringServiceDIPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-813-De-Appointed-Metering-Service-DIP-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-813-De-Appointed-Metering-Service-DIP-ID'
             deAppointedMeteringServiceMPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-202-De-Appointed-Metering-Service-MPID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-202-De-Appointed-Metering-Service-MPID'
             meteringServiceEffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-061-Metering-Service-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-061-Metering-Service-Effective-From-Date'
             meteringServiceEffectiveToDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-815-Metering-Service-Effective-To-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-815-Metering-Service-Effective-To-Date'
             deAppointmentReasonCode:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-819-De-Appointment-Reason-Code'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-819-De-Appointment-Reason-Code'
         required:
             - deAppointedMeteringServiceDIPID
             - deAppointedMeteringServiceMPID
@@ -428,15 +428,15 @@ components:
             false        
         properties:
             deAppointedDataServiceDIPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-816-De-Appointed-Data-Service-DIP-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-816-De-Appointed-Data-Service-DIP-ID'
             deAppointedDataServiceMPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-203-De-Appointed-Data-Service-MPID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-203-De-Appointed-Data-Service-MPID'
             dataServiceEffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-023-Data-Service-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-023-Data-Service-Effective-From-Date'
             dataServiceEffectiveToDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-818-Data-Service-Effective-To-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-818-Data-Service-Effective-To-Date'
             deAppointmentReasonCode:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-819-De-Appointment-Reason-Code'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-819-De-Appointment-Reason-Code'
         required:
             - deAppointedDataServiceDIPID
             - deAppointedDataServiceMPID
@@ -452,11 +452,11 @@ components:
             false        
         properties:
             incomingMeteringServiceDIPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-822-Incoming-Metering-Service-DIP-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-822-Incoming-Metering-Service-DIP-ID'
             incomingMeteringServiceMPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-204-Incoming-Metering-Service-MPID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-204-Incoming-Metering-Service-MPID'
             incomingMeteringServiceEffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-824-Incoming-Metering-Service-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-824-Incoming-Metering-Service-Effective-From-Date'
         required:
           - incomingMeteringServiceDIPID
           - incomingMeteringServiceMPID
@@ -470,11 +470,11 @@ components:
             false        
         properties:
             incomingDataServiceDIPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-825-Incoming-Data-Service-DIP-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-825-Incoming-Data-Service-DIP-ID'
             incomingDataServiceMPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-205-Incoming-Data-Service-MPID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-205-Incoming-Data-Service-MPID'
             incomingDataServiceEffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-827-Incoming-Data-Service-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-827-Incoming-Data-Service-Effective-From-Date'
         required:
           - incomingDataServiceDIPID
           - incomingDataServiceMPID
@@ -487,9 +487,9 @@ components:
             false        
         properties:
             serviceProviderAppointmentRequestingSupplierDIPID:         
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-847-Service-Provider-Appointment-Requesting-Supplier-DIP-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-847-Service-Provider-Appointment-Requesting-Supplier-DIP-ID'
             serviceProviderAppointmentRequestingSupplierMPID:         
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-206-Service-Provider-Appointment-Requesting-Supplier-MPID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-206-Service-Provider-Appointment-Requesting-Supplier-MPID'
                                                                                                               
         required:
           - serviceProviderAppointmentRequestingSupplierDIPID
@@ -500,7 +500,7 @@ components:
         type: object
         properties:
             CSSRegistrationID: # DIN-864
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-849-CSS-Registration-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-849-CSS-Registration-ID'
         required:
           - CSSRegistrationID
           
@@ -511,15 +511,15 @@ components:
             false        
         properties:
             incomingMeteringServiceDIPID:                                                        
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-822-Incoming-Metering-Service-DIP-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-822-Incoming-Metering-Service-DIP-ID'
             incomingMeteringServiceEffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-824-Incoming-Metering-Service-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-824-Incoming-Metering-Service-Effective-From-Date'
             incomingMeteringServiceMPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-204-Incoming-Metering-Service-MPID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-204-Incoming-Metering-Service-MPID'
             contractReferenceMeteringService:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-019-Contract-Reference-Metering-Service'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-019-Contract-Reference-Metering-Service'
             appointmentScenario:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-800-Appointment-Scenario'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-800-Appointment-Scenario'
         required:
           - incomingMeteringServiceDIPID
           - incomingMeteringServiceEffectiveFromDate
@@ -536,17 +536,17 @@ components:
             false        
         properties:
            incomingDataServiceMPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-205-Incoming-Data-Service-MPID'        
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-205-Incoming-Data-Service-MPID'        
            incomingDataServiceDIPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-825-Incoming-Data-Service-DIP-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-825-Incoming-Data-Service-DIP-ID'
            incomingDataServiceEffectiveFromDate:
-               $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-827-Incoming-Data-Service-Effective-From-Date'     
+               $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-827-Incoming-Data-Service-Effective-From-Date'     
            contractReferenceDataService:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-020-Contract-Reference-Data-Service'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-020-Contract-Reference-Data-Service'
            appointmentScenario:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-800-Appointment-Scenario'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-800-Appointment-Scenario'
            traditionalFallBackReadFrequency:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-126-Traditional-Fall-Back-Read-Frequency'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-126-Traditional-Fall-Back-Read-Frequency'
         
         required:
           - incomingDataServiceMPID
@@ -564,11 +564,11 @@ components:
             false        
         properties:
             incomingMeteringServiceDIPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-822-Incoming-Metering-Service-DIP-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-822-Incoming-Metering-Service-DIP-ID'
             incomingMeteringServiceMPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-204-Incoming-Metering-Service-MPID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-204-Incoming-Metering-Service-MPID'
             incomingMeteringServiceEffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-824-Incoming-Metering-Service-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-824-Incoming-Metering-Service-Effective-From-Date'
         required:
           - incomingMeteringServiceDIPID
           - incomingMeteringServiceMPID
@@ -582,11 +582,11 @@ components:
             false        
         properties:
             incomingDataServiceDIPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-825-Incoming-Data-Service-DIP-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-825-Incoming-Data-Service-DIP-ID'
             incomingDataServiceMPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-205-Incoming-Data-Service-MPID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-205-Incoming-Data-Service-MPID'
             incomingDataServiceEffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-827-Incoming-Data-Service-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-827-Incoming-Data-Service-Effective-From-Date'
         required:
           -  incomingDataServiceDIPID
           -  incomingDataServiceMPID
@@ -600,11 +600,11 @@ components:
             false        
         properties:
             SDSNominatedMDRDIPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-839-SDS-Nominated-MDR-DIP-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-839-SDS-Nominated-MDR-DIP-ID'
             SDSNominatedMDRMPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-216-SDS-Nominated-MDR-MPID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-216-SDS-Nominated-MDR-MPID'
             SDSNominatedMDRRequestedEffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-841-SDS-Nominated-MDR-Requested-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-841-SDS-Nominated-MDR-Requested-Effective-From-Date'
         required:
           - SDSNominatedMDRDIPID
           - SDSNominatedMDRMPID
@@ -617,11 +617,11 @@ components:
             false        
         properties:
             assignedMDRDIPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-842-Assigned-MDR-DIP-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-842-Assigned-MDR-DIP-ID'
             assignedMDRMPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-209-Assigned-MDR-MPID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-209-Assigned-MDR-MPID'
             assignedMDREffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-844-Assigned-MDR-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-844-Assigned-MDR-Effective-From-Date'
         required:
           - assignedMDRDIPID
           - assignedMDRMPID
@@ -634,10 +634,10 @@ components:
             false        
         properties:
             customerDirectContractMeteringServiceDIPID:
-               $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-140-Customer-Direct-Contract-Metering-Service-DIP-ID'
+               $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-140-Customer-Direct-Contract-Metering-Service-DIP-ID'
                # updated DIN 689
             customerDirectContractMeteringServiceEffectiveToDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-145-Customer-Direct-Contract-Metering-Service-Effective-To-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-145-Customer-Direct-Contract-Metering-Service-Effective-To-Date'
         required:
           - customerDirectContractMeteringServiceDIPID
           - customerDirectContractMeteringServiceEffectiveToDate
@@ -650,9 +650,9 @@ components:
             false        
         properties:
             customerDirectContractDataServiceDIPID:
-               $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-138-Customer-Direct-Contract-Data-Service-DIP-ID'
+               $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-138-Customer-Direct-Contract-Data-Service-DIP-ID'
             customerDirectContractDataServiceEffectiveToDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-146-Customer-Direct-Contract-Data-Service-Effective-To-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-146-Customer-Direct-Contract-Data-Service-Effective-To-Date'
         required:
           - customerDirectContractDataServiceDIPID
           - customerDirectContractDataServiceEffectiveToDate
@@ -664,25 +664,25 @@ components:
             false        
         properties:
             meteringPointPostcode:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-010-Metering-Point-Postcode'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-010-Metering-Point-Postcode'
             addressLine1:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-001-Address-Line-1'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-001-Address-Line-1'
             addressLine2:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-002-Address-Line-2'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-002-Address-Line-2'
             addressLine3:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-003-Address-Line-3'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-003-Address-Line-3'
             addressLine4:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-004-Address-Line-4'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-004-Address-Line-4'
             addressLine5:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-005-Address-Line-5'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-005-Address-Line-5'
             addressLine6:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-006-Address-Line-6'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-006-Address-Line-6'
             addressLine7:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-007-Address-Line-7'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-007-Address-Line-7'
             addressLine8:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-008-Address-Line-8'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-008-Address-Line-8'
             addressLine9:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-009-Address-Line-9'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-009-Address-Line-9'
         required:
           - meteringPointPostcode
           - addressLine1
@@ -703,15 +703,15 @@ components:
             false        
         properties:
             connectionTypeIndicator:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-015-Connection-Type-Indicator'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-015-Connection-Type-Indicator'
             connectionTypeEffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-016-Connection-Type-Indicator-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-016-Connection-Type-Indicator-Effective-From-Date'
 # Removed fields below for V0.3
 # added fields for v 1.1
             energyDirection:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-035-Energy-Direction'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-035-Energy-Direction'
             meteredIndicator:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-127-Metered-Indicator'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-127-Metered-Indicator'
         required:
           - connectionTypeIndicator
           - connectionTypeEffectiveFromDate
@@ -725,9 +725,9 @@ components:
             false        
         properties:
             DUOSTariffID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-128-DUOS-Tariff-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-128-DUOS-Tariff-ID'
             DUOSTariffIDEffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-129-DUOS-Tariff-ID-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-129-DUOS-Tariff-ID-Effective-From-Date'
         required:
           - DUOSTariffID
           - DUOSTariffIDEffectiveFromDate
@@ -737,9 +737,9 @@ components:
         type: object
         properties:
             energisationStatus:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-033-Energisation-Status'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-033-Energisation-Status'
             energisationStatusEffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-034-Energisation-Status-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-034-Energisation-Status-Effective-From-Date'
         required:
           - energisationStatus
           - energisationStatusEffectiveFromDate
@@ -751,9 +751,9 @@ components:
             false        
         properties:
             marketSegmentIndicator:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-050-Market-Segment-Indicator'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-050-Market-Segment-Indicator'
             marketSegmentIndicatorEffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-051-Market-Segment-Indicator-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-051-Market-Segment-Indicator-Effective-From-Date'
         required:
           - marketSegmentIndicator
           - marketSegmentIndicatorEffectiveFromDate
@@ -765,11 +765,11 @@ components:
             false        
         properties:
             annualConsumption:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-148-Annual-Consumption'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-148-Annual-Consumption'
             annualConsumptionEffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-149-Annual-Consumption-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-149-Annual-Consumption-Effective-From-Date'
             annualConsumptionQualityIndicator:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-150-Annual-Consumption-Quality-Indicator'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-150-Annual-Consumption-Quality-Indicator'
         required:
           - annualConsumption
           - annualConsumptionEffectiveFromDate
@@ -782,16 +782,16 @@ components:
             false        
         properties:
             domesticPremiseIndicator:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-030-Domestic-Premise-Indicator'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-030-Domestic-Premise-Indicator'
             domesticPremiseIndicatorEffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-032-Domestic-Premise-Indicator-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-032-Domestic-Premise-Indicator-Effective-From-Date'
    
     # Consent Removed from B028
     
     #        consentGranularity:
-    #            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-017-Consent-Granularity'
+    #            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-017-Consent-Granularity'
     #        consentGranularityEffectiveFromDate:
-    #            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-018-Consent-Granularity-Effective-From-Date'
+    #            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-018-Consent-Granularity-Effective-From-Date'
         
         required:
           - domesticPremiseIndicator
@@ -807,9 +807,9 @@ components:
             false        
         properties:
             DCCServiceFlag:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-025-DCC-Service-Flag'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-025-DCC-Service-Flag'
             DCCEffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-026-DCC-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-026-DCC-Effective-From-Date'
         required:
           - DCCServiceFlag
           - DCCEffectiveFromDate
@@ -821,9 +821,9 @@ components:
             false        
         properties:
             IHDInstallStatus:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-137-IHD-Install-Status'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-137-IHD-Install-Status'
             IHDEffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-136-IHD-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-136-IHD-Effective-From-Date'
                 
         required:
            - IHDInstallStatus 
@@ -836,9 +836,9 @@ components:
             false        
         properties:
             SMSOID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-134-SMSO'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-134-SMSO'
             SMSOEffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-135-SMSO-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-135-SMSO-Effective-From-Date'
         required:
             - SMSOID
             - SMSOEffectiveFromDate
@@ -850,13 +850,13 @@ components:
             false        
         properties:
             profileClass:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-122-Profile-Class'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-122-Profile-Class'
             profileClassEffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-124-Profile-Class-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-124-Profile-Class-Effective-From-Date'
             SSC:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-123-SSC'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-123-SSC'
             SSCEffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-125-SSC-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-125-SSC-Effective-From-Date'
         required:
         - profileClass
         - profileClassEffectiveFromDate
@@ -870,21 +870,21 @@ components:
             false        
         properties:
             meterID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-056-Meter-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-056-Meter-ID'
             modifiedMeterID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-060-Modified-Meter-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-060-Modified-Meter-ID'
             meterType:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-059-Meter-Type'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-059-Meter-Type'
             manufacturersMakeAndType: #DIN-864
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-048-Manufacturers-Make-And-Type'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-048-Manufacturers-Make-And-Type'
             ESMEGUID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-085-ESME-GUID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-085-ESME-GUID'
             meterLocation:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-090-Meter-Location'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-090-Meter-Location'
             numberOfDisplayedRegisterDigits:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-091-Number-Of-Displayed-Register-Digits'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-091-Number-Of-Displayed-Register-Digits'
             meterInstallationDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-057-Meter-Installation-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-057-Meter-Installation-Date'
         required:
           - meterID
           - modifiedMeterID
@@ -903,9 +903,9 @@ components:
             false        
         properties:
             meterAssetProviderID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-055-Meter-Asset-Provider-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-055-Meter-Asset-Provider-ID'
             meterAssetProviderEffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-054-Meter-Asset-Provider-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-054-Meter-Asset-Provider-Effective-From-Date'
         required:
           - meterAssetProviderID
           - meterAssetProviderEffectiveFromDate
@@ -917,13 +917,13 @@ components:
             false        
         properties:
             linkedImportExportMPAN:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-038-Linked-ImportExport-MPAN'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-038-Linked-ImportExport-MPAN'
             linkedMPANEnergyDirection:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-151-Linked-MPAN-Energy-Direction'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-151-Linked-MPAN-Energy-Direction'
             importExportMPANSupplierDIPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-801-ImportExport-MPAN-Supplier-DIP-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-801-ImportExport-MPAN-Supplier-DIP-ID'
             importExportMPANSupplierMPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-212-ImportExport-MPAN-Supplier-MPID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-212-ImportExport-MPAN-Supplier-MPID'
         required: 
           - linkedImportExportMPAN
           - linkedMPANEnergyDirection
@@ -938,19 +938,19 @@ components:
             false        
         properties:
             meterID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-056-Meter-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-056-Meter-ID'
             meterType:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-059-Meter-Type'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-059-Meter-Type'
             manufacturersMakeAndType: #DIN-864
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-048-Manufacturers-Make-And-Type'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-048-Manufacturers-Make-And-Type'
             ESMEGUID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-085-ESME-GUID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-085-ESME-GUID'
             meterLocation:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-090-Meter-Location'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-090-Meter-Location'
             numberOfDisplayedRegisterDigits:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-091-Number-Of-Displayed-Register-Digits'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-091-Number-Of-Displayed-Register-Digits'
             meterInstallationDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-057-Meter-Installation-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-057-Meter-Installation-Date'
         required:
           - meterID
           - meterType
@@ -967,9 +967,9 @@ components:
             false        
         properties:
             primaryMPAN:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-075-Primary-MPAN'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-075-Primary-MPAN'
             secondaryMPAN:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-079-Secondary-MPAN'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-079-Secondary-MPAN'
         required:
           - primaryMPAN
           - secondaryMPAN
@@ -981,19 +981,19 @@ components:
             false        
         properties:
             meterID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-056-Meter-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-056-Meter-ID'
             meterType:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-059-Meter-Type'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-059-Meter-Type'
             manufacturersMakeAndType: #DIN-864
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-048-Manufacturers-Make-And-Type'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-048-Manufacturers-Make-And-Type'
             ESMEGUID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-085-ESME-GUID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-085-ESME-GUID'
             meterLocation:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-090-Meter-Location'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-090-Meter-Location'
             numberOfDisplayedRegisterDigits:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-091-Number-Of-Displayed-Register-Digits'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-091-Number-Of-Displayed-Register-Digits'
             meterInstallationDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-057-Meter-Installation-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-057-Meter-Installation-Date'
         required:
           - meterID
           - meterType
@@ -1011,9 +1011,9 @@ components:
             false        
         properties:
             meterIDRemoved:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-053-Meter-ID-Removed'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-053-Meter-ID-Removed'
             meterRemovalDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-058-Meter-Removal-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-058-Meter-Removal-Date'
         required:
           - meterIDRemoved
           - meterRemovalDate
@@ -1025,13 +1025,13 @@ components:
             false        
         properties:
             failureEnergiseDeEnergiseReasonCode:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-097-Failure-Energise-De-Energise-Reason-Code'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-097-Failure-Energise-De-Energise-Reason-Code'
             siteVisitCheckCode:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-096-Site-Visit-Check-Code'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-096-Site-Visit-Check-Code'
             natureofMaintenanceEnergisationStatus:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-092-Nature-of-Maintenance-Energisation-Status'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-092-Nature-of-Maintenance-Energisation-Status'
             additionalInformationSiteVisit:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-093-Additional-Information-SiteVisit'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-093-Additional-Information-SiteVisit'
         required:
           - failureEnergiseDeEnergiseReasonCode
           - siteVisitCheckCode
@@ -1045,9 +1045,9 @@ components:
             false        
         properties:
             disconnectionEffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-027-Disconnection-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-027-Disconnection-Effective-From-Date'
             additionalInformation:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-120-Additional-Information'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-120-Additional-Information'
         required:
           - disconnectionEffectiveFromDate
           - additionalInformation
@@ -1059,7 +1059,7 @@ components:
             false        
         properties:
             CSSMPANDeRegistrationDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-077-CSS-RMP-DeActivation-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-077-CSS-RMP-DeActivation-Date'
         required:
           - CSSMPANDeRegistrationDate
 
@@ -1070,9 +1070,9 @@ components:
             false        
         properties:
             settlementImpactedDataServiceDIPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-155-Settlement-Impacted-Data-Service-DIP-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-155-Settlement-Impacted-Data-Service-DIP-ID'
             settlementImpactedSupplierDIPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-157-Settlement-Impacted-Supplier-DIP-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-157-Settlement-Impacted-Supplier-DIP-ID'
         required:
           - settlementImpactedDataServiceDIPID
           - settlementImpactedSupplierDIPID
@@ -1085,7 +1085,7 @@ components:
             false        
         properties:
             issuingDataServiceDIPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-845-Issuing-Data-Service-DIP-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-845-Issuing-Data-Service-DIP-ID'
 
         required:
           - issuingDataServiceDIPID
@@ -1097,7 +1097,7 @@ components:
             false        
         properties:
             measurementQuantityID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-052-Measurement-Quantity-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-052-Measurement-Quantity-ID'
         required:
           - measurementQuantityID
           
@@ -1108,9 +1108,9 @@ components:
             false        
         properties:
             settlementDayDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-101-Settlement-Day-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-101-Settlement-Day-Date'
             periodDuration:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-081-Settlement-Period-Duration'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-081-Settlement-Period-Duration'
         required:
           - settlementDayDate
           - periodDuration
@@ -1123,19 +1123,19 @@ components:
         properties:
 #            settlementPeriodEffectiveToDateTime:
             sp:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-082-Settlement-Period-Effective-To-DateTime'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-082-Settlement-Period-Effective-To-DateTime'
 #           periodConsumptionValue:
             v:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-147-Period-Consumption-Value'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-147-Period-Consumption-Value'
 #           settlementPeriodQualityIndicator:
             q:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-083-Settlement-Period-Quality-Indicator'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-083-Settlement-Period-Quality-Indicator'
 #            estimationReasonCode:
             e:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-076-Estimation-Reason-Code'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-076-Estimation-Reason-Code'
 #            supplierConsumptionAmendmentReasonCode:
             arc:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-166-Supplier-Consumption-Amendment-Reason-Code'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-166-Supplier-Consumption-Amendment-Reason-Code'
                 
         required:
           - sp 
@@ -1153,11 +1153,11 @@ components:
             false        
         properties:
             settlementPeriodEffectiveToDateTime:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-082-Settlement-Period-Effective-To-DateTime'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-082-Settlement-Period-Effective-To-DateTime'
             defaultedSPConsumption:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-153-Defaulted-SP-Consumption'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-153-Defaulted-SP-Consumption'
             defaultLoadShapeFlag:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-154-Default-Load-Shape-Flag'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-154-Default-Load-Shape-Flag'
         required:
           - settlementPeriodEffectiveToDateTime
           - defaultedSPConsumption
@@ -1170,11 +1170,11 @@ components:
             false        
         properties:
             settlementRunExecutionDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-159-Settlement-Run-Execution-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-159-Settlement-Run-Execution-Date'
             settlementCode:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-160-Settlement-Code'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-160-Settlement-Code'
             runNumber:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-161-Run-Number'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-161-Run-Number'
         required:
           - settlementRunExecutionDate
           - settlementCode
@@ -1187,20 +1187,20 @@ components:
             false        
         properties:
 #            connectionTypeIndicator:
-#                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-015-Connection-Type-Indicator'
+#                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-015-Connection-Type-Indicator'
 #            energyDirection:
-#                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-035-Energy-Direction'
+#                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-035-Energy-Direction'
 #           above removed, DI-052 added 9/11
             measurementQuantityID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-052-Measurement-Quantity-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-052-Measurement-Quantity-ID'
             marketSegmentIndicator:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-050-Market-Segment-Indicator'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-050-Market-Segment-Indicator'
             domesticPremiseIndicator:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-030-Domestic-Premise-Indicator'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-030-Domestic-Premise-Indicator'
             consumptionComponentClassID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-300-Consumption-Component-Class-ID'            
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-300-Consumption-Component-Class-ID'            
             consumptionComponentIndicator:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-080-Consumption-Component-Indicator'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-080-Consumption-Component-Indicator'
         required:
           - measurementQuantityID
           - marketSegmentIndicator
@@ -1215,18 +1215,18 @@ components:
             false        
         properties:
             loadShapeGSPGroupID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-039-Load-Shape-GSP-Group-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-039-Load-Shape-GSP-Group-ID'
             connectionTypeIndicator:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-015-Connection-Type-Indicator'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-015-Connection-Type-Indicator'
             marketSegmentIndicator:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-050-Market-Segment-Indicator' 
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-050-Market-Segment-Indicator' 
             loadShapeDomesticPremiseIndicator:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-031-Load-Shape-Domestic-Premise-Indicator'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-031-Load-Shape-Domestic-Premise-Indicator'
             measurementQuantityID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-052-Measurement-Quantity-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-052-Measurement-Quantity-ID'
      # annual loadshape total moved to B054
      #       annualLoadShapeTotal:
-     #            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-040-Annual-Load-Shape-Total'
+     #            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-040-Annual-Load-Shape-Total'
         required:
           - loadShapeGSPGroupID
           - connectionTypeIndicator
@@ -1242,11 +1242,11 @@ components:
             false        
         properties:
             sp:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-082-Settlement-Period-Effective-To-DateTime'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-082-Settlement-Period-Effective-To-DateTime'
             loadShapePeriodValue:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-102-Load-Shape-Period-Value'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-102-Load-Shape-Period-Value'
             defaultLoadShapeFlag:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-154-Default-Load-Shape-Flag'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-154-Default-Load-Shape-Flag'
             
         required:
           - sp
@@ -1260,17 +1260,17 @@ components:
             false        
         properties:
             loadShapeDayTotal:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-046-Load-Shape-Day-Total'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-046-Load-Shape-Day-Total'
             loadShapeDayPeakTotal:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-045-Load-Shape-Day-Peak-Total'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-045-Load-Shape-Day-Peak-Total'
             loadShapeDayOffPeakTotal:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-044-Load-Shape-Day-Off-Peak-Total'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-044-Load-Shape-Day-Off-Peak-Total'
             loadShape7DayRollingTotal:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-043-Load-Shape-7-Day-Rolling-Total'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-043-Load-Shape-7-Day-Rolling-Total'
             loadShape7DayRollingPeakTotal:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-042-Load-Shape-7-Day-Rolling-Peak-Total'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-042-Load-Shape-7-Day-Rolling-Peak-Total'
             loadShape7DayRollingOffPeakTotal:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-041-Load-Shape-7-Day-Rolling-Off-Peak-Total'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-041-Load-Shape-7-Day-Rolling-Off-Peak-Total'
         required:
           - loadShapeDayTotal
           - loadShapeDayPeakTotal
@@ -1286,7 +1286,7 @@ components:
             false        
         properties:
             annualLoadShapeTotal:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-040-Annual-Load-Shape-Total'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-040-Annual-Load-Shape-Total'
         required:
           - annualLoadShapeTotal
           
@@ -1297,11 +1297,11 @@ components:
             false        
         properties:
             supplierNotificationEffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-100-Supplier-Notification-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-100-Supplier-Notification-Effective-From-Date'
             supplierNotificationExpiryDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-098-Supplier-Notification-Expiry-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-098-Supplier-Notification-Expiry-Date'
             additionalInformation:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-120-Additional-Information'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-120-Additional-Information'
         required:
           - supplierNotificationEffectiveFromDate
           - supplierNotificationExpiryDate
@@ -1314,7 +1314,7 @@ components:
             false        
         properties:
             supplierNominatedAnnualConsumption:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-152-Supplier-Nominated-Annual-Consumption'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-152-Supplier-Nominated-Annual-Consumption'
         required:
           - supplierNominatedAnnualConsumption
 
@@ -1325,11 +1325,11 @@ components:
             false        
         properties:
             annualConsumption:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-148-Annual-Consumption'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-148-Annual-Consumption'
             annualConsumptionEffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-149-Annual-Consumption-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-149-Annual-Consumption-Effective-From-Date'
             annualConsumptionQualityIndicator:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-150-Annual-Consumption-Quality-Indicator'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-150-Annual-Consumption-Quality-Indicator'
         required:
           - annualConsumption
           - annualConsumptionEffectiveFromDate
@@ -1343,7 +1343,7 @@ components:
             false        
         properties:
             additionalInformation:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-120-Additional-Information'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-120-Additional-Information'
         required:
           - additionalInformation
 
@@ -1354,9 +1354,9 @@ components:
             false        
         properties:
             primaryMPAN:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-075-Primary-MPAN'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-075-Primary-MPAN'
             secondaryMPAN:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-079-Secondary-MPAN'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-079-Secondary-MPAN'
         required:
           - primaryMPAN
           - secondaryMPAN
@@ -1368,7 +1368,7 @@ components:
             false        
         properties:
             MPANCore:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-063-MPAN-Core'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-063-MPAN-Core'
         required:
           - MPANCore
 
@@ -1379,15 +1379,15 @@ components:
             false        
         properties:
             meterID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-056-Meter-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-056-Meter-ID'
             cumulativeRegisterReading:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-088-Cumulative-Register-Reading'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-088-Cumulative-Register-Reading'
             cumulativeRegisterReadingDateTime:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-089-Cumulative-Register-Reading-DateTime'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-089-Cumulative-Register-Reading-DateTime'
             readingMethod:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-094-Reading-Method'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-094-Reading-Method'
             siteVisitCheckCode:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-096-Site-Visit-Check-Code'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-096-Site-Visit-Check-Code'
         required:
           -  meterID
           -  cumulativeRegisterReading
@@ -1404,13 +1404,13 @@ components:
             false        
         properties:
             meterID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-056-Meter-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-056-Meter-ID'
             configurableRegisterReadingDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-099-Configurable-Register-Reading-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-099-Configurable-Register-Reading-Date'
             configurableRegisterID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-103-Configurable-Register-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-103-Configurable-Register-ID'
             configurableRegisterReading:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-104-Configurable-Register-Reading'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-104-Configurable-Register-Reading'
         required:
             - meterID
             - configurableRegisterReadingDate
@@ -1425,15 +1425,15 @@ components:
             false        
       properties:
         assignedMDRDIPID:
-            $ref:  'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-842-Assigned-MDR-DIP-ID'
+            $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-842-Assigned-MDR-DIP-ID'
         assignedMDRMPID:
-            $ref:  'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-209-Assigned-MDR-MPID'
+            $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-209-Assigned-MDR-MPID'
         assignedMDREffectiveFromDate:
-            $ref:  'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-844-Assigned-MDR-Effective-From-Date'
+            $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-844-Assigned-MDR-Effective-From-Date'
         responseCode:
-            $ref:  'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-979-Response-Code' 
+            $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-979-Response-Code' 
         responseMessage:
-            $ref:  'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-980-Status-Error-Messages' 
+            $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-980-Status-Error-Messages' 
 
       required:
         - assignedMDRDIPID
@@ -1450,9 +1450,9 @@ components:
             false        
       properties:
         connectionTypeIndicator:
-            $ref:  'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-015-Connection-Type-Indicator'        
+            $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-015-Connection-Type-Indicator'        
         connectionTypeEffectiveFromDate:
-            $ref:  'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-016-Connection-Type-Indicator-Effective-From-Date'
+            $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-016-Connection-Type-Indicator-Effective-From-Date'
       required:
         - connectionTypeIndicator
         - connectionTypeEffectiveFromDate
@@ -1465,9 +1465,9 @@ components:
             false        
       properties:
         consentGranularity:
-            $ref:  'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-017-Consent-Granularity'        
+            $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-017-Consent-Granularity'        
         consentGranularityEffectiveFromDate:
-            $ref:  'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-018-Consent-Granularity-Effective-From-Date'
+            $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-018-Consent-Granularity-Effective-From-Date'
       required:
         - consentGranularity
         - consentGranularityEffectiveFromDate
@@ -1481,7 +1481,7 @@ components:
             false        
       properties:
         meterID:
-            $ref:  'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-056-Meter-ID'        
+            $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-056-Meter-ID'        
       required:
         - meterID
     
@@ -1494,15 +1494,15 @@ components:
             false        
         properties:
             proposedMeteringServiceDIPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-828-Proposed-Metering-Service-DIP-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-828-Proposed-Metering-Service-DIP-ID'
             proposedMeteringServiceMPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-213-Proposed-Metering-Service-MPID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-213-Proposed-Metering-Service-MPID'
             proposedMeteringServiceDIPEffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-830-Proposed-Metering-Service-DIP-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-830-Proposed-Metering-Service-DIP-Effective-From-Date'
             contractReferenceMeteringService:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-019-Contract-Reference-Metering-Service'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-019-Contract-Reference-Metering-Service'
             appointmentScenario:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-800-Appointment-Scenario'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-800-Appointment-Scenario'
         required:
           - proposedMeteringServiceDIPID
           - proposedMeteringServiceMPID
@@ -1518,27 +1518,27 @@ components:
               false        
         properties:
             proposedDataServiceDIPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-831-Proposed-Data-Service-DIP-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-831-Proposed-Data-Service-DIP-ID'
             proposedDataServiceMPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-214-Proposed-Data-Service-MPID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-214-Proposed-Data-Service-MPID'
             proposedDataServiceDIPEffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-833-Proposed-Data-Service-DIP-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-833-Proposed-Data-Service-DIP-Effective-From-Date'
             contractReferenceDataService:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-020-Contract-Reference-Data-Service'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-020-Contract-Reference-Data-Service'
             appointmentScenario:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-800-Appointment-Scenario'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-800-Appointment-Scenario'
             supplierNominatedMDRDIPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-834-Supplier-Nominated-MDR-DIP-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-834-Supplier-Nominated-MDR-DIP-ID'
             supplierNominatedMDRMPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-215-Supplier-Nominated-MDR-MPID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-215-Supplier-Nominated-MDR-MPID'
             supplierNominatedMDREffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-836-Supplier-Nominated-MDR-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-836-Supplier-Nominated-MDR-Effective-From-Date'
             supplierProposedConsentGranularity:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-838-Supplier-Proposed-Consent-Granularity'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-838-Supplier-Proposed-Consent-Granularity'
             supplierProposedDomesticIndicator:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-837-Supplier-Proposed-Domestic-Indicator'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-837-Supplier-Proposed-Domestic-Indicator'
             traditionalFallBackReadFrequency:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-126-Traditional-Fall-Back-Read-Frequency'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-126-Traditional-Fall-Back-Read-Frequency'
         required:
             - proposedDataServiceDIPID
             - proposedDataServiceMPID
@@ -1559,9 +1559,9 @@ components:
             false        
         properties:
             incumbentMeteringServiceDIPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-807-Incumbent-Metering-Service-DIP-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-807-Incumbent-Metering-Service-DIP-ID'
             incumbentMeteringServiceMPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-217-Incumbent-Metering-Service-MPID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-217-Incumbent-Metering-Service-MPID'
         required:
           - incumbentMeteringServiceDIPID
           - incumbentMeteringServiceMPID
@@ -1573,15 +1573,15 @@ components:
             false        
         properties:
             consumptionAmendmentSupplierReference:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-162-Consumption-Amendment-Supplier-Reference'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-162-Consumption-Amendment-Supplier-Reference'
             consumptionAmendmentPeriodStartDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-163-Consumption-Amendment-Period-Start-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-163-Consumption-Amendment-Period-Start-Date'
             consumptionAmendmentPeriodEndDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-164-Consumption-Amendment-Period-End-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-164-Consumption-Amendment-Period-End-Date'
             grossRevisedConsumption:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-165-Gross-Revised-Consumption'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-165-Gross-Revised-Consumption'
             arc:       # supplierConsumptionAmendmentReasonCode:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-166-Supplier-Consumption-Amendment-Reason-Code' 
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-166-Supplier-Consumption-Amendment-Reason-Code' 
         required:
           - consumptionAmendmentSupplierReference
           - consumptionAmendmentPeriodStartDate
@@ -1596,21 +1596,21 @@ components:
             false        
         properties:  
             meterID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-056-Meter-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-056-Meter-ID'
 #            meteringPointPostcode:
-#                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-010-Metering-Point-Postcode'
+#                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-010-Metering-Point-Postcode'
             meterType:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-059-Meter-Type'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-059-Meter-Type'
             manufacturersMakeAndType: #DIN-864
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-048-Manufacturers-Make-And-Type'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-048-Manufacturers-Make-And-Type'
             ESMEGUID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-085-ESME-GUID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-085-ESME-GUID'
             meterLocation:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-090-Meter-Location'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-090-Meter-Location'
             numberOfDisplayedRegisterDigits:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-091-Number-Of-Displayed-Register-Digits'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-091-Number-Of-Displayed-Register-Digits'
             meterInstallationDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-057-Meter-Installation-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-057-Meter-Installation-Date'
         required:
           - meterID
           - meterType
@@ -1628,9 +1628,9 @@ components:
             false        
       properties:  
             meterAssetProviderID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-055-Meter-Asset-Provider-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-055-Meter-Asset-Provider-ID'
             meterAssetProviderEffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-054-Meter-Asset-Provider-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-054-Meter-Asset-Provider-Effective-From-Date'
       required:
         - meterAssetProviderID
         - meterAssetProviderEffectiveFromDate
@@ -1644,11 +1644,11 @@ components:
             false        
       properties:      
             meterID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-056-Meter-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-056-Meter-ID'
             cumulativeRegisterReading:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-088-Cumulative-Register-Reading'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-088-Cumulative-Register-Reading'
             cumulativeRegisterReadingDateTime:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-089-Cumulative-Register-Reading-DateTime'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-089-Cumulative-Register-Reading-DateTime'
 
       required:
           -  meterID
@@ -1664,7 +1664,7 @@ components:
             false        
       properties:      
             MDRReferenceDateTime:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-196-MDR-Reference-DateTime'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-196-MDR-Reference-DateTime'
 
       required:
           -  MDRReferenceDateTime
@@ -1678,7 +1678,7 @@ components:
             false        
       properties:      
             energyDirection:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-035-Energy-Direction'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-035-Energy-Direction'
       required:
           -  energyDirection
 
@@ -1690,11 +1690,11 @@ components:
 #      description: LDSO Maintained Site Technical Info
 #      properties:  
 #          supplyVoltage:
-#              $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-170-Supply-Voltage'
+#              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-170-Supply-Voltage'
 #          supplyCapacity:
-#              $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-171-Supply-Capacity'
+#              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-171-Supply-Capacity'
 #          numberOfPhases:
-#              $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-172-Number-Of-Phases'
+#              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-172-Number-Of-Phases'
 
 #      required:
 #          - supplyVoltage
@@ -1707,21 +1707,21 @@ components:
 #      description: Metering Service Maintained Site Technical Info
 #      properties:  
 #        CTRatio:
-#              $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-173-CT-Ratio'
+#              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-173-CT-Ratio'
 #        CTClass:
-#              $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-174-CT-Class'
+#              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-174-CT-Class'
 #        CTRating:
-#              $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-175-CT-Rating'
+#              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-175-CT-Rating'
 #        CTDetailsEffectiveFromDate:
-#              $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-176-CT-Details-Effective-From-Date'
+#              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-176-CT-Details-Effective-From-Date'
 #        VTRatio:      
-#              $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-177-VT-Ratio'
+#              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-177-VT-Ratio'
 #        VTClass:
-#              $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-178-VT-Class'              
+#              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-178-VT-Class'              
 #        VTRating:
-#              $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-179-VT-Rating'
+#              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-179-VT-Rating'
 #        VTDetailsEffectiveFromDate:
-#              $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-180-VT-Details-Effective-From-Date'
+#              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-180-VT-Details-Effective-From-Date'
 #      required:
 #          - CTRatio
 #          - CTClass
@@ -1743,13 +1743,13 @@ components:
             false        
       properties:         
         RMPStatus:
-              $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-130-RMP-Status'
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-130-RMP-Status'
         RMPStatusEffectiveFromDate:
-              $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-167-RMPStatus-Effective-From-Date'
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-167-RMPStatus-Effective-From-Date'
         MPStatus:
-              $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-131-MP-Status'
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-131-MP-Status'
         MPStatusEffectiveFromDate:
-              $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-168-MPStatus-Effective-From-Date'
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-168-MPStatus-Effective-From-Date'
       
       required:
           - RMPStatus
@@ -1764,9 +1764,9 @@ components:
             false        
       properties:         
         greenDealEffectiveFromDate:
-              $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-111-Green-Deal-Effective-From-Date'
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-111-Green-Deal-Effective-From-Date'
         greenDealEffectiveToDate:
-              $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-112-Green-Deal-Effective-To-Date'
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-112-Green-Deal-Effective-To-Date'
       required:
           - greenDealEffectiveFromDate
           - greenDealEffectiveToDate
@@ -1778,11 +1778,11 @@ components:
             false        
       properties:         
         currentMeteringServiceDIPID:
-              $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-809-Current-Metering-Service-DIP-ID'
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-809-Current-Metering-Service-DIP-ID'
         currentMeteringServiceMPID:
-              $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-207-Current-Metering-Service-MPID'
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-207-Current-Metering-Service-MPID'
         currentMeteringServiceEffectiveFromDate:
-              $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-061-Metering-Service-Effective-From-Date'
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-061-Metering-Service-Effective-From-Date'
       required:
 
           - currentMeteringServiceDIPID
@@ -1797,11 +1797,11 @@ components:
       properties:         
 
         currentDataServiceDIPID:
-              $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-811-Current-Data-Service-DIP-ID'        
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-811-Current-Data-Service-DIP-ID'        
         currentDataServiceMPID:
-              $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-208-Current-Data-Service-MPID'
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-208-Current-Data-Service-MPID'
         currentDataServiceEffectiveFromDate:
-              $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-023-Data-Service-Effective-From-Date'
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-023-Data-Service-Effective-From-Date'
       required:
           - currentDataServiceDIPID
           - currentDataServiceMPID
@@ -1819,11 +1819,11 @@ components:
             false        
       properties:         
         assignedMDRDIPID:
-          $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-842-Assigned-MDR-DIP-ID'
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-842-Assigned-MDR-DIP-ID'
         assignedMDRMPID:
-          $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-209-Assigned-MDR-MPID'
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-209-Assigned-MDR-MPID'
         assignedMDREffectiveToDate:
-          $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-850-MDR-Effective-To-Date'
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-850-MDR-Effective-To-Date'
       required:
         - assignedMDRDIPID
         - assignedMDRMPID
@@ -1839,13 +1839,13 @@ components:
         properties:
 #            settlementPeriodEffectiveToDateTime:
             sp:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-082-Settlement-Period-Effective-To-DateTime'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-082-Settlement-Period-Effective-To-DateTime'
 #           periodConsumptionValue:
             v:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-147-Period-Consumption-Value'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-147-Period-Consumption-Value'
 #           settlementPeriodQualityIndicator:
             q:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-083-Settlement-Period-Quality-Indicator'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-083-Settlement-Period-Quality-Indicator'
         required:
           - sp 
           - v
@@ -1858,11 +1858,11 @@ components:
               false        
       properties:         
         currentSupplierDIPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-218-Current-Supplier-DIP-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-218-Current-Supplier-DIP-ID'
         currentSupplierMPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-219-Current-Supplier-MPID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-219-Current-Supplier-MPID'
         currentSupplierEffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-086-Supplier-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-086-Supplier-Effective-From-Date'
       required:
               - currentSupplierDIPID
               - currentSupplierMPID
@@ -1877,21 +1877,21 @@ components:
             false        
         properties:  
             meterID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-056-Meter-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-056-Meter-ID'
             meterType:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-059-Meter-Type'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-059-Meter-Type'
             manufacturersMakeAndType:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-048-Manufacturers-Make-And-Type'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-048-Manufacturers-Make-And-Type'
             ESMEGUID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-085-ESME-GUID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-085-ESME-GUID'
             meterLocation:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-090-Meter-Location'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-090-Meter-Location'
             numberOfDisplayedRegisterDigits:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-091-Number-Of-Displayed-Register-Digits'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-091-Number-Of-Displayed-Register-Digits'
             meterInstallationDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-057-Meter-Installation-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-057-Meter-Installation-Date'
             meterRemovalDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-058-Meter-Removal-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-058-Meter-Removal-Date'
         required:
           - meterID
           - meterType
@@ -1912,7 +1912,7 @@ components:
             false        
       properties:         
         subsidiaryMPAN:
-          $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-074-Subsidiary-MPAN'
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-074-Subsidiary-MPAN'
       required:
         - subsidiaryMPAN
 
@@ -1921,7 +1921,7 @@ components:
       type: object
       properties:         
         additionalInformation:
-          $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-120-Additional-Information'
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-120-Additional-Information'
       required:
         - additionalInformation
 
@@ -1932,11 +1932,11 @@ components:
             false        
         properties:
             assignedMDRDIPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-842-Assigned-MDR-DIP-ID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-842-Assigned-MDR-DIP-ID'
             assignedMDRMPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-209-Assigned-MDR-MPID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-209-Assigned-MDR-MPID'
             assignedMDREffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-844-Assigned-MDR-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-844-Assigned-MDR-Effective-From-Date'
 
         required:
             - assignedMDRDIPID
@@ -1950,17 +1950,17 @@ components:
             false        
         properties:
             commsHubActivity:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-195-Comms-Hub-Activity'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-195-Comms-Hub-Activity'
             commsHubSerialNumber:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-190-Comms-Hub-Serial-Number'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-190-Comms-Hub-Serial-Number'
             commsHubGUID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-191-Comms-Hub-GUID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-191-Comms-Hub-GUID'
             GPFGasGUID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-192-GPF-Gas-GUID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-192-GPF-Gas-GUID'
             commsHubInstallationDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-193-Comms-Hub-Installation-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-193-Comms-Hub-Installation-Date'
             commsHubFWVersion:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-194-Comms-Hub-FW-Version'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-194-Comms-Hub-FW-Version'
         required:
             - commsHubActivity
             - commsHubSerialNumber
@@ -1978,7 +1978,7 @@ components:
           - MHHSRegimeEndDate
         properties:
             MHHSRegimeEndDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-500-MHHS-Regime-End-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-500-MHHS-Regime-End-Date'
         
 
 
@@ -1992,9 +1992,9 @@ components:
             - ReverseMigrationIncomingMOPEffectiveFromDate
         properties:
             ReverseMigrationIncomingMOPMPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-501-Reverse-Migration-Incoming-MOP-MPID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-501-Reverse-Migration-Incoming-MOP-MPID'
             ReverseMigrationIncomingMOPEffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-502-Reverse-Migration-Incoming-MOP-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-502-Reverse-Migration-Incoming-MOP-Effective-From-Date'
 
     B096:
         description: Reverse Migration Incoming DC Details
@@ -2006,9 +2006,9 @@ components:
             - ReverseMigrationIncomingDCEffectiveFromDate
         properties:
             ReverseMigrationIncomingDCMPID:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-503-Reverse-Migration-Incoming-DC-MPID'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-503-Reverse-Migration-Incoming-DC-MPID'
             ReverseMigrationIncomingDCEffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-504-Reverse-Migration-Incoming-DC-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-504-Reverse-Migration-Incoming-DC-Effective-From-Date'
 
     B097:
         description: Offpeak Declaration 
@@ -2020,9 +2020,9 @@ components:
             - offPeakDeclarationProportion
         properties:
             offPeakDeclarationDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-510-Offpeak-Declaration-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-510-Offpeak-Declaration-Date'
             offPeakDeclarationProportion:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-511-Offpeak-Declaration-Proportion'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-511-Offpeak-Declaration-Proportion'
 
     # Added via DIN-788
     B098:
@@ -2034,7 +2034,7 @@ components:
             - reconnectionEffectiveFromDate
         properties:
             reconnectionEffectiveFromDate:
-                $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-028-Reconnection-Effective-From-Date'
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-028-Reconnection-Effective-From-Date'
 
 
 
@@ -2050,12 +2050,12 @@ components:
         - responseMessages
       properties:
         responseCode:
-            $ref:  'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-979-Response-Code' 
+            $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-979-Response-Code' 
         responseMessages:
           description: Response message outcomes
           type: array
           items:
-            $ref: 'https://api.swaggerhub.com/domains/MHHSPROGRAMME/DataCatalogue/2.0.1#/components/schemas/DI-980-Status-Error-Messages'      
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-980-Status-Error-Messages'      
                 
 
 
