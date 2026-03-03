@@ -1,0 +1,353 @@
+# OpenAPI version identifier - required for OpenAPI 3.0 domains
+# (c) Elexon 2022, 2023, 2024, 2025
+#
+# MMHS - Data Integration Platform 
+# ECS Reports 
+# 
+# ----- update -----------------------------------------------------------------------
+# January 2024
+# Extensive renaming of blocks to adhere to standardised naming 
+#
+# ------------------------------------------------------------------------------------
+# Change history
+# ====================================================================================
+# Ver   Date           Ref.    Description
+# ------------------------------------------------------------------------------------
+# 2.0.1 10/11/2025              Support new 2.0.1 release  
+# 1.8.3 09/09/2024              Support new IR8.3 release  
+# 1.8.2 12/08/2024              Support new IR8.2 release  
+# 1.8.1 03/05/2024              Support new IR8.1 release  
+#       10/05/2024    DIN-1037  Corrections to REP-900
+#       25/04/2024    DIN-1017  REP-002 & REP-002B updates 
+# 1.8   22/03/2024              Support new IR8 release  
+# 1.7.1 27/02/2024              Support new release  
+#       01/03/2024    DIN-853   Changes to REP-006
+# 1.7 - 13/11/2023              Support new release
+#       05/01/2024    DIN-801   Follow renaming proposals for blocks
+#                     DIN-859   Correct the REP900 record hierarchy
+# 1.6 - 23/10/2023    DIN-684 - Add REP003A
+# 1.5 - Sept 2023  -  Created from v1.5 Interfaces module as a result of DIN 650 -
+#                      Introduction of Compressed Payloads into DIP Messages
+#                     DIN-659 - Add R007 to REP007
+#                     DIN-655 
+# ====================================================================================
+# # OpenAPI version identifier - required for OpenAPI 3.0 domains
+openapi: 3.0.0
+
+#######################
+# Optional info section
+#######################
+info:
+  title: ECS Reports
+  description: ECS Data defintion Common components and examples
+  version: 2.0.1
+
+components:
+
+  ####################
+  # Common data models
+  ####################
+  schemas:
+
+
+# REP-002 Supplier report for DUOS - aggregated data
+
+    REP-002-CustomBlock:
+      description: REP002 Custom data block - Supplier report for DUOS - aggregated data
+      type: object
+      additionalProperties:
+          false        
+      properties:
+        R007:
+            #    Settlement Run Execution  
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R007'
+        R002:
+            #    Settlement Run Execution  
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R002'
+        R009:
+            #    Supplier MPID   
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R009'
+        REP002-R027:
+            #   Distributor ID 
+          description: array of Distributor IDS  # DIN-1017
+          type: array
+          items:
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/REP002-R027'
+
+
+
+# REP-002A - Embedded Network report for DUoS – aggregated data
+
+    REP-002A-CustomBlock:
+      description: REP002A Custom data block - Embedded Network report for DUoS – aggregated data
+      type: object
+      additionalProperties:
+          false        
+      properties:
+        R027:
+            #    Distributor ID 
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R027'
+        R013:
+            #    GSP Group  
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R013'   
+        R007:
+            #    Settlement Run Execution  
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R007'
+        R002:
+            #    Settlement Run Execution  
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R002'
+            
+
+        REP002A-R006:
+          description: array of Embedded LDSOs
+          type: array
+          items:
+              $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/REP002A-R006'
+
+# REP-002B LDSO report for DUOS - aggregated data - new for release 1.5 (9/2023), REP-002 has been split into REP-002 
+#                                 (supplier) and REP-002B (LDSO)
+
+    REP-002B-CustomBlock:
+      description: REP002 Custom data block - LDSO report for DUOS - aggregated data
+      type: object
+      additionalProperties:
+          false        
+      properties:
+        #DIN-801 added 2 blocks below  
+        R027:
+            #    Distributor ID 
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R027'
+        R013:
+            #    GSP Group  
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R013'   
+        R007:
+            #    Settlement Run Execution  
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R007'
+        R002:
+            #    Settlement Run Execution  
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R002'
+
+        REP002B-R009:
+            #    Supplier MPID   
+          description: array of Suppliers # DIN-1017
+          type: array
+          items:            
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/REP002B-R009'
+
+
+# REP003 - BM Unit Allocated Demand Volumes to Suppliers
+
+    REP-003-CustomBlock:
+      description: REP003 Custom data block
+      type: object
+      additionalProperties:
+          false        
+      properties:
+        R013:
+            #    GSP Group  
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R013'
+        R007:
+            #    Settlement Run Execution  
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R007'
+        R002:
+            #    Settlement Run Info  
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R002'
+        R103:
+            #    Settlement Period Duration  
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R103'
+ 
+        REP003-R015:
+          description : Supplier(s)
+          type: array
+          items:
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/REP003-R015'
+
+        REP003-R024: 
+          description: GSP Group correction factors
+          type: array
+          items:
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R024'
+          
+# REP003A - Aggregated BM Unit Allocated Demand Volumes to Suppliers
+
+    REP-003A-CustomBlock:
+      description: REP003 Custom data block
+      type: object
+      additionalProperties:
+          false        
+      properties:
+        R013:
+            #    GSP Group  
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R013'
+        R007:
+            #    Settlement Run Execution  
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R007'
+        R002:
+            #    Settlement Run Info  
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R002'
+        R103:
+            #    Settlement Period Duration  
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R103'
+ 
+        REP003A-R015:
+          description : Supplier(s)
+          type: array
+          items:
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/REP003A-R015'
+
+        REP003A-R024: 
+          description: GSP Group correction factors
+          type: array
+          items:
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R024'
+          
+
+
+# REP004 - Supplier Deemed Take Report
+
+
+    REP-004-CustomBlock:
+      description: REP004 Custom data block
+      type: object
+      additionalProperties:
+          false        
+      properties:
+        R013:
+            #    GSP Group  
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R013'
+        R007:
+            #    Settlement Run Execution  
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R007'
+        R002:
+            #    Settlement Run Info 
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R002'
+        REP004-R009:
+            #    Supplier  ID
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/REP004-R009'
+
+# REP006 - Aggregated Uncorrected volumes by CCC to Market Participants
+
+    REP-006-CustomBlock:
+      description: REP006 Custom data block
+      type: object
+      additionalProperties:
+          false        
+      properties:
+        R013:
+            #    GSP Group  
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R013'
+        R007:
+            #    Settlement Run Execution  
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R007'
+        R002:
+            #    Settlement Run Execution  
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R002'
+        REP006-R015:
+          description: Array of extended Supplier records 
+          type: array
+          items:
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/REP006-R015'
+
+
+# REP007 - VAS Exception Report to Suppliers
+
+    REP-007-CustomBlock:
+      description: REP007 Custom data block
+      type: object
+      additionalProperties:
+          false        
+      properties:
+        R007:
+            #    Settlement Run Execution  
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R007'
+        R002:
+            #    Settlement Run Info
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R002'
+        REP007-R013:
+          type: array
+          items:
+            #    GSP Group ext  
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/REP007-R013'
+
+
+# REP008 -  MDS Exception Report to LDSOs
+
+    REP-008-CustomBlock:
+      description: REP008 Custom data block
+      type: object
+      additionalProperties:
+          false        
+      properties:
+          R002:
+              #    Settlement Run Execution  
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R002'
+          R013:
+              #    GSP Group  
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R013'
+          R027:
+              # Distributor ID
+              $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R027'
+          R039:
+              # LLF Default Data Detail
+              $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R039'
+              
+# REP009 Half Hourly metered data for Suppliers that is used by the CM Settlement Services Provider in calculating CM data, and/ or by the CFD Settlement Services provider in calculating CFD data.
+
+    REP-009-CustomBlock:
+        description: REP009 Custom data block
+        type: object
+        additionalProperties:
+            false        
+        properties:
+          R002:
+              #    Settlement Run Execution  
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R002'
+          REP009-R015:
+              # Supplier ID
+              $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/REP009-R015'
+
+  # REP900 
+  
+    REP-900-CustomBlock:
+        description: REP900 Custom data block
+        type: object
+        additionalProperties:
+            false        
+        properties:
+          R900-01:
+              # LDSO Billing Distributor Info   
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R900-01'
+          R900-02:
+              #   LDSO Billing Supplier Info  
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R900-02'
+          R900-03:
+              #  LDSO Billing Site Info
+            description: LDSO Billing Site Info
+            type : array
+            items: 
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R900-03'
+          #   DIN-859  # DIN-1037 move R900-04 block to nested in R900-03
+
+  # REP901 
+
+    REP-901-CustomBlock:
+        description: REP901 Custom data block
+        type: object
+        additionalProperties:
+            false        
+        properties:
+          R901-01:
+              # DIS/GSP    
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R901-01'
+          R901-02:
+              #   Settlement Run  
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R901-02'
+  
+          R901-03:
+            description: Settlement Days
+            type : array
+            items: 
+              #   Settlement Date
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-ECS-CommonBlocks-2.0.1-unresolved.yaml#/components/schemas/R901-03'
+          
+## END

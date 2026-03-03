@@ -1,0 +1,672 @@
+# OpenAPI version identifier - required for OpenAPI 3.0 domains
+# (c) Elexon 2022, 2023, 2024
+#
+# MMHS - Data Integration Platform 
+# DataTypes
+#
+# ----- update -----------------------------------------------------------------------
+# April 2023
+#  
+#
+# ------------------------------------------------------------------------------------
+# Change history
+# ====================================================================================
+# Ver   Date           Ref.    Description
+# ------------------------------------------------------------------------------------
+# 2.0.1 27/10/2024   CP1067   Add IF-051 
+# 1.8.3 09/09/2024            Support new IR8.3 release  
+#       09/09/2024   DIN-1113 Update regex patterns for DT-032-Decimal-14-2, 
+#                             DT-031-Positive-Decimal-2-2 & DT-033N-Decimal-15-5 
+#       09/09/2024   DIN-1120 Duplicate DT-033 entries          
+# 1.8.2 12/08/2024            Support new IR8.2 release  
+# 1.8.1 03/05/2024            Support new IR8.1 release  
+#       15/05/2024   DIN-977  Update DT-013-EnvironmentTag list
+#       17/05/2024   DIN-1024 Add minLength =1 where nullable = true
+#       21/05/2024   DIN-1031 Add new data tyoes to support new SRB Type defn
+# 1.8   22/03/2024            Support new IR8 release  
+# 1.7.1 27/02/2024            Support new release  
+#       27/02/2024   DIN-893  Ensure only positive values on regex for DT-026-Group-Correction-Factor
+# 1.7   13/11/2023            Support new release
+#       29/01/2024   DIN-844  Support for CR023 interfaces     
+# 1.6   19/10/2023            Support new release
+#                    DIN-680  DT-026 i.e. DI-322 and DI-323 updated to SVA catalogue equivalent
+#                    DIN-684  Add REP-003A to DT-000
+# 1.5.1 09/10/2023            Support new release
+#       13/10/2023   DIN 724  Add REP-002B & IF-004 to the enumerated list for DT-000
+# 1.5   04/09/2023   DIN 637  maxLength/minLength
+#                    DIN 673  Update regex patterns for all the decimal numbers, i.e.
+#                             DT-016, DT-022, DT-023, DT-024, DT-025, DT-030, DT-031, DT-032, DT-033 
+#                    DIN-663  new regexes for DT-002(N), DT-026, DT-027
+#                    DIN-662  Fix sort code and bank account 
+#                    DIN-646, DIN-641 
+# 1.4   27/07/2023 - DIN-577, 503
+#       03/08/2023   DIN ???  Inclusion of data types for new ECS reports
+# 1.2   17/04/2023 -          Fix regex pattern for DT-016-Decimal-9-3
+# 1.1   14/03/2023 -          Align with mandatory nullable 
+#                             correlation Id and transaction Id have been updated to 60
+# 1.0   17/02/2023 -          Align with DAG signoff
+# 0.4   26/01/23              Minor updates 
+# 0.3   08/11/22              fix max /min problem 
+# 0.2   27/09/22              add DT017 & DT017
+# 0.1   26/08/22              Initial Version
+# =====================================================================================
+# 
+
+openapi: 3.0.0
+info:
+  title: MHHS Data Types
+  description: Common data types for MHHS Message/Event objects
+  version: 2.0.1
+  
+
+# Dictionary items below:
+components:
+    
+  schemas:
+
+# Data types
+      
+    DT-000-InterfaceID:
+      description: Interface ID 
+      type: string
+      minLength : 6
+      maxLength : 8
+      example: IF-007
+      enum:  
+      # list of allowable INFs 
+        - IF-001  # Notification of Change of Supplier
+        - IF-002  # Notification to New Supplier of Site Information  
+        - IF-003
+        - IF-004
+        - IF-005  # Metering Service MTD Updates to Registration
+        - IF-006  # Registration Service Notification of MTD Updates
+        - IF-007  # Change of Energisation Status Outcome
+        - IF-008
+        - IF-009
+        - IF-013
+        - IF-014
+        - IF-015
+        - IF-016
+        - IF-018
+        - IF-019
+        - IF-020
+        - IF-021
+        - IF-022
+        - IF-023
+        - IF-024
+        - IF-025
+        - IF-026
+        - IF-027
+        - IF-028
+        - IF-031
+        - IF-032
+        - IF-033
+        - IF-034
+        - IF-035
+        - IF-036
+        - IF-037
+        - IF-038
+        - IF-039
+        - IF-040
+        - IF-041
+        - IF-043
+        - IF-044
+        - IF-045
+        - IF-047
+        - IF-050
+        - IF-051 # CP1067
+        - IF-061 # DIN-844
+        - IF-062 # DIN-844
+        - IF-063 # DIN-844
+        - IF-064 # DIN-844
+        - IF-065 # DIN-844
+        - REP-002
+        - REP-002A
+        - REP-002B
+        - REP-003
+        - REP-003A # DIN-684
+        - REP-004
+        - REP-006
+        - REP-007
+        - REP-008
+        - REP-009
+        - REP-900
+        - REP-901
+   
+      
+    DT-001N-AddressLine:
+      description: Address Line
+      type: string
+      nullable: true
+      minLength : 0
+      maxLength : 40
+      example: 'Address Line'
+  
+      
+    DT-002-MPAN:
+      description: MPAN Core
+      type: string
+      minLength : 13
+      maxLength : 13
+      pattern: ^\d{13}?$
+      example: '2000056535971'
+
+    DT-002N-MPAN:
+      description: MPAN Core
+      type: string
+      nullable: true
+      minLength : 13
+      maxLength : 13
+      pattern: ^\d{13}?$
+      example: '2000056535971'
+
+      # mandating the full length for data strings, i.e. inclusion of the +hh:mm offset.
+
+    DT-003-DateTime:
+      description: ISO 8601 Date/time
+      type: string
+      minLength : 25
+      maxLength : 25
+      example: '2022-03-21T19:05:00+00:00'
+
+      
+    DT-003N-DateTime:
+      description: ISO 8601 Date/time
+      type: string
+      nullable: true
+      minLength : 25
+      maxLength : 25
+      example: '2022-03-21T19:05:00+00:00'
+
+      # mandating the full length for data strings, i.e. inclusion of the +hh:mm offset.
+
+
+
+    DT-004-EventCode:
+      description: Event Code
+      type: string
+      minLength : 1
+      maxLength : 50
+      example: '[EventName]'
+      # not enumerated here as picked up in S0 Payload
+
+    DT-004N-EventCode:
+      description: Event Code
+      type: string
+      nullable: true
+      minLength : 1
+      maxLength : 50
+      example: '[EventName]'
+      # not enumerated here as picked up in S0 Payload
+
+
+    DT-005-StatusErrorMessage:
+      description: Status/Error messages
+      type: string
+      minLength : 1
+      maxLength : 200
+      example: 'MSG0101 Application 101 error message'
+
+    DT-005N-StatusErrorMessage:
+      description: Status/Error messages
+      type: string
+      nullable: true
+      minLength : 1      # DIN-1024
+      maxLength : 200
+      example: 'MSG0101 Application 101 error message'
+
+
+    DT-006-DIPParticipantID:
+      description: DIP Participant Id
+      type: string
+      minLength : 10
+      maxLength : 10
+      example: '1009012345'
+
+    DT-006N-DIPParticipantID:
+      description: DIP Participant Id
+      type: string
+      nullable: true
+      minLength : 10
+      maxLength : 10
+      example: '1009012345'
+  
+    DT-007N-UKPostCode:
+      description: UK Post Code 
+      type: string
+      nullable: true
+      minLength : 1      # DIN-1024
+#      minLength : 6
+      maxLength : 10
+      example: 'SW1A 2AA'
+
+    DT-007-UKPostCode:
+      description: UK Post Code 
+      type: string
+      nullable: false
+#      minLength : 6
+      maxLength : 10
+      example: 'SW1A 2AA'
+      
+      
+    DT-008-MeterSerialID:
+      description: Meter Serial Id
+      type: string
+      minLength : 10
+      maxLength : 10
+      example: 'ZZ99Z12345'
+      
+
+    DT-009-DIPParticipantRole:
+      description: DIP Participant Role
+      type: string
+      minLength : 3
+      maxLength : 5
+      example: 'SUP'
+
+    DT-009N-DIPParticipantRole:
+      description: DIP Participant Role
+      type: string
+      nullable: true
+      minLength : 3
+      maxLength : 5
+      example: 'SUP'
+
+    DT-010-DIPParticipantEZName:
+      description: Long Descriptive Participant Name
+      type: string
+      minLength : 1
+      maxLength : 50
+      example: 'Very Long Named Energy Co Ltd'
+      
+
+    DT-011-CorrelationID:
+      description: Correlation Id
+      type: string
+      minLength : 1
+      maxLength : 60
+      example: 'CI-20220401-1234567890123abce123092'
+
+    DT-011N-CorrelationID:
+      description: Correlation Id
+      type: string
+      nullable: true
+      minLength : 1      # DIN-1024
+      maxLength : 60
+      example: 'CI-20220401-1234567890123abce123092'
+
+#    DT-012-EnvelopeID: ### Removed ####
+
+
+    DT-013-EnvironmentTag:
+      description: Environment Tag 
+      type: string
+      minLength : 3
+      maxLength : 10
+      enum: 
+#        - PROD
+#        - PREPROD
+        - PRD
+        - SITB
+        - SIT
+        - UIT
+        - DEV
+      example: 'DEV'       
+      
+    DT-014-DIPTransactionID:
+      description: Transaction ID 
+      type: string
+      maxLength : 65
+      example: 'T-IF-006-0123456789-SUP-20220401-1234CC0123456789'  # MHHS-DIN-250 - updated example ParticipantID length = 10
+      
+    #DIN-1031
+    DT-014N-DIPTransactionID:
+      description: Transaction ID 
+      type: string
+      nullable: true
+      minLength : 1
+      maxLength : 65
+      example: 'T-IF-006-0123456789-SUP-20220401-1234CC0123456789'  # MHHS-DIN-250 - updated example ParticipantID length = 10
+
+
+    DT-016-Decimal-9-3:
+      description: kWh Consumption (9,3) format - leading 
+      type: string
+      pattern: ^-?\d{1,9}\.\d{3}$
+      example: '789.000'
+
+    DT-016N-Decimal-9-3:
+      description: kWh Consumption (9,3) format 
+      type: string
+      nullable: true
+      pattern: ^-?\d{1,9}\.\d{3}$
+      example: '123456789.123'
+
+# D017 dropped
+
+      
+
+    DT-018-URL:
+      description: URL
+      type: string
+      minLength : 1
+      maxLength : 250
+      example: 'https://<baseURL>/nav_to.do?uri=<table name>.do?sys_id=-1%26sysparm_query=<field=value>'
+      
+    DT-018N-URL:
+      description: URL
+      type: string
+      nullable: true
+      minLength : 1
+      maxLength : 250
+      example: 'https://<baseURL>/nav_to.do?uri=<table name>.do?sys_id=-1%26sysparm_query=<field=value>'
+      
+    DT-019-HelpText:
+      description: Help Text
+      type: string
+      minLength : 1
+      maxLength : 500
+      example: 'Sender Unique reference must take the format S - Interface Id - Participant Id - Role Id - Date - Sequence (hex)/Participant Ref, e.g. ‘S-IF-005-03458900823-SUP-20222313-12345687a’'
+
+    #DIN-1031
+    DT-019N-HelpText:
+      description: Help Text
+      type: string
+      nullable : true
+      minLength : 1
+      maxLength : 500
+      example: 'Sender Unique reference must take the format S - Interface Id - Participant Id - Role Id - Date - Sequence (hex)/Participant Ref, e.g. ‘S-IF-005-03458900823-SUP-20222313-12345687a’'
+      
+    DT-020N-SubText:
+      description: SubText
+      type: string
+      nullable: true
+      minLength : 1
+      maxLength : 500
+      example: 'additonal text to separate messages in testing - ignore in production'
+      
+    DT-021-Date:
+      description: ISO 8601 Date
+      type: string
+      nullable: False
+      minLength : 10
+      maxLength : 10
+      example: '2022-03-21'
+      # mandating the short length for date strings, i.e. no +hh:mm offset.
+
+    DT-021N-Date:
+      description: ISO 8601 Date
+      type: string
+      nullable: True
+      minLength : 10
+      maxLength : 10
+      example: '2022-03-21'
+      # mandating the short length for date strings, i.e. no +hh:mm offset.
+
+    DT-022-Decimal-9-6:
+      description: Number (9,6) format 
+      type: string
+      pattern: ^-?\d{1,9}\.\d{6}$
+      example: -987654321.123456
+
+    DT-022N-Decimal-9-6:
+      description: Number (9,6) format 
+      type: string
+      nullable: true
+      pattern: ^-?\d{1,9}\.\d{6}$
+      example: -987654321.123456
+
+    DT-023-Positive-Decimal-9-6:
+      description: Number (9,6) format 
+      type: string
+      pattern : ^\d{1,9}\.\d{6}$
+      example: 123456789.123456
+      
+    DT-023N-Positive-Decimal-9-6:
+      description: Number (9,6) format 
+      type: string
+      nullable: true
+      pattern : ^\d{1,9}\.\d{6}$
+      example: 123456789.123456
+
+    DT-024-Positive-Decimal-10-6:
+      description: Number (10,6) format 
+      type: string
+      pattern : ^\d{1,10}\.\d{6}$
+      example: 890.123456
+      
+    DT-024N-Positive-Decimal-10-6:
+      description: Number (10,6) format 
+      type: string
+      nullable: true
+      pattern : ^\d{1,10}\.\d{6}$
+      example: 1234567890.123456
+
+    DT-025-Decimal-15-2:
+      description: Number (15,2) format 
+      type: string
+      pattern: ^-?\d{1,15}\.\d{2}$
+      example: -21987654321.12
+
+    DT-025N-Decimal-15-2:
+      description: Number (15,2) format 
+      type: string
+      nullable: true
+      pattern: ^-?\d{1,15}\.\d{2}$
+      example: -21987654321.12
+
+    # DIN-680 updated DT-026
+    DT-026-Group-Correction-Factor: 
+      description: Group Correction Factor (Number 9,9) format 
+      type: string
+      pattern: ^\d{1,9}\.\d{9}$ # DIN-893 
+      example: 20.123456789
+
+    DT-027-MPID: 
+      description: Legacy MPID
+      type: string
+      minLength: 4
+      maxLength: 4
+      pattern: ^[A-Z]{4}$
+      example: 'EMEB'
+
+    DT-027N-MPID: 
+      description: Legacy MPID
+      type: string
+      nullable: true
+      minLength: 4
+      maxLength: 4
+      pattern: ^[A-Z]{4}$
+      example: 'EMEB'
+
+    DT-029-MeterID: 
+      description: Meter ID
+      type: string
+      maxLength: 10
+      example: 'A123456789'
+
+    DT-029N-MeterID: 
+      description: Meter ID
+      nullable: true
+      type: string
+      minLength : 1      # DIN-1024
+      maxLength: 10
+      example: 'A123456789'
+
+      # need to update to include validation ##
+
+
+    DT-030-Decimal-13-3:
+      description: Number (13,3) format 
+      type: string
+      pattern: ^-?\d{1,13}\.\d{3}$
+      example: -321987654321.123
+
+    DT-030N-Decimal-13-3:
+      description: Number (13,3) format 
+      type: string
+      nullable: true
+      pattern: ^-?\d{1,13}\.\d{3}$
+      example: -321987654321.123
+
+# DIN-1113 update
+    DT-031-Positive-Decimal-2-2:
+      description: Number (2,2) format 
+      type: string
+      pattern: ^\d{1,2}\.\d{2}$
+      example: 12.34
+      
+    DT-031N-Positive-Decimal-2-2:
+      description: Number (2,2) format 
+      type: string
+      nullable: true
+      pattern: ^\d{1,2}\.\d{2}$
+      example: 0.34
+
+    DT-032-Decimal-14-2:
+        # description: Number (14,2) format 
+        type: string
+        nullable : False
+        pattern: ^-?\d{1,14}\.\d{2}$
+        example: -10987654321.12
+  
+    DT-032N-Decimal-14-2:
+        description: Number (14,2) format 
+        type: string
+        nullable : True
+        pattern: ^-?\d{1,14}\.\d{2}$
+        example: -987654321.12
+
+# DIN-1113 update
+    DT-033-Decimal-15-5:
+      description: Number (15,5) format 
+      type: string
+      pattern: ^-?\d{1,15}\.\d{5}$
+      example: -21987654321.12
+
+    DT-033N-Decimal-15-5:
+      description: Number (15,5) format 
+      type: string
+      nullable: true
+      pattern: ^-?\d{1,15}\.\d{5}$
+      example: -21987654321.12
+        
+
+    DT-034-Telephone-Number:
+      description: Telephone Number
+      type: string
+      minLength : 1
+      maxLength : 19
+      example:  '0207 930 4433'
+
+    DT-035-Sort-Code:
+      description: Bank Sort Code (only numbers, no spaces or hyphens)
+      type: string
+      minLength : 6
+      maxLength : 6
+      example:  '029344'
+
+    DT-035-Bank-Account-Number:
+      description: Bank Account Number 
+      type: string
+      minLength : 8
+      maxLength : 10
+      example:  '1234512345'
+      
+
+    DT-036N-Email:
+      description: E-mail address
+      type: string
+      nullable: true
+      minLength : 1
+      maxLength : 100
+      example: 'important.person@gmail.com' 
+
+    DT-036-Email:
+      description: E-mail address
+      type: string
+      format: email
+      minLength : 1
+      maxLength : 100
+      example: 'important.person@gmail.com' 
+
+    DT-983-PublicationID:
+        description: Publication ID 
+        type: string
+        minLength : 6
+        maxLength : 8
+        example : 'PUB-007'
+        enum:  
+          - PUB-001  # Notification of Change of Supplier
+          - PUB-002  # Notification to New Supplier of Site Information  
+          - PUB-003
+          - PUB-005  # Metering Service MTD Updates to Registration
+          - PUB-006  # Registration Service NotPUBication of MTD Updates
+          - PUB-007  # Change of Energisation Status Outcome
+          - PUB-008
+          - PUB-009
+          - PUB-013
+          - PUB-014
+          - PUB-015
+          - PUB-016
+          - PUB-018
+          - PUB-019
+          - PUB-020
+          - PUB-021
+          - PUB-022
+          - PUB-023
+          - PUB-024
+          - PUB-025
+          - PUB-026
+          - PUB-027
+          - PUB-028
+          - PUB-031
+          - PUB-032
+          - PUB-033
+          - PUB-034
+          - PUB-035
+          - PUB-036
+          - PUB-037
+          - PUB-038
+          - PUB-039
+          - PUB-040
+          - PUB-041
+          - PUB-043
+          - PUB-044
+          - PUB-045
+          - PUB-047
+          - PUB-050
+          - PUB-061 # DIN-844
+          - PUB-062 # DIN-844
+          - PUB-063 # DIN-844
+          - PUB-064 # DIN-844
+          - PUB-065 # DIN-844
+          - REP-002
+          - REP-002A
+          - REP-002B
+          - REP-003
+          - REP-004
+          - REP-006
+          - REP-007
+          - REP-008
+          - REP-009
+          - REP-900
+          - REP-901
+
+  
+    DT-995-SenderUniqueReference:
+        description: Sender Unique Reference 
+        type: string
+        minLength : 1
+        maxLength : 200
+        example: 'S-IF-005-0123456789-SUP-20222313-12345687a1234567a'
+  
+    DT-995N-SenderUniqueReference:
+        description: Sender Unique Reference 
+        type: string
+        nullable: true
+        minLength : 1
+        maxLength : 200
+        example: 'S-IF-005-0123456789-SUP-20222313-12345687a1234567a'
+
+## end

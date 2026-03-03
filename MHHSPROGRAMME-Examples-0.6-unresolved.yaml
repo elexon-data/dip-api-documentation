@@ -1,0 +1,1093 @@
+# OpenAPI version identifier - required for OpenAPI 3.0 domains
+openapi: 3.0.0
+
+#######################
+# Optional info section
+#######################
+info:
+  title: DIP Interface & Report Example payloads
+  description: Common example messages for DIP APIs. Examples have not been reviewed hence reader should defer to the actual swagger and report back any inconsistencies. At present these are generated on a 'best endeavours' approach.
+  version: '0.6'
+
+components:
+  examples:
+    IF-001-InitialRegistration:
+      value:
+        - payload: 
+            CommonBlock: 
+                S0: 
+                    interfaceID: 'IF-001'
+                    schemaVersion: "011"
+                    eventCode: "[InitialRegistration]"
+                S1:
+                    environmentTag: "DEV"
+                    subText: "Dummy incoming message for IF-001 Initial Registration"
+                    senderUniqueReference: "S-IF-001-0123456789-SUP-20222313-12345687a1234567a"
+                    senderTimestamp: "2022-03-21T19:05:00+00:00"
+                    senderDIPID: "2209012349"
+                    senderRoleID: "REGS"
+                    senderCorrelationID: "CI-20220401-1234567890123abce123092"
+                    DIPConnectionProviderID: null
+                A0:
+                    primaryRecipients:  
+                      - "2300000900"
+                    secondaryRecipients: []
+                    always: []
+                M0:
+                    MPANCore: "2000056535971"
+                    distributorDIPID: "1009012345"
+                    GSPGroupID: "_K"
+            CustomBlock:
+                B013: 
+                  CSSRegistrationRequestID: "XTRE"
+                B002: 
+                  incomingSupplierDIPID: "2209012345"
+                  incomingSupplierMPID: "EMEB"
+                  incomingSupplierEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                B004: 
+                  domesticPremiseIndicator: true
+                  domesticPremiseIndicatorEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                B006: 
+                  customerDirectContractMeteringService: true
+                  customerDirectContractMeteringServiceDIPID: "1209012345"
+                  customerDirectContractDataService: true
+                  customerDirectContractDataServiceDIPID: "1409012345"
+                B022: 
+                  meteringPointPostcode: "SW1A 2AA"
+                  addressLine1: "10 Downing Street"
+                  addressLine2: "Westminster"
+                  addressLine3: "London"
+                  addressLine4: ""
+                  addressLine5: ""
+                  addressLine6: ""
+                  addressLine7: ""
+                  addressLine8: ""
+                  addressLine9: ""
+                B023: 
+                  connectionTypeIndicator: "W"
+                  connectionTypeEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                  energyDirection: "I"
+                  meteredIndicator: true
+                B024: 
+                  DUOSTariffID: "999"
+                  DUOSTariffIDEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                B025: 
+                  energisationStatus: "D"
+                  energisationStatusEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                B026: 
+                  marketSegmentIndicator: "S"
+                  marketSegmentIndicatorEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                B027: 
+                  annualConsumption: "123456789.123"
+                  annualConsumptionEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                  annualConsumptionQualityIndicator: "A"
+                B029: 
+                  DCCServiceFlag: "A"
+                  DCCEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                B030: 
+                  IHDInstallStatus: "D"
+                  IHDEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                B031: 
+                  SMSOID: "TRIL"
+                  SMSOEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                B032: 
+                  profileClass: "02"
+                  profileClassEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                  SSC: "83"
+                  SSCEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                B035List:  # list
+                    linkedImportExportMPAN: "2000056535971"
+                    linkedMPANEnergyDirection: "I"
+                    importExportMPANSupplierDIPID: "2309012345"
+                    importExportMPANSupplierMPID: "EMEB"
+                B037List: # list
+                    primaryMPAN: "2000056535971"
+                    secondaryMPAN: "2000056535971"
+    IF-001-ChangeOfSupplier:
+      value:
+        - payload: 
+            CommonBlock: 
+                  S0: 
+                    InterfaceID: 'IF-001'
+                    schemaVersion: "011"
+                    eventCode: "[ChangeOfSupplier]"
+                  S1:
+                    environmentTag: "DEV"
+                    subText: "Dummy message for IF-001 Initial Registration"
+                    senderUniqueReference: "S-IF-001-0123456789-SUP-20222313-12345687a1234567a"
+                    senderTimestamp: "2022-03-21T19:05:00+00:00"
+                    senderDIPID: "1009012345"
+                    senderRoleID: "SUP"
+                    senderCorrelationID: "CI-20220401-1234567890123abce123092"
+                    DIPConnectionProviderID: null
+                  A0:
+                      primaryRecipients:  
+                        - "2300000900"
+                      secondaryRecipients: []
+                      always: []
+                  M0:
+                    MPANCore: "2000056535971"
+                    distributorDIPID: "1009012345"
+                    GSPGroupID: "_K"
+            CustomBlock:
+                  B013: 
+                    CSSRegistrationRequestID: "XTRE"
+                  B002: 
+                    incomingSupplierDIPID: "1009012345"
+                    incomingSupplierMPID: "EMEB"
+                    incomingSupplierEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                  B003: 
+                    outgoingSupplierDIPID: "1009012345"
+                    outgoingSupplierMPID: "EMEB"
+                    outgoingSupplierEffectiveToDate: "2022-03-21T19:05:00+00:00"
+                  B004: 
+                    domesticPremiseIndicator: true
+                    domesticPremiseIndicatorEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                  B005: 
+                    currentMeteringServiceDIPID: "1009012345"
+                    currentMeteringServiceMPID: "EMEB"
+                    currentDataServiceDIPID: "1009012345"
+                    currentDataServiceMPID: "EMEB"
+                  B006: 
+                    customerDirectContractMeteringService: true
+                    customerDirectContractMeteringServiceDIPID: "1009012345"
+                    customerDirectContractDataService: true
+                    customerDirectContractDataServiceDIPID: "1009012345"
+                  B022: 
+                    meteringPointPostcode: "SW1A 2AA"
+                    addressLine1: "10 Downing Street"
+                    addressLine2: "Westminster"
+                    addressLine3: "London"
+                    addressLine4: ""
+                    addressLine5: ""
+                    addressLine6: ""
+                    addressLine7: ""
+                    addressLine8: ""
+                    addressLine9: ""
+                  B023: 
+                    connectionTypeIndicator: "W"
+                    connectionTypeEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                    energyDirection: "I"
+                    meteredIndicator: true
+                  B024: 
+                    DUOSTariffID: "999"
+                    DUOSTariffIDEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                  B025: 
+                    energisationStatus: "D"
+                    energisationStatusEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                  B026: 
+                    marketSegmentIndicator: "S"
+                    marketSegmentIndicatorEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                  B027: 
+                    annualConsumption: "123456789.123"
+                    annualConsumptionEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                    annualConsumptionQualityIndicator: "A"
+                  B029: 
+                    DCCServiceFlag: "A"
+                    DCCEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                  B030: 
+                    IHDInstallStatus: "D"
+                    IHDEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                  B031: 
+                    SMSOID: "TRIL"
+                    SMSOEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                  B032: 
+                    profileClass: "02"
+                    profileClassEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                    SSC: "83"
+                    SSCEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                  B035List:  # list
+                      - linkedImportExportMPAN: "2000056535971"
+                        linkedMPANEnergyDirection: "I"
+                        importExportMPANSupplierDIPID: "1009012345"
+                        importExportMPANSupplierMPID: "EMEB"
+                      - linkedImportExportMPAN: "2000056535972"
+                        linkedMPANEnergyDirection: "I"
+                        importExportMPANSupplierDIPID: "1009012345"
+                        importExportMPANSupplierMPID: "EMEB"
+                  B037List:
+                      - primaryMPAN: "2000056535971"
+                        secondaryMPAN: "2000056535977"
+                      - primaryMPAN: "2000056535971"
+                        secondaryMPAN: "2000056535976"
+    IF-002:
+      value:
+          - payload: 
+              CommonBlock: 
+                S0: 
+                  InterfaceID: 'IF-002'
+                  schemaVersion: "011"
+                  eventCode: "[GainMPANInfo]"
+                S1:
+                  environmentTag: "DEV"
+                  subText: "additonal text to separate messages in testing - ignore in production"
+                  senderUniqueReference: "S-IF-002-0123456789-REGS-20222313-12345687a1234567a"
+                  senderTimestamp: "2022-03-21T19:05:00+00:00"
+                  senderDIPID: "1009012345"
+                  senderRoleID: "REGS"
+                  senderCorrelationID: "CI-20220401-1234567890123abce123092"
+                  DIPConnectionProviderID: "1009012345"
+                A0:
+                  primaryRecipients:  
+                      - "2300000900"
+                  secondaryRecipients: []
+                  always: []
+                M0:
+                  MPANCore: "2000056535971"
+                  distributorDIPID: "1009012345"
+                  GSPGroupID: "_K"
+              CustomBlock:
+                B013:
+                  CSSRegistrationRequestID: 'DXVRE132'
+                B005: 
+                  currentMeteringServiceDIPID: "1009012345"
+                  currentMeteringServiceMPID: "EMEB"
+                  currentDataServiceDIPID: "1009012345"
+                  currentDataServiceMPID: "EMEB"
+                B006: 
+                  customerDirectContractMeteringService: true
+                  customerDirectContractMeteringServiceDIPID: "1009012345"
+                  customerDirectContractDataService: true
+                  customerDirectContractDataServiceDIPID: "1009012345"
+                B022: 
+                  meteringPointPostcode: "SW1A 2AA"
+                  addressLine1: "10 Downing Street"
+                  addressLine2: "Westminster"
+                  addressLine3: "London"
+                  addressLine4: ""
+                  addressLine5: ""
+                  addressLine6: ""
+                  addressLine7: ""
+                  addressLine8: ""
+                  addressLine9: ""
+                B023: 
+                  connectionTypeIndicator: "W"
+                  connectionTypeEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                  energyDirection: "I"
+                  meteredIndicator: true
+                B024: 
+                  DUOSTariffID: "999"
+                  DUOSTariffIDEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                B025: 
+                  energisationStatus: "D"
+                  energisationStatusEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                B026: 
+                  marketSegmentIndicator: "S"
+                  marketSegmentIndicatorEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                B027: 
+                  annualConsumption: "123456789.123"
+                  annualConsumptionEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                  annualConsumptionQualityIndicator: "A"
+                B029: 
+                  DCCServiceFlag: "A"
+                  DCCEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                B030: 
+                  IHDInstallStatus: "D"
+                  IHDEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                B031: 
+                  SMSOID: "TRIL"
+                  SMSOEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                B032: 
+                  profileClass: "02"
+                  profileClassEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                  SSC: "83"
+                  SSCEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                B035List: 
+                    - linkedImportExportMPAN: "2000056535971"
+                      linkedMPANEnergyDirection: "I"
+                      importExportMPANSupplierDIPID: "1009012345"
+                      importExportMPANSupplierMPID: "EMEB"
+                    - linkedImportExportMPAN: "2000056535972"
+                      linkedMPANEnergyDirection: "I"
+                      importExportMPANSupplierDIPID: "1009012346"
+                      importExportMPANSupplierMPID: "EMEB"
+                B037List: # list
+                    - primaryMPAN: "2000056535971"
+                      secondaryMPAN: "2000056535991"
+    IF-003-MSDeAppRM:
+      value:
+          payload: 
+              CommonBlock: 
+                S0: 
+                  InterfaceID: 'IF-003'
+                  schemaVersion: "011"
+                  eventCode: "[MSDeApp]"
+                S1:
+                  environmentTag: "DEV"
+                  subText: "additonal text to separate messages in testing - ignore in production"
+                  senderUniqueReference: "S-IF-037-0123456789-REGS-20220528-12345687a12345670"
+                  senderTimestamp: "2022-05-28T21:00:00+00:00"
+                  senderDIPID: "1009012345"
+                  senderRoleID: "REGS"
+                  senderCorrelationID: null
+                  DIPConnectionProviderID: "1009012345"
+                A0:
+                  primaryRecipients:  
+                      - "2300000900"
+                  secondaryRecipients: []
+                  always: []
+                M0:
+                  MPANCore: "2000056535972"
+                  distributorDIPID: "1009012345"
+                  GSPGroupID: "_K"
+              CustomBlock:
+                B013: 
+                  CSSRegistrationRequestID: "XTRE"
+                B008:
+                  deAppointedMeteringServiceDIPID: "1209012346"
+                  deAppointedMeteringServiceMPID: "MXNX"
+                  meteringServiceEffectiveFromDate: "2022-01-21T00:00:00+00:00"
+                  meteringServiceEffectiveToDate: "2022-03-21T19:05:00+00:00"
+                  deAppointmentReasonCode: 'CSUPP'
+                B010:
+                  incomingMeteringServiceDIPID: "1209012345"
+                  incomingMeteringServiceMPID: "DXXN"
+                  incomingMeteringServiceEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                B002:
+                  incomingSupplierDIPID: "2309012345"
+                  incomingSupplierMPID: "EMEB"
+                  incomingSupplierEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+    IF-020-RelatedCreate:
+      value:
+          payload: 
+              CommonBlock: 
+                S0: 
+                  InterfaceID: 'IF-020'
+                  schemaVersion: "011"
+                  eventCode: "[RelatedCreate]"
+                S1:
+                  environmentTag: "DEV"
+                  subText: "additonal text to separate messages in testing - ignore in production"
+                  senderUniqueReference: "S-IF-037-0123456789-REGS-20220528-12345687a12345670"
+                  senderTimestamp: "2022-05-28T21:00:00+00:00"
+                  senderDIPID: "1009012345"
+                  senderRoleID: "REGS"
+                  senderCorrelationID: null
+                  DIPConnectionProviderID: "1009012345"
+                A0:
+                  primaryRecipients:  
+                      - "2300000900"
+                  secondaryRecipients: []
+                  always: []
+                M1:
+                  principalMPAN: "2000056535972"
+                  distributorDIPID: "1009012345"
+                  GSPGroupID: "_K"
+                R0:
+                  responseCode: 'A'
+                  responseMessages: 'MSG0000 - Success'                
+              CustomBlock:
+                B090List:
+                  - subsidiaryMPAN: "4000056535972"
+                  - subsidiaryMPAN: "6000056535972"
+                B091:
+                  addtionalInformation: "Good News"
+    IF-021:
+      value:
+      - payload:
+          CommonBlock:
+            S0:
+              interfaceId: IF-021
+              schemaVersion: '011'
+              eventCode: '[ActivePower]'
+            S1:
+              environment: SIT
+              subText: additonal text to separate messages in testing - ignore in production
+              senderUniqueReference: S-005-0123456789-ADS-20222313-12345687a1234567a
+              sentTimestamp: '2022-03-21T19:05:00+00:00'
+              senderDIPId: '1009012345'
+              senderRole: ADS
+              senderCorrelationId: null
+              DIPConnectionProviderId: null
+            A0:
+              primaryRecipients:
+                - '2309050005'
+              secondaryRecipients: []
+              always: []
+            M0:
+              MPANCore: '2000056535971'
+              distributorDIPID: '2509012345'
+              GSPGroupID: _K
+          CustomBlock:
+            B044:
+              issuingDataServiceDIPID: '1109012345'
+            B067:
+              connectionTypeIndicator: W
+              connectionTypeEffectiveFromDate: '2022-03-21T19:05:00+00:00'
+            B900List:
+              - MQID:
+                  measurementQuantityID: AI
+                settlementDayConsumptionPeriods:
+                  - settlementDay:
+                      settlementDayDate: '2022-03-21T00:00:00+00:00'
+                      settlementPeriodDuration: 30
+                    consumptionPeriods:
+                      - sp: '2022-03-21T00:00:00+00:00'
+                        v: '9.901'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T00:30:00+00:00'
+                        v: '9.902'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T01:00:00+00:00'
+                        v: '9.903'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T01:30:00+00:00'
+                        v: '9.904'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T02:00:00+00:00'
+                        v: '9.905'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T02:30:00+00:00'
+                        v: '9.906'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T03:00:00+00:00'
+                        v: '9.907'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T03:30:00+00:00'
+                        v: '9.908'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T04:00:00+00:00'
+                        v: '9.909'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T04:30:00+00:00'
+                        v: '9.910'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T05:00:00+00:00'
+                        v: '9.911'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T05:30:00+00:00'
+                        v: '9.912'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T06:00:00+00:00'
+                        v: '9.913'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T06:30:00+00:00'
+                        v: '9.914'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T07:00:00+00:00'
+                        v: '9.915'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T07:30:00+00:00'
+                        v: '9.916'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T08:00:00+00:00'
+                        v: '9.917'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T08:30:00+00:00'
+                        v: '9.918'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T09:00:00+00:00'
+                        v: '9.919'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T09:30:00+00:00'
+                        v: '9.920'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T10:00:00+00:00'
+                        v: '9.921'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T10:30:00+00:00'
+                        v: '9.922'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T11:00:00+00:00'
+                        v: '9.923'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T11:30:00+00:00'
+                        v: '9.924'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T12:00:00+00:00'
+                        v: '9.925'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T12:30:00+00:00'
+                        v: '9.926'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T13:00:00+00:00'
+                        v: '9.927'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T13:30:00+00:00'
+                        v: '9.928'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T14:00:00+00:00'
+                        v: '9.929'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T14:30:00+00:00'
+                        v: '9.930'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T15:00:00+00:00'
+                        v: '9.931'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T15:30:00+00:00'
+                        v: '9.932'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T16:00:00+00:00'
+                        v: '9.933'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T16:30:00+00:00'
+                        v: '9.934'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T17:00:00+00:00'
+                        v: '9.935'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T17:30:00+00:00'
+                        v: '9.936'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T18:00:00+00:00'
+                        v: '9.937'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T18:30:00+00:00'
+                        v: '9.938'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T19:00:00+00:00'
+                        v: '9.939'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T19:30:00+00:00'
+                        v: '9.940'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T20:00:00+00:00'
+                        v: '9.941'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T20:30:00+00:00'
+                        v: '9.942'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T21:00:00+00:00'
+                        v: '9.943'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T21:30:00+00:00'
+                        v: '9.944'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T22:00:00+00:00'
+                        v: '9.945'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T22:30:00+00:00'
+                        v: '9.946'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T23:00:00+00:00'
+                        v: '9.947'
+                        q: A
+                        e: null
+                        arc: null
+                      - sp: '2022-03-21T23:30:00+00:00'
+                        v: '9.948'
+                        q: A
+                        e: null
+                        arc: null
+    IF-037-MSDeApp:
+      value:
+          payload: 
+              CommonBlock: 
+                S0: 
+                  InterfaceID: 'IF-037'
+                  schemaVersion: "011"
+                  eventCode: "[MSDeApp]"
+                S1:
+                  environmentTag: "DEV"
+                  subText: "additonal text to separate messages in testing - ignore in production"
+                  senderUniqueReference: "S-IF-037-0123456789-REGS-20220528-12345687a12345670"
+                  senderTimestamp: "2022-05-28T21:00:00+00:00"
+                  senderDIPID: "1009012345"
+                  senderRoleID: "REGS"
+                  senderCorrelationID: null
+                  DIPConnectionProviderID: "1009012345"
+                A0:
+                  primaryRecipients:  
+                      - "2300000900"
+                  secondaryRecipients: []
+                  always: []
+                M0:
+                  MPANCore: "2000056535972"
+                  distributorDIPID: "1009012345"
+                  GSPGroupID: "_K"
+              CustomBlock:
+                B013: 
+                  CSSRegistrationRequestID: "XTRE"
+                B008:
+                  deAppointedMeteringServiceDIPID: "1209012346"
+                  deAppointedMeteringServiceMPID: "MXNX"
+                  meteringServiceEffectiveFromDate: "2022-01-21T00:00:00+00:00"
+                  meteringServiceEffectiveToDate: "2022-03-21T19:05:00+00:00"
+                  deAppointmentReasonCode: 'CSUPP'
+                B010:
+                  incomingMeteringServiceDIPID: "1209012345"
+                  incomingMeteringServiceMPID: "DXXN"
+                  incomingMeteringServiceEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+                B002:
+                  incomingSupplierDIPID: "2309012345"
+                  incomingSupplierMPID: "EMEB"
+                  incomingSupplierEffectiveFromDate: "2022-03-21T19:05:00+00:00"
+    IF-043:
+      value:
+          payload: 
+              CommonBlock: 
+                S0: 
+                  InterfaceID: 'IF-043'
+                  schemaVersion: "011"
+                  eventCode: "[ConnectionTypeChange]"
+                S1:
+                  environmentTag: "DEV"
+                  subText: "additonal text to separate messages in testing - ignore in production"
+                  senderUniqueReference: "S-IF-043-0123456789-REGS-20220528-12345687a1234567a"
+                  senderTimestamp: "2022-05-28T19:00:00+00:00"
+                  senderDIPID: "1009012345"
+                  senderRoleID: "REGS"
+                  senderCorrelationID: null
+                  DIPConnectionProviderID: "1009012345"
+                A0:
+                  primaryRecipients:  
+                      - "2300000900"
+                  secondaryRecipients: []
+                  always: []
+                M0:
+                  MPANCore: "2000056535972"
+                  distributorDIPID: "1009012345"
+                  GSPGroupID: "_K"
+              CustomBlock:
+                B023:
+                  connectionTypeIndicator: 'L'
+                  connectionTypeEffectiveFromDate: "2022-05-28T19:00:00+00:00"
+                  energyDirection: 'E'
+                  meteredIndicator: True
+    IF-044:
+      value:
+          payload: 
+              CommonBlock: 
+                S0: 
+                  InterfaceID: 'IF-044'
+                  schemaVersion: "011"
+                  eventCode: "[MarketSegmentChange]"
+                S1:
+                  environmentTag: "DEV"
+                  subText: "additonal text to separate messages in testing - ignore in production"
+                  senderUniqueReference: "S-IF-043-0123456789-REGS-20220528-12345687a1234567b"
+                  senderTimestamp: "2022-05-28T19:00:00+00:00"
+                  senderDIPID: "1009012345"
+                  senderRoleID: "REGS"
+                  senderCorrelationID: null
+                  DIPConnectionProviderID: "1009012345"
+                A0:
+                  primaryRecipients:  
+                      - "2300000900"
+                  secondaryRecipients: []
+                  always: []
+                M0:
+                  MPANCore: "2000056535972"
+                  distributorDIPID: "1009012345"
+                  GSPGroupID: "_K"
+              CustomBlock:
+                B023:
+                  connectionTypeIndicator: 'L'
+                  connectionTypeEffectiveFromDate: "2022-05-28T19:00:00+00:00"
+                  energyDirection: 'E'
+                  meteredIndicator: True
+                B026: 
+                  marketSegmentIndicator: 'A'
+                  marketSegmentIndicatorEffectiveFromDate: "2022-05-28T20:00:00+00:00"
+                  
+    REP-002:
+      value:
+        - payload:
+            CommonBlock: 
+                  S0: 
+                    InterfaceID: 'REP-002'
+                    schemaVersion: "006"
+                    eventCode: "[DUoSLDSOAggData]"
+                  S1:
+                    environmentTag: "DEV"
+                    subText: "Sample of a REP-002 report - not a real compressed report- random string."
+                    senderUniqueReference: "S-REP-002-0123456789-ECS-20222313-12345687a1234567a"
+                    senderTimestamp: "2022-03-21T19:05:00+00:00"
+                    senderDIPID: "1009012345"
+                    senderRoleID: "SUP"
+                    senderCorrelationID: "CI-20220401-1234567890123abce123092"
+                    DIPConnectionProviderID: "1009012345"
+                  A0:
+                    primaryRecipients:  
+                        - "2300000900"
+                    secondaryRecipients: []
+                    always: []
+            CustomBlock:
+                  P03:
+                    compressedReport: "eJzdVl1v2jAU/S9+HUS2k/CRt43QCgkqBLR9mBDyEo9FS2KU2BUV4r/PNw4haboVNlXTZiGE8LnX5557fJMDWmBiI++Abpfz20yo3cRHHtrcoWNHb+E+bOVcypgnPJULlY73PFAyEqnPJNdQiqnTxVR/Vhh7xedD8V1moM0MjSi7S13Uqe2ORAi7C6r/zVR6p5IvPEMegVQE281Uc55FIvRVxoAO8mwMsPEc67y6Khd5nw/I/NBhareLI57N5kWB/ng5RQ147wTvAfzT7D6NZAGlGwBvdEEdFPKvTMXS7N7EbIs8mSneSNQ/JSq0C0Saq2QHDEci2YkUqoxZnkNu0sOdSviRyDIeAHAZsDhKt4882n6TmgGxbDhcp0oNYPW845M0jAImhZYHPerdhGXfuVzyLUhT37w3oS0WdYzRApMhUA5ZFD+bEo3EU/7E49E5hQ5wLMfB2GjyFnwq8pznOmhgDQb1oLJiHlacQG5qUfxrVJXwjG10YFB04FLPGdLIox2k0uB02Bv1E4uQkuSFQWfSFqVlaNAqrXmKa7nuT6FVwgp17FxfNfn3q14f12BeSirz3p/JGVqG4kpIFn+MY6Ftz8MHEasEFCK2ZdO64y6IoT2r98oFmC0n/kgoMDKhtuP2+oNh3ZouKYeDa8jyhKWhH+Xnqz1+gqsJc6dK0GX6EF8PIcmyVledFR7qOeLRfjl1C+hYZ60DnWI8N4F1XpQWvJavXQpTWSWB3+ZcqeI4tblwaVzVUWxhXPm4TYVcRcW2dVftP6dirGW/mIsXUSB6WQS3XfJbRECUi3wzPK3u/u/55rpmFUKRd/LNdRamtDap/gvfrMsBWfXMefF4NEKBd7RU2+aryA0L9BvCRA/fDB7OcKdgGWqvYsf7EgsthdV+Mp0PJO924Pr4A3mcgOU="
+                  schema:
+                      REP-002-CustomBlock:
+                        R007:
+                          settlementRunExecutionDate: "2023-08-26T19:05:00+00:00"
+                        R002:
+                          settlementDate: "2023-08-24T00:00:00+00:00"
+                          settlementCode: "SF"
+                          runNumber: 1
+                        R009:
+                          supplierMPID: "MPID"
+                        R027: #R9007
+                          R027:
+                            distributorID: "SEAL"
+                          R013List: # array R9008
+                            - R013:
+                                GSPGroupID: "_A"
+                              R010List: # array R9010
+                                  - R010:
+                                       DUoSTariffID: 001
+                                       DUoSTariffEnergyDirection: E
+                                       DUoSTariffDomesticPremiseIndicator: True
+                                    R011List: #array
+                                      - settlementPeriod: 1
+                                        settlementPeriodDuration: 30 
+                                        totalUncorrectedVolume: 674094
+                                        totalNumberEnergisedMPANs: 80090
+                                        totalNumberDeEnergisedMPANs: 4587
+                                      - settlementPeriod: 2
+                                        settlementPeriodDuration: 30 
+                                        totalUncorrectedVolume: 627094
+                                        totalNumberEnergisedMPANs: 80780
+                                        totalNumberDeEnergisedMPANs: 4589
+                                      - settlementPeriod: 47
+                                        settlementPeriodDuration: 30 
+                                        totalUncorrectedVolume: 617094
+                                        totalNumberEnergisedMPANs: 10090
+                                        totalNumberDeEnergisedMPANs: 4588
+                                      - settlementPeriod: 48
+                                        settlementPeriodDuration: 30 
+                                        totalUncorrectedVolume: 574094
+                                        totalNumberEnergisedMPANs: 12090
+                                        totalNumberDeEnergisedMPANs: 4756
+                                    R0105:    
+                                        dailyTotalVolumeBasedOnActualData: 4560998
+                                        dailyTotalVolumeBasedOnEstimatedData: 78987667
+                                  - R010:
+                                       DUoSTariffID: 002
+                                       DUoSTariffEnergyDirection: E
+                                       DUoSTariffDomesticPremiseIndicator: True
+                                    R011List: #array
+                                      - settlementPeriod: 1
+                                        settlementPeriodDuration: 30 
+                                        totalUncorrectedVolume: 674094
+                                        totalNumberEnergisedMPANs: 80090
+                                        totalNumberDeEnergisedMPANs: 4587
+                                      - settlementPeriod: 1
+                                        settlementPeriodDuration: 30 
+                                        totalUncorrectedVolume: 627094
+                                        totalNumberEnergisedMPANs: 80780
+                                        totalNumberDeEnergisedMPANs: 4589
+                                      - settlementPeriod: 47
+                                        settlementPeriodDuration: 30 
+                                        totalUncorrectedVolume: 617094
+                                        totalNumberEnergisedMPANs: 10090
+                                        totalNumberDeEnergisedMPANs: 4588
+                                      - settlementPeriod: 48
+                                        settlementPeriodDuration: 30 
+                                        totalUncorrectedVolume: 574094
+                                        totalNumberEnergisedMPANs: 12090
+                                        totalNumberDeEnergisedMPANs: 4756
+
+                                    R0105:    
+                                      dailyTotalVolumeBasedOnActualData: 4560998
+                                      dailyTotalVolumeBasedOnEstimatedData: 78987667
+                            - R013:
+                                GSPGroupID: "_B"
+                              R010List: # array R9010
+                                  - R010:
+                                       DUoSTariffID: 001
+                                       DUoSTariffEnergyDirection: E
+                                       DUoSTariffDomesticPremiseIndicator: True
+                                    R011List: #array
+                                      - settlementPeriod: 1
+                                        settlementPeriodDuration: 30 
+                                        totalUncorrectedVolume: 674094
+                                        totalNumberEnergisedMPANs: 80090
+                                        totalNumberDeEnergisedMPANs: 4587
+                                      - settlementPeriod: 2
+                                        settlementPeriodDuration: 30 
+                                        totalUncorrectedVolume: 627094
+                                        totalNumberEnergisedMPANs: 80780
+                                        totalNumberDeEnergisedMPANs: 4589
+                                      - settlementPeriod: 47
+                                        settlementPeriodDuration: 30 
+                                        totalUncorrectedVolume: 617094
+                                        totalNumberEnergisedMPANs: 10090
+                                        totalNumberDeEnergisedMPANs: 4588
+                                      - settlementPeriod: 48
+                                        settlementPeriodDuration: 30 
+                                        totalUncorrectedVolume: 574094
+                                        totalNumberEnergisedMPANs: 12090
+                                        totalNumberDeEnergisedMPANs: 4756
+                                    R0105:    
+                                        dailyTotalVolumeBasedOnActualData: 4560998
+                                        dailyTotalVolumeBasedOnEstimatedData: 78987667
+                                  - R010:
+                                       DUoSTariffID: 002
+                                       DUoSTariffEnergyDirection: E
+                                       DUoSTariffDomesticPremiseIndicator: True
+                                    R011List: #array
+                                      - settlementPeriod: 1
+                                        settlementPeriodDuration: 30 
+                                        totalUncorrectedVolume: 674094
+                                        totalNumberEnergisedMPANs: 80090
+                                        totalNumberDeEnergisedMPANs: 4587
+                                      - settlementPeriod: 2
+                                        settlementPeriodDuration: 30 
+                                        totalUncorrectedVolume: 627094
+                                        totalNumberEnergisedMPANs: 80780
+                                        totalNumberDeEnergisedMPANs: 4589
+                                      - settlementPeriod: 47
+                                        settlementPeriodDuration: 30 
+                                        totalUncorrectedVolume: 617094
+                                        totalNumberEnergisedMPANs: 10090
+                                        totalNumberDeEnergisedMPANs: 4588
+                                      - settlementPeriod: 48
+                                        settlementPeriodDuration: 30 
+                                        totalUncorrectedVolume: 574094
+                                        totalNumberEnergisedMPANs: 12090
+                                        totalNumberDeEnergisedMPANs: 4756
+
+                                    R0105:    
+                                      dailyTotalVolumeBasedOnActualData: 4560998
+                                      dailyTotalVolumeBasedOnEstimatedData: 78987667
+    REP-002-proposed:
+      value:
+        - payload:
+            CommonBlock: 
+                  S0: 
+                    InterfaceID: 'REP-002'
+                    schemaVersion: "006"
+                    eventCode: "[DUoSLDSOAggData]"
+                  S1:
+                    environmentTag: "DEV"
+                    subText: "Sample of a REP-002 report "
+                    senderUniqueReference: "S-REP-002-0123456789-ECS-20222313-12345687a1234567a"
+                    senderTimestamp: "2022-03-21T19:05:00+00:00"
+                    senderDIPID: "1009012345"
+                    senderRoleID: "SUP"
+                    senderCorrelationID: "CI-20220401-1234567890123abce123092"
+                    DIPConnectionProviderID: "1009012345"
+                  A0:
+                    primaryRecipients:  
+                        - "2300000900"
+                    secondaryRecipients: []
+                    always: []
+            CustomBlock:
+                  P03:
+                    compressedReport: "eJzdVl1v2jAU/S9+HUS2k/CRt43QCgkqBLR9mBDyEo9FS2KU2BUV4r/PNw4haboVNlXTZiGE8LnX5557fJMDWmBiI++Abpfz20yo3cRHHtrcoWNHb+E+bOVcypgnPJULlY73PFAyEqnPJNdQiqnTxVR/Vhh7xedD8V1moM0MjSi7S13Uqe2ORAi7C6r/zVR6p5IvPEMegVQE281Uc55FIvRVxoAO8mwMsPEc67y6Khd5nw/I/NBhareLI57N5kWB/ng5RQ147wTvAfzT7D6NZAGlGwBvdEEdFPKvTMXS7N7EbIs8mSneSNQ/JSq0C0Saq2QHDEci2YkUqoxZnkNu0sOdSviRyDIeAHAZsDhKt4882n6TmgGxbDhcp0oNYPW845M0jAImhZYHPerdhGXfuVzyLUhT37w3oS0WdYzRApMhUA5ZFD+bEo3EU/7E49E5hQ5wLMfB2GjyFnwq8pznOmhgDQb1oLJiHlacQG5qUfxrVJXwjG10YFB04FLPGdLIox2k0uB02Bv1E4uQkuSFQWfSFqVlaNAqrXmKa7nuT6FVwgp17FxfNfn3q14f12BeSirz3p/JGVqG4kpIFn+MY6Ftz8MHEasEFCK2ZdO64y6IoT2r98oFmC0n/kgoMDKhtuP2+oNh3ZouKYeDa8jyhKWhH+Xnqz1+gqsJc6dK0GX6EF8PIcmyVledFR7qOeLRfjl1C+hYZ60DnWI8N4F1XpQWvJavXQpTWSWB3+ZcqeI4tblwaVzVUWxhXPm4TYVcRcW2dVftP6dirGW/mIsXUSB6WQS3XfJbRECUi3wzPK3u/u/55rpmFUKRd/LNdRamtDap/gvfrMsBWfXMefF4NEKBd7RU2+aryA0L9BvCRA/fDB7OcKdgGWqvYsf7EgsthdV+Mp0PJO924Pr4A3mcgOU="
+                  schema:
+                      REP-002-CustomBlock:
+                        R007:
+                          settlementRunExecutionDate: "2023-08-26T19:05:00+00:00"
+                        R002:
+                          settlementDate: "2023-08-24T00:00:00+00:00"
+                          settlementCode: "SF"
+                          runNumber: 1
+                        R009:
+                          supplierMPID: "MPID"
+                        R027: #R9007
+                          R027:
+                            distributorID: "SEAL"
+                          R013List: # array R9008
+                            - R013:
+                                GSPGroupID: "_A"
+                              R010List: # array R9010
+                                  - R010:
+                                       DUoSTariffID: 001
+                                       DUoSTariffEnergyDirection: E
+                                       DUoSTariffDomesticPremiseIndicator: True
+                                    R011List: #array
+                                      - settlementPeriod: 1
+                                        settlementPeriodDuration: 30 
+                                        totalUncorrectedVolume: 674094
+                                        totalNumberEnergisedMPANs: 80090
+                                        totalNumberDeEnergisedMPANs: 4587
+                                      - settlementPeriod: 2
+                                        settlementPeriodDuration: 30 
+                                        totalUncorrectedVolume: 627094
+                                        totalNumberEnergisedMPANs: 80780
+                                        totalNumberDeEnergisedMPANs: 4589
+                                      - settlementPeriod: 47
+                                        settlementPeriodDuration: 30 
+                                        totalUncorrectedVolume: 617094
+                                        totalNumberEnergisedMPANs: 10090
+                                        totalNumberDeEnergisedMPANs: 4588
+                                      - settlementPeriod: 48
+                                        settlementPeriodDuration: 30 
+                                        totalUncorrectedVolume: 574094
+                                        totalNumberEnergisedMPANs: 12090
+                                        totalNumberDeEnergisedMPANs: 4756
+                                    R0105:    
+                                        dailyTotalVolumeBasedOnActualData: 4560998
+                                        dailyTotalVolumeBasedOnEstimatedData: 78987667
+                                  - R010:
+                                       DUoSTariffID: 002
+                                       DUoSTariffEnergyDirection: E
+                                       DUoSTariffDomesticPremiseIndicator: True
+                                    R011List: #array
+                                      - settlementPeriod: 1
+                                        settlementPeriodDuration: 30 
+                                        totalUncorrectedVolume: 674094
+                                        totalNumberEnergisedMPANs: 80090
+                                        totalNumberDeEnergisedMPANs: 4587
+                                      - settlementPeriod: 1
+                                        settlementPeriodDuration: 30 
+                                        totalUncorrectedVolume: 627094
+                                        totalNumberEnergisedMPANs: 80780
+                                        totalNumberDeEnergisedMPANs: 4589
+                                      - settlementPeriod: 47
+                                        settlementPeriodDuration: 30 
+                                        totalUncorrectedVolume: 617094
+                                        totalNumberEnergisedMPANs: 10090
+                                        totalNumberDeEnergisedMPANs: 4588
+                                      - settlementPeriod: 48
+                                        settlementPeriodDuration: 30 
+                                        totalUncorrectedVolume: 574094
+                                        totalNumberEnergisedMPANs: 12090
+                                        totalNumberDeEnergisedMPANs: 4756
+
+                                    R0105:    
+                                      dailyTotalVolumeBasedOnActualData: 4560998
+                                      dailyTotalVolumeBasedOnEstimatedData: 78987667
+                            - R013:
+                                GSPGroupID: "_B"
+                              R010List: # array R9010
+                                  - R010:
+                                       DUoSTariffID: 001
+                                       DUoSTariffEnergyDirection: E
+                                       DUoSTariffDomesticPremiseIndicator: True
+                                    R011List: #array
+                                      - settlementPeriod: 1
+                                        settlementPeriodDuration: 30 
+                                        totalUncorrectedVolume: 674094
+                                        totalNumberEnergisedMPANs: 80090
+                                        totalNumberDeEnergisedMPANs: 4587
+                                      - settlementPeriod: 2
+                                        settlementPeriodDuration: 30 
+                                        totalUncorrectedVolume: 627094
+                                        totalNumberEnergisedMPANs: 80780
+                                        totalNumberDeEnergisedMPANs: 4589
+                                      - settlementPeriod: 47
+                                        settlementPeriodDuration: 30 
+                                        totalUncorrectedVolume: 617094
+                                        totalNumberEnergisedMPANs: 10090
+                                        totalNumberDeEnergisedMPANs: 4588
+                                      - settlementPeriod: 48
+                                        settlementPeriodDuration: 30 
+                                        totalUncorrectedVolume: 574094
+                                        totalNumberEnergisedMPANs: 12090
+                                        totalNumberDeEnergisedMPANs: 4756
+                                    R0105:    
+                                        dailyTotalVolumeBasedOnActualData: 4560998
+                                        dailyTotalVolumeBasedOnEstimatedData: 78987667
+                                  - R010:
+                                       DUoSTariffID: 002
+                                       DUoSTariffEnergyDirection: E
+                                       DUoSTariffDomesticPremiseIndicator: True
+                                    R011List: #array
+                                      - settlementPeriod: 1
+                                        settlementPeriodDuration: 30 
+                                        totalUncorrectedVolume: 674094
+                                        totalNumberEnergisedMPANs: 80090
+                                        totalNumberDeEnergisedMPANs: 4587
+                                      - settlementPeriod: 2
+                                        settlementPeriodDuration: 30 
+                                        totalUncorrectedVolume: 627094
+                                        totalNumberEnergisedMPANs: 80780
+                                        totalNumberDeEnergisedMPANs: 4589
+                                      - settlementPeriod: 47
+                                        settlementPeriodDuration: 30 
+                                        totalUncorrectedVolume: 617094
+                                        totalNumberEnergisedMPANs: 10090
+                                        totalNumberDeEnergisedMPANs: 4588
+                                      - settlementPeriod: 48
+                                        settlementPeriodDuration: 30 
+                                        totalUncorrectedVolume: 574094
+                                        totalNumberEnergisedMPANs: 12090
+                                        totalNumberDeEnergisedMPANs: 4756
+
+                                    R0105:    
+                                      dailyTotalVolumeBasedOnActualData: 4560998
+                                      dailyTotalVolumeBasedOnEstimatedData: 78987667
