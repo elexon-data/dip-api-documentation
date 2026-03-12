@@ -19,4 +19,19 @@ jobs:
         run: npm install -g @redocly/cli@1
 
       - name: Validate YAML resolves without errors
-        run: redocly bundle submit-events --output /dev/null
+        run: |
+          failed=0
+          for f in MHHSPROGRAMME-*.yaml; do
+            if redocly bundle "$f" > /tmp/redocly_out.txt 2>&1; then
+              echo "### ✅ $f" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "### ❌ $f" >> $GITHUB_STEP_SUMMARY
+              echo '```' >> $GITHUB_STEP_SUMMARY
+              cat /tmp/redocly_out.txt >> $GITHUB_STEP_SUMMARY
+              echo '```' >> $GITHUB_STEP_SUMMARY
+              failed=1
+            fi
+          done
+          exit $failed
+        env:
+          GITHUB_TOKEN: "token ${{ secrets.GITHUB_TOKEN }}"

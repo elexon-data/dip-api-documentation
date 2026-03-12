@@ -1,3 +1,6 @@
-apis:
-  submit-events:
-    root: MHHSPROGRAMME-SubmitEvents-2.0.1-unresolved.yaml # TODO 305918: remove hardcoded name
+resolve:
+  http:
+    headers:
+      - matches: https://raw.githubusercontent.com/**
+        name: Authorization
+        envVariable: GITHUB_TOKEN

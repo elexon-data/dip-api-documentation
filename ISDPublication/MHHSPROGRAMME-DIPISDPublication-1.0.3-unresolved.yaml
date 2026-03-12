@@ -1,0 +1,317 @@
+# API to Share Company Details between the Elexon Customer Solutions (CS) and the Data Integration Platfomm (DIP)
+#
+# The DIP will present the API, CS will call the API
+#
+#
+# The API will work in different two different modes dependent on the verb: post or get 
+#
+# get:
+#
+# Customer solutions 'gets' the current M16 from DIP
+#
+# The calling parameters are 
+# > Company Number (optional) (string 8)
+#
+# 1. If only the Company Number is specifed then the DIP will respond with a 200 response and all the details it holds for the company
+#    in the MarketParticipant details structure. If the company is not known then a 404 is sent back.
+#
+# 2. If no Company Number is specified then the DIP will present all Companies details in the database. This may contain both active and inactive rows 
+#    (i.e. where the datetime to is before current time). It is the responsibility of CS to filter out the rows not required from the published M16
+#
+# post: 
+#
+# Customer solutions 'posts' the new companies details to the DIP
+#
+# The calling parameters are 
+# > Company Number (string 8)
+# > MPID (String 4)
+# > Market Role Code (string 1)
+#
+#   Customer Solutions sends new details of organisations going through qualification to the DIP.
+#   if the key details are not found the DIP will respond with a 201 response and add a new record to its internal lookup table 
+#   so that it will know that this is a new participant or an existing participant with an addtional MPID and/or role code that 
+#   will be onboarding in the future. 
+#
+#   If a company has mulitple MPIDs and roles then the API will need to be called several times, one for each permutation.
+#
+openapi: 3.0.0
+info:
+  version: 1.0.3
+  title: DIP - Send M16 Data to ECS
+  description: DIP APIs for sending & receiving Company Registration details <br><br>
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+# Apply the API key globally to all operations    
+security:
+  - ApiKeyAuth: []
+paths:
+  /companyDetails:
+    summary: DIP Company Details Publication
+    description: Send and receive Market Particapnt data between Customer Solutions and the DIP
+    post:
+      summary: Sends new DIP Market Particpant Data to the DIP from Customer Solutions
+      description: Send the details of new MPs to the DIP.
+      operationId: receiveCompanyDetails
+      tags:
+        - DIP Publish ISD
+      parameters:
+        - $ref: '#/components/parameters/CompanyNumber'
+        - $ref: '#/components/parameters/MPID'
+        - $ref: '#/components/parameters/MarketRoleCode'
+        - $ref: '#/components/parameters/DIPRoleCode'
+        - $ref: '#/components/parameters/CommonSignatureHeader'
+        - $ref: '#/components/parameters/CommonSignatureDateHeader'
+        - $ref: '#/components/parameters/CommonSHA256Header'
+        - $ref: '#/components/parameters/CommonSignatureCertifcateHeader'
+      responses:
+        '201':
+          description: Id created
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorised Error
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+    # 
+    get:
+      summary: Sends the current DIP Market Particpant Data as M16 data to Cuustomer Solutions.
+      description: Sends the current state of the M16 data to CS so that ISD can publish. Only relays details of companies that have DIP Ids belonging to their company
+      operationId: publishM16
+      tags:
+        - DIP Publish ISD
+      parameters:
+        - $ref: '#/components/parameters/CompanyNumber'
+        - $ref: '#/components/parameters/CommonSignatureHeader'
+        - $ref: '#/components/parameters/CommonSignatureDateHeader'
+        - $ref: '#/components/parameters/CommonSHA256Header'
+        - $ref: '#/components/parameters/CommonSignatureCertifcateHeader'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  properties:
+                    payload:
+                      $ref: '#/components/schemas/marketParticipantDetail'
+              examples:
+                'Company Number(All - Companies [2])':
+                  value:
+                    - companyRegNumber: 98765432
+                      companyName: Big Energy Company Ltd
+                      companyDetails:
+                        - MPID: XOYO
+                          marketRole: X
+                          DIPID: '2334567890'
+                          DIPRole: SUP
+                          datetimeFrom: '2024-04-04T12:00:00'
+                          datetimeTo: null
+                        - MPID: XOYO
+                          marketRole: 'N'
+                          DIPID: '1434567890'
+                          DIPRole: SDS
+                          datetimeFrom: '2024-04-03T12:00:00'
+                          datetimeTo: null
+                    - companyRegNumber: SC876123
+                      companyName: Little Energy Company Ltd
+                      companyDetails:
+                        - MPID: A0XO
+                          marketRole: X
+                          DIPID: '2334567898'
+                          DIPRole: SUP
+                          datetimeFrom: '2024-04-04T12:00:00'
+                          datetimeTo: null
+                        - MPID: AXXX
+                          marketRole: 'N'
+                          DIPID: '1434567899'
+                          DIPRole: SDS
+                          datetimeFrom: '2024-04-03T12:00:00'
+                          datetimeTo: null
+                Company Number(A987612345):
+                  value:
+                    - companyRegNumber: SC876123
+                      companyName: Big Energy Company Ltd
+                      companyDetails:
+                        - MPID: XOYO
+                          marketRole: X
+                          DIPID: '2334567890'
+                          DIPRole: SUP
+                          datetimeFrom: '2024-04-04T12:00:00'
+                          datetimeTo: null
+                        - MPID: XOYO
+                          marketRole: 'N'
+                          DIPID: '1434567890'
+                          DIPRole: SDS
+                          datetimeFrom: '2024-04-03T12:00:00'
+                          datetimeTo: null
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorised Error
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+# 
+components:
+  parameters:
+    CompanyNumber:
+      name: X-company-number
+      in: query
+      required: false
+      schema:
+        $ref: '#/components/schemas/companyRegNumber'
+      example: '98761234'
+    MPID:
+      name: X-MPID
+      in: query
+      required: false
+      schema:
+        $ref: '#/components/schemas/DT-027-MPID'
+      example: XOYO
+    MarketRoleCode:
+      name: X-market-role
+      in: query
+      required: false
+      schema:
+        $ref: '#/components/schemas/marketRole'
+      examples:
+        Supplier:
+          value: X
+        Smart Data Service:
+          value: 'N'
+    DIPRoleCode:
+      name: X-DIP-role
+      in: query
+      required: false
+      schema:
+        $ref: '#/components/schemas/DT-009-DIPParticipantRole'
+      examples:
+        Supplier:
+          value: SUP
+        Smart Data Service:
+          value: SDS
+    CommonSignatureHeader:
+      name: X-DIP-Signature
+      schema:
+        type: string
+      in: header
+      required: true
+    CommonSignatureDateHeader:
+      name: X-DIP-Signature-Date
+      schema:
+        type: string
+      in: header
+      required: true
+    CommonSHA256Header:
+      name: X-DIP-Content-Hash
+      schema:
+        type: string
+      in: header
+      required: true
+    CommonSignatureCertifcateHeader:
+      name: X-DIP-Signature-Certificate
+      schema:
+        type: string
+      in: header
+      required: true
+  securitySchemes:
+    ApiKeyAuth: # security scheme name 
+      name: X-API-Key
+      type: apiKey
+      in: header
+  schemas:
+    #              $ref: '#/components/schemas/marketParticipantDetail'
+    #          items:
+    #          type: array
+    #        marketParticipantDetails:
+    #      properties:
+    #     type: object
+    #    allMarketParticipantDetails:
+    ### M16 message defintion              
+    marketParticipantDetail:
+      type: object
+      properties:
+        companyRegNumber:
+          $ref: '#/components/schemas/companyRegNumber'
+        companyName:
+          description: Company Name
+          type: string
+          nullable: true
+          maxLength: 50
+          example: Big energy Company Ltd
+        companyDetails:
+          type: array
+          items:
+            $ref: '#/components/schemas/M16Row'
+    M16Row:
+      type: object
+      properties:
+        MPID:
+          $ref: '#/components/schemas/DT-027-MPID'
+        marketRole:
+          $ref: '#/components/schemas/marketRole'
+        DIPID:
+          $ref: '#/components/schemas/DT-006N-DIPParticipantID'
+        DIPRole:
+          $ref: '#/components/schemas/DT-009-DIPParticipantRole'
+        datetimeFrom:
+          $ref: '#/components/schemas/DT-003-DateTime'
+        datetimeTo:
+          $ref: '#/components/schemas/DT-003N-DateTime'
+    # allows the date/time to be open ended
+    companyRegNumber:
+      description: Company Registration Number - primary identifier
+      type: string
+      nullable: false
+      minLength: 8
+      maxLength: 10
+      example: '02827312'
+    marketRole:
+      description: DTN Role Code
+      type: string
+      nullable: true
+      minLength: 1
+      maxLength: 1
+      example: X
+    DT-027-MPID:
+      description: Legacy MPID
+      type: string
+      minLength: 4
+      maxLength: 4
+      pattern: '^[A-Z]{4}$'
+      example: EMEB
+    DT-006N-DIPParticipantID:
+      description: DIP Participant Id
+      type: string
+      nullable: true
+      minLength: 10
+      maxLength: 10
+      example: '1009012345'
+    DT-009-DIPParticipantRole:
+      description: DIP Participant Role
+      type: string
+      minLength: 3
+      maxLength: 5
+      example: SUP
+    DT-003-DateTime:
+      description: ISO 8601 Date/time
+      type: string
+      minLength: 25
+      maxLength: 25
+      example: '2022-03-21T19:05:00+00:00'
+    DT-003N-DateTime:
+      description: ISO 8601 Date/time
+      type: string
+      nullable: true
+      minLength: 25
+      maxLength: 25
+      example: '2022-03-21T19:05:00+00:00'
+x-internal: true
