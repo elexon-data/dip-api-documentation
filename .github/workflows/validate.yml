@@ -1,0 +1,22 @@
+name: Validate YAML
+
+on:
+  push:
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Redocly CLI
+        run: npm install -g @redocly/cli@1
+
+      - name: Validate YAML resolves without errors
+        run: redocly bundle submit-events --output /dev/null
