@@ -1,0 +1,35 @@
+name: Validate YAML
+
+on:
+  push:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Redocly CLI
+        run: npm install -g @redocly/cli@1
+
+      - name: Validate YAML resolves without errors
+        run: |
+          failed=0
+          for f in MHHSPROGRAMME-*.yaml; do
+            if redocly bundle "$f" > /tmp/redocly_out.txt 2>&1; then
+              echo "### ✅ $f" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "### ❌ $f" >> $GITHUB_STEP_SUMMARY
+              echo '```' >> $GITHUB_STEP_SUMMARY
+              cat /tmp/redocly_out.txt >> $GITHUB_STEP_SUMMARY
+              echo '```' >> $GITHUB_STEP_SUMMARY
+              failed=1
+            fi
+          done
+          exit $failed
+        env:
+          GITHUB_TOKEN: "token ${{ secrets.GITHUB_TOKEN }}"
