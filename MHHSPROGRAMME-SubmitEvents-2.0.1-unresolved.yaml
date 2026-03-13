@@ -141,7 +141,7 @@ info:
   version: 2.0.1
   title: DIP - Send Messages & Receive Publications
   description: 
-    Latest release 2.0.1 <br> DIP APIs for sending & recieving MHHS TOM messages and reports.      <br><br>**New for release 2.0.1<br>
+    TEST CHANGE Latest release 2.0.1 <br> DIP APIs for sending & recieving MHHS TOM messages and reports.      <br><br>**New for release 2.0.1<br>
      -           Channel-051    EES Data Refresh**<br>
      <br>Supported interfaces -<br><br>
      -           Channel-001    Notification of Change of Supplier <br>
