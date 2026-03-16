@@ -250,7 +250,7 @@ paths:
                 $ref: '#/components/schemas/DIPMessageArray'
             examples:
               IF-001-InitialRegistration:
-                $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Examples-0.6-unresolved.yaml#/components/examples/IF-001-InitialRegistration'
+                $ref:  'https://raw.githubusercontent.com/elexon-data-wrong/dip-api-documentation/main/MHHSPROGRAMME-Examples-0.6-unresolved.yaml#/components/examples/IF-001-InitialRegistration'
               IF-001-ChangeOfSupplier:
                 $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Examples-0.6-unresolved.yaml#/components/examples/IF-001-ChangeOfSupplier'
               IF-002:
