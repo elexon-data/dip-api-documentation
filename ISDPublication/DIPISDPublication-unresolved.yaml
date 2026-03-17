@@ -39,9 +39,7 @@ info:
   version: 1.0.3
   title: DIP - Send M16 Data to ECS
   description: DIP APIs for sending & receiving Company Registration details <br><br>
-servers:
-  # Added by API Auto Mocking Plugin
-  - description: SwaggerHub API Auto Mocking
+servers: null
 # Apply the API key globally to all operations    
 security:
   - ApiKeyAuth: []

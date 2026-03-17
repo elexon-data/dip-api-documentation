@@ -196,14 +196,7 @@ info:
      New for IR7.2 - DIP Message Validation APIs - see DIP Message Validation Endpoints Section below <br><br>
      ** examples available in post /dip-channel/{id}<br>  
      any comments please relay to design@mhhsprogramme.co.uk
-servers:
-
-  # Added by API Auto Mocking Plugin
-  - description: SwaggerHub API Auto Mocking
-    url: https://virtserver.swaggerhub.com/MHHSPROGRAMME/SubmitEvents/1.8.3
-
-
-  # Apply the API key globally to all operations    
+servers: null
 security:
   - ApiKeyAuth: []
 
