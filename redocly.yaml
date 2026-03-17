@@ -1,3 +1,7 @@
+apis:
+  main:
+    root: SubmitEvents-unresolved.yaml
+
 resolve:
   http:
     headers:

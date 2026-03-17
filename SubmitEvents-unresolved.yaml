@@ -1,16 +1,10 @@
 # OpenAPI version identifier - required for OpenAPI 3.0 domains
-# (c) Elexon 2022, 2023, 2024 , 2025
+# (c) Elexon 2022, 2023, 2024
 #
-# Elexon - Data Integration Platform 
+# MMHS - Data Integration Platform 
 # SubmitEvents API 
 #
 # ----- update notices ---------------------------------------------------------------
-# September 2025
-# ------------
-# Create a new version 2 for a post go-live (M10) release
-# Correct the example message in the main API
-# Rebrand from MHHS Programme to DIP Manager
-#
 # November 2023
 # --------------
 # Updates to include changes for interim release 1.6
@@ -40,7 +34,7 @@
 # A version 1.2 will be created to pick up the next set of changes. 
 #
 # ----- note on use of upper/lower case -------------------------------------
-# DIP will not be enforcing c-keytalisation validation on JSON field names or URLS on message ingress. 
+# DIP will not be enforcing capitalisation validation on JSON field names or URLS on message ingress. 
 # MPs are welcome to enfore capiltalisation validation when recieiving messages 
 # as the DIP will obey the case definitions of the swagger.
 # The data itself is case sensitive
@@ -57,19 +51,12 @@
 #
 # none of these items affect the data format
 # 
-# any comments please relay to DIPManager(@)elexon.co.uk
+# any comments please relay to design(@)mhhsprogramme.co.uk
 # ------------------------------------------------------------------------------------
 # Change history
 # ====================================================================================
 # Ver   Date           Ref.    Description
-#                   ADO / DCAB            
 # ------------------------------------------------------------------------------------
-# 2.0.1 16/09/2025              First post go-live release
-#       03/10/2025  CP1629      Introduce IF-051 message aligns to June 2026 BSC release    
-#
-#  Changes below reference the MHHS Programme DIN LOG - changes above reference Avandae ADO
-#  and the DCAB register
-#
 # 1.8.3 09/09/2024              Support new IR8.3 release  
 # 1.8.2 12/08/2024              Support new IR8.2 release  
 # 1.8.1 03/05/2024              Support new IR8.1 release  
@@ -138,14 +125,12 @@
 
 openapi: 3.0.0
 info:
-  version: 2.0.1
+  version: 1.8.3
   title: DIP - Send Messages & Receive Publications
   description: 
-    Latest release 2.0.1 <br> DIP APIs for sending & recieving MHHS TOM messages and reports.      <br><br>**New for release 2.0.1<br>
-     -           Channel-051    EES Data Refresh**<br>
-     <br>Supported interfaces -<br><br>
-     -           Channel-001    Notification of Change of Supplier <br>
-     -           Channel-002    Registration Update to Supplier (COS Gain) <br>
+    Latest release 1.8.3 <br> DIP APIs for sending & recieving MHHS TOM messages and reports. <br>Supported interfaces -<br><br>
+     -           Channel-001    Notification of Change of Supplier **<br>
+     -           Channel-002    Registration Update to Supplier (COS Gain) **<br>
      -           Channel-003    Notification of Migration and De-Appointment (Migration)<br>
      -           Channel-004    Comms Hub Information <br>
      -           Channel-005    Metering Service MTD Updates to Registration<br>
@@ -186,7 +171,7 @@ info:
      -           Channel-045    Registration Service Notification of Invalid Segment or No Agents Appointed<br>
      -           Channel-047    Notification of the Publication of a Downloadable Asset<br>
      -           Channel-050    EES Exclusive Updates<br><br>
-     ** MDR Reports**<br><br>
+     **New for IR7 - CR023 MDR Reports**<br><br>
      -           Channel-061    MDR Start Request<br>
      -           Channel-062    MDR Start Request Response<br>
      -           Channel-063    MDR Stop Request<br>
@@ -211,14 +196,7 @@ info:
      New for IR7.2 - DIP Message Validation APIs - see DIP Message Validation Endpoints Section below <br><br>
      ** examples available in post /dip-channel/{id}<br>  
      any comments please relay to design@mhhsprogramme.co.uk
-servers:
-
-  # Removed - migrated from SwaggerHub to GitHub
-  # - description: SwaggerHub API Auto Mocking
-  #   url: https://virtserver.swaggerhub.com/MHHSPROGRAMME/SubmitEvents/2.0.1
-
-
-  # Apply the API key globally to all operations    
+servers: null
 security:
   - ApiKeyAuth: []
 
@@ -237,11 +215,12 @@ paths:
           - DIP Message Channel
       parameters:
         - $ref: '#/components/parameters/MessageChannel'
-        - $ref: '#/components/parameters/CommonSignatureHeader'        
+        - $ref: '#/components/parameters/CommonSignatureHeader'
         - $ref: '#/components/parameters/CommonSignatureDateHeader'
         - $ref: '#/components/parameters/CommonSHA256Header'
         - $ref: '#/components/parameters/CommonSignatureCertifcateHeader'
 
+        
       requestBody:
         required: true
         content:
@@ -250,25 +229,23 @@ paths:
                 $ref: '#/components/schemas/DIPMessageArray'
             examples:
               IF-001-InitialRegistration:
-                $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Examples-0.6-unresolved.yaml#/components/examples/IF-001-InitialRegistration'
+                $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Examples-unresolved.yaml#/components/examples/IF-001-InitialRegistration'
               IF-001-ChangeOfSupplier:
-                $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Examples-0.6-unresolved.yaml#/components/examples/IF-001-ChangeOfSupplier'
+                $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Examples-unresolved.yaml#/components/examples/IF-001-ChangeOfSupplier'
               IF-002:
-                $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Examples-0.6-unresolved.yaml#/components/examples/IF-002'
+                $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Examples-unresolved.yaml#/components/examples/IF-002'
               IF-003-MSDeAppRM:
-                $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Examples-0.6-unresolved.yaml#/components/examples/IF-003-MSDeAppRM'
+                $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Examples-unresolved.yaml#/components/examples/IF-003-MSDeAppRM'
               IF-021:
-                $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Examples-0.6-unresolved.yaml#/components/examples/IF-021'
-#              IF-021-Multiple-Messages:
-#                $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Examples-0.6-unresolved.yaml#/components/examples/IF-021-Multiple-Messages'
+                $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Examples-unresolved.yaml#/components/examples/IF-021'
               IF-037-MSDeApp:
-                $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Examples-0.6-unresolved.yaml#/components/examples/IF-037-MSDeApp'
+                $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Examples-unresolved.yaml#/components/examples/IF-037-MSDeApp'
               IF-043:
-                $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Examples-0.6-unresolved.yaml#/components/examples/IF-043'
+                $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Examples-unresolved.yaml#/components/examples/IF-043'
               IF-044:
-                $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Examples-0.6-unresolved.yaml#/components/examples/IF-044'
+                $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Examples-unresolved.yaml#/components/examples/IF-044'
               REP-002:
-                $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Examples-0.6-unresolved.yaml#/components/examples/REP-002'
+                $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Examples-unresolved.yaml#/components/examples/REP-002'
 
 
       responses:
@@ -506,7 +483,7 @@ paths:
         '401':
             description: Unauthorised Error            
 
-### Message Replay - copied back 1.8.3 definition as 2.0.1 can't contain the enhanced replay/requeue - moved to 2.0.2.
+### Message Replay
 
   /dip-channel/{id}/replay/{recipient-id}:
     post:
@@ -772,7 +749,6 @@ paths:
         '401':
             description: Unauthorised Error            
 
-
 #####################
   /validate/IF-001/InitialRegistration:
       summary: DIP Interface Validation for IF-001
@@ -796,7 +772,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-001-InitialRegistration'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-001-InitialRegistration'
   
         responses:
           '201':
@@ -843,7 +819,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-001-ChangeOfSupplier'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-001-ChangeOfSupplier'
 
         responses:
           '201':
@@ -890,7 +866,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-002-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-002-Payload'
 
         responses:
           '201':
@@ -937,7 +913,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-003-ReverseMigNotification'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-003-ReverseMigNotification'
 
         responses:
           '201':
@@ -984,7 +960,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-003-MSDeAppRM'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-003-MSDeAppRM'
 
         responses:
           '201':
@@ -1031,7 +1007,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-003-DSDeAppRM'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-003-DSDeAppRM'
 
         responses:
           '201':
@@ -1079,7 +1055,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-004-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-004-Payload'
 
         responses:
           '201':
@@ -1126,7 +1102,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-005-MeterInstall'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-005-MeterInstall'
 
         responses:
           '201':
@@ -1173,7 +1149,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-005-MeterRemoval'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-005-MeterRemoval'
 
         responses:
           '201':
@@ -1220,7 +1196,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-005-MeterExchange'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-005-MeterExchange'
 
         responses:
           '201':
@@ -1267,7 +1243,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-005-MeterUpdate'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-005-MeterUpdate'
 
         responses:
           '201':
@@ -1314,7 +1290,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-005-MeterHistoryUpdate'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-005-MeterHistoryUpdate'
 
         responses:
           '201':
@@ -1361,7 +1337,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-006-MeterInstall'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-006-MeterInstall'
 
         responses:
           '201':
@@ -1408,7 +1384,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-006-MeterRemoval'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-006-MeterRemoval'
 
         responses:
           '201':
@@ -1455,7 +1431,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-006-MeterExchange'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-006-MeterExchange'
 
         responses:
           '201':
@@ -1502,7 +1478,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-006-MeterUpdate'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-006-MeterUpdate'
 
         responses:
           '201':
@@ -1549,7 +1525,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-006-MeterHistoryUpdate'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-006-MeterHistoryUpdate'
 
         responses:
           '201':
@@ -1596,7 +1572,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-007-EnergisationStatusChange'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-007-EnergisationStatusChange'
 
         responses:
           '201':
@@ -1643,7 +1619,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-007-EnergisationStatusFailure'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-007-EnergisationStatusFailure'
 
         responses:
           '201':
@@ -1690,7 +1666,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-008-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-008-Payload'
 
         responses:
           '201':
@@ -1737,7 +1713,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-009-MPANDisconnection'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-009-MPANDisconnection'
 
         responses:
           '201':
@@ -1784,7 +1760,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-009-MPANReconnection'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-009-MPANReconnection'
 
         responses:
           '201':
@@ -1832,7 +1808,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-009-CSSDeRegistration'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-009-CSSDeRegistration'
 
         responses:
           '201':
@@ -1879,7 +1855,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-013-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-013-Payload'
 
         responses:
           '201':
@@ -1926,7 +1902,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-014-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-014-Payload'
 
         responses:
           '201':
@@ -1973,7 +1949,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-014-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-014-Payload'
 
         responses:
           '201':
@@ -2020,7 +1996,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-015-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-015-Payload'
 
         responses:
           '201':
@@ -2067,7 +2043,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-018-AddressChg'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-018-AddressChg'
 
         responses:
           '201':
@@ -2114,7 +2090,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-018-GSPChg'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-018-GSPChg'
 
         responses:
           '201':
@@ -2161,7 +2137,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-018-DUOSTariffIDChg'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-018-DUOSTariffIDChg'
 
         responses:
           '201':
@@ -2208,7 +2184,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-018-DomPremInd'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-018-DomPremInd'
 
         responses:
           '201':
@@ -2255,7 +2231,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-018-EnergyDirection'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-018-EnergyDirection'
 
         responses:
           '201':
@@ -2302,7 +2278,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-018-DCCEnrolment'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-018-DCCEnrolment'
 
         responses:
           '201':
@@ -2349,7 +2325,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-018-MUMIndicator'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-018-MUMIndicator'
 
         responses:
           '201':
@@ -2396,7 +2372,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-019-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-019-Payload'
 
         responses:
           '201':
@@ -2443,7 +2419,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-019-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-019-Payload'
 
         responses:
           '201':
@@ -2490,7 +2466,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-019-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-019-Payload'
 
         responses:
           '201':
@@ -2537,7 +2513,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-019-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-019-Payload'
 
         responses:
           '201':
@@ -2584,7 +2560,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-019-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-019-Payload'
 
         responses:
           '201':
@@ -2631,7 +2607,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-019-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-019-Payload'
 
         responses:
           '201':
@@ -2678,7 +2654,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-020-LinkedImportExportCreate'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-020-LinkedImportExportCreate'
 
         responses:
           '201':
@@ -2725,7 +2701,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-020-LinkedImportExportAdd'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-020-LinkedImportExportAdd'
 
         responses:
           '201':
@@ -2772,7 +2748,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-020-LinkedImportExportRemove'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-020-LinkedImportExportRemove'
 
         responses:
           '201':
@@ -2819,7 +2795,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-020-RelatedCreate'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-020-RelatedCreate'
 
         responses:
           '201':
@@ -2866,7 +2842,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-020-RelatedAdd'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-020-RelatedAdd'
 
         responses:
           '201':
@@ -2913,7 +2889,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-020-RelatedRemove'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-020-RelatedRemove'
 
         responses:
           '201':
@@ -2960,7 +2936,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-021-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-021-Payload'
 
         responses:
           '201':
@@ -3007,7 +2983,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-021-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-021-Payload'
 
         responses:
           '201':
@@ -3054,7 +3030,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-022-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-022-Payload'
 
         responses:
           '201':
@@ -3101,7 +3077,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-023-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-023-Payload'
 
         responses:
           '201':
@@ -3148,7 +3124,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-024-SN-Vacant'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-024-SN-Vacant'
 
         responses:
           '201':
@@ -3195,7 +3171,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-024-SN-NoComms'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-024-SN-NoComms'
 
         responses:
           '201':
@@ -3242,7 +3218,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-024-SN-RemoteEnabled'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-024-SN-RemoteEnabled'
 
         responses:
           '201':
@@ -3289,7 +3265,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-024-SN-RemoteDisabled'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-024-SN-RemoteDisabled'
 
         responses:
           '201':
@@ -3336,7 +3312,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-024-SN-SupplierAC'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-024-SN-SupplierAC'
 
         responses:
           '201':
@@ -3383,7 +3359,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-024-SN-OffPeakDec'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-024-SN-OffPeakDec'
 
         responses:
           '201':
@@ -3430,7 +3406,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-025-ConsentGranularity'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-025-ConsentGranularity'
 
         responses:
           '201':
@@ -3477,7 +3453,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-025-IHDInfo'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-025-IHDInfo'
 
         responses:
           '201':
@@ -3524,7 +3500,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-025-SMSO'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-025-SMSO'
 
         responses:
           '201':
@@ -3571,7 +3547,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-025-SSCandProfileClass'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-025-SSCandProfileClass'
 
         responses:
           '201':
@@ -3618,7 +3594,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-026-ConsentGranularity'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-026-ConsentGranularity'
 
         responses:
           '201':
@@ -3665,7 +3641,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-026-IHDInfo'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-026-IHDInfo'
 
         responses:
           '201':
@@ -3712,7 +3688,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-026-SMSO'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-026-SMSO'
 
         responses:
           '201':
@@ -3759,7 +3735,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-026-SSCandProfileClass'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-026-SSCandProfileClass'
 
         responses:
           '201':
@@ -3806,7 +3782,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-027-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-027-Payload'
 
         responses:
           '201':
@@ -3853,7 +3829,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-028-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-028-Payload'
 
         responses:
           '201':
@@ -3900,7 +3876,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-031-MSApp'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-031-MSApp'
 
         responses:
           '201':
@@ -3947,7 +3923,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-031-DSApp'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-031-DSApp'
 
         responses:
           '201':
@@ -3994,7 +3970,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-032-MSAppInitialResp'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-032-MSAppInitialResp'
 
         responses:
           '201':
@@ -4041,7 +4017,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-032-DSAppInitialResp'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-032-DSAppInitialResp'
 
         responses:
           '201':
@@ -4088,7 +4064,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-033-MSAppSPRequest'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-033-MSAppSPRequest'
 
         responses:
           '201':
@@ -4135,7 +4111,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-033-DSAppSPRequest'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-033-DSAppSPRequest'
 
         responses:
           '201':
@@ -4182,7 +4158,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-034-MSAppSPResponse'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-034-MSAppSPResponse'
 
         responses:
           '201':
@@ -4229,7 +4205,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-034-DSAppSPResponse'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-034-DSAppSPResponse'
 
         responses:
           '201':
@@ -4276,7 +4252,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-034-SDS-MDRUpdate'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-034-SDS-MDRUpdate'
 
         responses:
           '201':
@@ -4323,7 +4299,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-035-MSAppAccepted'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-035-MSAppAccepted'
 
         responses:
           '201':
@@ -4370,7 +4346,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-035-MSAppRejected'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-035-MSAppRejected'
 
         responses:
           '201':
@@ -4417,7 +4393,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-035-MSAppLapsed'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-035-MSAppLapsed'
 
         responses:
           '201':
@@ -4464,7 +4440,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-035-DSAppAccepted'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-035-DSAppAccepted'
 
         responses:
           '201':
@@ -4511,7 +4487,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-035-DSAppRejected'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-035-DSAppRejected'
 
         responses:
           '201':
@@ -4558,7 +4534,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-035-DSAppLapsed'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-035-DSAppLapsed'
 
         responses:
           '201':
@@ -4605,7 +4581,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-035-IMS-SendMTD'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-035-IMS-SendMTD'
 
         responses:
           '201':
@@ -4652,7 +4628,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-035-SDS-MDROutcome'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-035-SDS-MDROutcome'
 
         responses:
           '201':
@@ -4699,7 +4675,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-035-DCC-MDROutcome'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-035-DCC-MDROutcome'
 
         responses:
           '201':
@@ -4746,7 +4722,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-036-MSAppActive'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-036-MSAppActive'
 
         responses:
           '201':
@@ -4793,7 +4769,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-036-DSAppActive'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-036-DSAppActive'
 
         responses:
           '201':
@@ -4840,7 +4816,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-037-MSDeApp'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-037-MSDeApp'
 
         responses:
           '201':
@@ -4887,7 +4863,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-037-DSDeApp'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-037-DSDeApp'
 
         responses:
           '201':
@@ -4934,7 +4910,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-037-MSDeAppUpdate'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-037-MSDeAppUpdate'
 
         responses:
           '201':
@@ -4981,7 +4957,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-037-DSDeAppUpdate'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-037-DSDeAppUpdate'
 
         responses:
           '201':
@@ -5028,7 +5004,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-038-DirectContractMSAdd'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-038-DirectContractMSAdd'
 
         responses:
           '201':
@@ -5075,7 +5051,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-038-DirectContractDSAdd'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-038-DirectContractDSAdd'
 
         responses:
           '201':
@@ -5122,7 +5098,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-038-DirectContractMSRemove'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-038-DirectContractMSRemove'
 
         responses:
           '201':
@@ -5169,7 +5145,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-038-DirectContractDSRemove'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-038-DirectContractDSRemove'
 
         responses:
           '201':
@@ -5216,7 +5192,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-039-DirectContractMSAdd'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-039-DirectContractMSAdd'
 
         responses:
           '201':
@@ -5263,7 +5239,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-039-DirectContractDSAdd'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-039-DirectContractDSAdd'
 
         responses:
           '201':
@@ -5310,7 +5286,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-039-DirectContractMSRemove'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-039-DirectContractMSRemove'
 
         responses:
           '201':
@@ -5357,7 +5333,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-039-DirectContractDSRemove'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-039-DirectContractDSRemove'
 
         responses:
           '201':
@@ -5404,7 +5380,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-040-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-040-Payload'
 
         responses:
           '201':
@@ -5451,7 +5427,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-041-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-041-Payload'
 
         responses:
           '201':
@@ -5498,7 +5474,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-041-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-041-Payload'
 
         responses:
           '201':
@@ -5545,7 +5521,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-041-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-041-Payload'
 
         responses:
           '201':
@@ -5592,7 +5568,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-041-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-041-Payload'
 
         responses:
           '201':
@@ -5639,7 +5615,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-041-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-041-Payload'
 
         responses:
           '201':
@@ -5686,7 +5662,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-041-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-041-Payload'
 
         responses:
           '201':
@@ -5733,7 +5709,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-041-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-041-Payload'
 
         responses:
           '201':
@@ -5780,7 +5756,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-041-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-041-Payload'
 
         responses:
           '201':
@@ -5827,7 +5803,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-041-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-041-Payload'
 
         responses:
           '201':
@@ -5874,7 +5850,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-041-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-041-Payload'
 
         responses:
           '201':
@@ -5921,7 +5897,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-043-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-043-Payload'
 
         responses:
           '201':
@@ -5968,7 +5944,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-044-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-044-Payload'
 
         responses:
           '201':
@@ -6015,7 +5991,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-045-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-045-Payload'
 
         responses:
           '201':
@@ -6062,7 +6038,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-045-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-045-Payload'
 
         responses:
           '201':
@@ -6109,7 +6085,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-045-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-045-Payload'
 
         responses:
           '201':
@@ -6156,7 +6132,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-045-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-045-Payload'
 
         responses:
           '201':
@@ -6203,7 +6179,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-050-MPANCreation'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-050-MPANCreation'
 
         responses:
           '201':
@@ -6250,7 +6226,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-050-MPStatusChange'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-050-MPStatusChange'
 
         responses:
           '201':
@@ -6297,7 +6273,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-050-GreenDeal'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-050-GreenDeal'
 
         responses:
           '201':
@@ -6321,55 +6297,6 @@ paths:
               application/json:
                 schema:
                     type: string
-
-  /validate/IF-051/EESRefresh:
-      summary: DIP Interface Validation for IF-051
-      description: Validates DIP messages. Need to specify message channel IF-051
-          
-      post:
-        summary: Submit IF-051 with Event Code GreenDeal message for validation  
-        description: Allows a Market Participant to validate a single messages for debugging purposes only  
-        operationId: validate-IF-051
-        tags:
-            - DIP Message Validation Endpoints
-        
-        requestBody:
-          required: true
-          content:
-            application/json:
-              schema:
-                type: array
-                minItems: 1
-                items:     
-                    type: object 
-                    properties:
-                      payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-051-Payload'
-
-        responses:
-          '201':
-            description: Message OK
-            content: 
-              application/json:
-                schema:
-                    type: string
-                  
-
-          '400':
-            description: Bad Request
-            content: 
-              application/json:
-                schema:
-                    type: string
-                    
-          '500':
-            description: Internal Server Error
-            content: 
-              application/json:
-                schema:
-                    type: string
-  
-
   
   /validate/IF-061/MDRStart:
       summary: DIP Interface Validation for IF-061
@@ -6393,7 +6320,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-061-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-061-Payload'
 
         responses:
           '201':
@@ -6440,7 +6367,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-062-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-062-Payload'
 
         responses:
           '201':
@@ -6487,7 +6414,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-063-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-063-Payload'
 
         responses:
           '201':
@@ -6534,7 +6461,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-064-Payload'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-064-Payload'
 
         responses:
           '201':
@@ -6581,7 +6508,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-065-ReadingRemote'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-065-ReadingRemote'
 
         responses:
           '201':
@@ -6628,7 +6555,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-065-MDRInstantaneous'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-065-MDRInstantaneous'
 
         responses:
           '201':
@@ -6675,7 +6602,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-065-MDRTOU'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-065-MDRTOU'
 
         responses:
           '201':
@@ -6722,7 +6649,7 @@ paths:
                     type: object 
                     properties:
                       payload:
-                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-065-MDRConsumption'
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-065-MDRConsumption'
 
         responses:
           '201':
@@ -6758,31 +6685,15 @@ components:
       in: path
       required: true 
       schema:
-        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-2.0.1-unresolved.yaml#/components/schemas/DT-000-InterfaceID' 
+        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataTypes-unresolved.yaml#/components/schemas/DT-000-InterfaceID' 
 
     MessageRecipientId:
       name: recipient-id
       in: path
       required: true 
       schema:
-        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-2.0.1-unresolved.yaml#/components/schemas/DT-006-DIPParticipantID' 
+        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataTypes-unresolved.yaml#/components/schemas/DT-006-DIPParticipantID' 
 
-    RequeueId:
-      name: requeue-id
-      in: query
-      required: false
-      schema:
-        $ref: '#/components/schemas/RequeueId'
-
-    ContinuationToken:
-      name: X-Continuation-Token
-      in: header
-      required: false
-      schema:
-        type: string
-        format: uuid
-
-              
     CommonSignatureHeader:
       name: X-DIP-Signature
       schema:
@@ -6821,7 +6732,7 @@ components:
 
   securitySchemes:
     ApiKeyAuth:        # security scheme name 
-      name: X-API-Key
+      name: X-API-Key   
       type: apiKey
       in: header       
 
@@ -6859,64 +6770,63 @@ components:
       properties:
         payload:
           oneOf:
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-001-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-002-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-003-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-004-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-005-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-006-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-007-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-008-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-009-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-013-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-014-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-015-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-016-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-018-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-019-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-020-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-021-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-022-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-023-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-024-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-025-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-026-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-027-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-028-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-031-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-032-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-033-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-034-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-035-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-036-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-037-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-038-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-039-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-040-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-041-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-043-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-044-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-045-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-047-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-050-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-051-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-061-Payload' # DIN-844
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-062-Payload' # DIN-844
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-063-Payload' # DIN-844
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-064-Payload' # DIN-844
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-065-Payload' # DIN-844
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/REP-002-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/REP-002A-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/REP-002B-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/REP-003-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/REP-003A-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/REP-004-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/REP-006-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/REP-007-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/REP-008-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/REP-009-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/REP-900-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/REP-901-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-001-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-002-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-003-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-004-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-005-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-006-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-007-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-008-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-009-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-013-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-014-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-015-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-016-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-018-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-019-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-020-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-021-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-022-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-023-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-024-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-025-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-026-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-027-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-028-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-031-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-032-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-033-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-034-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-035-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-036-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-037-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-038-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-039-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-040-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-041-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-043-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-044-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-045-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-047-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-050-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-061-Payload' # DIN-844
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-062-Payload' # DIN-844
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-063-Payload' # DIN-844
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-064-Payload' # DIN-844
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-065-Payload' # DIN-844
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/REP-002-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/REP-002A-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/REP-002B-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/REP-003-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/REP-003A-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/REP-004-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/REP-006-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/REP-007-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/REP-008-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/REP-009-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/REP-900-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/REP-901-Payload'
   
 # DIN-892  
     DIPMessageEgress:
@@ -6927,64 +6837,63 @@ components:
       properties:
         payload:
           oneOf:
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-001-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-002-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-003-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-004-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-005-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-006-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-007-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-008-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-009-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-013-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-014-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-015-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-016-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-018-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-019-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-020-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-021-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-022-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-023-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-024-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-025-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-026-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-027-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-028-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-031-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-032-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-033-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-034-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-035-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-036-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-037-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-038-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-039-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-040-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-041-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-043-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-044-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-045-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-047-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-050-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-051-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-061-Payload' # DIN-844
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-062-Payload' # DIN-844
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-063-Payload' # DIN-844
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-064-Payload' # DIN-844
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/IF-065-Payload' # DIN-844
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/REP-002-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/REP-002A-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/REP-002B-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/REP-003-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/REP-003A-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/REP-004-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/REP-006-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/REP-007-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/REP-008-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/REP-009-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/REP-900-Payload'
-            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-Interfaces-EventCodes-2.0.1-unresolved.yaml#/components/schemas/REP-901-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-001-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-002-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-003-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-004-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-005-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-006-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-007-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-008-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-009-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-013-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-014-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-015-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-016-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-018-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-019-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-020-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-021-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-022-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-023-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-024-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-025-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-026-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-027-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-028-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-031-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-032-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-033-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-034-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-035-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-036-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-037-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-038-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-039-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-040-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-041-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-043-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-044-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-045-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-047-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-050-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-061-Payload' # DIN-844
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-062-Payload' # DIN-844
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-063-Payload' # DIN-844
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-064-Payload' # DIN-844
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-065-Payload' # DIN-844
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/REP-002-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/REP-002A-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/REP-002B-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/REP-003-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/REP-003A-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/REP-004-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/REP-006-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/REP-007-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/REP-008-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/REP-009-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/REP-900-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/REP-901-Payload'
   
   
 
@@ -7019,42 +6928,22 @@ components:
   
       properties:
         datetimeFrom:
-          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-2.0.1-unresolved.yaml#/components/schemas/DT-003N-DateTime'
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataTypes-unresolved.yaml#/components/schemas/DT-003N-DateTime'
         datetimeTo:
-          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-2.0.1-unresolved.yaml#/components/schemas/DT-003N-DateTime'
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataTypes-unresolved.yaml#/components/schemas/DT-003N-DateTime'
         eventCode:
-          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-2.0.1-unresolved.yaml#/components/schemas/DT-004N-EventCode'
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataTypes-unresolved.yaml#/components/schemas/DT-004N-EventCode'
         MPAN:
-          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-2.0.1-unresolved.yaml#/components/schemas/DT-002N-MPAN'
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataTypes-unresolved.yaml#/components/schemas/DT-002N-MPAN'
         transactionIDs:
           type: array
           minItems: 1
           maxItems: 100
           items:
-            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-2.0.1-unresolved.yaml#/components/schemas/DT-014-DIPTransactionID' 
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataTypes-unresolved.yaml#/components/schemas/DT-014-DIPTransactionID' 
         version:
-            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataCatalogue-2.0.1-unresolved.yaml#/components/schemas/DI-992N-Schema-Version' 
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataCatalogue-unresolved.yaml#/components/schemas/DI-992N-Schema-Version' 
         
-
-    StatusMessageRequest:
-      type: object
-      required:
-          - datetimeFrom
-          - datetimeTo
-
-      properties:
-        datetimeFrom:
-          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-2.0.1-unresolved.yaml#/components/schemas/DT-003-DateTime'
-        datetimeTo:
-          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-2.0.1-unresolved.yaml#/components/schemas/DT-003-DateTime'
-        transactionID:
-          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-2.0.1-unresolved.yaml#/components/schemas/DT-014N-DIPTransactionID' 
-        senderUniqueReference : 
-          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-2.0.1-unresolved.yaml#/components/schemas/DT-995N-SenderUniqueReference'
-        correlationID:
-          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-2.0.1-unresolved.yaml#/components/schemas/DT-011N-CorrelationID'
-
-
 
     StandardResponse:
       type: object
@@ -7062,7 +6951,7 @@ components:
           messageArray:
             $ref: '#/components/schemas/StandardResponseArray'
           timestamp:
-            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-2.0.1-unresolved.yaml#/components/schemas/DT-003-DateTime'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataTypes-unresolved.yaml#/components/schemas/DT-003-DateTime'
           
     StandardResponseArray:
       description: Submit Event API Response type
@@ -7076,29 +6965,29 @@ components:
       type: object
       properties:
         transactionID:
-          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-2.0.1-unresolved.yaml#/components/schemas/DT-014N-DIPTransactionID' 
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataTypes-unresolved.yaml#/components/schemas/DT-014N-DIPTransactionID' 
         senderUniqueReference : 
-          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-2.0.1-unresolved.yaml#/components/schemas/DT-995N-SenderUniqueReference'
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataTypes-unresolved.yaml#/components/schemas/DT-995N-SenderUniqueReference'
         correlationID:
-          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-2.0.1-unresolved.yaml#/components/schemas/DT-011N-CorrelationID'
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataTypes-unresolved.yaml#/components/schemas/DT-011N-CorrelationID'
 
         sentTimestamp:
-          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-2.0.1-unresolved.yaml#/components/schemas/DT-003-DateTime'
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataTypes-unresolved.yaml#/components/schemas/DT-003-DateTime'
         senderID :
             # the sender of this message
-            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-2.0.1-unresolved.yaml#/components/schemas/DT-006-DIPParticipantID'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataTypes-unresolved.yaml#/components/schemas/DT-006-DIPParticipantID'
         recipientID :
             # indended (logical) recipient of the message, i.e sender of the original event message
-            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-2.0.1-unresolved.yaml#/components/schemas/DT-006N-DIPParticipantID'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataTypes-unresolved.yaml#/components/schemas/DT-006N-DIPParticipantID'
         DIPConnectionProviderID :
             # physical recipient of the message (if different to recipient Id)
-            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-2.0.1-unresolved.yaml#/components/schemas/DT-006N-DIPParticipantID'
+            $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataTypes-unresolved.yaml#/components/schemas/DT-006N-DIPParticipantID'
         message:
-          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-2.0.1-unresolved.yaml#/components/schemas/DT-005N-StatusErrorMessage'
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataTypes-unresolved.yaml#/components/schemas/DT-005N-StatusErrorMessage'
         help: 
-          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-2.0.1-unresolved.yaml#/components/schemas/DT-019N-HelpText'
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataTypes-unresolved.yaml#/components/schemas/DT-019N-HelpText'
         serviceTicketURL: 
-          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/MHHSPROGRAMME-DataTypes-2.0.1-unresolved.yaml#/components/schemas/DT-018N-URL'
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataTypes-unresolved.yaml#/components/schemas/DT-018N-URL'
 
       required: 
         - transactionID
@@ -7113,35 +7002,6 @@ components:
         - serviceTicketURL
 
 
-#       16/09/2025  49300/017 
-
-    RequeueStatus:
-      type: object
-      properties:
-          percentComplete: 
-              description: Percentage complete
-              type: number
-              example: 50
-          totalTransactions:
-              description: Total number of outstanding transactions 
-              type: number
-              example: 10000
-          processedTransactions:
-            description: Total number of processed transactions 
-            type: number
-            example: 5000
-          status : 
-            description: Requeue Status
-            type: string
-            enum: [Processing,Completed,Failed]
-            example: Processing
-
-    RequeueId:
-            description: Requeue Id
-            type: string
-            minLength : 1
-            maxLength : 200
-            example: '2199456789-20222313-12345687a1234567a'            
 
 
 ## End ##
