@@ -1,11 +1,11 @@
 # OpenAPI version identifier - required for OpenAPI 3.0 domains
-# (c) Elexon 2022, 2023, 2024
+# (c) Elexon 2022, 2023, 2024 2025
 #
 # MMHS - Data Integration Platform 
 # DataCatalogue
 #
 # ----- update -----------------------------------------------------------------------
-# October 2023
+# 
 # 
 #
 # ------------------------------------------------------------------------------------
@@ -13,6 +13,7 @@
 # ====================================================================================
 # Ver   Date           Ref.    Description
 # ------------------------------------------------------------------------------------
+# 2.0.1 27/10/2024    CP1067   Support 2.0.1 release
 # 1.8.3 09/09/2024             Support new IR8.3 release  
 #       09/09/2024    DIN-1114 Correct example booelans to be lower case 
 #                              DI-021, DI-022, DI-030, DI-837  
@@ -77,7 +78,7 @@ openapi: 3.0.0
 info:
   title: MHHS Data Catalogue
   description: Common components for MHHS Message/Event objects
-  version: 1.8.3
+  version: 2.0.1
 
 components:
 
@@ -1324,7 +1325,14 @@ components:
     DI-217-Incumbent-Metering-Service-MPID:
         $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataTypes-unresolved.yaml#/components/schemas/DT-027-MPID'
 
-    
+# Add DI-218 & DI-219 to release 2.0.1 to support CP1607
+
+    DI-218-Current-Supplier-DIP-ID:
+        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataTypes-unresolved.yaml#/components/schemas/DT-006-DIPParticipantID'
+
+    DI-219-Current-Supplier-MPID:
+        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataTypes-unresolved.yaml#/components/schemas/DT-027-MPID'
+
 
 # ECS Components
 

@@ -1,5 +1,5 @@
 # OpenAPI version identifier - required for OpenAPI 3.0 domains
-# (c) Elexon 2022, 2023, 2024
+# (c) Elexon 2022, 2023, 2024, 2025
 #
 # MMHS - Data Integration Platform 
 # Interfaces with Event Codes
@@ -13,6 +13,7 @@
 # ====================================================================================
 # Ver   Date           Ref.    Description
 # ------------------------------------------------------------------------------------
+# 2.0.1 03/10/2025    CP1607    Support addition of IF-051, release 2.0.1
 # 1.8.3 09/09/2024              Support new IR8.3 release  
 # 1.8.2 12/08/2024              Support new IR8.2 release  
 #       12/08/2024    DIN-1068  Make the elements of the CommonBlock.S0 mandatory         
@@ -88,7 +89,7 @@ openapi: 3.0.0
 info:
   title: Interface with Event Codes
   description: Interfaces reworked to include varaints where different Event Codes have different block structures 
-  version: 1.8.3
+  version: 2.0.1
   
 
 # Dictionary items below:
@@ -8116,6 +8117,140 @@ components:
           properties:
             B080:
                 $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/RealCommonBlocks-unresolved.yaml#/components/schemas/B080'
+
+# 
+# IF 051 - EES Data Refresh 
+# Added to release 2.0.1 to support CP1607
+
+
+    IF-051-Payload:
+      description: IF051 Message
+      type: object
+      additionalProperties:
+          false        
+      required:
+          - CommonBlock
+          - CustomBlock
+      properties:
+        CommonBlock:
+          description: MHHS Common Block for IF-051
+          type: object
+          required: 
+            - S0
+            - S1
+            - M0
+          additionalProperties:
+              false        
+          properties:
+            S0:
+              description: Sender Header block
+              type: object
+              additionalProperties:
+                false        
+              properties:
+                interfaceID: 
+                  type: string
+                  enum: ['IF-051']
+                schemaVersion:
+                  description: Version of the message schema used in the exchange
+                  type: string
+                  example: '001'
+                  enum :
+                    - '001'
+                eventCode: 
+                  type: string
+                  enum: 
+                    - '[EESRefresh]'
+              required:
+                - interfaceID
+                - schemaVersion
+                - eventCode
+    
+            S1:
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/RealCommonBlocks-unresolved.yaml#/components/schemas/S1'
+            A0:
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/RealCommonBlocks-unresolved.yaml#/components/schemas/A0'
+            D0:
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/RealCommonBlocks-unresolved.yaml#/components/schemas/D0'
+            M0:
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/RealCommonBlocks-unresolved.yaml#/components/schemas/M0'
+
+        CustomBlock:
+          description: IF051 Custom data block
+          type: object
+          additionalProperties:
+              false        
+
+          properties:
+            B079: # Meter Point Registration Statuses 
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/RealCommonBlocks-unresolved.yaml#/components/schemas/B079'
+            B080:
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/RealCommonBlocks-unresolved.yaml#/components/schemas/B080'
+            B001:
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/RealCommonBlocks-unresolved.yaml#/components/schemas/B001'
+            B085:
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/RealCommonBlocks-unresolved.yaml#/components/schemas/B085'
+            B013:
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/RealCommonBlocks-unresolved.yaml#/components/schemas/B013'
+            B081:
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/RealCommonBlocks-unresolved.yaml#/components/schemas/B081'
+            B082:
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/RealCommonBlocks-unresolved.yaml#/components/schemas/B082'
+            B019:
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/RealCommonBlocks-unresolved.yaml#/components/schemas/B019'
+            B020:
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/RealCommonBlocks-unresolved.yaml#/components/schemas/B020'
+            B021:
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/RealCommonBlocks-unresolved.yaml#/components/schemas/B021'
+            B022:
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/RealCommonBlocks-unresolved.yaml#/components/schemas/B022'
+            B023:
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/RealCommonBlocks-unresolved.yaml#/components/schemas/B023'
+            B024:
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/RealCommonBlocks-unresolved.yaml#/components/schemas/B024'
+            B025:
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/RealCommonBlocks-unresolved.yaml#/components/schemas/B025'
+            B026:
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/RealCommonBlocks-unresolved.yaml#/components/schemas/B026'
+            B028:
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/RealCommonBlocks-unresolved.yaml#/components/schemas/B028'
+            B029:
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/RealCommonBlocks-unresolved.yaml#/components/schemas/B029'
+            B030:
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/RealCommonBlocks-unresolved.yaml#/components/schemas/B030'
+            B031:
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/RealCommonBlocks-unresolved.yaml#/components/schemas/B031'
+            B032:
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/RealCommonBlocks-unresolved.yaml#/components/schemas/B032'
+              
+              
+            
+            # B914 
+            B914List: 
+              type: array
+              items:
+                  $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/RealCommonBlocks-unresolved.yaml#/components/schemas/B914'
+    
+
+            B035List:
+              type: array
+              items:
+                    $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/RealCommonBlocks-unresolved.yaml#/components/schemas/B035'
+
+            B037List:
+              type: array
+              items:
+                    $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/RealCommonBlocks-unresolved.yaml#/components/schemas/B037'
+
+          required:
+            - B079
+            - B022
+            - B023
+            - B024
+            - B025
+            - B026
+
+
 
 # DIN-844 introduction of MDR reports
 
