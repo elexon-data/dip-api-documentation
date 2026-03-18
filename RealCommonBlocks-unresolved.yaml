@@ -1,5 +1,5 @@
 # OpenAPI version identifier - required for OpenAPI 3.0 domains
-# (c) Elexon 2022, 2023, 2024
+# (c) Elexon 2022, 2023, 2024, 2025
 #
 # MMHS - Data Integration Platform 
 # RealCommonBlocks
@@ -13,6 +13,7 @@
 # ====================================================================================
 # Ver   Date           Ref.    Description
 # ------------------------------------------------------------------------------------
+# 2.0.1 03/10/2025   CP1607   Add new blocks B085, B086 to support IF-051
 # 1.8.3 09/09/2024            Support new IR8.3 release  
 # 1.8.2 12/08/2024            Support new IR8.2 release
 #       15/08/2024   DIN-1106 Add required fields to B907, B908, B910 & B911
@@ -51,7 +52,7 @@ openapi: 3.0.0
 info:
   title: Real Common Blocks
   description: Real common blocks 
-  version: 1.8.3
+  version: 2.0.1
   
 
 # Dictionary items below:
@@ -1778,11 +1779,14 @@ components:
       properties:         
         currentMeteringServiceDIPID:
               $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataCatalogue-unresolved.yaml#/components/schemas/DI-809-Current-Metering-Service-DIP-ID'
+        currentMeteringServiceMPID:
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataCatalogue-unresolved.yaml#/components/schemas/DI-207-Current-Metering-Service-MPID'
         currentMeteringServiceEffectiveFromDate:
               $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataCatalogue-unresolved.yaml#/components/schemas/DI-061-Metering-Service-Effective-From-Date'
       required:
 
           - currentMeteringServiceDIPID
+          - currentMeteringServiceMPID
           - currentMeteringServiceEffectiveFromDate
 
     B082:    
@@ -1791,26 +1795,19 @@ components:
       additionalProperties:
             false        
       properties:         
+
         currentDataServiceDIPID:
-              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataCatalogue-unresolved.yaml#/components/schemas/DI-811-Current-Data-Service-DIP-ID'
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataCatalogue-unresolved.yaml#/components/schemas/DI-811-Current-Data-Service-DIP-ID'        
+        currentDataServiceMPID:
+              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataCatalogue-unresolved.yaml#/components/schemas/DI-208-Current-Data-Service-MPID'
         currentDataServiceEffectiveFromDate:
               $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataCatalogue-unresolved.yaml#/components/schemas/DI-023-Data-Service-Effective-From-Date'
       required:
           - currentDataServiceDIPID
+          - currentDataServiceMPID
           - currentDataServiceEffectiveFromDate
 
-#    B083:    
-#      description: Current Supplier Details
-#      additionalProperties:
-#            false        
-#      properties:         
-#        currentSupplierDIPID:
-#              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataCatalogue-unresolved.yaml#/components/schemas/DI-218-Current-Supplier-DIP-ID'
-#        currentSupplierEffectiveFromDate:
-#              $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataCatalogue-unresolved.yaml#/components/schemas/DI-086-Supplier-Effective-From-Date'
-#      required:
-#          - currentSupplierDIPID
-#          - currentSupplierEffectiveFromDate
+
 
 
 # DIN-844
@@ -1854,7 +1851,60 @@ components:
           - v
           - q
 
+# Add B085 & B086 to release 2.0.1 to support CP1607
+    B085:    
+      description: Current Supplier Details
+      additionalProperties:
+              false        
+      properties:         
+        currentSupplierDIPID:
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataCatalogue-unresolved.yaml#/components/schemas/DI-218-Current-Supplier-DIP-ID'
+        currentSupplierMPID:
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataCatalogue-unresolved.yaml#/components/schemas/DI-219-Current-Supplier-MPID'
+        currentSupplierEffectiveFromDate:
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataCatalogue-unresolved.yaml#/components/schemas/DI-086-Supplier-Effective-From-Date'
+      required:
+              - currentSupplierDIPID
+              - currentSupplierMPID
+              - currentSupplierEffectiveFromDate
+              
+# B086 copy of B074 with additon of Meter Removal datetime              
 
+    B086:    
+        description: MPAN Existing Meter Info  
+        type: object
+        additionalProperties:
+            false        
+        properties:  
+            meterID:
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataCatalogue-unresolved.yaml#/components/schemas/DI-056-Meter-ID'
+            meterType:
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataCatalogue-unresolved.yaml#/components/schemas/DI-059-Meter-Type'
+            manufacturersMakeAndType:
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataCatalogue-unresolved.yaml#/components/schemas/DI-048-Manufacturers-Make-And-Type'
+            ESMEGUID:
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataCatalogue-unresolved.yaml#/components/schemas/DI-085-ESME-GUID'
+            meterLocation:
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataCatalogue-unresolved.yaml#/components/schemas/DI-090-Meter-Location'
+            numberOfDisplayedRegisterDigits:
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataCatalogue-unresolved.yaml#/components/schemas/DI-091-Number-Of-Displayed-Register-Digits'
+            meterInstallationDate:
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataCatalogue-unresolved.yaml#/components/schemas/DI-057-Meter-Installation-Date'
+            meterRemovalDate:
+                $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataCatalogue-unresolved.yaml#/components/schemas/DI-058-Meter-Removal-Date'
+        required:
+          - meterID
+          - meterType
+          - manufacturersMakeAndType  
+          - ESMEGUID
+          - meterLocation
+          - numberOfDisplayedRegisterDigits
+          - meterInstallationDate
+          - meterRemovalDate
+
+###
+
+              
     B090:    
       description: Subsidiary MPAN 
       type: object
@@ -2303,6 +2353,20 @@ components:
             minItems: 1 # DIN-1024    
             items:
               $ref:  '#/components/schemas/B075'
+
+# Add B914 to release 2.0.1 to support CP1607
+
+    B914:
+        description: Existing MPAN Meter details
+        type: object
+        additionalProperties:
+            false        
+        properties:
+          existingMeter: 
+            $ref:  '#/components/schemas/B086'
+          recentMAP: 
+            $ref:  '#/components/schemas/B075'
+
               
     B941:
         description: MDR Settlement Day (B046) - SP consumption data (multiple child) block (B084)

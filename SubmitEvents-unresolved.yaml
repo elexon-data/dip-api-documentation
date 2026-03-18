@@ -1,10 +1,16 @@
 # OpenAPI version identifier - required for OpenAPI 3.0 domains
-# (c) Elexon 2022, 2023, 2024
+# (c) Elexon 2022, 2023, 2024 , 2025
 #
-# MMHS - Data Integration Platform 
+# Elexon - Data Integration Platform 
 # SubmitEvents API 
 #
 # ----- update notices ---------------------------------------------------------------
+# September 2025
+# ------------
+# Create a new version 2 for a post go-live (M10) release
+# Correct the example message in the main API
+# Rebrand from MHHS Programme to DIP Manager
+#
 # November 2023
 # --------------
 # Updates to include changes for interim release 1.6
@@ -34,7 +40,7 @@
 # A version 1.2 will be created to pick up the next set of changes. 
 #
 # ----- note on use of upper/lower case -------------------------------------
-# DIP will not be enforcing capitalisation validation on JSON field names or URLS on message ingress. 
+# DIP will not be enforcing c-keytalisation validation on JSON field names or URLS on message ingress. 
 # MPs are welcome to enfore capiltalisation validation when recieiving messages 
 # as the DIP will obey the case definitions of the swagger.
 # The data itself is case sensitive
@@ -51,12 +57,19 @@
 #
 # none of these items affect the data format
 # 
-# any comments please relay to design(@)mhhsprogramme.co.uk
+# any comments please relay to DIPManager(@)elexon.co.uk
 # ------------------------------------------------------------------------------------
 # Change history
 # ====================================================================================
 # Ver   Date           Ref.    Description
+#                   ADO / DCAB            
 # ------------------------------------------------------------------------------------
+# 2.0.1 16/09/2025              First post go-live release
+#       03/10/2025  CP1629      Introduce IF-051 message aligns to June 2026 BSC release    
+#
+#  Changes below reference the MHHS Programme DIN LOG - changes above reference Avandae ADO
+#  and the DCAB register
+#
 # 1.8.3 09/09/2024              Support new IR8.3 release  
 # 1.8.2 12/08/2024              Support new IR8.2 release  
 # 1.8.1 03/05/2024              Support new IR8.1 release  
@@ -125,12 +138,14 @@
 
 openapi: 3.0.0
 info:
-  version: 1.8.3
+  version: 2.0.1
   title: DIP - Send Messages & Receive Publications
   description: 
-    Latest release 1.8.3 <br> DIP APIs for sending & recieving MHHS TOM messages and reports. <br>Supported interfaces -<br><br>
-     -           Channel-001    Notification of Change of Supplier **<br>
-     -           Channel-002    Registration Update to Supplier (COS Gain) **<br>
+    Latest release 2.0.1 <br> DIP APIs for sending & recieving MHHS TOM messages and reports.      <br><br>**New for release 2.0.1<br>
+     -           Channel-051    EES Data Refresh**<br>
+     <br>Supported interfaces -<br><br>
+     -           Channel-001    Notification of Change of Supplier <br>
+     -           Channel-002    Registration Update to Supplier (COS Gain) <br>
      -           Channel-003    Notification of Migration and De-Appointment (Migration)<br>
      -           Channel-004    Comms Hub Information <br>
      -           Channel-005    Metering Service MTD Updates to Registration<br>
@@ -171,7 +186,7 @@ info:
      -           Channel-045    Registration Service Notification of Invalid Segment or No Agents Appointed<br>
      -           Channel-047    Notification of the Publication of a Downloadable Asset<br>
      -           Channel-050    EES Exclusive Updates<br><br>
-     **New for IR7 - CR023 MDR Reports**<br><br>
+     ** MDR Reports**<br><br>
      -           Channel-061    MDR Start Request<br>
      -           Channel-062    MDR Start Request Response<br>
      -           Channel-063    MDR Stop Request<br>
@@ -215,12 +230,11 @@ paths:
           - DIP Message Channel
       parameters:
         - $ref: '#/components/parameters/MessageChannel'
-        - $ref: '#/components/parameters/CommonSignatureHeader'
+        - $ref: '#/components/parameters/CommonSignatureHeader'        
         - $ref: '#/components/parameters/CommonSignatureDateHeader'
         - $ref: '#/components/parameters/CommonSHA256Header'
         - $ref: '#/components/parameters/CommonSignatureCertifcateHeader'
 
-        
       requestBody:
         required: true
         content:
@@ -238,6 +252,8 @@ paths:
                 $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Examples-unresolved.yaml#/components/examples/IF-003-MSDeAppRM'
               IF-021:
                 $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Examples-unresolved.yaml#/components/examples/IF-021'
+#              IF-021-Multiple-Messages:
+#                $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Examples-unresolved.yaml#/components/examples/IF-021-Multiple-Messages'
               IF-037-MSDeApp:
                 $ref:  'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Examples-unresolved.yaml#/components/examples/IF-037-MSDeApp'
               IF-043:
@@ -483,7 +499,7 @@ paths:
         '401':
             description: Unauthorised Error            
 
-### Message Replay
+### Message Replay - copied back 1.8.3 definition as 2.0.1 can't contain the enhanced replay/requeue - moved to 2.0.2.
 
   /dip-channel/{id}/replay/{recipient-id}:
     post:
@@ -748,6 +764,7 @@ paths:
             description: No Content
         '401':
             description: Unauthorised Error            
+
 
 #####################
   /validate/IF-001/InitialRegistration:
@@ -6297,6 +6314,55 @@ paths:
               application/json:
                 schema:
                     type: string
+
+  /validate/IF-051/EESRefresh:
+      summary: DIP Interface Validation for IF-051
+      description: Validates DIP messages. Need to specify message channel IF-051
+          
+      post:
+        summary: Submit IF-051 with Event Code GreenDeal message for validation  
+        description: Allows a Market Participant to validate a single messages for debugging purposes only  
+        operationId: validate-IF-051
+        tags:
+            - DIP Message Validation Endpoints
+        
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                type: array
+                minItems: 1
+                items:     
+                    type: object 
+                    properties:
+                      payload:
+                        $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-051-Payload'
+
+        responses:
+          '201':
+            description: Message OK
+            content: 
+              application/json:
+                schema:
+                    type: string
+                  
+
+          '400':
+            description: Bad Request
+            content: 
+              application/json:
+                schema:
+                    type: string
+                    
+          '500':
+            description: Internal Server Error
+            content: 
+              application/json:
+                schema:
+                    type: string
+  
+
   
   /validate/IF-061/MDRStart:
       summary: DIP Interface Validation for IF-061
@@ -6694,6 +6760,22 @@ components:
       schema:
         $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataTypes-unresolved.yaml#/components/schemas/DT-006-DIPParticipantID' 
 
+    RequeueId:
+      name: requeue-id
+      in: query
+      required: false
+      schema:
+        $ref: '#/components/schemas/RequeueId'
+
+    ContinuationToken:
+      name: X-Continuation-Token
+      in: header
+      required: false
+      schema:
+        type: string
+        format: uuid
+
+              
     CommonSignatureHeader:
       name: X-DIP-Signature
       schema:
@@ -6732,7 +6814,7 @@ components:
 
   securitySchemes:
     ApiKeyAuth:        # security scheme name 
-      name: X-API-Key   
+      name: X-API-Key
       type: apiKey
       in: header       
 
@@ -6810,6 +6892,7 @@ components:
             - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-045-Payload'
             - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-047-Payload'
             - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-050-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-051-Payload'
             - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-061-Payload' # DIN-844
             - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-062-Payload' # DIN-844
             - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-063-Payload' # DIN-844
@@ -6877,6 +6960,7 @@ components:
             - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-045-Payload'
             - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-047-Payload'
             - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-050-Payload'
+            - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-051-Payload'
             - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-061-Payload' # DIN-844
             - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-062-Payload' # DIN-844
             - $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/Interfaces-EventCodes-unresolved.yaml#/components/schemas/IF-063-Payload' # DIN-844
@@ -6945,6 +7029,26 @@ components:
             $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataCatalogue-unresolved.yaml#/components/schemas/DI-992N-Schema-Version' 
         
 
+    StatusMessageRequest:
+      type: object
+      required:
+          - datetimeFrom
+          - datetimeTo
+
+      properties:
+        datetimeFrom:
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataTypes-unresolved.yaml#/components/schemas/DT-003-DateTime'
+        datetimeTo:
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataTypes-unresolved.yaml#/components/schemas/DT-003-DateTime'
+        transactionID:
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataTypes-unresolved.yaml#/components/schemas/DT-014N-DIPTransactionID' 
+        senderUniqueReference : 
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataTypes-unresolved.yaml#/components/schemas/DT-995N-SenderUniqueReference'
+        correlationID:
+          $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataTypes-unresolved.yaml#/components/schemas/DT-011N-CorrelationID'
+
+
+
     StandardResponse:
       type: object
       properties:
@@ -7002,6 +7106,35 @@ components:
         - serviceTicketURL
 
 
+#       16/09/2025  49300/017 
+
+    RequeueStatus:
+      type: object
+      properties:
+          percentComplete: 
+              description: Percentage complete
+              type: number
+              example: 50
+          totalTransactions:
+              description: Total number of outstanding transactions 
+              type: number
+              example: 10000
+          processedTransactions:
+            description: Total number of processed transactions 
+            type: number
+            example: 5000
+          status : 
+            description: Requeue Status
+            type: string
+            enum: [Processing,Completed,Failed]
+            example: Processing
+
+    RequeueId:
+            description: Requeue Id
+            type: string
+            minLength : 1
+            maxLength : 200
+            example: '2199456789-20222313-12345687a1234567a'            
 
 
 ## End ##
