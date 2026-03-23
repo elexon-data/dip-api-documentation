@@ -1,5 +1,5 @@
 # OpenAPI version identifier - required for OpenAPI 3.0 domains
-# (c) Elexon 2022, 2023, 2024 2025
+# (c) Elexon 2022, 2023, 2024 2025, 2026
 #
 # MMHS - Data Integration Platform 
 # DataCatalogue
@@ -13,6 +13,8 @@
 # ====================================================================================
 # Ver   Date           Ref.    Description
 # ------------------------------------------------------------------------------------
+# 2.1.0 02/02/2026             Support for June/July release
+#       19/03/2026    73592    DI-566-List-Of-MPANS-On-Site - nullable becomes false
 # 2.0.1 27/10/2024    CP1067   Support 2.0.1 release
 # 1.8.3 09/09/2024             Support new IR8.3 release  
 #       09/09/2024    DIN-1114 Correct example booelans to be lower case 
@@ -78,7 +80,7 @@ openapi: 3.0.0
 info:
   title: MHHS Data Catalogue
   description: Common components for MHHS Message/Event objects
-  version: 2.0.1
+  version: 2.1.0
 
 components:
 
@@ -1896,7 +1898,8 @@ components:
         type : string  
         minLength : 1      # DIN-1024
         maxLength: 1400
-        nullable : true
+        # ADO item 73592 - nullable becomes false
+        nullable : false
         example : MPAN1 MPAN2 MPAN3 MPAN4
 
     DI-567-Misaligned-Multi-MPAN-Site:
