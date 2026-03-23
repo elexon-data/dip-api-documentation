@@ -31,5 +31,4 @@ jobs:
             fi
           done
           exit $failed
-        env:
-          GITHUB_TOKEN: "token ${{ secrets.GITHUB_TOKEN }}"
+

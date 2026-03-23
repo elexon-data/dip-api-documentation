@@ -2,9 +2,3 @@ apis:
   main:
     root: SubmitEvents-unresolved.yaml
 
-resolve:
-  http:
-    headers:
-      - matches: https://raw.githubusercontent.com/**
-        name: Authorization
-        envVariable: GITHUB_TOKEN
