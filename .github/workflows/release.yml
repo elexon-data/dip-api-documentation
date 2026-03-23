@@ -17,46 +17,52 @@ jobs:
         with:
           script: |
             const tag = '${{ github.head_ref }}';
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const sha = context.sha;
 
+            // Create or update tag
+            let tagAction;
             try {
-              await github.rest.git.createRef({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                ref: `refs/tags/${tag}`,
-                sha: context.sha,
-              });
+              await github.rest.git.createRef({ owner, repo, ref: `refs/tags/${tag}`, sha });
+              tagAction = 'created';
             } catch (e) {
               if (e.status !== 422) throw e;
-              await github.rest.git.updateRef({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                ref: `tags/${tag}`,
-                sha: context.sha,
-                force: true,
-              });
+              await github.rest.git.updateRef({ owner, repo, ref: `tags/${tag}`, sha, force: true });
+              tagAction = 'updated';
             }
 
+            // Generate release notes explicitly so the body field always changes,
+            // ensuring the release webhook fires reliably on update.
+            const { data: notes } = await github.rest.repos.generateReleaseNotes({
+              owner, repo, tag_name: tag,
+            });
+
+            // Create or update release
+            let releaseAction;
             try {
-              const existing = await github.rest.repos.getReleaseByTag({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                tag: tag,
-              });
+              const existing = await github.rest.repos.getReleaseByTag({ owner, repo, tag });
               await github.rest.repos.updateRelease({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
+                owner, repo,
                 release_id: existing.data.id,
                 tag_name: tag,
                 name: tag,
-                generate_release_notes: true,
+                body: notes.body,
               });
+              releaseAction = 'updated';
             } catch (e) {
               if (e.status !== 404) throw e;
               await github.rest.repos.createRelease({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                tag_name: tag,
-                name: tag,
-                generate_release_notes: true,
+                owner, repo, tag_name: tag, name: tag, body: notes.body,
               });
+              releaseAction = 'created';
             }
+
+            await core.summary
+              .addHeading(`Release ${tag}`)
+              .addTable([
+                [{data: 'Resource', header: true}, {data: 'Action', header: true}],
+                ['Tag', tagAction],
+                ['Release', releaseAction],
+              ])
+              .write();
