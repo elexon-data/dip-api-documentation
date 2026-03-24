@@ -386,7 +386,7 @@ components:
     DT-021-Date:
       description: ISO 8601 Date
       type: string
-      nullable: true
+      nullable: false
       minLength : 10
       maxLength : 10
       example: '2022-03-21'
