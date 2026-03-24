@@ -19,7 +19,7 @@ jobs:
       - name: Validate YAML resolves without errors
         run: |
           failed=0
-          for f in MHHSPROGRAMME-*.yaml; do
+          for f in *-unresolved.yaml; do
             if redocly bundle "$f" > /tmp/redocly_out.txt 2>&1; then
               echo "### ✅ $f" >> $GITHUB_STEP_SUMMARY
             else
