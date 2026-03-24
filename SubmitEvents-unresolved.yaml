@@ -139,7 +139,7 @@
 openapi: 3.0.0
 info:
   version: 2.0.1
-  title: DIP - Send Messages & Receive Publications - test change
+  title: DIP - Send Messages & Receive Publications
   description: 
     Latest release 2.0.1 <br> DIP APIs for sending & recieving MHHS TOM messages and reports.      <br><br>**New for release 2.0.1<br>
      -           Channel-051    EES Data Refresh**<br>
