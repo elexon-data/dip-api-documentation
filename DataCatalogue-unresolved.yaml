@@ -79,7 +79,6 @@ info:
   title: MHHS Data Catalogue
   description: Common components for MHHS Message/Event objects
   version: 2.0.1
-  testerror
 
 components:
 
