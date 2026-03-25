@@ -79,6 +79,7 @@ info:
   title: MHHS Data Catalogue
   description: Common components for MHHS Message/Event objects
   version: 2.0.1
+  testsyntaxerror
 
 components:
 
@@ -99,7 +100,7 @@ components:
         
     DI-002-Address-Line-2:
         # Recommended to be Sub-building Name / Number
-      $ref: 'https://raw.githubusercontent-testerror.com/elexon-data/dip-api-documentation/main/DataTypes-unresolved.yaml#/components/schemas/DT-001N-AddressLine'
+      $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataTypes-unresolved.yaml#/components/schemas/DT-001N-AddressLine'
     DI-003-Address-Line-3:
         # Recommended to be Building Name / Number
       $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataTypes-unresolved.yaml#/components/schemas/DT-001N-AddressLine'
