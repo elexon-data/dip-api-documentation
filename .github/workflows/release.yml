@@ -10,7 +10,7 @@ jobs:
     if: github.event.pull_request.merged == true && startsWith(github.head_ref, 'v')
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Create or update tag and release
         uses: actions/github-script@v7
