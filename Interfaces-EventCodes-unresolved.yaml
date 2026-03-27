@@ -1,18 +1,14 @@
 # OpenAPI version identifier - required for OpenAPI 3.0 domains
-# (c) Elexon 2022, 2023, 2024, 2025
+# (c) Elexon 2022, 2023, 2024, 2025, 2026
 #
 # MMHS - Data Integration Platform 
 # Interfaces with Event Codes
 # 
-# ----- update -----------------------------------------------------------------------
-# December 2023/ January 2024
-# ---------------------------
-# IR7 Updates
-# ------------------------------------------------------------------------------------
 # Change history
 # ====================================================================================
 # Ver   Date           Ref.    Description
 # ------------------------------------------------------------------------------------
+# 2.1.0 02/02/2026              Support for June/July release
 # 2.0.1 03/10/2025    CP1607    Support addition of IF-051, release 2.0.1
 # 1.8.3 09/09/2024              Support new IR8.3 release  
 # 1.8.2 12/08/2024              Support new IR8.2 release  
@@ -89,7 +85,7 @@ openapi: 3.0.0
 info:
   title: Interface with Event Codes
   description: Interfaces reworked to include varaints where different Event Codes have different block structures 
-  version: 2.0.1
+  version: 2.1.0
   
 
 # Dictionary items below:
@@ -5566,7 +5562,7 @@ components:
                 $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/RealCommonBlocks-unresolved.yaml#/components/schemas/B071'
     
             B018:
-                # Proposed Data Service Details                 
+                # SDS Nominated MDR                 
                 $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/RealCommonBlocks-unresolved.yaml#/components/schemas/B018'
 
     IF-034-SDS-MDRUpdate:

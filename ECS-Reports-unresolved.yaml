@@ -1,5 +1,5 @@
 # OpenAPI version identifier - required for OpenAPI 3.0 domains
-# (c) Elexon 2022, 2023, 2024, 2025
+# (c) Elexon 2022, 2023, 2024, 2025, 2026
 #
 # MMHS - Data Integration Platform 
 # ECS Reports 
@@ -13,6 +13,7 @@
 # ====================================================================================
 # Ver   Date           Ref.    Description
 # ------------------------------------------------------------------------------------
+# 2.1.0 02/02/2026              Support for June/July release
 # 2.0.1 10/11/2025              Support new 2.0.1 release  
 # 1.8.3 09/09/2024              Support new IR8.3 release  
 # 1.8.2 12/08/2024              Support new IR8.2 release  
@@ -40,7 +41,7 @@ openapi: 3.0.0
 info:
   title: ECS Reports
   description: ECS Data defintion Common components and examples
-  version: 2.0.1
+  version: 2.1.0
 
 components:
 

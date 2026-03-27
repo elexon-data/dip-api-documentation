@@ -1,18 +1,15 @@
 # OpenAPI version identifier - required for OpenAPI 3.0 domains
-# (c) Elexon 2022, 2023, 2024, 2025
+# (c) Elexon 2022, 2023, 2024, 2025, 2026
 #
 # MMHS - Data Integration Platform 
 # RealCommonBlocks
-#
-# ----- update -----------------------------------------------------------------------
-# Jan 2024
-# Support release 1.7 
 #
 # ------------------------------------------------------------------------------------
 # Change history
 # ====================================================================================
 # Ver   Date           Ref.    Description
 # ------------------------------------------------------------------------------------
+# 2.1.0 02/02/2026            Support for June/July release
 # 2.0.1 03/10/2025   CP1607   Add new blocks B085, B086 to support IF-051
 # 1.8.3 09/09/2024            Support new IR8.3 release  
 # 1.8.2 12/08/2024            Support new IR8.2 release
@@ -52,7 +49,7 @@ openapi: 3.0.0
 info:
   title: Real Common Blocks
   description: Real common blocks 
-  version: 2.0.1
+  version: 2.1.0
   
 
 # Dictionary items below:
@@ -2363,7 +2360,7 @@ components:
             false        
         properties:
           existingMeter: 
-            $ref:  '#/components/schemas/B086'
+            $ref:  '#/components/schemas/B074'
           recentMAP: 
             $ref:  '#/components/schemas/B075'
 
