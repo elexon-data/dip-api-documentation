@@ -657,7 +657,7 @@ components:
         type: string
         minLength : 1
         maxLength : 200
-        pattern: ^S-((IF|REP)-)?\d{3,4}-[0-9a-fA-F]{10}-[A-Z]{3,5}-\d{8}-(ID_)?[0-9a-fA-F]+([-a-zA-Z0-9]+)?$
+        pattern: ^S-((IF|REP)-)?\d{3,4}-[0-9a-fA-F]{10}-[A-Z]{3,5}-\d{8}-([a-zA-Z0-9]+)+$
         example: 'S-IF-005-0123456789-SUP-20222313-12345687a1234567a'
   
     DT-995N-SenderUniqueReference:
@@ -667,7 +667,7 @@ components:
         minLength : 1
         maxLength : 200
         # addition of regex for change 001/73818
-        pattern: ^S-((IF|REP)-)?\d{3,4}-[0-9a-fA-F]{10}-[A-Z]{3,5}-\d{8}-(ID_)?[0-9a-fA-F]+([-a-zA-Z0-9]+)?$
+        pattern: ^S-((IF|REP)-)?\d{3,4}-[0-9a-fA-F]{10}-[A-Z]{3,5}-\d{8}-([a-zA-Z0-9]+)+$
         example: 'S-IF-005-0123456789-SUP-20222313-12345687a1234567a'
 
 ## end
