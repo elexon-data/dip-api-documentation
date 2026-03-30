@@ -90,7 +90,7 @@ components:
 # Data type
     DI-000-Interface-ID:
         # Reference identifing which interface a message is perporting to use.
-      $ref: 'https://raw.githubusercontent-invalid.com/elexon-data/dip-api-documentation/main/DataTypes-unresolved.yaml#/components/schemas/DT-000-InterfaceID'
+      $ref: 'https://raw.githubusercontent.com/elexon-data/dip-api-documentation/main/DataTypes-unresolved.yaml#/components/schemas/DT-000-InterfaceID'
 
     DI-001-Address-Line-1:
       # A component of a metering point site address.
