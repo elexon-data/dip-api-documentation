@@ -1,5 +1,5 @@
 # OpenAPI version identifier - required for OpenAPI 3.0 domains
-# (c) Elexon 2022, 2023, 2024, 2025
+# (c) Elexon 2022, 2023, 2024, 2025, 2026
 #
 # MMHS - Data Integration Platform 
 # ECSCommonBlocks
@@ -11,6 +11,7 @@
 # ====================================================================================
 # Ver   Date           Ref.    Description
 # ------------------------------------------------------------------------------------
+# 2.1.0 02/02/2026             Support for June/July release
 # 2.0.1 03/10/2025             Support release 2.0.1
 # 1.8.3 09/09/2024             Support new IR8.3 release  
 #       09/09/2024    DIN-1119 GSP Group ID & LDSOBillingSiteID should be mandated for 
@@ -35,7 +36,7 @@ openapi: 3.0.0
 info:
   title: ECS Common Blocks
   description: ECS common blocks 
-  version: 2.0.1
+  version: 2.1.0
   
 
 # Dictionary items below:
