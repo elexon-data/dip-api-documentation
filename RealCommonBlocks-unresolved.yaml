@@ -2360,7 +2360,7 @@ components:
             false        
         properties:
           existingMeter: 
-            $ref:  '#/components/schemas/B074'
+            $ref:  '#/components/schemas/B086'
           recentMAP: 
             $ref:  '#/components/schemas/B075'
 
