@@ -775,47 +775,6 @@ paths:
         '401':
             description: Unauthorised Error            
 
-  /statusmessage/requeueStatus/{recipient-id}:
-    get:
-      summary: Requeue messages on DIP Channel webhook  
-      description: Allows a Market Participant to replay messages  
-      operationId: requeueStatusMessageStatus
-      tags: 
-          - Status Message Replay/Requeue
-      parameters:
-        - $ref: '#/components/parameters/MessageChannel'
-        - $ref: '#/components/parameters/MessageRecipientId'
-        - $ref: '#/components/parameters/RequeueId'
-        - $ref: '#/components/parameters/CommonSignatureHeader'
-        - $ref: '#/components/parameters/CommonSignatureDateHeader'
-        - $ref: '#/components/parameters/CommonSHA256Header'
-        - $ref: '#/components/parameters/CommonSignatureCertifcateHeader'
-
-      responses:
-        '200':
-          description: Requeue Information
-          content: 
-            application/json:
-              schema:
-                    $ref: '#/components/schemas/RequeueStatus'
-              
-
-        '204':
-          description: No Content
-
-        '400':
-            description: Bad Request
-            content: 
-              application/json:
-                schema:
-                    $ref: '#/components/schemas/StandardResponse'
-        '401':
-            description: Unauthorised Error            
-        '403':
-            description: Forbidden
-        '429':
-            description: Too Many Requests
-
 
 
 
