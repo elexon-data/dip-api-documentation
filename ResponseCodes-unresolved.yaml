@@ -49,6 +49,13 @@ components:
             -  MSG1010  #  Sender Role Invalid
             -  MSG1011  #  Connection Provider ID Invalid
             -  MSG1012  #  Sender Correlation ID Invalid
+            -  MSG1013  #  Invalid Certificate Issuer Name
+            -  MSG1014  #  Certificate has Expired
+            -  MSG1039  #  Invalid MPAN
+            -  MSG5001  #  Internal server error
+            -  MSG5002  #  No data contained in request body
+            -  MSG5003  #  Unable to determine correlationId requirement. Server configuration error or sender request error
+            -  MSG5004  #  Internal server error. Payload not processed
             -  MSG1030  #  Msg Addressing / Routing Error
             -  MSG1031  #  Primary Recipient(s) DIP Participant ID Invalid
             -  MSG1032  #  Primary Recipient(s) DIP Role ID Invalid
@@ -199,6 +206,7 @@ components:
             -  REG9009  #  MHHS Scenario Codes cannot be used for UnMigrated MPAN                
             -  REG9010  #  Cannot Manage MPAN Relationships while Migration is in Progress
             -  REG9011  #  MHHS Registration Standing Data Invalid
+            -  ECS1001  #  Data Service Not Appointed for Date of SP Submission
             -  ECS1002  #  MQID Invalid for Event Type 
             -  ECS1003  #  SP End Date/Time [DI-082] has already past "MDS Run Date (RF)" [ISD.RunDate]
             -  ECS1004  #  Settlement Period Duration Invalid            
@@ -228,7 +236,16 @@ components:
             -  SP011  #  Insufficient Notice / Lead Time for Appointment to take effect 
             -  SP099  #  Other
             -  DS001  #  Supplier Nominated MDR Invalid/Unsupported 
+            -  DS002  #  SMSO Un-Supported
             -  DS003  #  Trad/ Fall Back Read Freq Invalid / Missing 
             -  DS004  #  Change of MDR - Insufficient Notice 
             -  DS005   #  Change of MDR - Cannot be Retrospective 
             -  DS006   #  Change of MDR - Lead Time Too Large
+            -  LP001  # MPAN has been De-Registered
+            -  LP002  # Subsequent Appointment Received
+            -  LP003  # SecuredActive for another Supplier Received
+            -  LP004  # Registration Cancelled
+            -  LP005  # Change of Segment Failed
+            -  LP006  # Migration Aborted, Pending Registration Received
+            -  LP007  # Appointment Failed Queue Processing Validation [REGxxxx]
+            -  LP099  # Other
