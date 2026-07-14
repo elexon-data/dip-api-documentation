@@ -225,7 +225,6 @@ components:
             -  SP008  #  Address Information Insufficient or Invalid
             -  SP009  #  Meter is not DCC Enrolled
             -  SP010  #  Domestic Indicator Value not Supported 
-            -  SP010  #  Domestic Indicator Value not Supported (optional)
             -  SP011  #  Insufficient Notice / Lead Time for Appointment to take effect 
             -  SP099  #  Other
             -  DS001  #  Supplier Nominated MDR Invalid/Unsupported 
