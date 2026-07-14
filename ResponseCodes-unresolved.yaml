@@ -222,7 +222,7 @@ components:
             -  SP005  #  Segment Not Supported 
             -  SP006  #  Meter Type(s) Not Supported 
             -  SP007  #  Out of Operational Area 
-            -  SP008  #  Address Information Insufficient or Invalid SP008 - Address Information Insufficient or Invalid 
+            -  SP008  #  Address Information Insufficient or Invalid
             -  SP009  #  Meter is not DCC Enrolled
             -  SP010  #  Domestic Indicator Value not Supported 
             -  SP010  #  Domestic Indicator Value not Supported (optional)
