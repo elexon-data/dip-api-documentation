@@ -9,6 +9,7 @@
 # ====================================================================================
 # Ver   Date           Ref.    Description
 # ------------------------------------------------------------------------------------
+# 2.2.1 16/07/2026            Add mising type on B085
 # 2.1.0 02/02/2026            Support for June/July release
 # 2.0.1 03/10/2025   CP1607   Add new blocks B085, B086 to support IF-051
 # 1.8.3 09/09/2024            Support new IR8.3 release  
@@ -1851,6 +1852,7 @@ components:
 # Add B085 & B086 to release 2.0.1 to support CP1607
     B085:    
       description: Current Supplier Details
+      type: object
       additionalProperties:
               false        
       properties:         
