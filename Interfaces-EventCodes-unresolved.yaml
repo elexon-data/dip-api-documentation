@@ -7920,6 +7920,7 @@ components:
         - CustomBlock
       properties:
         CommonBlock:
+          type: object
           additionalProperties:
               false        
           required: 
@@ -8001,6 +8002,7 @@ components:
         - CustomBlock
       properties:
         CommonBlock:
+          type: object
           additionalProperties:
               false        
           required: 
@@ -8063,6 +8065,7 @@ components:
         - CustomBlock
       properties:
         CommonBlock:
+          type: object
           additionalProperties:
               false        
           required: 
@@ -8264,6 +8267,7 @@ components:
         - CustomBlock
       properties:
         CommonBlock:
+          type: object
           additionalProperties:
               false        
           required: 
@@ -8347,6 +8351,7 @@ components:
         - CustomBlock
       properties:
         CommonBlock:
+          type: object
           additionalProperties:
               false        
           required: 
@@ -8433,6 +8438,7 @@ components:
         - CustomBlock
       properties:
         CommonBlock:
+          type: object
           additionalProperties:
               false        
           required: 
@@ -8499,6 +8505,7 @@ components:
         - CustomBlock
       properties:
         CommonBlock:
+          type: object
           additionalProperties:
               false        
           required: 
@@ -8580,6 +8587,7 @@ components:
         - CustomBlock
       properties:
         CommonBlock:
+          type: object
           additionalProperties:
               false        
           required: 
@@ -8648,6 +8656,7 @@ components:
         - CustomBlock
       properties:
         CommonBlock:
+          type: object
           additionalProperties:
               false        
           required: 
@@ -8709,6 +8718,7 @@ components:
         - CustomBlock
       properties:
         CommonBlock:
+          type: object
           additionalProperties:
               false        
           required: 
@@ -8772,6 +8782,7 @@ components:
         - CustomBlock
       properties:
         CommonBlock:
+          type: object
           additionalProperties:
               false        
           required: 
