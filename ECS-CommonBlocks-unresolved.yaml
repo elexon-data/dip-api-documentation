@@ -668,7 +668,7 @@ components:
             - REP002-R010
                 
     REP002-R010: 
-        description: R010 - Tariff Characterisitics + child records 
+        description: R010 - Tariff Characteristics + child records 
         type: object
         additionalProperties:
             false        
@@ -684,7 +684,7 @@ components:
               
 # Blocks for REP002A
     REP002A-R006:
-        description: R006 - Supplier + Tariff Characterisitics 
+        description: R006 - Supplier + Tariff Characteristics 
         type: object
         additionalProperties:
             false        
@@ -698,7 +698,7 @@ components:
 
                 
     REP002A-R010: 
-        description: R010 - Tariff Characterisitics + child records A
+        description: R010 - Tariff Characteristics + child records A
         type: object
         additionalProperties:
             false        
@@ -715,7 +715,7 @@ components:
 # Blocks for REP002B
 
     REP002B-R009: 
-        description: R009 extended - Supplier + Tariff Characterisitics 
+        description: R009 extended - Supplier + Tariff Characteristics 
         type: object
         additionalProperties:
             false        
@@ -728,7 +728,7 @@ components:
               $ref:  '#/components/schemas/REP002B-R010'
 
     REP002B-R010: 
-        description: R010 - Tariff Characterisitics + child records 
+        description: R010 - Tariff Characteristics + child records 
         type: object
         additionalProperties:
             false        
@@ -1499,7 +1499,7 @@ components:
                   $ref: '#/components/schemas/R901-08'
 # DIN-875
     R901-08:
-        description: Change Band 
+        description: Charge Band
         type: object
         additionalProperties:
             false        
