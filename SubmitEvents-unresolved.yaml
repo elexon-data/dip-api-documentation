@@ -72,6 +72,8 @@
 # Ver   Date           Ref.    Description
 #                   ADO / DCAB            
 # ------------------------------------------------------------------------------------
+# 2.2.1 29/07/2026              /dip-channel/{id}/requeue/{recipient-id} returns a requeueId on a 202 
+#                               response
 # 2.2.0 23/06/2026  74973/019   Re-Introduce Status Message replay/requeue 
 #                   74972/018   Bulk Message requeue 
 #                   74971/017   Bulk Message replay
