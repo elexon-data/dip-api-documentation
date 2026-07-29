@@ -613,6 +613,12 @@ paths:
       responses:
         '202':
           description: Messages requeued
+          content: 
+              application/json:
+                schema:
+                    $ref: '#/components/schemas/RequeueId'
+
+          
 
         '400':
             description: Bad Request
@@ -946,7 +952,7 @@ paths:
         - $ref: '#/components/parameters/CommonSHA256Header'
         - $ref: '#/components/parameters/CommonSignatureCertifcateHeader'
 
-## Status Message replay new in verison 2.2.0
+## Status Message requeue new in verison 2.2.0
   /statusmessage/requeue/{recipient-id}:
     post:
       summary: Requeue Status Messages  
