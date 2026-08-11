@@ -6,9 +6,10 @@
 # 
 # Change history
 # ====================================================================================
-# Ver   Date           Ref.    Description
+# Ver   Date           Ref.     Description
 # ------------------------------------------------------------------------------------
-# 2.2.0 08/07/2026    74613     Remove event codes [RelatedAdd]&[RelatedRemove]from IF-020-Related-Create 
+# 2.2.1 11/08/2026   75210/032  Add optional P0 block to all REPs 
+# 2.2.0 08/07/2026   74613      Remove event codes [RelatedAdd]&[RelatedRemove]from IF-020-Related-Create 
 # 2.1.0 02/02/2026              Support for June/July release
 # 2.0.1 03/10/2025    CP1607    Support addition of IF-051, release 2.0.1
 # 1.8.3 09/09/2024              Support new IR8.3 release  
@@ -8878,6 +8879,8 @@ components:
               $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/A0'
             D0:
               $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/D0'
+            P0:
+              $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/P0'
               
         CustomBlock:
             description: MHHS Common Block for REP002, report adopts REP-002-CustomBlock format
@@ -8941,6 +8944,8 @@ components:
                 $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/A0'
               D0:
                 $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/D0'
+              P0:
+                $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/P0'
       
             required:
               - S0
@@ -9007,6 +9012,8 @@ components:
                 $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/A0'
               D0:
                 $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/D0'
+              P0:
+                $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/P0'
       
             required:
               - S0
@@ -9074,6 +9081,8 @@ components:
               $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/A0'
             D0:
               $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/D0'
+            P0:
+              $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/P0'
     
           required:
             - S0
@@ -9140,6 +9149,8 @@ components:
               $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/A0'
             D0:
               $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/D0'
+            P0:
+              $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/P0'
     
           required:
             - S0
@@ -9207,6 +9218,9 @@ components:
               $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/A0'
             D0:
               $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/D0'
+            P0:
+              $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/P0'
+
           required:
             - S0
             - S1
@@ -9272,6 +9286,8 @@ components:
               $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/A0'
             D0:
               $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/D0'
+            P0:
+              $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/P0'
     
           required:
             - S0
@@ -9341,6 +9357,8 @@ components:
               $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/A0'
             D0:
               $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/D0'
+            P0:
+              $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/P0'
     
           required:
             - S0
@@ -9410,6 +9428,8 @@ components:
               $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/A0'
             D0:
               $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/D0'
+            P0:
+              $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/P0'
          
         CustomBlock:
             description: MHHS Common Block for REP008, report adopts REP-008-CustomBlock format
@@ -9477,6 +9497,8 @@ components:
                 $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/A0'
               D0:
                 $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/D0'
+              P0:
+                $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/P0'
         
   
         CustomBlock:
@@ -9541,6 +9563,8 @@ components:
                     $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/A0'
                   D0:
                     $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/D0'
+                  P0:
+                    $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/P0'
           
                 required:
                   - S0
@@ -9611,6 +9635,8 @@ components:
                 $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/A0'
               D0:
                 $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/D0'
+              P0:
+                $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/P0'
       
             required:
               - S0
