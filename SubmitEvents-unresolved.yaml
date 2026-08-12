@@ -72,7 +72,7 @@
 # Ver   Date           Ref.    Description
 #                   ADO / DCAB            
 # ------------------------------------------------------------------------------------
-# 2.2.1 29/07/2026              /dip-channel/{id}/requeue/{recipient-id} returns a requeueId on a 202 
+# 2.2.1 29/07/2026  74973       /dip-channel/{id}/requeue/{recipient-id} returns a requeueId on a 202 
 #                               response
 # 2.2.0 23/06/2026  74973/019   Re-Introduce Status Message replay/requeue 
 #                   74972/018   Bulk Message requeue 
@@ -161,10 +161,12 @@
 
 openapi: 3.0.0
 info:
-  version: 2.2.0
+  version: 2.2.1
   title: DIP - Send Messages & Receive Publications
   description: 
-    Latest release 2.2.0 <br> DIP APIs for sending & recieving MHHS TOM messages and reports. <br>Supported interfaces -<br><br>
+    Latest release 2.2.1 <br><br>
+    __DIP APIs for sending & recieving MHHS TOM messages and reports__
+    <br><br>Supported interfaces -<br><br>
      -           Channel-001    Notification of Change of Supplier **<br>
      -           Channel-002    Registration Update to Supplier (COS Gain) **<br>
      -           Channel-003    Notification of Migration and De-Appointment (Migration)<br>
@@ -662,7 +664,7 @@ paths:
           content: 
             application/json:
               schema:
-                    $ref: '#/components/schemas/RequeueStatus'
+                    $ref: '#/components/schemas/RequeueStatusArray'
               
 
         '204':
@@ -1036,7 +1038,7 @@ paths:
           content: 
             application/json:
               schema:
-                    $ref: '#/components/schemas/RequeueStatus'
+                    $ref: '#/components/schemas/RequeueStatusArray'
               
 
         '204':
@@ -7469,8 +7471,17 @@ components:
 
 
 ##       23/06/2026  49300/017 
+    RequeueStatusArray:
+      description: Requeue Status Array
+      type: array
+      minItems: 1
+      items:
+        $ref: "#/components/schemas/RequeueStatus"
+
+
 
     RequeueStatus:
+      description: Requeue Status Object
       type: object
       properties:
           percentComplete: 
@@ -7488,7 +7499,7 @@ components:
           status : 
             description: Requeue Status
             type: string
-            enum: [Processing,Completed,Failed]
+            enum: [Processing,Completed,Failed,PartialCompletion]
             example: Processing
 
     RequeueId:
