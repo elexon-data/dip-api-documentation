@@ -2,7 +2,7 @@
 # (c) Elexon 2022, 2023, 2024 2025, 2026
 #
 # MMHS - Data Integration Platform 
-# DataCatalogue
+# DataCatalogue  
 #
 # ----- update -----------------------------------------------------------------------
 # 
@@ -13,6 +13,7 @@
 # ====================================================================================
 # Ver   Date           Ref.    Description
 # ------------------------------------------------------------------------------------
+# 2.2.1 11/08/2036    75210    Add data types to support P0 common block 
 # 2.1.0 02/02/2026             Support for June/July release
 #       19/03/2026    73592    DI-566-List-Of-MPANS-On-Site - nullable becomes false
 #       22/06/2026             For DI-137, DI-096, DI-076, DI-166, DI-039, DI-126 
@@ -2352,7 +2353,48 @@ components:
     DI-850-MDR-Effective-To-Date:
         # Date on which a Data Service's period of appointment comes to an end 
         $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-003-DateTime'
-        
+
+## DI- 9xx - DIP Data types       
+
+# DI-955 to DI-959 inc. for P0 block elements
+
+    DI-955-Partition-Block-Count:
+        description : The total number of instances of partitionBlock across the whole batch 
+        minimum: 1
+        maximum: 999999999
+        example : 1066
+
+    DI-956-Partition-Block:
+        description : Name of Repeating Block used as the split boundary for this batch
+        type: string
+        minLength: 1
+        maxLength: 25
+        example : R013
+
+
+    DI-957-Part-Number:
+        description : Part mumber (of total parts)
+        type: int
+        minimum: 1
+        maximum: 999
+        example : 6
+
+
+    DI-958-Total-Parts:
+        description : Number of parts that comprise the whole report 
+        type: int
+        minimum: 1
+        maximum: 999
+        example : 12
+
+
+    DI-959-Batch-ID:
+        description : Unique identifier for this REP message batch (GUID)
+        type : string
+        format: uuid
+        maxLength : 200
+        example : b6f2c9a1-4e7d-4a3b-9c1e-2f0a8d5e6b71
+
    
     DI-960-Publication-Description:
         description : Description of Publication
