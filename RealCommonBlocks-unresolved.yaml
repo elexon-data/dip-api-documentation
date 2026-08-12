@@ -1,7 +1,7 @@
 # OpenAPI version identifier - required for OpenAPI 3.0 domains
 # (c) Elexon 2022, 2023, 2024, 2025, 2026
 #
-# MMHS - Data Integration Platform 
+# Elexon - Data Integration Platform 
 # RealCommonBlocks
 #
 # ------------------------------------------------------------------------------------
@@ -11,6 +11,7 @@
 # ------------------------------------------------------------------------------------
 # 2.2.1 11/08/2036   75210    Add P0 common block for possible REP splitting
 # 2.2.1 16/07/2026            Add mising type on B085
+# 2.2.1 12/08/2026   75710    Change A0 block to DT from DI
 # 2.1.0 02/02/2026            Support for June/July release
 # 2.0.1 03/10/2025   CP1607   Add new blocks B085, B086 to support IF-051
 # 1.8.3 09/09/2024            Support new IR8.3 release  
@@ -154,12 +155,12 @@ components:
           description: Primary Recipient - array of Ids; set by Sender
           type : array
           items: 
-            $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-006N-DIPParticipantID'
+            $ref: 'DataCatalogue-unresolved.yaml#/components/schemas/DI-982-Primary-Recipient-ID'          
         secondaryRecipients:
           description: Secondary Recipient - array of Ids; set by DIP
           type : array
           items: 
-            $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-006N-DIPParticipantID'
+            $ref: 'DataCatalogue-unresolved.yaml#/components/schemas/DI-981-Secondary-Recipient-ID'          
         always:
           description: Always Recipient - array of Ids; set by DIP
           type : array
@@ -168,7 +169,7 @@ components:
           items: 
 #            anyOf:
 #              - $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-009N-DIPParticipantRole'
-              $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-006N-DIPParticipantID'
+            $ref: 'DataCatalogue-unresolved.yaml#/components/schemas/DI-993-Always-Receipient-ID'          
       required:
         - primaryRecipients
         - secondaryRecipients
