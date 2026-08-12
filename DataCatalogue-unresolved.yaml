@@ -14,6 +14,7 @@
 # Ver   Date           Ref.    Description
 # ------------------------------------------------------------------------------------
 # 2.2.1 11/08/2036    75210    Add data types to support P0 common block 
+# 2.2.1 12/08/2036    75710    Modify data types to support A0 block
 # 2.1.0 02/02/2026             Support for June/July release
 #       19/03/2026    73592    DI-566-List-Of-MPANS-On-Site - nullable becomes false
 #       22/06/2026             For DI-137, DI-096, DI-076, DI-166, DI-039, DI-126 
@@ -2490,11 +2491,11 @@ components:
         $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-005N-StatusErrorMessage'
   
         
-    DI-981-Secondary-Recipient-IDs:
+    DI-981-Secondary-Recipient-ID:
         # DIP Lookup of DIP ID's of Message Recipients
         $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-006N-DIPParticipantID'
         
-    DI-982-Primary-Recipient-IDs:
+    DI-982-Primary-Recipient-ID:
         # Sender Defined list of DIP ID's of Message Recipients
         $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-006N-DIPParticipantID'
 
