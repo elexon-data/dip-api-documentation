@@ -7484,6 +7484,8 @@ components:
       description: Requeue Status Object
       type: object
       properties:
+          requeueId:
+              $ref: '#/components/schemas/RequeueId
           percentComplete: 
               description: Percentage complete
               type: number
