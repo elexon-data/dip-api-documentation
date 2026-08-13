@@ -7476,7 +7476,7 @@ components:
       type: array
       minItems: 1
       items:
-        $ref: "#/components/schemas/RequeueStatus"
+        $ref: '#/components/schemas/RequeueStatus'
 
 
 
@@ -7484,6 +7484,8 @@ components:
       description: Requeue Status Object
       type: object
       properties:
+          requeueId:
+              $ref: '#/components/schemas/RequeueId'
           percentComplete: 
               description: Percentage complete
               type: number
