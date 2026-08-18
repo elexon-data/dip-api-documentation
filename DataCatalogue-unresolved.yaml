@@ -1,7 +1,7 @@
 # OpenAPI version identifier - required for OpenAPI 3.0 domains
 # (c) Elexon 2022, 2023, 2024 2025, 2026
 #
-# MMHS - Data Integration Platform 
+# MHHS - Data Integration Platform 
 # DataCatalogue  
 #
 # ----- update -----------------------------------------------------------------------
@@ -21,7 +21,7 @@
 #                              comment out - null for where nullable:true 
 # 2.0.1 27/10/2024    CP1067   Support 2.0.1 release
 # 1.8.3 09/09/2024             Support new IR8.3 release  
-#       09/09/2024    DIN-1114 Correct example booelans to be lower case 
+#       09/09/2024    DIN-1114 Correct example booleans to be lower case 
 #                              DI-021, DI-022, DI-030, DI-837  
 #       09/09/2024    DIN-1115 Make DI-988-Replay-Indicator non nullable 
 #       09/09/2024    DIN-1120 DT-033-Email becomes DT-036-Email
@@ -65,7 +65,7 @@
 #                     DIN-654 DI-131 & DI-130
 #                     DIN-644 DI-122 Profile Class update
 # 1.4 - 27/07/2023    DIN-512, 514, 516, 519, 532, 547
-#                             New datalogue items to support CR 19 = REP900 CR27 = REP901
+#                             New catalogue items to support CR 19 = REP900 CR27 = REP901
 # 1.1 - 14/04/2023 -          Align with changes required for mandatory/null issue; 
 #                             duplicating data types 
 #                             into null/non null versions
@@ -95,12 +95,12 @@ components:
 
 # Data type
     DI-000-Interface-ID:
-        # Reference identifing which interface a message is perporting to use.
+        # Reference identifying which interface a message is purporting to use.
       $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-000-InterfaceID'
 
     DI-001-Address-Line-1:
       # A component of a metering point site address.
-      # Recommended to be Free Text, but not un-common for the entire address to be entered into the first value.
+      # Recommended to be Free Text, but not uncommon for the entire address to be entered into the first value.
       $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-001N-AddressLine'
         
     DI-002-Address-Line-2:
@@ -315,7 +315,7 @@ components:
         $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-002-MPAN'
    
     DI-039-Load-Shape-GSP-Group-ID:
-        description : The GSP Group ID assoicated with the Load Shape 
+        description : The GSP Group ID associated with the Load Shape 
         type : string
         nullable: true
         minLength : 2
@@ -414,7 +414,7 @@ components:
         enum:
             - AI # Active Import
             - AE # Active Export
-            - RI # Reactice Import
+            - RI # Reactive Import
             - RE # Reactive Export
    
     DI-053-Meter-ID-Removed:
@@ -564,7 +564,7 @@ components:
         $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-002N-MPAN'
    
     DI-076-Estimation-Reason-Code:
-        description : Used inconjunction with Settlement Period Quality Indicator to explain why data has been estimated
+        description : Used in conjunction with Settlement Period Quality Indicator to explain why data has been estimated
         type : string 
         nullable: true
         minLength : 1 # DIN-1024
@@ -596,7 +596,7 @@ components:
         $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-002N-MPAN'
     
     DI-080-Consumption-Component-Indicator:
-        description : The consumption component indictor
+        description : The consumption component indicator
         type : string
         maxLength : 1
         enum:
@@ -685,7 +685,7 @@ components:
         # The value of the Cumulative  meter register at a specified date and time.
         $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-016-Decimal-9-3'
     DI-089-Cumulative-Register-Reading-DateTime:
-        # The date and time in UTC at which a half hourly meter is read. This should be considered to be midnight where an exact time is unavailible
+        # The date and time in UTC at which a half hourly meter is read. This should be considered to be midnight where an exact time is unavailable
         $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-003-DateTime'
     DI-090-Meter-Location:
         description : The actual location of the metering system within the site
@@ -934,7 +934,7 @@ components:
     DI-122-Profile-Class:
       # DIN-720 update
       # DIN-941 update
-        description : A legacy classification, retained soley for a subset of Traditional Meters, to assist with the allocation of gross consumption to individual Settlement Periods.
+        description : A legacy classification, retained solely for a subset of Traditional Meters, to assist with the allocation of gross consumption to individual Settlement Periods.
         type : string    # MHHS-DIN-367 - updated to string from integer
         nullable: true
         minLength : 1
@@ -943,7 +943,7 @@ components:
         example : '02'
         
     DI-123-SSC:
-        description : A legacy classification, retained soley for a subset of Traditional Meters, to assist with the allocation of gross consumption to individual Settlement Periods.
+        description : A legacy classification, retained solely for a subset of Traditional Meters, to assist with the allocation of gross consumption to individual Settlement Periods.
         type : string
         nullable: true
         minLength : 4
@@ -1046,19 +1046,19 @@ components:
 #          - null # - DIN-476 - change for nullable enum
             
     DI-138-Customer-Direct-Contract-Data-Service-DIP-ID:
-        # The DIP ID of the Data Service that has recorded the existance of a Customer Direct Contract for that MPAN.
+        # The DIP ID of the Data Service that has recorded the existence of a Customer Direct Contract for that MPAN.
         $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-006N-DIPParticipantID'
         
 #    DI-139-Customer-Direct-Contract-Data-Service-DIP-EZ-Name:
-        #description : The DIP EZ Name of the Data Service that has recorded the existance of a Customer Direct Contract for that MPAN
+        #description : The DIP EZ Name of the Data Service that has recorded the existence of a Customer Direct Contract for that MPAN
 #        $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-010-DIPParticipantEZName'
         
     DI-140-Customer-Direct-Contract-Metering-Service-DIP-ID:
-        # The DIP ID of the Metering Service that has recorded the existance of a Customer Direct Contract for that MPAN.
+        # The DIP ID of the Metering Service that has recorded the existence of a Customer Direct Contract for that MPAN.
         $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-006N-DIPParticipantID'
         
 #    DI-141-Customer-Direct-Contract-Metering-Service-DIP-EZ-Name:
-#        description : The DIP EZ Name of the Metering Service that has recorded the existance of a Customer Direct Contract for that MPAN.
+#        description : The DIP EZ Name of the Metering Service that has recorded the existence of a Customer Direct Contract for that MPAN.
 #        type : string
 #        maxLength : 50
 
@@ -1605,7 +1605,7 @@ components:
       $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-022-Decimal-9-6'
 
     DI-491-Embedded-Total-Uncorrected-Volume:
-        #description : The Total embedded energy, before GSP Group Correction, summed for a Supplier, within a GSP Group, split by Tariff Charateristics,  and Settlement Period.
+        #description : The Total embedded energy, before GSP Group Correction, summed for a Supplier, within a GSP Group, split by Tariff Characteristics,  and Settlement Period.
       $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-022-Decimal-9-6'
         
     DI-492-Daily-BM-Unit-MSID-Count:
@@ -2172,7 +2172,7 @@ components:
             - USP # Update existing SP App
             - SEG # Change of ConnType or MkSeg
             - MCA # Migration Change of Agent
-            - MCS # Migration Cange of Supplier
+            - MCS # Migration Change of Supplier
             - ALG # Auto Alignment 
 #            - xxx # Obfuscated value #DIN-858 # DIN-1124
             
@@ -2193,7 +2193,7 @@ components:
         $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-006-DIPParticipantID'
 
     DI-807-Incumbent-Metering-Service-DIP-ID:
-        # This is the Metering Service with responsibility for an MPAN at the point a Proposed Appointment Request is 'Accepted' by a Proposed Metering Service. This party is responsbile for providing the Proposed MS with MTDs for Traditional and Advanced Meters.
+        # This is the Metering Service with responsibility for an MPAN at the point a Proposed Appointment Request is 'Accepted' by a Proposed Metering Service. This party is responsible for providing the Proposed MS with MTDs for Traditional and Advanced Meters.
         $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-006-DIPParticipantID'
       
     DI-809-Current-Metering-Service-DIP-ID:
@@ -2251,7 +2251,7 @@ components:
         $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-006-DIPParticipantID'
         
 #    DI-823-Incoming-Metering-Service-DIP-EZ-Name:
-#        # DIP EZ Name for the next/incoming Metering Serivce
+#        # DIP EZ Name for the next/incoming Metering Service
 #        $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-010-DIPParticipantEZName'
     DI-824-Incoming-Metering-Service-Effective-From-Date:
         # The Date from which next/incomomg Metering Service appointment is/was effective
@@ -2261,7 +2261,7 @@ components:
         # DIP ID for the next/incoming Data Service
         $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-006-DIPParticipantID'
 #    DI-826-Incoming-Data-Service-DIP-EZ-Name:
-#        # DIP EZ Name for the next/incoming Data Serivce
+#        # DIP EZ Name for the next/incoming Data Service
 #        $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-010-DIPParticipantEZName'
     DI-827-Incoming-Data-Service-Effective-From-Date:
         # The Date from which next/incomomg Data Service appointment is/was effective
@@ -2414,7 +2414,7 @@ components:
         $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-003-DateTime'
         
     DI-963-Distribution-Variant-ID:
-        description : Unique Identifier for Distubution Varient 
+        description : Unique Identifier for Distribution Variant 
         type : string
         maxLength : 10
         example : 001
@@ -2434,7 +2434,7 @@ components:
         example : ISD tables that Suppliers want only
         
     DI-966-Distribution-Variant-Version-ID:
-        description : Version Number of the Distibution Varient 
+        description : Version Number of the Distribution Variant 
         type : string
         maxLength : 10
         example : 1.1.1
@@ -2444,7 +2444,7 @@ components:
         $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-003-DateTime'
         
     DI-968-Distribution-Variant-Format:
-        description : File Type of the Distibution Varient (e.g. JSON/CSV/PDF File)
+        description : File Type of the Distribution Variant (e.g. JSON/CSV/PDF File)
         type : string
         nullable: true
         minLength : 1      # DIN-1024
@@ -2460,7 +2460,7 @@ components:
         example : ZIP
 
     DI-970-Distribution-Delivery-URI:
-        description : URI to allow direct download of the Distribution Varient
+        description : URI to allow direct download of the Distribution Variant
         type : string
         minLength : 1
         maxLength : 225
