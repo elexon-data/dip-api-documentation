@@ -8,6 +8,8 @@
 # ====================================================================================
 # Ver   Date           Ref.     Description
 # ------------------------------------------------------------------------------------
+# 2.2.1 18/08/2026   75210/032  Up the version number on all reps  to '009' but amke them baackwrdly compatiable
+#                               within the ENUM range 
 # 2.2.1 11/08/2026   75210/032  Add optional P0 block to all REPs 
 # 2.2.0 08/07/2026   74613      Remove event codes [RelatedAdd]&[RelatedRemove]from IF-020-Related-Create 
 # 2.1.0 02/02/2026              Support for June/July release
@@ -8864,6 +8866,7 @@ components:
                   example: '008'
                   enum: 
                     - '008'
+                    - '009'
                 eventCode: 
                   type: string
                   enum: 
@@ -8929,6 +8932,7 @@ components:
                     example: '008'
                     enum: 
                       - '008'
+                      - '009'
                   eventCode: 
                     type: string
                     enum: 
@@ -8997,6 +9001,7 @@ components:
                     example: '008'
                     enum: 
                       - '008'
+                      - '009'
                   eventCode: 
                     type: string
                     enum: 
@@ -9066,7 +9071,8 @@ components:
                   example: '008'
                   enum: 
                     - '008'
-                eventCode: 
+                    - '009'
+              eventCode: 
                   type: string
                   enum: 
                       - '[BMUnitAllocatedDemandVolumesToMarketParticipants]'
@@ -9134,6 +9140,7 @@ components:
                   example: '008'
                   enum: 
                     - '008'
+                    - '009'
                 eventCode: 
                   type: string
                   enum: 
@@ -9203,6 +9210,7 @@ components:
                   example: '008'
                   enum: 
                     - '008'
+                    - '009'
                 eventCode: 
                   type: string
                   enum: 
@@ -9272,6 +9280,7 @@ components:
                   example: '008'
                   enum: 
                     - '008'
+                    - '009'
                 eventCode: 
                   type: string
                   enum: 
@@ -9342,6 +9351,7 @@ components:
                   example: '008'
                   enum: 
                     - '008'
+                    - '009'
                 eventCode: 
                   type: string
                   enum: 
@@ -9414,6 +9424,7 @@ components:
                   example: '008'
                   enum: 
                     - '008'
+                    - '009'
                 eventCode: 
                   type: string
                   enum: 
@@ -9482,6 +9493,7 @@ components:
                     example: '008'
                     enum: 
                       - '008'
+                      - '009'
                   eventCode: 
                     type: string
                     enum: 
@@ -9548,7 +9560,8 @@ components:
                         example: '008'
                         enum: 
                           - '008'
-                      eventCode: 
+                          - '009'
+                    eventCode: 
                         type: string
                         enum: 
                             - '[DUoSSupplierInvData]'
@@ -9619,6 +9632,7 @@ components:
                     example: '008'
                     enum: 
                       - '008'
+                      - '009'
                   eventCode: 
                     type: string
                     enum: 
