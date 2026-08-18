@@ -1965,7 +1965,7 @@ components:
         maxLength: 40
         example : 'Aggregated DUoS'
         enum:
-            - 'Site Specifc DUoS' 
+            - 'Site Specific DUoS' 
           #  - 'Aggregated DUoS' # Removed 
           #  - 'Transactional'   # Removed    
  
