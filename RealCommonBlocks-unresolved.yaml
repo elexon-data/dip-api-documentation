@@ -1315,7 +1315,7 @@ components:
           - annualLoadShapeTotal
           
     B057: 
-        description: Supplier Notifcation Info
+        description: Supplier Notification Info
         type: object
         additionalProperties:
             false        
@@ -1614,7 +1614,7 @@ components:
           - arc
                 
     B074:    
-        description: MPAN Exiting Meter Info  
+        description: MPAN Existing Meter Info
         type: object
         additionalProperties:
             false        
@@ -1646,7 +1646,7 @@ components:
           
 
     B075:    
-      description: MPAN Exiting Meter Map Info  
+      description: MPAN Existing Meter Map Info
       type: object
       additionalProperties:
             false        

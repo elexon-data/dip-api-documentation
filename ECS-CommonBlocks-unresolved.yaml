@@ -1499,7 +1499,7 @@ components:
                   $ref: '#/components/schemas/R901-08'
 # DIN-875
     R901-08:
-        description: Change Band 
+        description: Charge Band
         type: object
         additionalProperties:
             false        
