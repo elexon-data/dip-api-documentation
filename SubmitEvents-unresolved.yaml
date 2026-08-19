@@ -49,15 +49,15 @@
 #
 # ----- note on use of upper/lower case -------------------------------------
 # DIP will not be enforcing capitalisation validation on JSON field names or URLS on message ingress. 
-# MPs are welcome to enfore capiltalisation validation when recieiving messages 
+# MPs are welcome to enforce capitalisation validation when receiving messages 
 # as the DIP will obey the case definitions of the swagger.
 # The data itself is case sensitive
 #   
 # January 2023
 # ------------
-# After consulation with the DIP SP there has been a significant change to the endpoint definitions for the submisison of messages
+# After consultation with the DIP SP there has been a significant change to the endpoint definitions for the submission of messages
 # Instead of a single endpoint where all messages are submitted, each message interface will be submitted at a different endpoint 
-# The rationale for this change is primarily from a maintainability point-of-view as it allows maintainence on each interface in isolation from 
+# The rationale for this change is primarily from a maintainability point-of-view as it allows maintenance on each interface in isolation from 
 # other interfaces and allows new message channels to be added without impact existing interfaces. 
 #
 # outstanding work :-
@@ -100,7 +100,7 @@
 #       23/04/2024   DIN-1018   Correct validation endpoints and add /validate/IF-009/MPANReconnection
 #       22/05/2024   DIN-1031   Update to Standard Response Body to reflect mandatory null 
 #       28/05/2024   DIN-962    Make MPAN optional on replay/
-#       07/06/2024   DIN-988    Remove IF-003-DSDeAppUpdateRM & IF-003-DSDeAppUpdateRM valdation endpoints
+#       07/06/2024   DIN-988    Remove IF-003-DSDeAppUpdateRM & IF-003-DSDeAppUpdateRM validation endpoints
 # 1.8   22/03/2024              Support new IR8 release  
 #       22/03/2024   DIN-960    Add validation endpoints 
 #       22/03/2024   DIN-892    Split DIPMessage for ingress/egress
@@ -113,23 +113,23 @@
 #       18/01/2024   DIN-844    CR023 Addition of MDR interfaces IF-061/2/3/4/5
 # 1.6   19/10/2023              Support new release IR6 - IF015/16 are valid in this version
 #       24/10/2023   DIN-684    Add REP-003A-Payload
-#       27/10/2023   DIN-749    Add payload to requried in message
+#       27/10/2023   DIN-749    Add payload to required in message
 #       27/10/2023   DIN-710    Updates to support IF-015/016
 #       27/10/2023   DIN-749    Add required block to DIPMessage
 #       10/01/2024   DIN-861    Clarification on webhook responses
 # 1.5.1 6 Oct 23                Update links to examples 0.3
-#       9 oct 23     DIN 700    Remove recipent id from MessageRequest as already specified on path
+#       9 oct 23     DIN 700    Remove recipient id from MessageRequest as already specified on path
 # 1.5 - Sept 23                 Significant updates including:
 #                    DIN 602    Update to multiple interfaces to include IF variants 
-#                               with muliple event codes and block population   
+#                               with multiple event codes and block population   
 #                    DIN 650    Compressed payloads for ECS reports
 #                               Inclusion of a Examples module so that some example messages 
-#                               have been inlcuded in the drop-down from the /dip-channel/{id}
+#                               have been included in the drop-down from the /dip-channel/{id}
 #                               definition
 #                               Other minor DINS to tidy up interface and report definitions
 #
 # 1.4 - August 23               Include REP900/901 for CR27 - DUoS E-Billing DIP message for MHHS
-#       July 2023    DIN 485    Issue with requirng a recipient ID for many Post/Delete 
+#       July 2023    DIN 485    Issue with requiring a recipient ID for many Post/Delete 
 #                               operations so that the subject is known, need to specify 
 #                               which webhook is being deleted, and post methods for webhook config, 
 #                               post methods for replay
@@ -140,18 +140,18 @@
 # 1.1 - Feb/Mar 23              Message signatures in headers
 #                               Multiple endpoints with reworked API calls 
 #                               Introduced a standard response for messages response and Status Message
-#                               URLs adopy standardisation of lower case and case insensitivity
+#                               URLs adopt standardisation of lower case and case insensitivity
 # 1.0 - 17/02/2023              Published to align with DAG sign-off 16/02/23
 # 0.4 - 26/01/2023   
 # 0.3 - 10/11/2022              Align with component files which are all 0.3
-#       18/11/2022              Mulitple updates to REPs
+#       18/11/2022              Multiple updates to REPs
 #       21/11/2022              Add IF-050
 #       19/12/2022              Add IF-019 & IF-020, IF-004. Other interfaces tidy up    
 #
 # 0.2 - Sept/Oct 22             Updates following first MHHS Programme review - multiple updates
 #                                 - industry comments 
 #                                 - API security schema 
-#                                 - webhook subscription takkes parameters of Publication Ids 
+#                                 - webhook subscription takes parameters of Publication Ids 
 #
 ## 0.1 - August 22              Sent for first MHHS Programme Review
 # ==============================================================
@@ -165,7 +165,7 @@ info:
   title: DIP - Send Messages & Receive Publications
   description: 
     Latest release 2.2.1 <br><br>
-    __DIP APIs for sending & recieving MHHS TOM messages and reports__
+    __DIP APIs for sending & receiving MHHS TOM messages and reports__
     <br><br>Supported interfaces -<br><br>
      -           Channel-001    Notification of Change of Supplier **<br>
      -           Channel-002    Registration Update to Supplier (COS Gain) **<br>
@@ -507,7 +507,7 @@ paths:
             
     delete:
       summary: Delete existing Publication configuration 
-      description: Delete an exisiting webhook for a publication
+      description: Delete an existing webhook for a publication
       tags:
           - DIP Channel Publication Configuration 
       parameters:
@@ -861,7 +861,7 @@ paths:
 
     delete:
       summary: Delete existing Status Message configuration 
-      description: Delete an exisiting webhook for Status Messages 
+      description: Delete an existing webhook for Status Messages 
       tags:
         - Status Messages
       parameters:
@@ -885,7 +885,7 @@ paths:
         '504': 
           description: Gateway Timeout
 
-## Status Message replay new in verison 2.2.0
+## Status Message replay new in version 2.2.0
   /statusmessage/replay/{recipient-id}:
     post:
       summary: Replay Status Messages  
@@ -956,7 +956,7 @@ paths:
         - $ref: '#/components/parameters/CommonSHA256Header'
         - $ref: '#/components/parameters/CommonSignatureCertifcateHeader'
 
-## Status Message requeue new in verison 2.2.0
+## Status Message requeue new in version 2.2.0
   /statusmessage/requeue/{recipient-id}:
     post:
       summary: Requeue Status Messages  
@@ -7185,7 +7185,7 @@ components:
 
   schemas:
 
-### DIP message defintion              
+### DIP message definition              
 
     DIPMessageArray:
       description: Array of DIP messages
@@ -7203,7 +7203,7 @@ components:
         $ref: '#/components/schemas/DIPMessageEgress'
 
         
-# Interface defintions found in interfaces file
+# Interface definitions found in interfaces file
   
     DIPMessage:
       description: DIP message - multiple payloads mapped into single object 
@@ -7355,7 +7355,7 @@ components:
           example: https://bigEnergyServer.com/receiveEvents
 
         maxMessageCount:
-                  description : optional - will default  - lower lmit
+                  description : optional - will default  - lower limit
                   type: number
                   example: 100
         maxPayloadSize:
@@ -7442,7 +7442,7 @@ components:
             # the sender of this message
             $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-006-DIPParticipantID'
         recipientID :
-            # indended (logical) recipient of the message, i.e sender of the original event message
+            # intended (logical) recipient of the message, i.e sender of the original event message
             $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-006N-DIPParticipantID'
         DIPConnectionProviderID :
             # physical recipient of the message (if different to recipient Id)

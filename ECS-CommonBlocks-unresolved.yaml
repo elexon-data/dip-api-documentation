@@ -1,7 +1,7 @@
 # OpenAPI version identifier - required for OpenAPI 3.0 domains
 # (c) Elexon 2022, 2023, 2024, 2025, 2026
 #
-# MMHS - Data Integration Platform 
+# MHHS - Data Integration Platform 
 # ECSCommonBlocks
 #
 # ----- update -----------------------------------------------------------------------
@@ -20,12 +20,12 @@
 #       13/08/2024    DIN-1056 Remove LDSOBillingSiteID from required field in R900-04
 # 1.8.1 03/05/2024             Support new IR8.1 release  
 #       10/05/2024    DIN-1037 Corrections to REP-900
-#       30/05/2024    DIN-1020 Repalce DI-484 with DI-081
+#       30/05/2024    DIN-1020 Replace DI-484 with DI-081
 # 1.8   22/03/2024             Support new IR8 release  
 #       22/03/2024    DIN-875  Description added
 #       22/03/2024    DIN-959  Fix REP901-07 swagger
 # 1.7.1 27/02/2024             Support new release  
-#       01/03/2024    DIN-853  Remove DI-030 Domestic Premise Inidcator from R003 block
+#       01/03/2024    DIN-853  Remove DI-030 Domestic Premise Indicator from R003 block
 # 1.7   04/01/2024    DIN-803  Support new release; split out from RealCommmonBlocks
 #       26/01/2024    DIN-845  List-of-MPANs in R900-03 is mandatory
 #                     DIN-859  Correct the REP900 record hierarchy
@@ -668,7 +668,7 @@ components:
             - REP002-R010
                 
     REP002-R010: 
-        description: R010 - Tariff Characterisitics + child records 
+        description: R010 - Tariff Characteristics + child records 
         type: object
         additionalProperties:
             false        
@@ -684,7 +684,7 @@ components:
               
 # Blocks for REP002A
     REP002A-R006:
-        description: R006 - Supplier + Tariff Characterisitics 
+        description: R006 - Supplier + Tariff Characteristics 
         type: object
         additionalProperties:
             false        
@@ -698,7 +698,7 @@ components:
 
                 
     REP002A-R010: 
-        description: R010 - Tariff Characterisitics + child records A
+        description: R010 - Tariff Characteristics + child records A
         type: object
         additionalProperties:
             false        
@@ -715,7 +715,7 @@ components:
 # Blocks for REP002B
 
     REP002B-R009: 
-        description: R009 extended - Supplier + Tariff Characterisitics 
+        description: R009 extended - Supplier + Tariff Characteristics 
         type: object
         additionalProperties:
             false        
@@ -728,7 +728,7 @@ components:
               $ref:  '#/components/schemas/REP002B-R010'
 
     REP002B-R010: 
-        description: R010 - Tariff Characterisitics + child records 
+        description: R010 - Tariff Characteristics + child records 
         type: object
         additionalProperties:
             false        
@@ -1224,7 +1224,7 @@ components:
                 
             R900-04:
               #  Invoice Data  
-                description: LDSO Billing Invoive Data
+                description: LDSO Billing Invoice Data
                 type : array
                 items: 
                     $ref: 'ECS-CommonBlocks-unresolved.yaml#/components/schemas/R900-04'
@@ -1493,13 +1493,13 @@ components:
 #            totalVolumeChargeForChargeBand:
 #                  $ref: 'DataCatalogue-unresolved.yaml#/components/schemas/DI-607-Total-Volume-Charge-For-Charge-Band'
             R901-08:
-              description: Charge Bandlist
+              description: Charge Band List
               type: array
               items: 
                   $ref: '#/components/schemas/R901-08'
 # DIN-875
     R901-08:
-        description: Change Band 
+        description: Charge Band 
         type: object
         additionalProperties:
             false        

@@ -1,7 +1,7 @@
 # OpenAPI version identifier - required for OpenAPI 3.0 domains
 # (c) Elexon 2022, 2023, 2024, 2025, 2026
 #
-# MMHS - Data Integration Platform 
+# MHHS - Data Integration Platform 
 # DataTypes
 #
 # ------------------------------------------------------------------------------------
@@ -22,7 +22,7 @@
 # 1.8.1 03/05/2024            Support new IR8.1 release  
 #       15/05/2024   DIN-977  Update DT-013-EnvironmentTag list
 #       17/05/2024   DIN-1024 Add minLength =1 where nullable = true
-#       21/05/2024   DIN-1031 Add new data tyoes to support new SRB Type defn
+#       21/05/2024   DIN-1031 Add new data types to support new SRB Type defn
 # 1.8   22/03/2024            Support new IR8 release  
 # 1.7.1 27/02/2024            Support new release  
 #       27/02/2024   DIN-893  Ensure only positive values on regex for DT-026-Group-Correction-Factor
@@ -383,7 +383,7 @@ components:
       nullable: true
       minLength : 1
       maxLength : 500
-      example: 'additonal text to separate messages in testing - ignore in production'
+      example: 'additional text to separate messages in testing - ignore in production'
       
     DT-021-Date:
       description: ISO 8601 Date
@@ -601,7 +601,7 @@ components:
           - PUB-002  # Notification to New Supplier of Site Information  
           - PUB-003
           - PUB-005  # Metering Service MTD Updates to Registration
-          - PUB-006  # Registration Service NotPUBication of MTD Updates
+          - PUB-006  # Registration Service Notification of MTD Updates
           - PUB-007  # Change of Energisation Status Outcome
           - PUB-008
           - PUB-009

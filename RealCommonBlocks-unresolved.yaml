@@ -10,7 +10,7 @@
 # Ver   Date           Ref.    Description
 # ------------------------------------------------------------------------------------
 # 2.2.1 11/08/2036   75210    Add P0 common block for possible REP splitting
-# 2.2.1 16/07/2026            Add mising type on B085
+# 2.2.1 16/07/2026            Add missing type on B085
 # 2.2.1 12/08/2026   75710    Change A0 block to DT from DI
 # 2.1.0 02/02/2026            Support for June/July release
 # 2.0.1 03/10/2025   CP1607   Add new blocks B085, B086 to support IF-051
@@ -34,11 +34,11 @@
 # 1.5   26/09/2023   DIN-667, DIN-656, DIN-655, DIN-640, DIN-641
 # 1.4   25/07/2023   DIN-567, 510, 513, 515, 532, 547, 571 - IR4 updates
 #                             CR 19 = REP900 CR27 = REP901
-# 1.2   15/05/2023            Further minor ammendments from reviews
+# 1.2   15/05/2023            Further minor amendments from reviews
 # 1.1 - 14/03/2023            All items within blocks are required (align with non nullable change)
 # 1.0 - 17/02/2023            Align with DAG signoff
 # 0.4   01/02/2023            Add MPID to numerous blocks
-# 0.4   25/01/2023            Fix a few typos, ammned required fields for several blocks 
+# 0.4   25/01/2023            Fix a few typos, amend required fields for several blocks 
 #                             and comment out EZ name 
 # 0.3   04/11/2022            Add required elements to the blocks that were missing them them 
 #       03/11/2022            Add DI-166 "Supplier Consumption Amendment Reason Code" to B047
@@ -446,7 +446,7 @@ components:
             - deAppointmentReasonCode    
             
     B009: 
-        description: Data Service DeAppointment Details
+        description: Data Service Deappointment Details
         type: object
         additionalProperties:
             false        
@@ -488,7 +488,7 @@ components:
 
 
     B011: 
-        description: DataService Incoming Service Details
+        description: Data Service Incoming Service Details
         type: object
         additionalProperties:
             false        
@@ -554,7 +554,7 @@ components:
 
                 
     B015: 
-        description: DataService Incoming (Active)
+        description: Data Service Incoming (Active)
         type: object
         additionalProperties:
             false        
@@ -582,7 +582,7 @@ components:
           
                 
     B016: 
-        description: MeteringService Partner Service
+        description: Metering Service Partner Service
         type: object
         additionalProperties:
             false        
@@ -652,7 +652,7 @@ components:
           - assignedMDREffectiveFromDate
 
     B020: 
-        description: MeteringService Cust Direct Set
+        description: Metering Service Cust Direct Set
         type: object
         additionalProperties:
             false        
@@ -668,7 +668,7 @@ components:
           
                 
     B021: 
-        description: DataService Cust Direct Set
+        description: Data Service Cust Direct Set
         type: object
         additionalProperties:
             false        
@@ -1170,7 +1170,7 @@ components:
           
         
     B048: 
-    # B048 descrepancy between IF-013 & IF-016
+    # B048 discrepancy between IF-013 & IF-016
         description: Settlement Period Consumption Defaulted Data
         type: object
         additionalProperties:
@@ -1315,7 +1315,7 @@ components:
           - annualLoadShapeTotal
           
     B057: 
-        description: Supplier Notifcation Info
+        description: Supplier Notification Info
         type: object
         additionalProperties:
             false        
@@ -1441,7 +1441,7 @@ components:
             - configurableRegisterID
             - configurableRegisterReading
 
-# B066 swapped defintions 16/12/22
+# B066 swapped definitions 16/12/22
     B066:
       description: SDS MDR Outcome
       type: object
@@ -1512,7 +1512,7 @@ components:
         
 
     B070: 
-        description: Proposed MeteringService
+        description: Proposed Metering Service
         type: object
         additionalProperties:
             false        
@@ -1614,7 +1614,7 @@ components:
           - arc
                 
     B074:    
-        description: MPAN Exiting Meter Info  
+        description: MPAN Existing Meter Info  
         type: object
         additionalProperties:
             false        
@@ -1646,7 +1646,7 @@ components:
           
 
     B075:    
-      description: MPAN Exiting Meter Map Info  
+      description: MPAN Existing Meter Map Info  
       type: object
       additionalProperties:
             false        
@@ -1696,7 +1696,7 @@ components:
 # CR23 - 29/02/2024 - Create New Block "B078 - Energy Direction"
 
     B078:    
-      description: Eenrgy Direction 
+      description: Energy Direction 
       type: object
       additionalProperties:
             false        
@@ -1893,7 +1893,7 @@ components:
               - currentSupplierMPID
               - currentSupplierEffectiveFromDate
               
-# B086 copy of B074 with additon of Meter Removal datetime              
+# B086 copy of B074 with addition of Meter Removal datetime              
 
     B086:    
         description: MPAN Existing Meter Info  
@@ -1942,7 +1942,7 @@ components:
         - subsidiaryMPAN
 
     B091:    
-      description: MPAN  Relationship Additional Infromation
+      description: MPAN  Relationship Additional Information
       type: object
       properties:         
         additionalInformation:
@@ -2281,7 +2281,7 @@ components:
           existingMAP: 
             $ref:  '#/components/schemas/B075'
 
-# Two vairants of 906 - one where B034 is mandatory, the other its optional
+# Two variants of 906 - one where B034 is mandatory, the other its optional
     B906:
         description: Meter-Map History 
         type: object

@@ -220,7 +220,7 @@ components:
                   eventCode: "[GainMPANInfo]"
                 S1:
                   environmentTag: "DEV"
-                  subText: "additonal text to separate messages in testing - ignore in production"
+                  subText: "additional text to separate messages in testing - ignore in production"
                   senderUniqueReference: "S-IF-002-0123456789-REGS-20222313-12345687a1234567a"
                   senderTimestamp: "2022-03-21T19:05:00+00:00"
                   senderDIPID: "1009012345"
@@ -314,7 +314,7 @@ components:
                   eventCode: "[MSDeApp]"
                 S1:
                   environmentTag: "DEV"
-                  subText: "additonal text to separate messages in testing - ignore in production"
+                  subText: "additional text to separate messages in testing - ignore in production"
                   senderUniqueReference: "S-IF-037-0123456789-REGS-20220528-12345687a12345670"
                   senderTimestamp: "2022-05-28T21:00:00+00:00"
                   senderDIPID: "1009012345"
@@ -357,7 +357,7 @@ components:
                   eventCode: "[RelatedCreate]"
                 S1:
                   environmentTag: "DEV"
-                  subText: "additonal text to separate messages in testing - ignore in production"
+                  subText: "additional text to separate messages in testing - ignore in production"
                   senderUniqueReference: "S-IF-037-0123456789-REGS-20220528-12345687a12345670"
                   senderTimestamp: "2022-05-28T21:00:00+00:00"
                   senderDIPID: "1009012345"
@@ -392,7 +392,7 @@ components:
               eventCode: '[ActivePower]'
             S1:
               environment: SIT
-              subText: additonal text to separate messages in testing - ignore in production
+              subText: additional text to separate messages in testing - ignore in production
               senderUniqueReference: S-005-0123456789-ADS-20222313-12345687a1234567a
               sentTimestamp: '2022-03-21T19:05:00+00:00'
               senderDIPId: '1009012345'
@@ -672,7 +672,7 @@ components:
                   eventCode: "[MSDeApp]"
                 S1:
                   environmentTag: "DEV"
-                  subText: "additonal text to separate messages in testing - ignore in production"
+                  subText: "additional text to separate messages in testing - ignore in production"
                   senderUniqueReference: "S-IF-037-0123456789-REGS-20220528-12345687a12345670"
                   senderTimestamp: "2022-05-28T21:00:00+00:00"
                   senderDIPID: "1009012345"
@@ -715,7 +715,7 @@ components:
                   eventCode: "[ConnectionTypeChange]"
                 S1:
                   environmentTag: "DEV"
-                  subText: "additonal text to separate messages in testing - ignore in production"
+                  subText: "additional text to separate messages in testing - ignore in production"
                   senderUniqueReference: "S-IF-043-0123456789-REGS-20220528-12345687a1234567a"
                   senderTimestamp: "2022-05-28T19:00:00+00:00"
                   senderDIPID: "1009012345"
@@ -747,7 +747,7 @@ components:
                   eventCode: "[MarketSegmentChange]"
                 S1:
                   environmentTag: "DEV"
-                  subText: "additonal text to separate messages in testing - ignore in production"
+                  subText: "additional text to separate messages in testing - ignore in production"
                   senderUniqueReference: "S-IF-043-0123456789-REGS-20220528-12345687a1234567b"
                   senderTimestamp: "2022-05-28T19:00:00+00:00"
                   senderDIPID: "1009012345"
