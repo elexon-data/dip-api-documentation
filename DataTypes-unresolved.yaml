@@ -600,6 +600,7 @@ components:
           - PUB-001  # Notification of Change of Supplier
           - PUB-002  # Notification to New Supplier of Site Information  
           - PUB-003
+          - PUB-004
           - PUB-005  # Metering Service MTD Updates to Registration
           - PUB-006  # Registration Service NotPUBication of MTD Updates
           - PUB-007  # Change of Energisation Status Outcome
