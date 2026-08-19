@@ -9072,7 +9072,7 @@ components:
                   enum: 
                     - '008'
                     - '009'
-              eventCode: 
+                eventCode: 
                   type: string
                   enum: 
                       - '[BMUnitAllocatedDemandVolumesToMarketParticipants]'
@@ -9561,7 +9561,7 @@ components:
                         enum: 
                           - '008'
                           - '009'
-                    eventCode: 
+                      eventCode: 
                         type: string
                         enum: 
                             - '[DUoSSupplierInvData]'
