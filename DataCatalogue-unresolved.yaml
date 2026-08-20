@@ -2361,7 +2361,7 @@ components:
 
     DI-955-Partition-Block-Count:
         description : The total number of instances of partitionBlock across the whole batch 
-        type: int
+        type: integer
         minimum: 1
         maximum: 999999999
         example : 1066
@@ -2376,7 +2376,7 @@ components:
 
     DI-957-Part-Number:
         description : Part mumber (of total parts)
-        type: int
+        type: integer
         minimum: 1
         maximum: 999
         example : 6
@@ -2384,7 +2384,7 @@ components:
 
     DI-958-Total-Parts:
         description : Number of parts that comprise the whole report 
-        type: int
+        type: integer
         minimum: 1
         maximum: 999
         example : 12
