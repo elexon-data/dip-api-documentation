@@ -1,14 +1,14 @@
 # OpenAPI version identifier - required for OpenAPI 3.0 domains
 # (c) Elexon 2022, 2023, 2024, 2025, 2026
 #
-# MMHS - Data Integration Platform 
+# MHHS - Data Integration Platform 
 # Interfaces with Event Codes
 # 
 # Change history
 # ====================================================================================
 # Ver   Date           Ref.     Description
 # ------------------------------------------------------------------------------------
-# 2.2.1 18/08/2026   75210/032  Up the version number on all reps  to '009' but amke them baackwrdly compatiable
+# 2.2.1 18/08/2026   75210/032  Up the version number on all reps  to '009' but make them backwardly compatible
 #                               within the ENUM range 
 # 2.2.1 11/08/2026   75210/032  Add optional P0 block to all REPs 
 # 2.2.0 08/07/2026   74613      Remove event codes [RelatedAdd]&[RelatedRemove]from IF-020-Related-Create 
@@ -22,7 +22,7 @@
 #       20/05/2024    DIN-1029  Make B032 block mandatory for [SSCandProfileClass] event in IF-025 and IF-026
 #       20/05/2024    DIN-1035  IF037 DSDeApp requires B002 block
 #       20/05/2024    DIN-1040  Missing B095 block in IF-003-MSDeAppRM & missing B096 block in IF-003-DSDeAppRM 
-#       21/05/2024    DIN-1041  Updates to IF-06x version nuumbers to align with other IFs 
+#       21/05/2024    DIN-1041  Updates to IF-06x version numbers to align with other IFs 
 #       23/05/2024    DIN-1044  The event code fix for IF-009-MPANReconnection
 #       28/05/2024    DIN-992   IF-016-ActivePowerRejected required field B900List should be B900
 # 1.8   22/03/2024              Support new IR8 release  
@@ -45,7 +45,7 @@
 #                               IF024 SN-NoComms CustomBlock required B057
 #                               IF024 SNRemoteEnabled CustomBlock required B057, B069
 #                               IF024 SNSupplierAC CustomBlock required B057, B058 
-#                     DIN-830   Additonal properties false for IF-001 custom blocks
+#                     DIN-830   Additional properties false for IF-001 custom blocks
 #                     DIN-844   Additional interfaces for CR023 
 #       05/01/2024    DIN-819   Event Code for REP-004 updated to [SupplierDeemedTakeReport]
 #       05/01/2024    DIN-821   Remove anyOf pattern - revert to standard message pattern
@@ -56,7 +56,7 @@
 #                     DIN-849   B099 single block not array
 #       19/01/2024    DIN-870   IMS-SendMTD variant for IF-035 to add B070, B071 and B019
 #       29/01/2024    DIN-886   Add B905List to IF006-MeterRemoval 
-#       29/01/2024    DIN-888   Include object type in IF-024 defintions
+#       29/01/2024    DIN-888   Include object type in IF-024 definitions
 # 1.6   19/10/2023              Support new release
 #                     DIN-709   IF-014 updated from a list to a single item to match IF-021 interface
 #                     DIN-710   Updates to IF-016
@@ -69,10 +69,10 @@
 #                               IF-018-MUMIndicator
 #                     DIN 697   IF-023 add required properties
 # 1.5 - September 23   -        Formed from Interfaces v1.5 
-#                     DIN 602 - Variants for IFs with muliple event codes and block population
+#                     DIN 602 - Variants for IFs with multiple event codes and block population
 #                     DIN 650 - Introduction of Compressed Payloads into DIP Messages
 #                     DIN 655 - Tightened down block definition with the introduction 
-#                               of clauses to not extend object defintions:
+#                               of clauses to not extend object definitions:
 #                                 - required clause on all objects
 #                                 - additionalProperties: 
 #                                       false  - added
@@ -88,7 +88,7 @@
 openapi: 3.0.0
 info:
   title: Interface with Event Codes
-  description: Interfaces reworked to include varaints where different Event Codes have different block structures 
+  description: Interfaces reworked to include variants where different Event Codes have different block structures 
   version: 2.1.0
   
 
@@ -98,7 +98,7 @@ components:
   schemas:
 
 # IF 001 -Change of Supplier
-# DIN 602 - create 2 varaints for IF-001
+# DIN 602 - create 2 variants for IF-001
 # 
 
     IF-001-Payload:
@@ -409,7 +409,7 @@ components:
             B032:
               $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/B032'
             
-            # B905 ~ B074 (Existing Meter Info) and B075 (Map INfo) Blocks are repeated for each installed meter at the MPAN
+            # B905 ~ B074 (Existing Meter Info) and B075 (Map Info) Blocks are repeated for each installed meter at the MPAN
             B905List: 
               type: array
               items:
@@ -436,7 +436,7 @@ components:
             - B025
             - B026
             
-# IF 003 - Notification of Revserse Migrationand De-Appointment
+# IF 003 - Notification of Reverse Migration and De-Appointment
 # DIN-602 create variants for each eventcode
 # DIN-919 Add B002 block to each message variant
 # DIN-988 Remove  IF-003-DSDeAppUpdateRM & IF-003-DSDeAppUpdateRM
@@ -1390,7 +1390,7 @@ components:
             B030: # optional
               $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/B030'
 
-            B039: # optional DIN-832 addtion
+            B039: # optional DIN-832 addition
               $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/B039'            
     
             B905List: # optional
@@ -4777,17 +4777,17 @@ components:
               - B902List
           properties:
             B902List:
-              description: MQID (B045) Supplier Consumption Ammendment Requests
+              description: MQID (B045) Supplier Consumption Amendment Requests
               type : array
               items:                         
                 $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/B902'
 
 
-# IF-028 Supplier Consumption Ammendment Request Response
+# IF-028 Supplier Consumption Amendment Request Response
 # 25/8/22 ok
 
     IF-028-Payload:
-      description: IF-028 Supplier Consumption Ammendment Request Response
+      description: IF-028 Supplier Consumption Amendment Request Response
       type: object
       additionalProperties:
           false        
@@ -4850,7 +4850,7 @@ components:
             - B902List
           properties:
             B902List:
-              description: MQID (B045) Supplier Consumption Ammendment Requests
+              description: MQID (B045) Supplier Consumption Amendment Requests
               type : array
               items:                         
                 $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/B902'
@@ -6591,7 +6591,7 @@ components:
               # Data Service details (Mandatory for Event [DSAppActive])
                   $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/B015'
               B019: 
-              # Assigne MDR
+              # Assigned MDR
                   $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/B019'                    
               B005: 
               # Incumbent Service Providers                   
@@ -7835,7 +7835,7 @@ components:
               false        
           properties:
             B060:
-                #    Registration reminder additonal information            
+                #    Registration reminder additional information            
                 $ref: 'RealCommonBlocks-unresolved.yaml#/components/schemas/B060'
             
             
