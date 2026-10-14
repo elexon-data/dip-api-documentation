@@ -103,7 +103,6 @@ components:
 
     IF-001-Payload:
       description: IF001 Message
-      type: object
       oneOf:
           - $ref: '#/components/schemas/IF-001-InitialRegistration'
           - $ref: '#/components/schemas/IF-001-ChangeOfSupplier'
@@ -3717,7 +3716,6 @@ components:
 
     IF-024-Payload:
       description: IF-024 Supplier Advisory Notification to Data Service
-      type: object
       oneOf:
           - $ref: '#/components/schemas/IF-024-SN-Vacant' 
           - $ref: '#/components/schemas/IF-024-SN-NoComms'
@@ -4130,7 +4128,6 @@ components:
 
     IF-025-Payload:
       description: IF-025 Supplier Advisory Notification to Data Service
-      type: object
       oneOf:
           - $ref: '#/components/schemas/IF-025-ConsentGranularity'
           - $ref: '#/components/schemas/IF-025-IHDInfo'
@@ -7923,6 +7920,7 @@ components:
         - CustomBlock
       properties:
         CommonBlock:
+          type: object
           additionalProperties:
               false        
           required: 
@@ -8004,6 +8002,7 @@ components:
         - CustomBlock
       properties:
         CommonBlock:
+          type: object
           additionalProperties:
               false        
           required: 
@@ -8066,6 +8065,7 @@ components:
         - CustomBlock
       properties:
         CommonBlock:
+          type: object
           additionalProperties:
               false        
           required: 
@@ -8267,6 +8267,7 @@ components:
         - CustomBlock
       properties:
         CommonBlock:
+          type: object
           additionalProperties:
               false        
           required: 
@@ -8350,6 +8351,7 @@ components:
         - CustomBlock
       properties:
         CommonBlock:
+          type: object
           additionalProperties:
               false        
           required: 
@@ -8436,6 +8438,7 @@ components:
         - CustomBlock
       properties:
         CommonBlock:
+          type: object
           additionalProperties:
               false        
           required: 
@@ -8502,6 +8505,7 @@ components:
         - CustomBlock
       properties:
         CommonBlock:
+          type: object
           additionalProperties:
               false        
           required: 
@@ -8583,6 +8587,7 @@ components:
         - CustomBlock
       properties:
         CommonBlock:
+          type: object
           additionalProperties:
               false        
           required: 
@@ -8651,6 +8656,7 @@ components:
         - CustomBlock
       properties:
         CommonBlock:
+          type: object
           additionalProperties:
               false        
           required: 
@@ -8712,6 +8718,7 @@ components:
         - CustomBlock
       properties:
         CommonBlock:
+          type: object
           additionalProperties:
               false        
           required: 
@@ -8775,6 +8782,7 @@ components:
         - CustomBlock
       properties:
         CommonBlock:
+          type: object
           additionalProperties:
               false        
           required: 
