@@ -165,6 +165,7 @@ components:
     DT-003-DateTime:
       description: ISO 8601 Date/time
       type: string
+      format: date-time
       minLength : 25
       maxLength : 25
       example: '2022-03-21T19:05:00+00:00'
@@ -173,6 +174,7 @@ components:
     DT-003N-DateTime:
       description: ISO 8601 Date/time
       type: string
+      format: date-time
       nullable: true
       minLength : 25
       maxLength : 25
@@ -388,6 +390,7 @@ components:
     DT-021-Date:
       description: ISO 8601 Date
       type: string
+      format: date
       nullable: false
       minLength : 10
       maxLength : 10
@@ -397,6 +400,7 @@ components:
     DT-021N-Date:
       description: ISO 8601 Date
       type: string
+      format: date
       nullable: true
       minLength : 10
       maxLength : 10
