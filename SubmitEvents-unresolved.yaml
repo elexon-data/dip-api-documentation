@@ -5,6 +5,13 @@
 # SubmitEvents API 
 #
 # ----- update notices ---------------------------------------------------------------
+# October 2026 v2.2.1-norq - VARIANT of 2.2.1 without reworked replay/requeue (parallel line;
+# replay/requeue as per 2.1.0)
+# ------------
+# 2.2.1 content EXCLUDING the reworked replay/requeue APIs (ADO 74971/74972/74973).
+# Replay/requeue revert to their 2.1.0 definitions. Status Message replay/requeue
+# and requeueStatus endpoints are not present.
+#
 # June for November release v2.2.0
 # ------------
 # re-introduce reworked APIs for replay/requeue and status message replay/requeue
@@ -72,6 +79,14 @@
 # Ver   Date           Ref.    Description
 #                   ADO / DCAB            
 # ------------------------------------------------------------------------------------
+# 2.2.1-norq 21/10/2026         VARIANT - 2.2.1 with reworked replay/requeue removed (2.1.0 definitions)
+#                   74971/017   EXCLUDED - Bulk Message replay (206/X-Continuation-Token) - 2.1.0 replay retained
+#                   74972/018   EXCLUDED - Bulk Message requeue (202/429, requeueId) - 2.1.0 requeue retained
+#                   74973/019   EXCLUDED - Status Message replay/requeue, /requeueStatus endpoints
+#                   73686/027   RETAINED - Message Delivery Status API
+#                   74613       RETAINED - IF-020 RelatedCreate event codes
+#                               RETAINED - optional P0 block on REPs (REP splitting), DI-955,
+#                               schemaVersion 009, recipient ID DataCatalogue changes
 # 2.2.1 29/07/2026  74973       /dip-channel/{id}/requeue/{recipient-id} returns a requeueId on a 202 
 #                               response
 # 2.2.0 23/06/2026  74973/019   Re-Introduce Status Message replay/requeue 
@@ -161,10 +176,10 @@
 
 openapi: 3.0.0
 info:
-  version: 2.2.1
+  version: 2.2.1-norq
   title: DIP - Send Messages & Receive Publications
   description: 
-    Latest release 2.2.1 <br><br>
+    Release 2.2.1-norq - variant of 2.2.1 without the reworked Replay/Requeue APIs (replay/requeue as per 2.1.0) <br><br>
     __DIP APIs for sending & recieving MHHS TOM messages and reports__
     <br><br>Supported interfaces -<br><br>
      -           Channel-001    Notification of Change of Supplier **<br>
@@ -524,12 +539,12 @@ paths:
         '401':
             description: Unauthorised Error            
 
-### Message Replay - 2.2.0 version supports enhanced replay.
+### Message Replay/Requeue - v2.2.1-norq variant: 2.1.0 definitions retained; 2.2.x reworked replay/requeue (74971/74972/74973) excluded
 
   /dip-channel/{id}/replay/{recipient-id}:
     post:
       summary: Replay messages from a DIP Channel Publication  
-      description: Allows a Market Participant to replay messages messages returned in the API call (cf. requeue)
+      description: Allows a Market Participant to replay messages  
       operationId: replayPublication
       tags: 
           - DIP Channel Replay/Requeue
@@ -540,7 +555,6 @@ paths:
         - $ref: '#/components/parameters/CommonSignatureDateHeader'
         - $ref: '#/components/parameters/CommonSHA256Header'
         - $ref: '#/components/parameters/CommonSignatureCertifcateHeader'
-        - $ref: '#/components/parameters/ContinuationToken'
 
       requestBody:
         required: true
@@ -564,35 +578,16 @@ paths:
               application/json:
                 schema:
                     $ref: '#/components/schemas/StandardResponse'
-
-#       23/06/2026  49300/017
-# Add reason codes to notify when there is more data to retrieve
-
-        '206':
-          description: Replayed Messages - more data
-          content: 
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DIPMessageEgressArray'
-          headers:
-              X-Continuation-Token:
-                required: false
-                schema:
-                  type: string
             
         '401':
             description: Unauthorised Error            
         '403':
             description: Forbidden
-            
-#       23/06/2026  49300/017
-# Updated reason codes in order to support bulk requeue
 
   /dip-channel/{id}/requeue/{recipient-id}:
     post:
       summary: Requeue messages on DIP Channel webhook  
-      description: Allows a Market Participant to requeue messages on the corresponding DIP Id webhook 
-        - reason codes updated for version 2.2.0
+      description: Allows a Market Participant to replay messages  
       operationId: requeuePublication
       tags: 
           - DIP Channel Replay/Requeue
@@ -611,64 +606,9 @@ paths:
             schema:
                 $ref: '#/components/schemas/MessageRequest'
                 
-#       23/06/2026  49300/017
-# Update reason codes (add 202,429; drop 200) in order to support bulk requeue
-
-      responses:
-        '202':
-          description: Messages requeued
-          content: 
-              application/json:
-                schema:
-                    $ref: '#/components/schemas/RequeueId'
-
-          
-
-        '400':
-            description: Bad Request
-            content: 
-              application/json:
-                schema:
-                    $ref: '#/components/schemas/StandardResponse'
-        '401':
-            description: Unauthorised Error            
-        '403':
-            description: Forbidden
-        '429':
-            description: Too Many Requests
-
-
-#       23/06/2026  49300/017
-#   Add Requeue Status endpoint so DIP users can determine if there are o/s requests for requeue
-#   hence provide rationale why a requeue request may fail with a 429
-            
-  /dip-channel/{id}/requeueStatus/{recipient-id}:
-    get:
-      summary: Reports on the status of previously submitted requeue requests
-      description: Reports on the status of previously submitted requeue requests, participants can only submit a new request when the current request completes
-      operationId: requeueStatus
-      tags: 
-          - DIP Channel Replay/Requeue
-      parameters:
-        - $ref: '#/components/parameters/MessageChannel'
-        - $ref: '#/components/parameters/MessageRecipientId'
-        - $ref: '#/components/parameters/RequeueId'
-        - $ref: '#/components/parameters/CommonSignatureHeader'
-        - $ref: '#/components/parameters/CommonSignatureDateHeader'
-        - $ref: '#/components/parameters/CommonSHA256Header'
-        - $ref: '#/components/parameters/CommonSignatureCertifcateHeader'
-
       responses:
         '200':
-          description: Requeue Information
-          content: 
-            application/json:
-              schema:
-                    $ref: '#/components/schemas/RequeueStatusArray'
-              
-
-        '204':
-          description: No Content
+          description: Messages requeued
 
         '400':
             description: Bad Request
@@ -680,18 +620,6 @@ paths:
             description: Unauthorised Error            
         '403':
             description: Forbidden
-        '429':
-            description: Too Many Requests
-
-        '500':
-          description: Internal Server Error
-        '502': 
-          description: Bad Gateway
-        '503':
-          description: Service Unavailable
-        '504': 
-          description: Gateway Timeout
-
 
   /statusmessage: 
     post:
@@ -885,185 +813,7 @@ paths:
         '504': 
           description: Gateway Timeout
 
-## Status Message replay new in verison 2.2.0
-  /statusmessage/replay/{recipient-id}:
-    post:
-      summary: Replay Status Messages  
-      description: Allows a Market Participant to replay status messages  
-      operationId: replayStatusMessage
-      tags: 
-          - Status Message Replay/Requeue
-      parameters:
-        - $ref: '#/components/parameters/MessageRecipientId'
-        - $ref: '#/components/parameters/CommonSignatureHeader'
-        - $ref: '#/components/parameters/CommonSignatureDateHeader'
-        - $ref: '#/components/parameters/CommonSHA256Header'
-        - $ref: '#/components/parameters/CommonSignatureCertifcateHeader'
-        - $ref: '#/components/parameters/ContinuationToken'
-
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-                $ref: '#/components/schemas/StatusMessageRequest'
-                
-
-      responses:
-        '200':
-          description: Replayed Status Messages 
-          content: 
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StandardResponseArray'
-
-        '206':
-          description: Replayed Status Message - more data
-          content: 
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StandardResponseArray'
-          headers:
-              X-Continuation-Token:
-                required: false
-                schema:
-                  type: string
-
-        '400':
-            description: Bad Request
-            content: 
-              application/json:
-                schema:
-                    $ref: '#/components/schemas/StandardResponse'
-            
-        '401':
-            description: Unauthorised Error            
-        '403':
-            description: Forbidden
-        '500':
-          description: Internal Server Error
-        '502': 
-          description: Bad Gateway
-        '503':
-          description: Service Unavailable
-        '504': 
-          description: Gateway Timeout
-
-    parameters:
-        - $ref: '#/components/parameters/MessageRecipientId'
-        - $ref: '#/components/parameters/CommonSignatureHeader'
-        - $ref: '#/components/parameters/CommonSignatureDateHeader'
-        - $ref: '#/components/parameters/CommonSHA256Header'
-        - $ref: '#/components/parameters/CommonSignatureCertifcateHeader'
-
-## Status Message requeue new in verison 2.2.0
-  /statusmessage/requeue/{recipient-id}:
-    post:
-      summary: Requeue Status Messages  
-      description: Allows a Market Participant to requeue status messages  
-      operationId: requeueStatusMessage
-      tags: 
-          - Status Message Replay/Requeue
-      parameters:
-        - $ref: '#/components/parameters/MessageRecipientId'
-        - $ref: '#/components/parameters/CommonSignatureHeader'
-        - $ref: '#/components/parameters/CommonSignatureDateHeader'
-        - $ref: '#/components/parameters/CommonSHA256Header'
-        - $ref: '#/components/parameters/CommonSignatureCertifcateHeader'
-
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-                $ref: '#/components/schemas/StatusMessageRequest'
-                
-
-      responses:
-        '202':
-          description: Status Messages Requeued
-          content: 
-              application/json:
-                schema:
-                    $ref: '#/components/schemas/RequeueId'
-
-
-        '400':
-            description: Bad Request
-            content: 
-              application/json:
-                schema:
-                    $ref: '#/components/schemas/StandardResponse'
-            
-        '401':
-            description: Unauthorised Error            
-        '403':
-            description: Forbidden
-        '429':
-            description: Too Many Requests
-        '500':
-          description: Internal Server Error
-        '502': 
-          description: Bad Gateway
-        '503':
-          description: Service Unavailable
-        '504': 
-          description: Gateway Timeout
-
-    parameters:
-        - $ref: '#/components/parameters/MessageRecipientId'
-        - $ref: '#/components/parameters/CommonSignatureHeader'
-        - $ref: '#/components/parameters/CommonSignatureDateHeader'
-        - $ref: '#/components/parameters/CommonSHA256Header'
-        - $ref: '#/components/parameters/CommonSignatureCertifcateHeader'
-
-  /statusmessage/requeueStatus/{recipient-id}:
-    get:
-      summary: Requeue messages on DIP Channel webhook  
-      description: Allows a Market Participant to replay messages  
-      operationId: requeueStatusMessageStatus
-      tags: 
-          - Status Message Replay/Requeue
-      parameters:
-        - $ref: '#/components/parameters/MessageRecipientId'
-        - $ref: '#/components/parameters/RequeueId'
-        - $ref: '#/components/parameters/CommonSignatureHeader'
-        - $ref: '#/components/parameters/CommonSignatureDateHeader'
-        - $ref: '#/components/parameters/CommonSHA256Header'
-        - $ref: '#/components/parameters/CommonSignatureCertifcateHeader'
-
-      responses:
-        '200':
-          description: Requeue Information
-          content: 
-            application/json:
-              schema:
-                    $ref: '#/components/schemas/RequeueStatusArray'
-              
-
-        '204':
-          description: No Content
-
-        '400':
-            description: Bad Request
-            content: 
-              application/json:
-                schema:
-                    $ref: '#/components/schemas/StandardResponse'
-        '401':
-            description: Unauthorised Error            
-        '403':
-            description: Forbidden
-        '429':
-            description: Too Many Requests
-        '500':
-          description: Internal Server Error
-        '502': 
-          description: Bad Gateway
-        '503':
-          description: Service Unavailable
-        '504': 
-          description: Gateway Timeout
+## Status Message replay/requeue (2.2.0, 74973/019) excluded from v2.2.1-norq variant
 
 #       01/07/2026  73686/027
 #@@   Add delivery status API so DIP users can establish the delivery status of messages 
@@ -7116,19 +6866,19 @@ components:
       schema:
         $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-006-DIPParticipantID' 
 
-    RequeueId:
-      name: requeue-id
-      in: query
-      required: false
-      schema:
-        $ref: '#/components/schemas/RequeueId'
+#    RequeueId:
+#      name: requeue-id
+#      in: query
+#      required: false
+#      schema:
+#        $ref: '#/components/schemas/RequeueId'
 
-    ContinuationToken:
-      name: X-Continuation-Token
-      in: header
-      required: false
-      schema:
-        type: string
+#    ContinuationToken:
+#      name: X-Continuation-Token
+#      in: header
+#      required: false
+#      schema:
+#        type: string
 
     MessageId:
       name: message-id
@@ -7391,22 +7141,22 @@ components:
             $ref: 'DataCatalogue-unresolved.yaml#/components/schemas/DI-992N-Schema-Version' 
         
 
-    StatusMessageRequest:
-      type: object
-      required:
-          - datetimeFrom
-          - datetimeTo
-      properties:
-        datetimeFrom:
-          $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-003-DateTime'
-        datetimeTo:
-          $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-003-DateTime'
-        transactionID:
-          $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-014N-DIPTransactionID' 
-        senderUniqueReference : 
-          $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-995N-SenderUniqueReference'
-        correlationID:
-          $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-011N-CorrelationID'
+#   StatusMessageRequest:
+#     type: object
+#     required:
+#         - datetimeFrom
+#         - datetimeTo
+#     properties:
+#       datetimeFrom:
+#         $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-003-DateTime'
+#       datetimeTo:
+#         $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-003-DateTime'
+#       transactionID:
+#         $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-014N-DIPTransactionID' 
+#       senderUniqueReference : 
+#         $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-995N-SenderUniqueReference'
+#       correlationID:
+#         $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-011N-CorrelationID'
 
 
 
@@ -7470,46 +7220,46 @@ components:
         - serviceTicketURL
 
 
-##       23/06/2026  49300/017 
-    RequeueStatusArray:
-      description: Requeue Status Array
-      type: array
-      minItems: 1
-      items:
-        $ref: '#/components/schemas/RequeueStatus'
+##       23/06/2026  49300/017 - requeue schemas excluded from v2.2.1-norq variant
+#    RequeueStatusArray:
+#      description: Requeue Status Array
+#      type: array
+#      minItems: 1
+#      items:
+#        $ref: '#/components/schemas/RequeueStatus'
 
 
 
-    RequeueStatus:
-      description: Requeue Status Object
-      type: object
-      properties:
-          requeueId:
-              $ref: '#/components/schemas/RequeueId'
-          percentComplete: 
-              description: Percentage complete
-              type: number
-              example: 50
-          totalTransactions:
-              description: Total number of outstanding transactions 
-              type: number
-              example: 10000
-          processedTransactions:
-            description: Total number of processed transactions 
-            type: number
-            example: 5000
-          status : 
-            description: Requeue Status
-            type: string
-            enum: [Processing,Completed,Failed,PartialCompletion]
-            example: Processing
+#    RequeueStatus:
+#      description: Requeue Status Object
+#      type: object
+#      properties:
+#          requeueId:
+#              $ref: '#/components/schemas/RequeueId'
+#          percentComplete: 
+#              description: Percentage complete
+#              type: number
+#              example: 50
+#          totalTransactions:
+#              description: Total number of outstanding transactions 
+#              type: number
+#              example: 10000
+#          processedTransactions:
+#            description: Total number of processed transactions 
+#            type: number
+#            example: 5000
+#          status : 
+#            description: Requeue Status
+#            type: string
+#            enum: [Processing,Completed,Failed,PartialCompletion]
+#            example: Processing
 
-    RequeueId:
-            description: Requeue Id
-            type: string
-            minLength : 1
-            maxLength : 200
-            example: '2199456789-20222313-12345687a1234567a'            
+#    RequeueId:
+#            description: Requeue Id
+#            type: string
+#            minLength : 1
+#            maxLength : 200
+#            example: '2199456789-20222313-12345687a1234567a'            
 
 ### DCR27/ADO73686
     DIPJournalRecord:
