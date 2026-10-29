@@ -3,3 +3,4 @@ fetch_specs.py
 convert_refs_to_relative.py
 __pycache__
 node_modules
+build/
