@@ -76,8 +76,16 @@
 # Ver   Date           Ref.    Description
 #                   ADO / DCAB            
 # ------------------------------------------------------------------------------------
+# 2.3.0 29/10/2026  76757       StatusMessageRequest aligned with MessageRequest - nullable datetimeFrom/To
+#                               and transactionIDs array (max 100) replaces single transactionID.
+#                               Applies to both /statusmessage/replay/{recipient-id} and
+#                               /statusmessage/requeue/{recipient-id}
+# 2.3.0 29/10/2026              x-dip-intro added to every operation - short text for the docs viewer header,
+#                               full description stays in the Swagger panel
+# 2.3.0 29/10/2026              Supported interfaces list moved from /dip-channel/{id} path level (not rendered)
+#                               into the POST description as tables
 # 2.3.0 28/10/2026              Tidy up of header and comments so that it displays better
-#                                
+#
 # 2.2.1 29/07/2026  74973       /dip-channel/{id}/requeue/{recipient-id} returns a requeueId on a 202 
 #                               response
 # 2.2.0 23/06/2026  74973/019   Re-Introduce Status Message replay/requeue 
@@ -169,19 +177,25 @@ openapi: 3.0.0
 info:
   version: 2.3.0
   title: DIP - Send Messages & Receive Publications
-  description: 
-    Latest release 2.3.0 <br><br>
-    __DIP Open API Defintions__
-    > Sending Messages and reports
-    > Webhook specification for receiving messages and reports
-    > Sending Status Messages
-    > Webhook specification for receiving status messages 
-    > Replay Messages
-    > Requeue Messages 
-    > Replay Status Messages
-    > Requeue Status Messages 
-    > Message Validation APIs - see DIP Message Validation Endpoints Section below <br><br>
-     any comments please relay to DIPManager@elexon.co.uk
+  description: |
+    Latest release 2.3.0
+
+    **DIP Open API Definitions**
+
+    - Sending Messages and reports
+    - Webhook specification for receiving messages and reports
+    - Sending Status Messages
+    - Webhook specification for receiving status messages
+    - Replay Messages
+    - Requeue Messages
+    - Replay Status Messages
+    - Requeue Status Messages
+    - Message Delivery Status - see DIP Message Delivery Status section below
+    - Message Validation APIs - see DIP Message Validation Endpoints section below
+
+    For more detail on how the APIs work, see the [List of DIP Releases](https://www.elexon.co.uk/data-integration-platform/changes-releases/releases/list-of-dip-releases/).
+
+    Any comments please relay to DIPManager@elexon.co.uk
 servers: 
   - url: https://dip-api-documentation.elexon.co.uk/
 security:
@@ -191,78 +205,93 @@ security:
 
 paths:
   /dip-channel/{id}:
-    summary: DIP Interface Channels
-    description: Each interface represents a single DIP messaging channel. Each interface/publication/report is identified by a 'id'
-    <br><br>Supported interfaces -<br><br>
-     -           IF-001    Notification of Change of Supplier **<br>
-     -           IF-002    Registration Update to Supplier (COS Gain) **<br>
-     -           IF-003    Notification of Migration and De-Appointment (Migration)<br>
-     -           IF-004    Comms Hub Information <br>
-     -           IF-005    Metering Service MTD Updates to Registration<br>
-     -           IF-006    Registration Service Notification of MTD Updates<br>
-     -           IF-007    Change of Energisation Status Outcome<br>
-     -           IF-008    Registration Service Notification of Change of Energisation Status<br>
-     -           IF-009    Registration Service Notification of Disconnection<br>
-     -           IF-013    MDS Defaults Applied <br>
-     -           IF-014    Rejected Consumption Data Submission<br>
-     -           IF-015    Request Historic Consumption Replay (ADV Sites only)<br>
-     -           IF-016    HH Consumption History Replay  (ADV Sites only)<br>
-     -           IF-018    Notification of Registration Data Item Changes<br>
-     -           IF-019    Maintain MPAN Relationships<br>
-     -           IF-020    Maintain MPAN Relationship Response<br>
-     -           IF-021    UTC Settlement Period Consumption Data<br>
-     -           IF-022    LSS Period Data<br>
-     -           IF-023    LSS Totals Data<br>
-     -           IF-024    Supplier Advisory Notification to DS<br>
-     -           IF-025    Supplier Updates to Registration<br>
-     -           IF-026    Registration Service Notification of Supplier Data Chg<br>
-     -           IF-027    Consumption Amendment Request<br>
-     -           IF-028    Consumption Amendment Request Response<br>
-     -           IF-030    Correlated MPAN Activity<br>
-     -           IF-031    Supplier Service Provider Appointment Request<br>
-     -           IF-032    Supplier Service Provider Appointment Request Response<br>
-     -           IF-033    Registration Service Request for Service Appointment<br>
-     -           IF-034    Service Provider Appointment Request Response<br>
-     -           IF-035    Registration Service Appointment Status Notification<br>
-     -           IF-036    Registration Service Notification of Service Appointment & Supporting Info<br>
-     -           IF-037    Registration Service Notification of Service De-Appointment<br>
-     -           IF-038    Customer Direct Contract Advisory<br>
-     -           IF-039    Customer Direct Contract Advisory Response<br>
-     -           IF-040    Notification of ECS Annual Consumption<br>
-     -           IF-041    Cumulative Meter Reading<br>
-     -           IF-042    Customer Name Information<br>
-     -           IF-043    Registration Service Notification of Change of Connection Type<br>
-     -           IF-044    Registration Service Notification of Change of Segment<br>
-     -           IF-045    Registration Service Notification of Invalid Segment or No Agents Appointed<br>
-     -           IF-047    Notification of the Publication of a Downloadable Asset<br>
-     -           IF-050    EES Exclusive Updates<br>
-     -           IF-051    EES Refresh<br><br>
-     ** MDR Reports**<br><br>
-     -           IF-061    MDR Start Request<br>
-     -           IF-062    MDR Start Request Response<br>
-     -           IF-063    MDR Stop Request<br>
-     -           IF-064    MDR Provide Consumption<br>
-     -           IF-065    MDR Request/Provide Meter Reading<br>
-     <br>
-     **ECS Reports**<br><br>
-     -           REP-002   LDSO report for DUoS (LDSO) – aggregated data **<br>
-     -           REP-002A  Embedded Network report for DUoS – aggregated data<br>
-     -           REP-002B  LDSO report for DUoS (Supplier)– aggregated data<br>
-     -           REP-003   BM Unit Allocated Demand Volumes to Market Participants<br>
-     -           REP-003A  Aggregated BM Unit Allocated Demand Volumes to Market Participants<br>
-     -           REP-004   Supplier Deemed Take Report<br>
-     -           REP-006   Aggregated Uncorrected volumes by CCC to Market Participants<br>
-     -           REP-007   VAS Exception Report to Suppliers and BSCCo<br>
-     -           REP-008   MDS Exception Report to LDSOs<br>
-     -           REP-009   EMRS Report for Suppliers<br><br>
-     New reports introduced for e-billing of site-specific DUoS <br><br>
-     -           REP-900   LDSO E-bill Distribution Invoice I<br>
-     -           REP-901   LDSO E-bill Distribution Invoice II<br>
-     <br>
-        
     post:
       summary: Submit a series of Interface messages 
-      description: Allows a Market Participant to submit a series of messages on a DIP interface 
+      x-dip-intro: "Send one or more messages to DIP on an interface channel, identified by its channel id (for example IF-001 or REP-002)."
+      description: |
+        Allows a Market Participant to submit a series of messages on a DIP interface.
+
+        Each interface represents a single DIP messaging channel. Each interface, publication or report is identified by its `id`, used in the path.
+
+        **Supported interfaces**
+
+        | id | Name |
+        |---|---|
+        | IF-001 | Notification of Change of Supplier |
+        | IF-002 | Registration Update to Supplier (COS Gain) |
+        | IF-003 | Notification of Migration and De-Appointment (Migration) |
+        | IF-004 | Comms Hub Information |
+        | IF-005 | Metering Service MTD Updates to Registration |
+        | IF-006 | Registration Service Notification of MTD Updates |
+        | IF-007 | Change of Energisation Status Outcome |
+        | IF-008 | Registration Service Notification of Change of Energisation Status |
+        | IF-009 | Registration Service Notification of Disconnection |
+        | IF-013 | MDS Defaults Applied |
+        | IF-014 | Rejected Consumption Data Submission |
+        | IF-015 | Request Historic Consumption Replay (ADV Sites only) |
+        | IF-016 | HH Consumption History Replay  (ADV Sites only) |
+        | IF-018 | Notification of Registration Data Item Changes |
+        | IF-019 | Maintain MPAN Relationships |
+        | IF-020 | Maintain MPAN Relationship Response |
+        | IF-021 | UTC Settlement Period Consumption Data |
+        | IF-022 | LSS Period Data |
+        | IF-023 | LSS Totals Data |
+        | IF-024 | Supplier Advisory Notification to DS |
+        | IF-025 | Supplier Updates to Registration |
+        | IF-026 | Registration Service Notification of Supplier Data Chg |
+        | IF-027 | Consumption Amendment Request |
+        | IF-028 | Consumption Amendment Request Response |
+        | IF-030 | Correlated MPAN Activity |
+        | IF-031 | Supplier Service Provider Appointment Request |
+        | IF-032 | Supplier Service Provider Appointment Request Response |
+        | IF-033 | Registration Service Request for Service Appointment |
+        | IF-034 | Service Provider Appointment Request Response |
+        | IF-035 | Registration Service Appointment Status Notification |
+        | IF-036 | Registration Service Notification of Service Appointment & Supporting Info |
+        | IF-037 | Registration Service Notification of Service De-Appointment |
+        | IF-038 | Customer Direct Contract Advisory |
+        | IF-039 | Customer Direct Contract Advisory Response |
+        | IF-040 | Notification of ECS Annual Consumption |
+        | IF-041 | Cumulative Meter Reading |
+        | IF-042 | Customer Name Information |
+        | IF-043 | Registration Service Notification of Change of Connection Type |
+        | IF-044 | Registration Service Notification of Change of Segment |
+        | IF-045 | Registration Service Notification of Invalid Segment or No Agents Appointed |
+        | IF-047 | Notification of the Publication of a Downloadable Asset |
+        | IF-050 | EES Exclusive Updates |
+        | IF-051 | EES Refresh |
+
+        **MDR Reports**
+
+        | id | Name |
+        |---|---|
+        | IF-061 | MDR Start Request |
+        | IF-062 | MDR Start Request Response |
+        | IF-063 | MDR Stop Request |
+        | IF-064 | MDR Provide Consumption |
+        | IF-065 | MDR Request/Provide Meter Reading |
+
+        **ECS Reports**
+
+        | id | Name |
+        |---|---|
+        | REP-002 | LDSO report for DUoS (LDSO) – aggregated data |
+        | REP-002A | Embedded Network report for DUoS – aggregated data |
+        | REP-002B | LDSO report for DUoS (Supplier) – aggregated data |
+        | REP-003 | BM Unit Allocated Demand Volumes to Market Participants |
+        | REP-003A | Aggregated BM Unit Allocated Demand Volumes to Market Participants |
+        | REP-004 | Supplier Deemed Take Report |
+        | REP-006 | Aggregated Uncorrected volumes by CCC to Market Participants |
+        | REP-007 | VAS Exception Report to Suppliers and BSCCo |
+        | REP-008 | MDS Exception Report to LDSOs |
+        | REP-009 | EMRS Report for Suppliers |
+
+        New reports introduced for e-billing of site-specific DUoS:
+
+        | id | Name |
+        |---|---|
+        | REP-900 | LDSO E-bill Distribution Invoice I |
+        | REP-901 | LDSO E-bill Distribution Invoice II |
       operationId: sendMessage
       tags:
           - DIP Message Channel
@@ -420,6 +449,7 @@ paths:
   /dip-channel/{id}/pubconfig/{recipient-id}:
     post:
       summary: Configure DIP Channel Publication  
+      x-dip-intro: "Set up the webhook DIP uses to deliver a channel's publications to you."
       description: Allows a Market Participant to configure the output channel 
       operationId: configurePublication 
       tags:  
@@ -520,6 +550,7 @@ paths:
             
     delete:
       summary: Delete existing Publication configuration 
+      x-dip-intro: "Remove your webhook for a channel's publications."
       description: Delete an exisiting webhook for a publication
       tags:
           - DIP Channel Publication Configuration 
@@ -542,16 +573,23 @@ paths:
   /dip-channel/{id}/replay/{recipient-id}:
     post:
       summary: Replay messages from a DIP Channel Publication  
-      description: The Replay endpoint lets a caller request retransmission of previously sent messages for a given recipient. 
-      Replayed messages are returned synchronously, directly in the body of the API response — there is no separate polling endpoint or asynchronous job to check.
-      Where the full set of replayed messages is small enough to fit in a single response, the API returns HTTP 200 and the response contains everything that was requested. No further action is needed, and the replay operation is complete.
-      Where the volume of messages is too large to return in one response, the API paginates automatically. 
-      The paged approach allows for a maximum of 200 payloads to be replayed on a single response; a continuation token is returned along with the data. 
-      There is a 10 second budget per page (1 page = 100 payloads), if it takes greater than 10 seconds to retrieve the 100-200th payloads, the return is capped at a single page i.e. 100 payloads. 
-      The status code is set to HTTP 206 (Partial Content), and the X-Continuation-Token header is included on that response. 
-      The caller reads this token and sends it back as a request header, also named X-Continuation-Token, on the next call to the same endpoint. 
-      That next call returns the following tranche of messages, again as either a 200 (if that tranche completes the replay) or a 206 with a fresh continuation token (if more remains).
-      
+      x-dip-intro: "Get previously sent messages back directly in the response. Large sets are paged using HTTP 206 and a continuation token."
+      description: |
+        The Replay endpoint lets a caller request retransmission of previously sent messages for a given recipient.
+        Replayed messages are returned synchronously, directly in the body of the API response — there is no separate polling endpoint or asynchronous job to check.
+
+        Where the full set of replayed messages is small enough to fit in a single response, the API returns HTTP 200 and the response contains everything that was requested.
+        No further action is needed, and the replay operation is complete.
+
+        Where the volume of messages is too large to return in one response, the API paginates automatically.
+        Each paged response holds up to 200 payloads, made up of two pages of 100, and a continuation token is returned along with the data.
+        There is a 10 second budget per page.
+        If the second page cannot be retrieved within 10 seconds, the response returns only the first 100 payloads.
+
+        Whenever more messages remain, the status code is set to HTTP 206 (Partial Content), and the X-Continuation-Token header is included on that response.
+        The caller reads this token and sends it back as a request header, also named X-Continuation-Token, on the next call to the same endpoint.
+        That next call returns the following tranche of messages, again as either a 200 (if that tranche completes the replay) or a 206 with a fresh continuation token (if more remains).
+
       operationId: replayPublication
       tags: 
           - DIP Channel Replay/Requeue
@@ -613,8 +651,17 @@ paths:
   /dip-channel/{id}/requeue/{recipient-id}:
     post:
       summary: Requeue messages on DIP Channel webhook  
-      description: Allows a Market Participant to requeue messages on the corresponding DIP Id webhook 
-        - reason codes updated for version 2.2.0
+      x-dip-intro: "Start a background job that resends previously sent messages to your webhook. Returns a Requeue ID to track its progress."
+      description: |
+        Unlike Replay, Requeue is an asynchronous, long-running operation rather than one that returns its results directly in the response body.
+        Calling POST /dip-channel/{id}/requeue/{recipient-id} does not requeue the messages there and then; it starts a back-end job and hands control back to the caller immediately with HTTP 202 (Accepted).
+
+        The body of that 202 response contains a Requeue ID, which identifies this specific requeue job and is the caller's only handle on it going forward.
+        The actual requeuing work then happens in the background on the DIP side.
+
+        To find out how that job is progressing, or whether it has finished, the caller polls the GET /dip-channel/{id}/requeueStatus/{recipient-id} endpoint, passing the Requeue ID as the requeue-id query parameter (or omitting it to get the status for all requests for that channel/recipient).
+        Each poll returns a snapshot of the job's progress: what percentage is complete, how many transactions are in the batch, how many have been processed so far, and an overall status of Processing, Completed, or Failed.
+        The caller is expected to keep polling – at a reasonable interval, rather than continuously – until status reaches Completed or Failed.
       operationId: requeuePublication
       tags: 
           - DIP Channel Replay/Requeue
@@ -667,6 +714,7 @@ paths:
   /dip-channel/{id}/requeueStatus/{recipient-id}:
     get:
       summary: Reports on the status of previously submitted requeue requests
+      x-dip-intro: "Check the progress of your requeue jobs for a channel."
       description: Reports on the status of previously submitted requeue requests, participants can only submit a new request when the current request completes
       operationId: requeueStatus
       tags: 
@@ -718,6 +766,7 @@ paths:
   /statusmessage: 
     post:
       summary: Submit a series of status messages
+      x-dip-intro: "Send one or more status messages to DIP."
       description: Allows a Market Participant to submit a series of status messages 
       operationId: submitStatusMessage
       tags: 
@@ -789,6 +838,7 @@ paths:
         - $ref: '#/components/parameters/CommonSignatureCertifcateHeader'
     post:
       summary: Webhook to pull a series of status messages
+      x-dip-intro: "Set up the webhook DIP uses to deliver status messages to you."
       description: Allows a Market Participant to get a series of status messages 
       operationId: postStatusMsgWebhook
       tags: 
@@ -883,6 +933,7 @@ paths:
 
     delete:
       summary: Delete existing Status Message configuration 
+      x-dip-intro: "Remove your status message webhook."
       description: Delete an exisiting webhook for Status Messages 
       tags:
         - Status Messages
@@ -911,7 +962,20 @@ paths:
   /statusmessage/replay/{recipient-id}:
     post:
       summary: Replay Status Messages  
-      description: Allows a Market Participant to replay status messages  
+      x-dip-intro: "Get previously sent status messages back directly in the response. Large sets are paged using HTTP 206 and a continuation token."
+      description: |
+        The Status Message Replay endpoint lets a caller request retransmission of previously sent status messages for a given recipient.
+        Replayed status messages are returned synchronously, directly in the body of the API response — there is no separate polling endpoint or asynchronous job to check.
+
+        Where the full set of replayed status messages is small enough to fit in a single response, the API returns HTTP 200 and the response contains everything that was requested.
+        No further action is needed, and the replay operation is complete.
+
+        Where the volume of status messages is too large to return in one response, the API paginates automatically.
+        Whenever more status messages remain, the status code is set to HTTP 206 (Partial Content), and the X-Continuation-Token header is included on that response.
+        The caller reads this token and sends it back as a request header, also named X-Continuation-Token, on the next call to the same endpoint.
+        That next call returns the following tranche of status messages, again as either a 200 (if that tranche completes the replay) or a 206 with a fresh continuation token (if more remains).
+
+        **Changed in 2.3.0:** the request body now uses the same filters as Replay Messages. `datetimeFrom` and `datetimeTo` are nullable, and `transactionIDs` (an array of 1 to 100 transaction IDs) replaces the single `transactionID`. The same request body is used by Requeue Status Messages.
       operationId: replayStatusMessage
       tags: 
           - Status Message Replay/Requeue
@@ -982,7 +1046,19 @@ paths:
   /statusmessage/requeue/{recipient-id}:
     post:
       summary: Requeue Status Messages  
-      description: Allows a Market Participant to requeue status messages  
+      x-dip-intro: "Start a background job that resends previously sent status messages to your webhook. Returns a Requeue ID to track its progress."
+      description: |
+        Unlike Status Message Replay, Status Message Requeue is an asynchronous, long-running operation rather than one that returns its results directly in the response body.
+        Calling POST /statusmessage/requeue/{recipient-id} does not requeue the status messages there and then; it starts a back-end job and hands control back to the caller immediately with HTTP 202 (Accepted).
+
+        The body of that 202 response contains a Requeue ID, which identifies this specific requeue job and is the caller's only handle on it going forward.
+        The actual requeuing work then happens in the background on the DIP side.
+
+        To find out how that job is progressing, or whether it has finished, the caller polls the GET /statusmessage/requeueStatus/{recipient-id} endpoint, passing the Requeue ID as the requeue-id query parameter (or omitting it to get the status for all requests for that recipient).
+        Each poll returns a snapshot of the job's progress: what percentage is complete, how many transactions are in the batch, how many have been processed so far, and an overall status of Processing, Completed, or Failed.
+        The caller is expected to keep polling – at a reasonable interval, rather than continuously – until status reaches Completed or Failed.
+
+        **Changed in 2.3.0:** the request body now uses the same filters as Requeue Messages. `datetimeFrom` and `datetimeTo` are nullable, and `transactionIDs` (an array of 1 to 100 transaction IDs) replaces the single `transactionID`. The same request body is used by Replay Status Messages.
       operationId: requeueStatusMessage
       tags: 
           - Status Message Replay/Requeue
@@ -1041,8 +1117,9 @@ paths:
 
   /statusmessage/requeueStatus/{recipient-id}:
     get:
-      summary: Requeue messages on DIP Channel webhook  
-      description: Allows a Market Participant to replay messages  
+      summary: Reports on the status of previously submitted status message requeue requests
+      x-dip-intro: "Check the progress of your status message requeue jobs."
+      description: Reports on the status of previously submitted status message requeue requests, participants can only submit a new request when the current request completes
       operationId: requeueStatusMessageStatus
       tags: 
           - Status Message Replay/Requeue
@@ -1095,6 +1172,7 @@ paths:
   
     get:
       summary: Provides the processing details of the message 
+      x-dip-intro: "Look up the processing details of a message you sent."
       description: Reports on the status of messages identified by their Sender Unique reference 
       operationId: deliveryStatus
       tags: 
@@ -1151,6 +1229,7 @@ paths:
           
       post:
         summary: Submit IF-001 with Event Code InitialRegistration message for validation  
+        x-dip-intro: "Check a single IF-001 InitialRegistration message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-001-InitialRegistration
         tags:
@@ -1198,6 +1277,7 @@ paths:
           
       post:
         summary: Submit IF-001 with Event Code ChangeOfSupplier message for validation  
+        x-dip-intro: "Check a single IF-001 ChangeOfSupplier message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-001-ChangeOfSupplier
         tags:
@@ -1245,6 +1325,7 @@ paths:
           
       post:
         summary: Submit IF-002 with Event Code GainMPANInfo message for validation  
+        x-dip-intro: "Check a single IF-002 GainMPANInfo message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-002-GainMPANInfo
         tags:
@@ -1292,6 +1373,7 @@ paths:
           
       post:
         summary: Submit IF-003 with Event Code ReverseMigNotification message for validation  
+        x-dip-intro: "Check a single IF-003 ReverseMigNotification message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-003-ReverseMigNotification
         tags:
@@ -1339,6 +1421,7 @@ paths:
           
       post:
         summary: Submit IF-003 with Event Code MSDeAppRM message for validation  
+        x-dip-intro: "Check a single IF-003 MSDeAppRM message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-003-MSDeAppRM
         tags:
@@ -1386,6 +1469,7 @@ paths:
           
       post:
         summary: Submit IF-003 with Event Code DSDeAppRM message for validation  
+        x-dip-intro: "Check a single IF-003 DSDeAppRM message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-003-DSDeAppRM
         tags:
@@ -1434,6 +1518,7 @@ paths:
           
       post:
         summary: Submit IF-004 with Event Code CommsHubInfo message for validation  
+        x-dip-intro: "Check a single IF-004 CommsHubInfo message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-004-CommsHubInfo
         tags:
@@ -1481,6 +1566,7 @@ paths:
           
       post:
         summary: Submit IF-005 with Event Code MeterInstall message for validation  
+        x-dip-intro: "Check a single IF-005 MeterInstall message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-005-MeterInstall
         tags:
@@ -1528,6 +1614,7 @@ paths:
           
       post:
         summary: Submit IF-005 with Event Code MeterRemoval message for validation  
+        x-dip-intro: "Check a single IF-005 MeterRemoval message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-005-MeterRemoval
         tags:
@@ -1575,6 +1662,7 @@ paths:
           
       post:
         summary: Submit IF-005 with Event Code MeterExchange message for validation  
+        x-dip-intro: "Check a single IF-005 MeterExchange message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-005-MeterExchange
         tags:
@@ -1622,6 +1710,7 @@ paths:
           
       post:
         summary: Submit IF-005 with Event Code MeterUpdate message for validation  
+        x-dip-intro: "Check a single IF-005 MeterUpdate message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-005-MeterUpdate
         tags:
@@ -1669,6 +1758,7 @@ paths:
           
       post:
         summary: Submit IF-005 with Event Code MeterHistoryUpdate message for validation  
+        x-dip-intro: "Check a single IF-005 MeterHistoryUpdate message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-005-MeterHistoryUpdate
         tags:
@@ -1716,6 +1806,7 @@ paths:
           
       post:
         summary: Submit IF-006 with Event Code MeterInstall message for validation  
+        x-dip-intro: "Check a single IF-006 MeterInstall message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-006-MeterInstall
         tags:
@@ -1763,6 +1854,7 @@ paths:
           
       post:
         summary: Submit IF-006 with Event Code MeterRemoval message for validation  
+        x-dip-intro: "Check a single IF-006 MeterRemoval message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-006-MeterRemoval
         tags:
@@ -1810,6 +1902,7 @@ paths:
           
       post:
         summary: Submit IF-006 with Event Code MeterExchange message for validation  
+        x-dip-intro: "Check a single IF-006 MeterExchange message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-006-MeterExchange
         tags:
@@ -1857,6 +1950,7 @@ paths:
           
       post:
         summary: Submit IF-006 with Event Code MeterUpdate message for validation  
+        x-dip-intro: "Check a single IF-006 MeterUpdate message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-006-MeterUpdate
         tags:
@@ -1904,6 +1998,7 @@ paths:
           
       post:
         summary: Submit IF-006 with Event Code MeterHistoryUpdate message for validation  
+        x-dip-intro: "Check a single IF-006 MeterHistoryUpdate message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-006-MeterHistoryUpdate
         tags:
@@ -1951,6 +2046,7 @@ paths:
           
       post:
         summary: Submit IF-007 with Event Code EnergisationStatusChange message for validation  
+        x-dip-intro: "Check a single IF-007 EnergisationStatusChange message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-007-EnergisationStatusChange
         tags:
@@ -1998,6 +2094,7 @@ paths:
           
       post:
         summary: Submit IF-007 with Event Code EnergisationStatusFailure message for validation  
+        x-dip-intro: "Check a single IF-007 EnergisationStatusFailure message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-007-EnergisationStatusFailure
         tags:
@@ -2045,6 +2142,7 @@ paths:
           
       post:
         summary: Submit IF-008 with Event Code EnergisationStatusChange message for validation  
+        x-dip-intro: "Check a single IF-008 EnergisationStatusChange message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-008-EnergisationStatusChange
         tags:
@@ -2092,6 +2190,7 @@ paths:
           
       post:
         summary: Submit IF-009 with Event Code MPANDisconnection message for validation  
+        x-dip-intro: "Check a single IF-009 MPANDisconnection message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-009-MPANDisconnection
         tags:
@@ -2139,6 +2238,7 @@ paths:
           
       post:
         summary: Submit IF-009 with Event Code MPANReconnection message for validation  
+        x-dip-intro: "Check a single IF-009 MPANReconnection message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-009-MPANReconnection
         tags:
@@ -2187,6 +2287,7 @@ paths:
           
       post:
         summary: Submit IF-009 with Event Code CSSDeRegistration message for validation  
+        x-dip-intro: "Check a single IF-009 CSSDeRegistration message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-009-CSSDeRegistration
         tags:
@@ -2234,6 +2335,7 @@ paths:
           
       post:
         summary: Submit IF-013 with Event Code ActivePowerDefaulted message for validation  
+        x-dip-intro: "Check a single IF-013 ActivePowerDefaulted message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-013-ActivePowerDefaulted
         tags:
@@ -2281,6 +2383,7 @@ paths:
           
       post:
         summary: Submit IF-014 with Event Code ActivePowerRejected message for validation  
+        x-dip-intro: "Check a single IF-014 ActivePowerRejected message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-014-ActivePowerRejected
         tags:
@@ -2328,6 +2431,7 @@ paths:
           
       post:
         summary: Submit IF-014 with Event Code ConsumptionOnDeEnergisedMPAN message for validation  
+        x-dip-intro: "Check a single IF-014 ConsumptionOnDeEnergisedMPAN message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-014-ConsumptionOnDeEnergisedMPAN
         tags:
@@ -2375,6 +2479,7 @@ paths:
           
       post:
         summary: Submit IF-015 with Event Code ConsumptionReplay message for validation  
+        x-dip-intro: "Check a single IF-015 ConsumptionReplay message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-015-ConsumptionReplay
         tags:
@@ -2422,6 +2527,7 @@ paths:
           
       post:
         summary: Submit IF-018 with Event Code AddressChg message for validation  
+        x-dip-intro: "Check a single IF-018 AddressChg message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-018-AddressChg
         tags:
@@ -2469,6 +2575,7 @@ paths:
           
       post:
         summary: Submit IF-018 with Event Code GSPChg message for validation  
+        x-dip-intro: "Check a single IF-018 GSPChg message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-018-GSPChg
         tags:
@@ -2516,6 +2623,7 @@ paths:
           
       post:
         summary: Submit IF-018 with Event Code DUOSTariffIDChg message for validation  
+        x-dip-intro: "Check a single IF-018 DUOSTariffIDChg message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-018-DUOSTariffIDChg
         tags:
@@ -2563,6 +2671,7 @@ paths:
           
       post:
         summary: Submit IF-018 with Event Code DomPremInd message for validation  
+        x-dip-intro: "Check a single IF-018 DomPremInd message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-018-DomPremInd
         tags:
@@ -2610,6 +2719,7 @@ paths:
           
       post:
         summary: Submit IF-018 with Event Code EnergyDirection message for validation  
+        x-dip-intro: "Check a single IF-018 EnergyDirection message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-018-EnergyDirection
         tags:
@@ -2657,6 +2767,7 @@ paths:
           
       post:
         summary: Submit IF-018 with Event Code DCCEnrolment message for validation  
+        x-dip-intro: "Check a single IF-018 DCCEnrolment message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-018-DCCEnrolment
         tags:
@@ -2704,6 +2815,7 @@ paths:
           
       post:
         summary: Submit IF-018 with Event Code MUMIndicator message for validation  
+        x-dip-intro: "Check a single IF-018 MUMIndicator message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-018-MUMIndicator
         tags:
@@ -2751,6 +2863,7 @@ paths:
           
       post:
         summary: Submit IF-019 with Event Code LinkedImportExportCreate message for validation  
+        x-dip-intro: "Check a single IF-019 LinkedImportExportCreate message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-019-LinkedImportExportCreate
         tags:
@@ -2798,6 +2911,7 @@ paths:
           
       post:
         summary: Submit IF-019 with Event Code LinkedImportExportAdd message for validation  
+        x-dip-intro: "Check a single IF-019 LinkedImportExportAdd message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-019-LinkedImportExportAdd
         tags:
@@ -2845,6 +2959,7 @@ paths:
           
       post:
         summary: Submit IF-019 with Event Code LinkedImportExportRemove message for validation  
+        x-dip-intro: "Check a single IF-019 LinkedImportExportRemove message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-019-LinkedImportExportRemove
         tags:
@@ -2892,6 +3007,7 @@ paths:
           
       post:
         summary: Submit IF-019 with Event Code RelatedCreate message for validation  
+        x-dip-intro: "Check a single IF-019 RelatedCreate message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-019-RelatedCreate
         tags:
@@ -2939,6 +3055,7 @@ paths:
           
       post:
         summary: Submit IF-019 with Event Code RelatedAdd message for validation  
+        x-dip-intro: "Check a single IF-019 RelatedAdd message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-019-RelatedAdd
         tags:
@@ -2986,6 +3103,7 @@ paths:
           
       post:
         summary: Submit IF-019 with Event Code RelatedRemove message for validation  
+        x-dip-intro: "Check a single IF-019 RelatedRemove message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-019-RelatedRemove
         tags:
@@ -3033,6 +3151,7 @@ paths:
           
       post:
         summary: Submit IF-020 with Event Code LinkedImportExportCreate message for validation  
+        x-dip-intro: "Check a single IF-020 LinkedImportExportCreate message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-020-LinkedImportExportCreate
         tags:
@@ -3080,6 +3199,7 @@ paths:
           
       post:
         summary: Submit IF-020 with Event Code LinkedImportExportAdd message for validation  
+        x-dip-intro: "Check a single IF-020 LinkedImportExportAdd message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-020-LinkedImportExportAdd
         tags:
@@ -3127,6 +3247,7 @@ paths:
           
       post:
         summary: Submit IF-020 with Event Code LinkedImportExportRemove message for validation  
+        x-dip-intro: "Check a single IF-020 LinkedImportExportRemove message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-020-LinkedImportExportRemove
         tags:
@@ -3174,6 +3295,7 @@ paths:
           
       post:
         summary: Submit IF-020 with Event Code RelatedCreate message for validation  
+        x-dip-intro: "Check a single IF-020 RelatedCreate message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-020-RelatedCreate
         tags:
@@ -3221,6 +3343,7 @@ paths:
           
       post:
         summary: Submit IF-020 with Event Code RelatedAdd message for validation  
+        x-dip-intro: "Check a single IF-020 RelatedAdd message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-020-RelatedAdd
         tags:
@@ -3268,6 +3391,7 @@ paths:
           
       post:
         summary: Submit IF-020 with Event Code RelatedRemove message for validation  
+        x-dip-intro: "Check a single IF-020 RelatedRemove message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-020-RelatedRemove
         tags:
@@ -3315,6 +3439,7 @@ paths:
           
       post:
         summary: Submit IF-021 with Event Code ActivePower message for validation  
+        x-dip-intro: "Check a single IF-021 ActivePower message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-021-ActivePower
         tags:
@@ -3362,6 +3487,7 @@ paths:
           
       post:
         summary: Submit IF-021 with Event Code ReactivePower message for validation  
+        x-dip-intro: "Check a single IF-021 ReactivePower message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-021-ReactivePower
         tags:
@@ -3409,6 +3535,7 @@ paths:
           
       post:
         summary: Submit IF-022 with Event Code LSSPeriodData message for validation  
+        x-dip-intro: "Check a single IF-022 LSSPeriodData message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-022-LSSPeriodData
         tags:
@@ -3456,6 +3583,7 @@ paths:
           
       post:
         summary: Submit IF-023 with Event Code LSSTotalsData message for validation  
+        x-dip-intro: "Check a single IF-023 LSSTotalsData message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-023-LSSTotalsData
         tags:
@@ -3503,6 +3631,7 @@ paths:
           
       post:
         summary: Submit IF-024 with Event Code SN-Vacant message for validation  
+        x-dip-intro: "Check a single IF-024 SN-Vacant message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-024-SN-Vacant
         tags:
@@ -3550,6 +3679,7 @@ paths:
           
       post:
         summary: Submit IF-024 with Event Code SN-NoComms message for validation  
+        x-dip-intro: "Check a single IF-024 SN-NoComms message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-024-SN-NoComms
         tags:
@@ -3597,6 +3727,7 @@ paths:
           
       post:
         summary: Submit IF-024 with Event Code SN-RemoteEnabled message for validation  
+        x-dip-intro: "Check a single IF-024 SN-RemoteEnabled message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-024-SN-RemoteEnabled
         tags:
@@ -3644,6 +3775,7 @@ paths:
           
       post:
         summary: Submit IF-024 with Event Code SN-RemoteDisabled message for validation  
+        x-dip-intro: "Check a single IF-024 SN-RemoteDisabled message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-024-SN-RemoteDisabled
         tags:
@@ -3691,6 +3823,7 @@ paths:
           
       post:
         summary: Submit IF-024 with Event Code SN-SupplierAC message for validation  
+        x-dip-intro: "Check a single IF-024 SN-SupplierAC message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-024-SN-SupplierAC
         tags:
@@ -3738,6 +3871,7 @@ paths:
           
       post:
         summary: Submit IF-024 with Event Code SN-OffPeakDec message for validation  
+        x-dip-intro: "Check a single IF-024 SN-OffPeakDec message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-024-SN-OffPeakDec
         tags:
@@ -3785,6 +3919,7 @@ paths:
           
       post:
         summary: Submit IF-025 with Event Code ConsentGranularity message for validation  
+        x-dip-intro: "Check a single IF-025 ConsentGranularity message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-025-ConsentGranularity
         tags:
@@ -3832,6 +3967,7 @@ paths:
           
       post:
         summary: Submit IF-025 with Event Code IHDInfo message for validation  
+        x-dip-intro: "Check a single IF-025 IHDInfo message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-025-IHDInfo
         tags:
@@ -3879,6 +4015,7 @@ paths:
           
       post:
         summary: Submit IF-025 with Event Code SMSO message for validation  
+        x-dip-intro: "Check a single IF-025 SMSO message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-025-SMSO
         tags:
@@ -3926,6 +4063,7 @@ paths:
           
       post:
         summary: Submit IF-025 with Event Code SSCandProfileClass message for validation  
+        x-dip-intro: "Check a single IF-025 SSCandProfileClass message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-025-SSCandProfileClass
         tags:
@@ -3973,6 +4111,7 @@ paths:
           
       post:
         summary: Submit IF-026 with Event Code ConsentGranularity message for validation  
+        x-dip-intro: "Check a single IF-026 ConsentGranularity message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-026-ConsentGranularity
         tags:
@@ -4020,6 +4159,7 @@ paths:
           
       post:
         summary: Submit IF-026 with Event Code IHDInfo message for validation  
+        x-dip-intro: "Check a single IF-026 IHDInfo message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-026-IHDInfo
         tags:
@@ -4067,6 +4207,7 @@ paths:
           
       post:
         summary: Submit IF-026 with Event Code SMSO message for validation  
+        x-dip-intro: "Check a single IF-026 SMSO message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-026-SMSO
         tags:
@@ -4114,6 +4255,7 @@ paths:
           
       post:
         summary: Submit IF-026 with Event Code SSCandProfileClass message for validation  
+        x-dip-intro: "Check a single IF-026 SSCandProfileClass message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-026-SSCandProfileClass
         tags:
@@ -4161,6 +4303,7 @@ paths:
           
       post:
         summary: Submit IF-027 with Event Code ConsumptionAmendment message for validation  
+        x-dip-intro: "Check a single IF-027 ConsumptionAmendment message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-027-ConsumptionAmendment
         tags:
@@ -4208,6 +4351,7 @@ paths:
           
       post:
         summary: Submit IF-028 with Event Code ConsumptionAmendment message for validation  
+        x-dip-intro: "Check a single IF-028 ConsumptionAmendment message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-028-ConsumptionAmendment
         tags:
@@ -4255,6 +4399,7 @@ paths:
           
       post:
         summary: Submit IF-031 with Event Code MSApp message for validation  
+        x-dip-intro: "Check a single IF-031 MSApp message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-031-MSApp
         tags:
@@ -4302,6 +4447,7 @@ paths:
           
       post:
         summary: Submit IF-031 with Event Code DSApp message for validation  
+        x-dip-intro: "Check a single IF-031 DSApp message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-031-DSApp
         tags:
@@ -4349,6 +4495,7 @@ paths:
           
       post:
         summary: Submit IF-032 with Event Code MSAppInitialResp message for validation  
+        x-dip-intro: "Check a single IF-032 MSAppInitialResp message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-032-MSAppInitialResp
         tags:
@@ -4396,6 +4543,7 @@ paths:
           
       post:
         summary: Submit IF-032 with Event Code DSAppInitialResp message for validation  
+        x-dip-intro: "Check a single IF-032 DSAppInitialResp message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-032-DSAppInitialResp
         tags:
@@ -4443,6 +4591,7 @@ paths:
           
       post:
         summary: Submit IF-033 with Event Code MSAppSPRequest message for validation  
+        x-dip-intro: "Check a single IF-033 MSAppSPRequest message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-033-MSAppSPRequest
         tags:
@@ -4490,6 +4639,7 @@ paths:
           
       post:
         summary: Submit IF-033 with Event Code DSAppSPRequest message for validation  
+        x-dip-intro: "Check a single IF-033 DSAppSPRequest message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-033-DSAppSPRequest
         tags:
@@ -4537,6 +4687,7 @@ paths:
           
       post:
         summary: Submit IF-034 with Event Code MSAppSPResponse message for validation  
+        x-dip-intro: "Check a single IF-034 MSAppSPResponse message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-034-MSAppSPResponse
         tags:
@@ -4584,6 +4735,7 @@ paths:
           
       post:
         summary: Submit IF-034 with Event Code DSAppSPResponse message for validation  
+        x-dip-intro: "Check a single IF-034 DSAppSPResponse message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-034-DSAppSPResponse
         tags:
@@ -4631,6 +4783,7 @@ paths:
           
       post:
         summary: Submit IF-034 with Event Code SDS-MDRUpdate message for validation  
+        x-dip-intro: "Check a single IF-034 SDS-MDRUpdate message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-034-SDS-MDRUpdate
         tags:
@@ -4678,6 +4831,7 @@ paths:
           
       post:
         summary: Submit IF-035 with Event Code MSAppAccepted message for validation  
+        x-dip-intro: "Check a single IF-035 MSAppAccepted message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-035-MSAppAccepted
         tags:
@@ -4725,6 +4879,7 @@ paths:
           
       post:
         summary: Submit IF-035 with Event Code MSAppRejected message for validation  
+        x-dip-intro: "Check a single IF-035 MSAppRejected message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-035-MSAppRejected
         tags:
@@ -4772,6 +4927,7 @@ paths:
           
       post:
         summary: Submit IF-035 with Event Code MSAppLapsed message for validation  
+        x-dip-intro: "Check a single IF-035 MSAppLapsed message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-035-MSAppLapsed
         tags:
@@ -4819,6 +4975,7 @@ paths:
           
       post:
         summary: Submit IF-035 with Event Code DSAppAccepted message for validation  
+        x-dip-intro: "Check a single IF-035 DSAppAccepted message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-035-DSAppAccepted
         tags:
@@ -4866,6 +5023,7 @@ paths:
           
       post:
         summary: Submit IF-035 with Event Code DSAppRejected message for validation  
+        x-dip-intro: "Check a single IF-035 DSAppRejected message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-035-DSAppRejected
         tags:
@@ -4913,6 +5071,7 @@ paths:
           
       post:
         summary: Submit IF-035 with Event Code DSAppLapsed message for validation  
+        x-dip-intro: "Check a single IF-035 DSAppLapsed message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-035-DSAppLapsed
         tags:
@@ -4960,6 +5119,7 @@ paths:
           
       post:
         summary: Submit IF-035 with Event Code IMS-SendMTD message for validation  
+        x-dip-intro: "Check a single IF-035 IMS-SendMTD message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-035-IMS-SendMTD
         tags:
@@ -5007,6 +5167,7 @@ paths:
           
       post:
         summary: Submit IF-035 with Event Code SDS-MDROutcome message for validation  
+        x-dip-intro: "Check a single IF-035 SDS-MDROutcome message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-035-SDS-MDROutcome
         tags:
@@ -5054,6 +5215,7 @@ paths:
           
       post:
         summary: Submit IF-035 with Event Code DCC-MDROutcome message for validation  
+        x-dip-intro: "Check a single IF-035 DCC-MDROutcome message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-035-DCC-MDROutcome
         tags:
@@ -5101,6 +5263,7 @@ paths:
           
       post:
         summary: Submit IF-036 with Event Code MSAppActive message for validation  
+        x-dip-intro: "Check a single IF-036 MSAppActive message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-036-MSAppActive
         tags:
@@ -5148,6 +5311,7 @@ paths:
           
       post:
         summary: Submit IF-036 with Event Code DSAppActive message for validation  
+        x-dip-intro: "Check a single IF-036 DSAppActive message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-036-DSAppActive
         tags:
@@ -5195,6 +5359,7 @@ paths:
           
       post:
         summary: Submit IF-037 with Event Code MSDeApp message for validation  
+        x-dip-intro: "Check a single IF-037 MSDeApp message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-037-MSDeApp
         tags:
@@ -5242,6 +5407,7 @@ paths:
           
       post:
         summary: Submit IF-037 with Event Code DSDeApp message for validation  
+        x-dip-intro: "Check a single IF-037 DSDeApp message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-037-DSDeApp
         tags:
@@ -5289,6 +5455,7 @@ paths:
           
       post:
         summary: Submit IF-037 with Event Code MSDeAppUpdate message for validation  
+        x-dip-intro: "Check a single IF-037 MSDeAppUpdate message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-037-MSDeAppUpdate
         tags:
@@ -5336,6 +5503,7 @@ paths:
           
       post:
         summary: Submit IF-037 with Event Code DSDeAppUpdate message for validation  
+        x-dip-intro: "Check a single IF-037 DSDeAppUpdate message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-037-DSDeAppUpdate
         tags:
@@ -5383,6 +5551,7 @@ paths:
           
       post:
         summary: Submit IF-038 with Event Code DirectContractMSAdd message for validation  
+        x-dip-intro: "Check a single IF-038 DirectContractMSAdd message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-038-DirectContractMSAdd
         tags:
@@ -5430,6 +5599,7 @@ paths:
           
       post:
         summary: Submit IF-038 with Event Code DirectContractDSAdd message for validation  
+        x-dip-intro: "Check a single IF-038 DirectContractDSAdd message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-038-DirectContractDSAdd
         tags:
@@ -5477,6 +5647,7 @@ paths:
           
       post:
         summary: Submit IF-038 with Event Code DirectContractMSRemove message for validation  
+        x-dip-intro: "Check a single IF-038 DirectContractMSRemove message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-038-DirectContractMSRemove
         tags:
@@ -5524,6 +5695,7 @@ paths:
           
       post:
         summary: Submit IF-038 with Event Code DirectContractDSRemove message for validation  
+        x-dip-intro: "Check a single IF-038 DirectContractDSRemove message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-038-DirectContractDSRemove
         tags:
@@ -5571,6 +5743,7 @@ paths:
           
       post:
         summary: Submit IF-039 with Event Code DirectContractMSAdd message for validation  
+        x-dip-intro: "Check a single IF-039 DirectContractMSAdd message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-039-DirectContractMSAdd
         tags:
@@ -5618,6 +5791,7 @@ paths:
           
       post:
         summary: Submit IF-039 with Event Code DirectContractDSAdd message for validation  
+        x-dip-intro: "Check a single IF-039 DirectContractDSAdd message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-039-DirectContractDSAdd
         tags:
@@ -5665,6 +5839,7 @@ paths:
           
       post:
         summary: Submit IF-039 with Event Code DirectContractMSRemove message for validation  
+        x-dip-intro: "Check a single IF-039 DirectContractMSRemove message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-039-DirectContractMSRemove
         tags:
@@ -5712,6 +5887,7 @@ paths:
           
       post:
         summary: Submit IF-039 with Event Code DirectContractDSRemove message for validation  
+        x-dip-intro: "Check a single IF-039 DirectContractDSRemove message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-039-DirectContractDSRemove
         tags:
@@ -5759,6 +5935,7 @@ paths:
           
       post:
         summary: Submit IF-040 with Event Code AnnualConsumption message for validation  
+        x-dip-intro: "Check a single IF-040 AnnualConsumption message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-040-AnnualConsumption
         tags:
@@ -5806,6 +5983,7 @@ paths:
           
       post:
         summary: Submit IF-041 with Event Code ReadingRemv message for validation  
+        x-dip-intro: "Check a single IF-041 ReadingRemv message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-041-ReadingRemv
         tags:
@@ -5853,6 +6031,7 @@ paths:
           
       post:
         summary: Submit IF-041 with Event Code ReadingInstl message for validation  
+        x-dip-intro: "Check a single IF-041 ReadingInstl message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-041-ReadingInstl
         tags:
@@ -5900,6 +6079,7 @@ paths:
           
       post:
         summary: Submit IF-041 with Event Code ReadingEnergisationChg message for validation  
+        x-dip-intro: "Check a single IF-041 ReadingEnergisationChg message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-041-ReadingEnergisationChg
         tags:
@@ -5947,6 +6127,7 @@ paths:
           
       post:
         summary: Submit IF-041 with Event Code ReadingCOR message for validation  
+        x-dip-intro: "Check a single IF-041 ReadingCOR message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-041-ReadingCOR
         tags:
@@ -5994,6 +6175,7 @@ paths:
           
       post:
         summary: Submit IF-041 with Event Code ReadingOnSite message for validation  
+        x-dip-intro: "Check a single IF-041 ReadingOnSite message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-041-ReadingOnSite
         tags:
@@ -6041,6 +6223,7 @@ paths:
           
       post:
         summary: Submit IF-041 with Event Code ReadingCOS message for validation  
+        x-dip-intro: "Check a single IF-041 ReadingCOS message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-041-ReadingCOS
         tags:
@@ -6088,6 +6271,7 @@ paths:
           
       post:
         summary: Submit IF-041 with Event Code DSEstimate message for validation  
+        x-dip-intro: "Check a single IF-041 DSEstimate message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-041-DSEstimate
         tags:
@@ -6135,6 +6319,7 @@ paths:
           
       post:
         summary: Submit IF-041 with Event Code SupplierAgreedCOS message for validation  
+        x-dip-intro: "Check a single IF-041 SupplierAgreedCOS message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-041-SupplierAgreedCOS
         tags:
@@ -6182,6 +6367,7 @@ paths:
           
       post:
         summary: Submit IF-041 with Event Code ReadingOverride message for validation  
+        x-dip-intro: "Check a single IF-041 ReadingOverride message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-041-ReadingOverride
         tags:
@@ -6229,6 +6415,7 @@ paths:
           
       post:
         summary: Submit IF-041 with Event Code ReadingRemote message for validation  
+        x-dip-intro: "Check a single IF-041 ReadingRemote message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-041-ReadingRemote
         tags:
@@ -6276,6 +6463,7 @@ paths:
           
       post:
         summary: Submit IF-043 with Event Code ConnectionTypeChange message for validation  
+        x-dip-intro: "Check a single IF-043 ConnectionTypeChange message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-043-ConnectionTypeChange
         tags:
@@ -6323,6 +6511,7 @@ paths:
           
       post:
         summary: Submit IF-044 with Event Code MarketSegmentChange message for validation  
+        x-dip-intro: "Check a single IF-044 MarketSegmentChange message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-044-MarketSegmentChange
         tags:
@@ -6370,6 +6559,7 @@ paths:
           
       post:
         summary: Submit IF-045 with Event Code InvalidMarketSegment message for validation  
+        x-dip-intro: "Check a single IF-045 InvalidMarketSegment message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-045-InvalidMarketSegment
         tags:
@@ -6417,6 +6607,7 @@ paths:
           
       post:
         summary: Submit IF-045 with Event Code ConsentGranularityInvalid message for validation  
+        x-dip-intro: "Check a single IF-045 ConsentGranularityInvalid message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-045-ConsentGranularityInvalid
         tags:
@@ -6464,6 +6655,7 @@ paths:
           
       post:
         summary: Submit IF-045 with Event Code NoMSAppointed message for validation  
+        x-dip-intro: "Check a single IF-045 NoMSAppointed message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-045-NoMSAppointed
         tags:
@@ -6511,6 +6703,7 @@ paths:
           
       post:
         summary: Submit IF-045 with Event Code NoDSAppointed message for validation  
+        x-dip-intro: "Check a single IF-045 NoDSAppointed message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-045-NoDSAppointed
         tags:
@@ -6558,6 +6751,7 @@ paths:
           
       post:
         summary: Submit IF-050 with Event Code MPANCreation message for validation  
+        x-dip-intro: "Check a single IF-050 MPANCreation message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-050-MPANCreation
         tags:
@@ -6605,6 +6799,7 @@ paths:
           
       post:
         summary: Submit IF-050 with Event Code MPStatusChange message for validation  
+        x-dip-intro: "Check a single IF-050 MPStatusChange message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-050-MPStatusChange
         tags:
@@ -6652,6 +6847,7 @@ paths:
           
       post:
         summary: Submit IF-050 with Event Code GreenDeal message for validation  
+        x-dip-intro: "Check a single IF-050 GreenDeal message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-050-GreenDeal
         tags:
@@ -6699,6 +6895,7 @@ paths:
           
       post:
         summary: Submit IF-051 with Event Code GreenDeal message for validation  
+        x-dip-intro: "Check a single IF-051 EESRefresh message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-051
         tags:
@@ -6748,6 +6945,7 @@ paths:
           
       post:
         summary: Submit IF-061 with Event Code MDRStart message for validation  
+        x-dip-intro: "Check a single IF-061 MDRStart message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-061-MDRStart
         tags:
@@ -6795,6 +6993,7 @@ paths:
           
       post:
         summary: Submit IF-062 with Event Code MDRStartResponse message for validation  
+        x-dip-intro: "Check a single IF-062 MDRStartResponse message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-062-MDRStartResponse
         tags:
@@ -6842,6 +7041,7 @@ paths:
           
       post:
         summary: Submit IF-063 with Event Code MDRStop message for validation  
+        x-dip-intro: "Check a single IF-063 MDRStop message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-063-MDRStop
         tags:
@@ -6889,6 +7089,7 @@ paths:
           
       post:
         summary: Submit IF-064 with Event Code MDRConsumption message for validation  
+        x-dip-intro: "Check a single IF-064 MDRConsumption message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-064-MDRConsumption
         tags:
@@ -6936,6 +7137,7 @@ paths:
           
       post:
         summary: Submit IF-065 with Event Code ReadingRemote message for validation  
+        x-dip-intro: "Check a single IF-065 ReadingRemote message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-065-ReadingRemote
         tags:
@@ -6983,6 +7185,7 @@ paths:
           
       post:
         summary: Submit IF-065 with Event Code MDRInstantaneous message for validation  
+        x-dip-intro: "Check a single IF-065 MDRInstantaneous message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-065-MDRInstantaneous
         tags:
@@ -7030,6 +7233,7 @@ paths:
           
       post:
         summary: Submit IF-065 with Event Code MDRTOU message for validation  
+        x-dip-intro: "Check a single IF-065 MDRTOU message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-065-MDRTOU
         tags:
@@ -7077,6 +7281,7 @@ paths:
           
       post:
         summary: Submit IF-065 with Event Code MDRConsumption message for validation  
+        x-dip-intro: "Check a single IF-065 MDRConsumption message against DIP validation. For testing and debugging only."
         description: Allows a Market Participant to validate a single messages for debugging purposes only  
         operationId: validate-IF-065-MDRConsumption
         tags:
@@ -7410,9 +7615,11 @@ components:
           items:
             $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-014-DIPTransactionID' 
         version:
-            $ref: 'DataCatalogue-unresolved.yaml#/components/schemas/DI-992N-Schema-Version' 
-        
+            $ref: 'DataCatalogue-unresolved.yaml#/components/schemas/DI-992N-Schema-Version'
 
+
+#       29/10/2026  76757
+# Aligned with MessageRequest - nullable datetimeFrom/To, transactionIDs array replaces transactionID
     StatusMessageRequest:
       type: object
       required:
@@ -7420,12 +7627,16 @@ components:
           - datetimeTo
       properties:
         datetimeFrom:
-          $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-003-DateTime'
+          $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-003N-DateTime'
         datetimeTo:
-          $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-003-DateTime'
-        transactionID:
-          $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-014N-DIPTransactionID' 
-        senderUniqueReference : 
+          $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-003N-DateTime'
+        transactionIDs:
+          type: array
+          minItems: 1
+          maxItems: 100
+          items:
+            $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-014-DIPTransactionID'
+        senderUniqueReference :
           $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-995N-SenderUniqueReference'
         correlationID:
           $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-011N-CorrelationID'
