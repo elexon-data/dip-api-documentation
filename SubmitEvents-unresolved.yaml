@@ -5,7 +5,11 @@
 # SubmitEvents API 
 #
 # ----- update notices ---------------------------------------------------------------
-# June for November release v2.2.0
+# November updates for February 2027 release v2.3.0
+# ------------
+# re-re-introduce reworked APIs for replay/requeue and status message replay/requeue
+#
+# June for November release v2.2.0/1
 # ------------
 # re-introduce reworked APIs for replay/requeue and status message replay/requeue
 #
@@ -72,6 +76,8 @@
 # Ver   Date           Ref.    Description
 #                   ADO / DCAB            
 # ------------------------------------------------------------------------------------
+# 2.3.0 28/10/2026              Tidy up of header and comments so that it displays better
+#                                
 # 2.2.1 29/07/2026  74973       /dip-channel/{id}/requeue/{recipient-id} returns a requeueId on a 202 
 #                               response
 # 2.2.0 23/06/2026  74973/019   Re-Introduce Status Message replay/requeue 
@@ -161,61 +167,82 @@
 
 openapi: 3.0.0
 info:
-  version: 2.2.1
+  version: 2.3.0
   title: DIP - Send Messages & Receive Publications
   description: 
-    Latest release 2.2.1 <br><br>
-    __DIP APIs for sending & recieving MHHS TOM messages and reports__
+    Latest release 2.3.0 <br><br>
+    __DIP Open API Defintions__
+    > Sending Messages and reports
+    > Webhook specification for receiving messages and reports
+    > Sending Status Messages
+    > Webhook specification for receiving status messages 
+    > Replay Messages
+    > Requeue Messages 
+    > Replay Status Messages
+    > Requeue Status Messages 
+    > Message Validation APIs - see DIP Message Validation Endpoints Section below <br><br>
+     any comments please relay to DIPManager@elexon.co.uk
+servers: 
+  - url: https://dip-api-documentation.elexon.co.uk/
+security:
+  - ApiKeyAuth: []
+
+
+
+paths:
+  /dip-channel/{id}:
+    summary: DIP Interface Channels
+    description: Each interface represents a single DIP messaging channel. Each interface/publication/report is identified by a 'id'
     <br><br>Supported interfaces -<br><br>
-     -           Channel-001    Notification of Change of Supplier **<br>
-     -           Channel-002    Registration Update to Supplier (COS Gain) **<br>
-     -           Channel-003    Notification of Migration and De-Appointment (Migration)<br>
-     -           Channel-004    Comms Hub Information <br>
-     -           Channel-005    Metering Service MTD Updates to Registration<br>
-     -           Channel-006    Registration Service Notification of MTD Updates<br>
-     -           Channel-007    Change of Energisation Status Outcome<br>
-     -           Channel-008    Registration Service Notification of Change of Energisation Status<br>
-     -           Channel-009    Registration Service Notification of Disconnection<br>
-     -           Channel-013    MDS Defaults Applied <br>
-     -           Channel-014    Rejected Consumption Data Submission<br>
-     -           Channel-015    Request Historic Consumption Replay (ADV Sites only)<br>
-     -           Channel-016    HH Consumption History Replay  (ADV Sites only)<br>
-     -           Channel-018    Notification of Registration Data Item Changes<br>
-     -           Channel-019    Maintain MPAN Relationships<br>
-     -           Channel-020    Maintain MPAN Relationship Response<br>
-     -           Channel-021    UTC Settlement Period Consumption Data<br>
-     -           Channel-022    LSS Period Data<br>
-     -           Channel-023    LSS Totals Data<br>
-     -           Channel-024    Supplier Advisory Notification to DS<br>
-     -           Channel-025    Supplier Updates to Registration<br>
-     -           Channel-026    Registration Service Notification of Supplier Data Chg<br>
-     -           Channel-027    Consumption Amendment Request<br>
-     -           Channel-028    Consumption Amendment Request Response<br>
-     -           Channel-030    Correlated MPAN Activity<br>
-     -           Channel-031    Supplier Service Provider Appointment Request<br>
-     -           Channel-032    Supplier Service Provider Appointment Request Response<br>
-     -           Channel-033    Registration Service Request for Service Appointment<br>
-     -           Channel-034    Service Provider Appointment Request Response<br>
-     -           Channel-035    Registration Service Appointment Status Notification<br>
-     -           Channel-036    Registration Service Notification of Service Appointment & Supporting Info<br>
-     -           Channel-037    Registration Service Notification of Service De-Appointment<br>
-     -           Channel-038    Customer Direct Contract Advisory<br>
-     -           Channel-039    Customer Direct Contract Advisory Response<br>
-     -           Channel-040    Notification of ECS Annual Consumption<br>
-     -           Channel-041    Cumulative Meter Reading<br>
-     -           Channel-042    Customer Name Information<br>
-     -           Channel-043    Registration Service Notification of Change of Connection Type<br>
-     -           Channel-044    Registration Service Notification of Change of Segment<br>
-     -           Channel-045    Registration Service Notification of Invalid Segment or No Agents Appointed<br>
-     -           Channel-047    Notification of the Publication of a Downloadable Asset<br>
-     -           Channel-050    EES Exclusive Updates<br>
-     -           Channel-051    EES Refresh<br><br>
-     **New for IR7 - CR023 MDR Reports**<br><br>
-     -           Channel-061    MDR Start Request<br>
-     -           Channel-062    MDR Start Request Response<br>
-     -           Channel-063    MDR Stop Request<br>
-     -           Channel-064    MDR Provide Consumption<br>
-     -           Channel-065    MDR Request/Provide Meter Reading<br>
+     -           IF-001    Notification of Change of Supplier **<br>
+     -           IF-002    Registration Update to Supplier (COS Gain) **<br>
+     -           IF-003    Notification of Migration and De-Appointment (Migration)<br>
+     -           IF-004    Comms Hub Information <br>
+     -           IF-005    Metering Service MTD Updates to Registration<br>
+     -           IF-006    Registration Service Notification of MTD Updates<br>
+     -           IF-007    Change of Energisation Status Outcome<br>
+     -           IF-008    Registration Service Notification of Change of Energisation Status<br>
+     -           IF-009    Registration Service Notification of Disconnection<br>
+     -           IF-013    MDS Defaults Applied <br>
+     -           IF-014    Rejected Consumption Data Submission<br>
+     -           IF-015    Request Historic Consumption Replay (ADV Sites only)<br>
+     -           IF-016    HH Consumption History Replay  (ADV Sites only)<br>
+     -           IF-018    Notification of Registration Data Item Changes<br>
+     -           IF-019    Maintain MPAN Relationships<br>
+     -           IF-020    Maintain MPAN Relationship Response<br>
+     -           IF-021    UTC Settlement Period Consumption Data<br>
+     -           IF-022    LSS Period Data<br>
+     -           IF-023    LSS Totals Data<br>
+     -           IF-024    Supplier Advisory Notification to DS<br>
+     -           IF-025    Supplier Updates to Registration<br>
+     -           IF-026    Registration Service Notification of Supplier Data Chg<br>
+     -           IF-027    Consumption Amendment Request<br>
+     -           IF-028    Consumption Amendment Request Response<br>
+     -           IF-030    Correlated MPAN Activity<br>
+     -           IF-031    Supplier Service Provider Appointment Request<br>
+     -           IF-032    Supplier Service Provider Appointment Request Response<br>
+     -           IF-033    Registration Service Request for Service Appointment<br>
+     -           IF-034    Service Provider Appointment Request Response<br>
+     -           IF-035    Registration Service Appointment Status Notification<br>
+     -           IF-036    Registration Service Notification of Service Appointment & Supporting Info<br>
+     -           IF-037    Registration Service Notification of Service De-Appointment<br>
+     -           IF-038    Customer Direct Contract Advisory<br>
+     -           IF-039    Customer Direct Contract Advisory Response<br>
+     -           IF-040    Notification of ECS Annual Consumption<br>
+     -           IF-041    Cumulative Meter Reading<br>
+     -           IF-042    Customer Name Information<br>
+     -           IF-043    Registration Service Notification of Change of Connection Type<br>
+     -           IF-044    Registration Service Notification of Change of Segment<br>
+     -           IF-045    Registration Service Notification of Invalid Segment or No Agents Appointed<br>
+     -           IF-047    Notification of the Publication of a Downloadable Asset<br>
+     -           IF-050    EES Exclusive Updates<br>
+     -           IF-051    EES Refresh<br><br>
+     ** MDR Reports**<br><br>
+     -           IF-061    MDR Start Request<br>
+     -           IF-062    MDR Start Request Response<br>
+     -           IF-063    MDR Stop Request<br>
+     -           IF-064    MDR Provide Consumption<br>
+     -           IF-065    MDR Request/Provide Meter Reading<br>
      <br>
      **ECS Reports**<br><br>
      -           REP-002   LDSO report for DUoS (LDSO) – aggregated data **<br>
@@ -232,20 +259,6 @@ info:
      -           REP-900   LDSO E-bill Distribution Invoice I<br>
      -           REP-901   LDSO E-bill Distribution Invoice II<br>
      <br>
-     New for IR7.2 - DIP Message Validation APIs - see DIP Message Validation Endpoints Section below <br><br>
-     ** examples available in post /dip-channel/{id}<br>  
-     any comments please relay to DIPManager@elexon.co.uk
-servers: 
-  - url: https://dip-api-documentation.elexon.co.uk/
-security:
-  - ApiKeyAuth: []
-
-
-
-paths:
-  /dip-channel/{id}:
-    summary: DIP Interface Channels
-    description: Represents a single DIP messaging channel. Each interface/publication/report is identified by a 'id'
         
     post:
       summary: Submit a series of Interface messages 
@@ -529,7 +542,16 @@ paths:
   /dip-channel/{id}/replay/{recipient-id}:
     post:
       summary: Replay messages from a DIP Channel Publication  
-      description: Allows a Market Participant to replay messages messages returned in the API call (cf. requeue)
+      description: The Replay endpoint lets a caller request retransmission of previously sent messages for a given recipient. 
+      Replayed messages are returned synchronously, directly in the body of the API response — there is no separate polling endpoint or asynchronous job to check.
+      Where the full set of replayed messages is small enough to fit in a single response, the API returns HTTP 200 and the response contains everything that was requested. No further action is needed, and the replay operation is complete.
+      Where the volume of messages is too large to return in one response, the API paginates automatically. 
+      The paged approach allows for a maximum of 200 payloads to be replayed on a single response; a continuation token is returned along with the data. 
+      There is a 10 second budget per page (1 page = 100 payloads), if it takes greater than 10 seconds to retrieve the 100-200th payloads, the return is capped at a single page i.e. 100 payloads. 
+      The status code is set to HTTP 206 (Partial Content), and the X-Continuation-Token header is included on that response. 
+      The caller reads this token and sends it back as a request header, also named X-Continuation-Token, on the next call to the same endpoint. 
+      That next call returns the following tranche of messages, again as either a 200 (if that tranche completes the replay) or a 206 with a fresh continuation token (if more remains).
+      
       operationId: replayPublication
       tags: 
           - DIP Channel Replay/Requeue
