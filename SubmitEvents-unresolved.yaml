@@ -8,6 +8,8 @@
 # November updates for February 2027 release v2.3.0
 # ------------
 # re-re-introduce reworked APIs for replay/requeue and status message replay/requeue
+# add sender capability to the delivery status API - split into recipient and sender versions (76318)
+# add missing operationIds to the pubconfig and status message config DELETE calls (76866)
 #
 # June for November release v2.2.0/1
 # ------------
@@ -76,6 +78,12 @@
 # Ver   Date           Ref.    Description
 #                   ADO / DCAB            
 # ------------------------------------------------------------------------------------
+# 2.3.0 05/11/2026  76866       operationId added to DELETE /dip-channel/{id}/pubconfig/{recipient-id} and
+#                               DELETE /statusmessage/config/{recipient-id}
+# 2.3.0 05/11/2026  76318       Delivery status API extended to senders. Existing recipient capability
+#                               /dip-channel/{id}/deliveryStatus/{recipient-id}/{message-id} moves to
+#                               /dip-channel/{id}/deliveryStatus/recipient/{dip-id}/{message-id};
+#                               new sender capability /dip-channel/{id}/deliveryStatus/sender/{dip-id}/{message-id}
 # 2.3.0 29/10/2026  76757       StatusMessageRequest aligned with MessageRequest - nullable datetimeFrom/To
 #                               and transactionIDs array (max 100) replaces single transactionID.
 #                               Applies to both /statusmessage/replay/{recipient-id} and
@@ -552,6 +560,7 @@ paths:
       summary: Delete existing Publication configuration 
       x-dip-intro: "Remove your webhook for a channel's publications."
       description: Delete an exisiting webhook for a publication
+      operationId: delete-dip-channel-id-pubconfig-recipient-id
       tags:
           - DIP Channel Publication Configuration 
       parameters:
@@ -935,6 +944,7 @@ paths:
       summary: Delete existing Status Message configuration 
       x-dip-intro: "Remove your status message webhook."
       description: Delete an exisiting webhook for Status Messages 
+      operationId: delete-statusmessage-config-recipient-id
       tags:
         - Status Messages
       parameters:
@@ -1167,19 +1177,19 @@ paths:
 #       01/07/2026  73686/027
 #@@   Add delivery status API so DIP users can establish the delivery status of messages 
             
-  /dip-channel/{id}/deliveryStatus/{recipient-id}/{message-id}:
+  /dip-channel/{id}/deliveryStatus/recipient/{dip-id}/{message-id}:
 
   
     get:
-      summary: Provides the processing details of the message 
-      x-dip-intro: "Look up the processing details of a message you sent."
-      description: Reports on the status of messages identified by their Sender Unique reference 
-      operationId: deliveryStatus
+      summary: Provides the processing details of a message you received
+      x-dip-intro: "Look up the processing details of a message sent to you."
+      description: Reports on the delivery status of a message received by the DIP participant identified by dip-id, where the message is identified by its Sender Unique reference
+      operationId: deliveryStatusRecipient
       tags: 
           - DIP Message Delivery Status
       parameters:
         - $ref: '#/components/parameters/MessageChannel'
-        - $ref: '#/components/parameters/MessageRecipientId'
+        - $ref: '#/components/parameters/DipId'
         - $ref: '#/components/parameters/MessageId'
         - $ref: '#/components/parameters/CommonSignatureHeader'
         - $ref: '#/components/parameters/CommonSignatureDateHeader'
@@ -1219,6 +1229,57 @@ paths:
         '504': 
           description: Gateway Timeout
 
+  /dip-channel/{id}/deliveryStatus/sender/{dip-id}/{message-id}:
+
+  
+    get:
+      summary: Provides the processing details of a message you sent
+      x-dip-intro: "Look up the processing details of a message you sent."
+      description: Reports on the delivery status of a message sent by the DIP participant identified by dip-id, where the message is identified by its Sender Unique reference
+      operationId: deliveryStatusSender
+      tags: 
+          - DIP Message Delivery Status
+      parameters:
+        - $ref: '#/components/parameters/MessageChannel'
+        - $ref: '#/components/parameters/DipId'
+        - $ref: '#/components/parameters/MessageId'
+        - $ref: '#/components/parameters/CommonSignatureHeader'
+        - $ref: '#/components/parameters/CommonSignatureDateHeader'
+        - $ref: '#/components/parameters/CommonSHA256Header'
+        - $ref: '#/components/parameters/CommonSignatureCertifcateHeader'
+
+      responses:
+        '200':
+          description: DIP Journalling Information
+          content: 
+            application/json:
+              schema:
+                    $ref: '#/components/schemas/DIPJournalRecord'
+              
+
+        '204':
+          description: No Content
+
+        '400':
+            description: Bad Request
+            content: 
+              application/json:
+                schema:
+                    $ref: '#/components/schemas/StandardResponse'
+        '401':
+            description: Unauthorised Error            
+        '403':
+            description: Forbidden
+        '429':
+            description: Too Many Requests
+        '500':
+          description: Internal Server Error
+        '502': 
+          description: Bad Gateway
+        '503':
+          description: Service Unavailable
+        '504': 
+          description: Gateway Timeout
 
 
 
@@ -7340,6 +7401,14 @@ components:
       name: recipient-id
       in: path
       required: true 
+      schema:
+        $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-006-DIPParticipantID' 
+
+    DipId:
+      name: dip-id
+      in: path
+      required: true 
+      description: DIP participant id of the sender or recipient of the message, depending on the endpoint
       schema:
         $ref: 'DataTypes-unresolved.yaml#/components/schemas/DT-006-DIPParticipantID' 
 
