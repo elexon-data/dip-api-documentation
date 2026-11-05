@@ -1963,9 +1963,9 @@ components:
         description : LDSO Billing Invoice Type.
         type : string 
         maxLength: 40
-        example : 'Aggregated DUoS'
+        example : 'Site Specific DUoS'
         enum:
-            - 'Site Specifc DUoS' 
+            - 'Site Specific DUoS' 
           #  - 'Aggregated DUoS' # Removed 
           #  - 'Transactional'   # Removed    
  
