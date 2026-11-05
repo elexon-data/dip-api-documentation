@@ -8,8 +8,8 @@
 # November updates for February 2027 release v2.3.0
 # ------------
 # re-re-introduce reworked APIs for replay/requeue and status message replay/requeue
-# split delivery status API into recipient and sender versions
-# add missing operationIds to the pubconfig and status message config DELETE calls
+# add sender capability to the delivery status API - split into recipient and sender versions (76318)
+# add missing operationIds to the pubconfig and status message config DELETE calls (76866)
 #
 # June for November release v2.2.0/1
 # ------------
@@ -78,11 +78,12 @@
 # Ver   Date           Ref.    Description
 #                   ADO / DCAB            
 # ------------------------------------------------------------------------------------
-# 2.3.0 05/11/2026              operationId added to DELETE /dip-channel/{id}/pubconfig/{recipient-id} and
+# 2.3.0 05/11/2026  76866       operationId added to DELETE /dip-channel/{id}/pubconfig/{recipient-id} and
 #                               DELETE /statusmessage/config/{recipient-id}
-# 2.3.0 05/11/2026              /dip-channel/{id}/deliveryStatus/{recipient-id}/{message-id} split into
-#                               /dip-channel/{id}/deliveryStatus/recipient/{dip-id}/{message-id} and
-#                               /dip-channel/{id}/deliveryStatus/sender/{dip-id}/{message-id}
+# 2.3.0 05/11/2026  76318       Delivery status API extended to senders. Existing recipient capability
+#                               /dip-channel/{id}/deliveryStatus/{recipient-id}/{message-id} moves to
+#                               /dip-channel/{id}/deliveryStatus/recipient/{dip-id}/{message-id};
+#                               new sender capability /dip-channel/{id}/deliveryStatus/sender/{dip-id}/{message-id}
 # 2.3.0 29/10/2026  76757       StatusMessageRequest aligned with MessageRequest - nullable datetimeFrom/To
 #                               and transactionIDs array (max 100) replaces single transactionID.
 #                               Applies to both /statusmessage/replay/{recipient-id} and
