@@ -1181,7 +1181,7 @@ paths:
 
   
     get:
-      summary: Provides the processing details of the message 
+      summary: Provides the processing details of a message you received
       x-dip-intro: "Look up the processing details of a message sent to you."
       description: Reports on the delivery status of a message received by the DIP participant identified by dip-id, where the message is identified by its Sender Unique reference
       operationId: deliveryStatusRecipient
@@ -1233,7 +1233,7 @@ paths:
 
   
     get:
-      summary: Provides the processing details of the message 
+      summary: Provides the processing details of a message you sent
       x-dip-intro: "Look up the processing details of a message you sent."
       description: Reports on the delivery status of a message sent by the DIP participant identified by dip-id, where the message is identified by its Sender Unique reference
       operationId: deliveryStatusSender
